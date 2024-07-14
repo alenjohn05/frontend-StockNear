@@ -310,7 +310,7 @@ const loadWorker = async () => {
         
       
 
-          <div class="w-full max-w-4xl m-auto sm:bg-[#202020] sm:rounded-xl h-auto sm:p-10 mt-10 sm:mt-3 mb-8">
+          <div class="w-full max-w-4xl m-auto sm:bg-[#131722] sm:rounded-xl h-auto sm:p-10 mt-10 sm:mt-3 mb-8">
             <div class="grid grid-cols-1 sm:grid-cols-2">
           
               <!-- Start Column -->
@@ -402,14 +402,14 @@ const loadWorker = async () => {
 
 <div class="flex flex-row items-center w-fit ml-auto mt-6 mb-2 mr-3 sm:mr-0">
 {#if filterList?.length !== 0}
-<label on:click={() => filterList = [] } class="mr-3 text-sm cursor-pointer bg-[#202020] sm:hover:bg-[#202020] duratiion-100 transition ease-in-out px-4 py-2 rounded-lg shadow-lg ml-auto">
+<label on:click={() => filterList = [] } class="mr-3 text-sm cursor-pointer bg-[#131722] sm:hover:bg-[#131722] duratiion-100 transition ease-in-out px-4 py-2 rounded-lg shadow-lg ml-auto">
   <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4" viewBox="0 0 21 21"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3.578 6.487A8 8 0 1 1 2.5 10.5"/><path d="M7.5 6.5h-4v-4"/></g></svg>
       Reset All
 </label>
 {/if}
 
 <div class="dropdown dropdown-end z-30">
-  <button tabindex="0" role="button" class="text-sm cursor-pointer bg-[#202020] sm:hover:bg-[#202020] duratiion-100 transition ease-in-out px-4 py-2 rounded-lg shadow-lg ml-auto">
+  <button tabindex="0" role="button" class="text-sm cursor-pointer bg-[#131722] sm:hover:bg-[#131722] duratiion-100 transition ease-in-out px-4 py-2 rounded-lg shadow-lg ml-auto">
     Filter
     <svg class="inline-block w-2.5 h-2.5 ml-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -428,7 +428,7 @@ const loadWorker = async () => {
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
           </svg>
         </div>
-        <input type="text" id="input-group-search" class="block w-full p-2 ps-10 text-sm placeholder-white text-white border border-gray-300 rounded-lg bg-[#202327] focus:ring-blue-500 focus:border-blue-500 " placeholder="Search Country">
+        <input type="text" id="input-group-search" class="block w-full p-2 ps-10 text-sm placeholder-white text-white border border-gray-300 rounded-lg bg-[#131722] focus:ring-blue-500 focus:border-blue-500 " placeholder="Search Country">
       </div>
     </div>
     -->
@@ -440,7 +440,7 @@ const loadWorker = async () => {
       {#each ['United States','Russia','China','UK','EU'] as item}
     <li>
       <label on:click|stopPropagation={(event) => handleFilter(event, item)} class="flex items-center ps-2 rounded">
-        <input checked={filterList?.includes(item)} type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
+        <input checked={filterList?.includes(item)} type="checkbox" class="w-4 h-4 text-[#FFBE00] bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
         <label class="w-full py-2 ms-2 text-sm font-medium text-white rounded cursor-pointer">
           {item}
         </label>
@@ -457,7 +457,7 @@ const loadWorker = async () => {
     {#each listOfCountries as item}
     <li>
       <div on:click|stopPropagation={(event) => handleFilter(event, item)} class="flex items-center ps-2 rounded">
-        <input type="checkbox" checked={filterList?.includes(item)} class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
+        <input type="checkbox" checked={filterList?.includes(item)} class="w-4 h-4 text-[#FFBE00] bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
         <label class="w-full py-2 ms-2 text-sm font-medium text-white rounded cursor-pointer">
           {item}
         </label>
@@ -475,7 +475,7 @@ const loadWorker = async () => {
                   {#if index === selectedWeekday}
                     {#if day?.length !== 0}
                     <div class="w-full overflow-x-scroll no-scrollbar">  
-                      <table class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0F0F0F] m-auto mt-4 ">
+                      <table class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#131722] m-auto mt-4 ">
                           <thead>
                             <tr>
                               <th class="text-start text-white font-semibold text-sm"></th>
@@ -491,9 +491,9 @@ const loadWorker = async () => {
                           <tbody>
                             {#each day as item}
                             <!-- row -->
-                            <tr class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] odd:bg-[#202020]">
+                            <tr class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] odd:bg-[#131722]">
                               
-                            <td class="text-white text-sm border-b-[#0F0F0F]">
+                            <td class="text-white text-sm border-b-[#131722]">
                                 <label class="p-1.5 rounded-lg">
                                   {item?.time}
                                 </label>
@@ -512,23 +512,23 @@ const loadWorker = async () => {
                               </span>
                             </td>
 
-                            <td class="text-start text-white border-b-[#0F0F0F]">
+                            <td class="text-start text-white border-b-[#131722]">
                               <span class="text-white font-medium ">{item?.event?.length > 15 ? item?.event?.slice(0,15) + '...' : item?.event}</span>
                             </td>
     
-                          <td class="text-white font-medium border-b-[#0F0F0F] text-end">
+                          <td class="text-white font-medium border-b-[#131722] text-end">
                             {item?.previous !== null ? item?.previous : '-'}
                           </td>
           
-                          <td class="text-white font-medium border-b-[#0F0F0F] text-end">
+                          <td class="text-white font-medium border-b-[#131722] text-end">
                             {item?.estimate !== null ? item?.estimate : '-'}
                           </td>
 
-                          <td class="text-end text-white font-medium text-center border-b-[#0F0F0F] text-end">
+                          <td class="text-end text-white font-medium text-center border-b-[#131722] text-end">
                             {item?.actual !== null ? item?.actual : '-'}
                           </td>
           
-                          <td class="{item?.impact === 'Low' ? 'text-[#00FC50]' : item?.impact === 'Medium' ? 'text-[#3DDBFE]' : item?.impact === 'High' ? 'text-[#FC2120]' : 'text-white'} text-sm text-end mr-1 border-b-[#0F0F0F]">
+                          <td class="{item?.impact === 'Low' ? 'text-[#00FC50]' : item?.impact === 'Medium' ? 'text-[#3DDBFE]' : item?.impact === 'High' ? 'text-[#FC2120]' : 'text-white'} text-sm text-end mr-1 border-b-[#131722]">
                             {item?.impact}
                           </td>
   
@@ -544,7 +544,7 @@ const loadWorker = async () => {
 
                         <div class="relative p-2 sm:hidden pt-5 ">
                           {#each day as item}
-                            <div class="bg-[#202020] rounded-lg border border-slate-800 h-auto pl-2 pr-2 pt-4 pb-3 mb-7">
+                            <div class="bg-[#131722] rounded-lg border border-slate-800 h-auto pl-2 pr-2 pt-4 pb-3 mb-7">
                                 <div class="flex flex-row items-center">
                                   <div class="hidden rounded-full w-10 h-10 relative bg-[#101112] flex items-center justify-center">
                                     {#if item?.country === 'EU'}

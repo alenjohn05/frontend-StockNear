@@ -37,7 +37,7 @@
     </div>
     -->
   
-    <div  class="w-full m-auto sm:bg-[#202020] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8">
+    <div  class="w-full m-auto sm:bg-[#131722] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8">
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
     
         <!-- Start Column -->
@@ -84,7 +84,7 @@
 
 
 
-      <div class="card w-full bg-[#0F0F0F] border-t sm:border rounded-none sm:rounded-xl border-slate-700 m-auto ">
+      <div class="card w-full bg-[#131722] border-t sm:border rounded-none sm:rounded-xl border-slate-700 m-auto ">
         <div class="card-body">
 
             <p class="text-gray-400 italic mb-2 text-sm">Last updated: 22.06.2023</p>
@@ -93,7 +93,7 @@
                 Stocknear (the "website" or "site") respects your privacy.
                 This privacy statement describes what information and data we collect from you and how we use it.
                 Please read the whole privacy policy as well as our
-                <a href="/terms-of-use" class="text-blue-400 hover:underline hover:text-white">Terms of use</a>
+                <a href="/terms-of-use" class="text-[#FFBE00] hover:underline hover:text-white">Terms of use</a>
                 The use of our website is generally possible without providing personal data. Insofar as personal data (for example name, address or e-mail addresses) is collected on our pages, this is always done, as far as possible, on a voluntary basis. This data will not be passed on to third parties without your express consent.
                 We point out that data transmission over the Internet (e.g. communication by e-mail) security gaps. A complete protection of data against access by third parties is not possible.
                 The use of contact data published within the framework of the imprint obligation by third parties for the purpose of sending unsolicited advertising and information material is hereby expressly prohibited. The operators of the pages expressly reserve the right to take legal action in the event of the unsolicited sending of advertising information, such as spam e-mails.
@@ -142,7 +142,7 @@
                 <br>
                 <br>
                 If you wish to be informed what Personal Data we hold about you and if you want it to be removed from our systems, please email us at 
-                <a href={`mailto:${emailAddress}`} class="text-blue-400 hover:text-white hover:underline">{emailAddress}</a>.
+                <a href={`mailto:${emailAddress}`} class="text-[#FFBE00] hover:text-white hover:underline">{emailAddress}</a>.
             
                 <br>
                 <br>
@@ -200,7 +200,7 @@
                     </li>
                     <li>
                         Users can change their personal information by emailing us at
-                        <a href={`mailto:${emailAddress}`} class="text-blue-400 hover:text-white hover:underline">{emailAddress}</a>.
+                        <a href={`mailto:${emailAddress}`} class="text-[#FFBE00] hover:text-white hover:underline">{emailAddress}</a>.
                     </li>
                     
                 </ol>

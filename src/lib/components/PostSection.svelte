@@ -288,7 +288,7 @@ $: {
         {/if}
       </form>
       <!--End Upvote-->
-      <label class="text-center py-4 w-14 rounded-lg bg-[#202020] border border-gray-700 text-[1rem] text-bold text-white">
+      <label class="text-center py-4 w-14 rounded-lg bg-[#131722] border border-gray-700 text-[1rem] text-bold text-white">
           {upvoteCounter[posts?.id] - downvoteCounter[posts?.id] }
       </label>
       <!--Start Downvote-->
@@ -314,7 +314,7 @@ $: {
   
     </div>
    
-  <div class="w-full bg-[#202020] border-t border-b sm:border sm:hover:border-slate-600 border-gray-700 rounded-none sm:rounded-lg">
+  <div class="w-full bg-[#131722] border-t border-b sm:border sm:hover:border-slate-600 border-gray-700 rounded-none sm:rounded-lg">
       <!-- List container -->
       <div class="flex flex-col">
           <!-- Item -->
@@ -389,7 +389,7 @@ $: {
                     </label>
                   </div>
 
-                  <ul tabindex="0" class="border border-gray-700 dropdown-content menu bg-[#313131] rounded-box w-44 z-30">
+                  <ul tabindex="0" class="border border-gray-700 dropdown-content menu bg-[#2A2E39] rounded-box w-44 z-30">
                       {#if data?.user?.id === posts?.user || isModerator(data?.user?.id)}
                       <li>
                         <label on:click={handleCopyLink} class="text-sm text-white cursor-pointer">
@@ -458,7 +458,7 @@ $: {
           
                       <div class="relative">
                         {#if posts?.thumbnail && !['webm', 'mp4']?.some(format => posts?.thumbnail?.includes(format))}
-                          <div class="absolute inset-0 bg-cover object-fill bg-center bg-[#000]"></div>
+                          <div class="absolute inset-0 bg-cover object-fill bg-center bg-[#131722]"></div>
                  
                           <!--<div class="absolute -inset-3 md:-inset-y-20 md:mt-10 bg-cover object-contain blur-[40px]" style="clip-path: polygon(0 0, 100% 0, 100% 90%, 0 90%); background-image: url('{getImageURL(posts.collectionId, posts.id, posts.thumbnail)}');"></div>-->
                           <img src={getImageURL(posts?.collectionId, posts?.id, posts?.thumbnail)} alt = "post image" class="m-auto w-auto relative max-h-[520px] sm:max-h-[700px]" style="position: relative;" loading="lazy"/>
@@ -658,9 +658,9 @@ $: {
   <dialog id={deletePostId} class="modal modal-bottom sm:modal-middle ">
   
   
-    <label for={deletePostId}  class="cursor-pointer modal-backdrop bg-[#000] bg-opacity-[0.5]"></label>
+    <label for={deletePostId}  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
     
-    <div class="modal-box bg-[#202020] p-10" >
+    <div class="modal-box bg-[#131722] p-10" >
   
   
           <h3 class="font-bold text-md sm:text-lg sm:mb-10">

@@ -72,7 +72,7 @@ async function initializeQuillEditor()
             });
 
             editor.querySelectorAll('a').forEach((a) => {
-                a.classList.add('text-blue-400', 'hover:text-white','underline');
+                a.classList.add('text-[#FFBE00]', 'hover:text-white','underline');
             });
 
             editor.querySelectorAll('ol').forEach((ol) => {

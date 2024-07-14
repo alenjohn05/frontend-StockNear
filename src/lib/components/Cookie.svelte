@@ -27,7 +27,7 @@ async function cookieConsent(state:string) {
             </svg>
         </span>
 
-        <p class="text-sm text-gray-300">We use cookies to ensure that we give you the best experience on our website. <a href="/privacy-policy" class="text-blue-500 hover:underline">Read Privacy Policy</a>. </p>
+        <p class="text-sm text-gray-300">We use cookies to ensure that we give you the best experience on our website. <a href="/privacy-policy" class="text-[#FFBE00] hover:underline">Read Privacy Policy</a>. </p>
     </div>
     
     <div class="flex items-center justify-end sm:justify-start mt-2 mb-5 sm:mb-0 gap-x-4 shrink-0 lg:mt-0 ">

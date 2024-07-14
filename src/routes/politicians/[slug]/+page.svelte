@@ -249,7 +249,7 @@
   
               <aside class="relative fixed w-full sm:w-1/3">        
                   <!--Start Card-->
-                  <div class="w-full bg-[#202020] border border-slate-800 rounded-lg h-auto pb-4">
+                  <div class="w-full bg-[#131722] border border-slate-800 rounded-lg h-auto pb-4">
                     <div class="flex flex-col relative ">
                       {#if politicianParty === 'Republican'}
                       <img class="absolute  w-full m-auto rounded-lg " src={republicanBackground} />
@@ -347,7 +347,7 @@
                 <main class="w-full mt-10 sm:mt-0 sm:w-3/4 sm:ml-5">
                 
                   {#if isLoaded && Object?.keys(optionsData)?.length !== 0}
-                  <div class="p-0 sm:p-10 bg-[#0F0F0F] sm:bg-[#202020] rounded-lg sm:min-h-[330px] mb-10 sm:mb-6">
+                  <div class="p-0 sm:p-10 bg-[#131722] sm:bg-[#131722] rounded-lg sm:min-h-[330px] mb-10 sm:mb-6">
   
                     <div class="flex flex-row justify-center sm:justify-start items-center">
                       <svg class="w-7 h-7 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="#849AAE" d="M576 0c17.7 0 32 14.3 32 32v448c0 17.7-14.3 32-32 32s-32-14.3-32-32V32c0-17.7 14.3-32 32-32M448 96c17.7 0 32 14.3 32 32v352c0 17.7-14.3 32-32 32s-32-14.3-32-32V128c0-17.7 14.3-32 32-32m-96 128v256c0 17.7-14.3 32-32 32s-32-14.3-32-32V224c0-17.7 14.3-32 32-32s32 14.3 32 32m-160 64c17.7 0 32 14.3 32 32v160c0 17.7-14.3 32-32 32s-32-14.3-32-32V320c0-17.7 14.3-32 32-32M96 416v64c0 17.7-14.3 32-32 32s-32-14.3-32-32v-64c0-17.7 14.3-32 32-32s32 14.3 32 32"/></svg>
@@ -359,15 +359,15 @@
   
                     <div class="flex flex-row items-center justify-between mx-auto mt-10 sm:mt-5 w-56 sm:w-80">
                       <div class="flex flex-col sm:flex-row items-center ml-3 sm:ml-0 w-1/2 justify-center">
-                      <div class="h-full bg-[#313131] transform -translate-x-1/2 " aria-hidden="true"></div>
-                      <div class="w-3 h-3 bg-[#69B3A2] border-4 box-content border-[#313131] rounded-full transform sm:-translate-x-1/2" aria-hidden="true"></div>
+                      <div class="h-full bg-[#2A2E39] transform -translate-x-1/2 " aria-hidden="true"></div>
+                      <div class="w-3 h-3 bg-[#69B3A2] border-4 box-content border-[#2A2E39] rounded-full transform sm:-translate-x-1/2" aria-hidden="true"></div>
                       <span class="mt-2 sm:mt-0 text-white text-center sm:text-start text-xs sm:text-md inline-block">
                           Bought
                       </span>
                   </div>
                       <div class="flex flex-col sm:flex-row items-center ml-3 sm:ml-0 w-1/2 justify-center">
-                          <div class="h-full bg-[#313131] transform -translate-x-1/2 " aria-hidden="true"></div>
-                          <div class="w-3 h-3 bg-[#E8864D] border-4 box-content border-[#313131] rounded-full transform sm:-translate-x-1/2" aria-hidden="true"></div>
+                          <div class="h-full bg-[#2A2E39] transform -translate-x-1/2 " aria-hidden="true"></div>
+                          <div class="w-3 h-3 bg-[#E8864D] border-4 box-content border-[#2A2E39] rounded-full transform sm:-translate-x-1/2" aria-hidden="true"></div>
                           <span class="mt-2 sm:mt-0 text-white text-xs sm:text-md sm:font-medium inline-block">
                           Sold
                           </span>
@@ -379,7 +379,7 @@
   
                   </div>
                   {/if}
-                <div class="p-0 sm:p-10 bg-[#0F0F0F] sm:bg-[#202020] rounded-lg sm:min-h-[330px]">
+                <div class="p-0 sm:p-10 bg-[#131722] sm:bg-[#131722] rounded-lg sm:min-h-[330px]">
                   <div class="w-full m-auto h-auto sm:max-h-[500px] sm:overflow-y-scroll scroller">
   
   
@@ -389,35 +389,35 @@
                       {numOfAssets} Assets
                     </span>
   
-                      <table class="-ml-2 table table-sm table-compact table-pin-rows table-pin-cols rounded-none sm:rounded-md w-full bg-[#202020] m-auto mt-5 ">
+                      <table class="-ml-2 table table-sm table-compact table-pin-rows table-pin-cols rounded-none sm:rounded-md w-full bg-[#131722] m-auto mt-5 ">
                         <!-- head -->
                         <thead>
-                          <tr class="bg-[#202020]">
-                            <th class="shadow-md text-start bg-[#202020] text-white text-sm font-semibold">
+                          <tr class="bg-[#131722]">
+                            <th class="shadow-md text-start bg-[#131722] text-white text-sm font-semibold">
                               Name
                             </th>
-                            <th class="shadow-md text-start bg-[#202020]  text-white text-sm font-semibold">
+                            <th class="shadow-md text-start bg-[#131722]  text-white text-sm font-semibold">
                               Transaction
                             </th>
-                            <th class="shadow-md text-end bg-[#202020] text-white text-sm font-semibold">
+                            <th class="shadow-md text-end bg-[#131722] text-white text-sm font-semibold">
                               Traded
                             </th>
-                            <th class="shadow-md text-end bg-[#202020] text-white text-sm font-semibold">
+                            <th class="shadow-md text-end bg-[#131722] text-white text-sm font-semibold">
                               Filed
                             </th>
                           </tr>
                         </thead>
                         <tbody class="p-0">
                           {#each displayList as item}
-                              <tr on:click={() => goto(`/${item?.assetType === 'stock' ? 'stocks' : item?.assetType === 'etf' ? 'etf' : 'crypto'}/${item?.ticker}`)} class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#202020] border-b-[#202020] cursor-pointer">
+                              <tr on:click={() => goto(`/${item?.assetType === 'stock' ? 'stocks' : item?.assetType === 'etf' ? 'etf' : 'crypto'}/${item?.ticker}`)} class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#131722] border-b-[#202020] cursor-pointer">
                                 
                                 <td class="text-gray-200 pb-3 border-b border-b-[#202020]">
                                   <div class="flex flex-row items-center">
-                                    <div class="flex-shrink-0 rounded-full w-8 h-8 relative bg-[#202020] flex items-center justify-center">
+                                    <div class="flex-shrink-0 rounded-full w-8 h-8 relative bg-[#131722] flex items-center justify-center">
                                       <img style="clip-path: circle(50%);" class="avatar w-7 h-7" src={`https://financialmodelingprep.com/image-stock/${item?.ticker}.png`} alt="stock logo"/>
                                     </div>
                                     <div class="flex flex-col ml-2">
-                                      <span class="text-blue-400">{item?.ticker?.replace('_',' ')}</span>
+                                      <span class="text-[#FFBE00]">{item?.ticker?.replace('_',' ')}</span>
                                       <span class="text-white text-opacity-80 text-xs">{item?.name?.length > 20 ? item?.name?.slice(0,20)+'...' : item?.name}</span>
                                     </div>
                                   </div>
@@ -468,16 +468,16 @@
                         <table class="-ml-2 table mt-3 w-screen">
                             <thead>
                               <tr class="">
-                                <th class="shadow-md text-start bg-[#0F0F0F] text-white text-sm font-semibold">
+                                <th class="shadow-md text-start bg-[#131722] text-white text-sm font-semibold">
                                   Name
                                 </th>
-                                <th class="shadow-md text-start bg-[#0F0F0F]  text-white text-sm font-semibold">
+                                <th class="shadow-md text-start bg-[#131722]  text-white text-sm font-semibold">
                                   Transaction
                                 </th>
-                                <th class="shadow-md text-end bg-[#0F0F0F] text-white text-sm font-semibold">
+                                <th class="shadow-md text-end bg-[#131722] text-white text-sm font-semibold">
                                   Traded
                                 </th>
-                                <th class="shadow-md text-end bg-[#0F0F0F] text-white text-sm font-semibold">
+                                <th class="shadow-md text-end bg-[#131722] text-white text-sm font-semibold">
                                   Filed
                                 </th>
                               </tr>
@@ -485,19 +485,19 @@
                             <tbody>
                               {#each displayList as item,index}
                               <!-- row -->
-                              <tr on:click={() => goto(`/${item?.assetType === 'stock' ? 'stocks' : item?.assetType === 'etf' ? 'etf' : 'crypto'}/${item?.ticker}`)} class="w-screen [#0F0F0F] border-b-[#0F0F0F]">
+                              <tr on:click={() => goto(`/${item?.assetType === 'stock' ? 'stocks' : item?.assetType === 'etf' ? 'etf' : 'crypto'}/${item?.ticker}`)} class="w-screen [#131722] border-b-[#131722]">
                                 
-                                <td class="text-gray-200 pb-3 border-b border-b-[#0F0F0F] w-32">
+                                <td class="text-gray-200 pb-3 border-b border-b-[#131722] w-32">
                                   <div class="flex flex-row items-center">
                                     <div class="flex flex-col">
-                                      <span class="text-blue-400 text-sm">{item?.ticker?.replace('_',' ')}</span>
+                                      <span class="text-[#FFBE00] text-sm">{item?.ticker?.replace('_',' ')}</span>
                                       <span class="text-white text-opacity-80 text-xs">{item?.name?.length > 15 ? item?.name?.slice(0,15)+'...' : item?.name}</span>
                                     </div>
                                   </div>
                                   <!--{item?.firstName} {item?.lastName}-->
                                 </td>
       
-                                <td class="text-start text-sm text-white border-b border-b-[#0F0F0F] ">
+                                <td class="text-start text-sm text-white border-b border-b-[#131722] ">
                                   <div class="flex flex-col items-start">
                                     <span class="font-semibold">
                                       {#if item?.type === 'Bought'}
@@ -514,11 +514,11 @@
                                   </div>
                                 </td>
       
-                                  <td class="text-end text-sm text-white border-b border-b-[#0F0F0F]">
+                                  <td class="text-end text-sm text-white border-b border-b-[#131722]">
                                       {new Date(item?.transactionDate)?.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', daySuffix: '2-digit' })}
                                   </td>
   
-                                  <td class="text-end text-sm text-white border-b border-b-[#0F0F0F]">
+                                  <td class="text-end text-sm text-white border-b border-b-[#131722]">
                                     {new Date(item?.disclosureDate)?.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', daySuffix: '2-digit' })}
                                 </td>
                         

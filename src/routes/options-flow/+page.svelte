@@ -535,7 +535,7 @@ $: {
   </svelte:head>
     
 <body class="sm:fixed h-screen m-auto w-full max-w-screen">
-  <section class="w-full max-w-screen sm:max-w-screen-2xl flex justify-center items-center m-auto pt-5 bg-[#0F0F0F] ">
+  <section class="w-full max-w-screen sm:max-w-screen-2xl flex justify-center items-center m-auto pt-5 bg-[#131722] ">
       
   
       <div class="w-full m-auto mb-10 pl-3 pr-3">
@@ -551,7 +551,7 @@ $: {
   
               <div class="flex flex-row items-center justify-center sm:justify-start mt-6 pb-5">
                 <label data-tip="Audio Preference" on:click={() => muted = !muted} class="xl:tooltip xl:tooltip-bottom flex flex-col items-center mr-6 cursor-pointer">
-                  <div class="rounded-full w-10 h-10 relative bg-[#000] flex items-center justify-center">
+                  <div class="rounded-full w-10 h-10 relative bg-[#131722] flex items-center justify-center">
                     {#if !muted}
                     <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="#fff" d="M9 2.5a.5.5 0 0 0-.849-.358l-2.927 2.85H3.5a1.5 1.5 0 0 0-1.5 1.5v2.99a1.5 1.5 0 0 0 1.5 1.5h1.723l2.927 2.875A.5.5 0 0 0 9 13.5zm1.111 2.689a.5.5 0 0 1 .703-.08l.002.001l.002.002l.005.004l.015.013l.046.04c.036.034.085.08.142.142c.113.123.26.302.405.54c.291.48.573 1.193.573 2.148c0 .954-.282 1.668-.573 2.148a3.394 3.394 0 0 1-.405.541a2.495 2.495 0 0 1-.202.196l-.008.007h-.001s-.447.243-.703-.078a.5.5 0 0 1 .075-.7l.002-.002l-.001.001l.002-.001h-.001l.018-.016c.018-.017.048-.045.085-.085a2.4 2.4 0 0 0 .284-.382c.21-.345.428-.882.428-1.63c0-.747-.218-1.283-.428-1.627a2.382 2.382 0 0 0-.368-.465a.5.5 0 0 1-.096-.717m1.702-2.08a.5.5 0 1 0-.623.782l.011.01l.052.045c.047.042.116.107.201.195c.17.177.4.443.63.794c.46.701.92 1.733.92 3.069a5.522 5.522 0 0 1-.92 3.065c-.23.35-.46.614-.63.79a3.922 3.922 0 0 1-.252.24l-.011.01h-.001a.5.5 0 0 0 .623.782l.033-.027l.075-.065c.063-.057.15-.138.253-.245a6.44 6.44 0 0 0 .746-.936a6.522 6.522 0 0 0 1.083-3.614a6.542 6.542 0 0 0-1.083-3.618a6.517 6.517 0 0 0-.745-.938a4.935 4.935 0 0 0-.328-.311l-.023-.019l-.007-.006l-.002-.002zM10.19 5.89l-.002-.001Z"/></svg>
                     {:else}
@@ -583,7 +583,7 @@ $: {
           <!--Start Filter-->
           <div class="sm:ml-auto w-full sm:w-fit">
             <div class="relative flex flex-col sm:flex-row items-center">
-                <div class="relative w-full sm:w-fit pl-3 py-2 sm:py-1.5 sm:mr-5 mb-4 sm:mb-0 flex-auto text-center bg-[#313131] rounded-lg border border-gray-600">
+                <div class="relative w-full sm:w-fit pl-3 py-2 sm:py-1.5 sm:mr-5 mb-4 sm:mb-0 flex-auto text-center bg-[#2A2E39] rounded-lg border border-gray-600">
                   <label class="flex flex-row items-center ">
                     <input 
                     id="modal-search"
@@ -604,7 +604,7 @@ $: {
                 </div>
                 
                 
-              <div class="py-2 sm:py-1.5 mb-5 sm:mb-0 flex-auto text-center bg-[#000] rounded-lg w-full sm:w-fit">
+              <div class="py-2 sm:py-1.5 mb-5 sm:mb-0 flex-auto text-center bg-[#131722] rounded-lg w-full sm:w-fit">
                 <label for="filterList" class="sm:flex sm:flex-row justify-center items-center cursor-pointer px-5">
                   <svg class="h-6 w-6 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M32 144h448M112 256h288M208 368h96"/></svg>
                   <span class="m-auto text-[1rem] text-white ml-2 px-0 py-1 bg-inherit">
@@ -653,7 +653,7 @@ $: {
                       <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-[#3E3E3E]" stroke-width="3"></circle>
                       <!-- Progress Circle inside a group with rotation -->
                       <g class="origin-center -rotate-90 transform">
-                        <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-blue-500" stroke-width="3" stroke-dasharray="100" stroke-dashoffset={100-(putCallRatio*100)?.toFixed(2)}></circle>
+                        <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-[#FFBE00]" stroke-width="3" stroke-dasharray="100" stroke-dashoffset={100-(putCallRatio*100)?.toFixed(2)}></circle>
                       </g>
                     </svg>
                     <!-- Percentage Text -->
@@ -730,7 +730,7 @@ $: {
               <div class="flex flex-col items-start">
                   <span class="font-semibold text-gray-200 text-sm ">Most Traded Option</span>
                   <span class="text-start text-lg font-semibold text-white mt-0.5">
-                    <span class="text-blue-400 ">
+                    <span class="text-[#FFBE00] ">
                       {mostFrequentTicker?.ticker}
                     </span>
                     {new Intl.NumberFormat("en", {
@@ -747,7 +747,7 @@ $: {
               <div class="flex flex-col items-start">
                   <span class="font-semibold text-gray-200 text-sm ">Highest Premium</span>
                   <span class="text-start text-lg font-semibold text-white mt-0.5">
-                    <span class="text-blue-400 ">
+                    <span class="text-[#FFBE00] ">
                       {highestPremiumTicker?.ticker}
                     </span>
                     ${new Intl.NumberFormat("en", {
@@ -764,7 +764,7 @@ $: {
               <div class="flex flex-col items-start">
                   <span class="font-semibold text-gray-200 text-sm ">Highest Volume</span>
                   <span class="text-start text-lg font-semibold text-white mt-0.5">
-                    <span class="text-blue-400 ">
+                    <span class="text-[#FFBE00] ">
                       {highestVolumeTicker?.ticker}
                     </span>
                     {new Intl.NumberFormat("en", {
@@ -781,7 +781,7 @@ $: {
               <div class="flex flex-col items-start">
                   <span class="font-semibold text-gray-200 text-sm ">Highest Open Interest</span>
                   <span class="text-start text-lg font-semibold text-white mt-0.5">
-                    <span class="text-blue-400 ">
+                    <span class="text-[#FFBE00] ">
                       {highestOpenInterestTicker?.ticker}
                     </span>
                     {new Intl.NumberFormat("en", {
@@ -835,13 +835,13 @@ $: {
                     <tbody>
                       {#each optionList as item,index}
                       <!-- row -->
-                      <tr on:click={() => handleViewData(item)} class="w-full odd:bg-[#202020] cursor-pointer {index+1 === optionList?.length && data?.user?.tier !== 'Pro' ? 'opacity-[0.1]' : ''}">
+                      <tr on:click={() => handleViewData(item)} class="w-full odd:bg-[#131722] cursor-pointer {index+1 === optionList?.length && data?.user?.tier !== 'Pro' ? 'opacity-[0.1]' : ''}">
                         
                         <td class="text-white pb-3 text-xs sm:text-sm text-start">
                           {formatTime(item?.time)}
                         </td>
     
-                        <th on:click|stopPropagation={() => assetSelector(item?.ticker, item?.assetType)} class="{index % 2 ? 'bg-[#0F0F0F]' : 'bg-[#202020]'} text-blue-400 text-start font-normal">
+                        <th on:click|stopPropagation={() => assetSelector(item?.ticker, item?.assetType)} class="{index % 2 ? 'bg-[#131722]' : 'bg-[#131722]'} text-[#FFBE00] text-start font-normal">
                           {item?.ticker}
                         </th>
   
@@ -915,7 +915,7 @@ $: {
           {:else}
           <div class="flex justify-center items-center h-80">
             <div class="relative">
-            <label class="bg-[#202020] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <label class="bg-[#131722] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 <span class="loading loading-spinner loading-md"></span>
             </label>
             </div>
@@ -937,10 +937,10 @@ $: {
 <dialog id="filterList" class="modal modal-bottom sm:modal-middle ">
 
 
-  <label id="filterList" for="filterList" class="cursor-pointer modal-backdrop bg-[#000] bg-opacity-[0.5]"></label>
+  <label id="filterList" for="filterList" class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
   
   
-  <div class="modal-box w-full bg-[#202020] sm:border sm:border-slate-800 overflow-hidden rounded-md">
+  <div class="modal-box w-full bg-[#131722] sm:border sm:border-slate-800 overflow-hidden rounded-md">
 
 
     <div class="relative z-50 mx-2 max-h-[80vh] rounded bg-default opacity-100 bp:mx-3 sm:mx-4 w-full max-w-[1024px]" aria-modal="true">
@@ -1026,8 +1026,8 @@ $: {
 
 
   <!-- svelte-ignore a11y-label-has-associated-control -->
-  <label class="modal-box w-full relative bg-[#202020] h-auto max-h-[900px] overflow-y-scroll">
-    <label for="optionDetailsDesktopModal" class="cursor-pointer absolute right-5 top-2 bg-[#202020] text-2xl text-white">
+  <label class="modal-box w-full relative bg-[#131722] h-auto max-h-[900px] overflow-y-scroll">
+    <label for="optionDetailsDesktopModal" class="cursor-pointer absolute right-5 top-2 bg-[#131722] text-2xl text-white">
       ✕
     </label>
 
@@ -1037,46 +1037,46 @@ $: {
       {optionSymbol}
 
     </p>
-    <p class="py-4 text-gray-200 bg-[#202020] w-full">
+    <p class="py-4 text-gray-200 bg-[#131722] w-full">
       <span class="font-semibold text-white">Description:</span>
       <br>
       {optionDescription}
     </p>
 
-    <table class="table table-sm table-compact bg-[#202020] w-full mt-5 mb-10 text-white">
+    <table class="table table-sm table-compact bg-[#131722] w-full mt-5 mb-10 text-white">
       <tbody>
         <!-- row 1 -->
-        <tr class="border-b border-slate-700 odd:bg-[#202020]">
+        <tr class="border-b border-slate-700 odd:bg-[#131722]">
           <td class="font-semibold">Premium</td>
           <td class="">{optionPremium}</td>
           <td class="font-semibold">C/P</td>
           <td class="">{optionContract}</td>
         </tr>
-        <tr class="border-b border-slate-700 odd:bg-[#202020]">
+        <tr class="border-b border-slate-700 odd:bg-[#131722]">
           <td class="font-semibold">Expiry</td>
           <td class="">{optionExpiry}</td>
           <td class="font-semibold">Type</td>
           <td class="">{optionType}</td>
         </tr>
-        <tr class="border-b border-slate-700 odd:bg-[#202020]">
+        <tr class="border-b border-slate-700 odd:bg-[#131722]">
           <td class="font-semibold">Strike</td>
           <td class="">${optionStrike}</td>
           <td class="font-semibold">Volume</td>
           <td class="">{optionVolume}</td>
         </tr>
-        <tr class="border-b border-slate-700 odd:bg-[#202020]">
+        <tr class="border-b border-slate-700 odd:bg-[#131722]">
           <td class="font-semibold">Spot</td>
           <td class="">${optionSpot}</td>
           <td class="font-semibold">Open Interest</td>
           <td class="">{optionOpenInterest}</td>
         </tr>
-        <tr class="border-b border-slate-700 odd:bg-[#202020]">
+        <tr class="border-b border-slate-700 odd:bg-[#131722]">
           <td class="font-semibold">Price</td>
           <td class="">${optionPrice}</td>
           <td class="font-semibold">Sentiment</td>
           <td class="">{optionSentiment}</td>
         </tr>
-        <tr class="border-b border-slate-700 odd:bg-[#202020]">
+        <tr class="border-b border-slate-700 odd:bg-[#131722]">
           <td class="font-semibold">Execution Estimate</td>
           <td class="">{optionExecutionEstimate}</td>
           <td class="font-semibold"></td>
@@ -1098,7 +1098,7 @@ $: {
   <div class="drawer-side overflow-hidden">
   
       
-    <div class="bg-[#000] min-h-screen w-screen pb-20 overflow-hidden">
+    <div class="bg-[#131722] min-h-screen w-screen pb-20 overflow-hidden">
 
         <label for="optionDetailsMobileModal" class="absolute left-6 top-6">
           <svg class="w-6 h-6 inline-block mb-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#fff" d="M9.125 21.1L.7 12.7q-.15-.15-.213-.325T.425 12q0-.2.063-.375T.7 11.3l8.425-8.425q.35-.35.875-.35t.9.375q.375.375.375.875t-.375.875L3.55 12l7.35 7.35q.35.35.35.863t-.375.887q-.375.375-.875.375t-.875-.375Z"/></svg>
@@ -1120,43 +1120,43 @@ $: {
     <table class="table table-sm table-compact w-full mt-5 mb-10 text-white">
       <tbody>
         <!-- row 1 -->
-        <tr class="border-b border-slate-700 odd:bg-[#202020]">
+        <tr class="border-b border-slate-700 odd:bg-[#131722]">
           <td class="font-semibold">Premium</td>
           <td class="">{optionPremium}</td>
           <td class="font-semibold">C/P</td>
           <td class="">{optionContract}</td>
         </tr>
-        <tr class="border-b border-slate-700 odd:bg-[#202020]">
+        <tr class="border-b border-slate-700 odd:bg-[#131722]">
           <td class="font-semibold">Expiry</td>
           <td class="">{optionExpiry}</td>
           <td class="font-semibold">Type</td>
           <td class="">{optionType}</td>
         </tr>
-        <tr class="border-b border-slate-700 odd:bg-[#202020]">
+        <tr class="border-b border-slate-700 odd:bg-[#131722]">
           <td class="font-semibold">Strike</td>
           <td class="">${optionStrike}</td>
           <td class="font-semibold">Volume</td>
           <td class="">{optionVolume}</td>
         </tr>
-        <tr class="border-b border-slate-700 odd:bg-[#202020]">
+        <tr class="border-b border-slate-700 odd:bg-[#131722]">
           <td class="font-semibold">Spot</td>
           <td class="">${optionSpot}</td>
           <td class="font-semibold">Open Interest</td>
           <td class="">{optionOpenInterest}</td>
         </tr>
-        <tr class="border-b border-slate-700 odd:bg-[#202020]">
+        <tr class="border-b border-slate-700 odd:bg-[#131722]">
           <td class="font-semibold">Price</td>
           <td class="">${optionPrice}</td>
           <td class="font-semibold">Sentiment</td>
           <td class="">{optionSentiment}</td>
         </tr>
-        <tr class="odd:bg-[#202020]">
+        <tr class="odd:bg-[#131722]">
           <td class="font-semibold">Trade Count</td>
           <td class="">{optionTradeCount}</td>
           <td class="font-semibold">Exchange</td>
           <td class="">{optionExchange}</td>
         </tr>
-        <tr class="border-b border-slate-700 odd:bg-[#202020]">
+        <tr class="border-b border-slate-700 odd:bg-[#131722]">
           <td class="font-semibold">Execution Est.</td>
           <td class="">{optionExecutionEstimate}</td>
           <td class="font-semibold"></td>

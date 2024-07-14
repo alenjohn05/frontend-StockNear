@@ -57,7 +57,7 @@ function addClassesToHtml(htmlString) {
   addClassToTag('h6', 'text-lg');
 
   // Add classes to anchor tags
-  addClassToTag('a', 'text-blue-400 hover:text-white underline');
+  addClassToTag('a', 'text-[#FFBE00] hover:text-white underline');
 
   // Add classes to ordered lists
   addClassToTag('ol', 'list-decimal ml-10 text-sm');
@@ -454,7 +454,7 @@ const handleDownvote = async (event) => {
   
     <label for={'delete'+deleteCommentId}  class="cursor-pointer modal-backdrop  bg-[#fff] bg-opacity-[0.05]"></label>
   
-    <div class="modal-box bg-[#202020] p-5 border border-slate-600 shadow-none" >
+    <div class="modal-box bg-[#131722] p-5 border border-slate-600 shadow-none" >
   
           <h3 class="font-bold text-md sm:text-lg sm:mb-10 text-white mt-5">
             Are you sure you want to delete the comment?

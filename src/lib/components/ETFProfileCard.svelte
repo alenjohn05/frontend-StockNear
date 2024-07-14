@@ -56,10 +56,10 @@ let showFullText = false;
   </script>
   
   <div class="sm:space-y-3">  
-    <div class="lg:rounded-2xl shadow-lg sm:border sm:border-slate-800 bg-[#000] lg:bg-[#202020] h-auto h-auto w-screen pt-16 sm:w-full lg:w-96 lg:pt-0">
+    <div class="lg:rounded-2xl shadow-lg sm:border sm:border-slate-800 bg-[#131722] lg:bg-[#131722] h-auto h-auto w-screen pt-16 sm:w-full lg:w-96 lg:pt-0">
 
          <!--Start Header-->
-         <div class="lg:rounded-t-2xl w-full h-[130px] bg-[#0F0F0F] p-3 flex flex-col bg-cover bg-center bg-no-repeat" style="background-image: url('{defaultImage}');">
+         <div class="lg:rounded-t-2xl w-full h-[130px] bg-[#131722] p-3 flex flex-col bg-cover bg-center bg-no-repeat" style="background-image: url('{defaultImage}');">
 
             <div class="flex flex-row pt-1 pb-2">
                 <div class="badge badge-error gap-2 mt-2 font-medium text-sm text-white">
@@ -96,31 +96,31 @@ let showFullText = false;
               <tbody>
                 <!-- row 1 -->
                 <tr class="text-white border-b border-[#202020]" style="font-size: 0.8rem">
-                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#000] lg:bg-[#202020] text-white font-medium">Name</td>
-                  <td class="bg-[#000] lg:border-b lg:border-[#202020] lg:bg-[#202020]">{$displayCompanyName?.length > 30 ? $displayCompanyName?.slice(0,30) + '...' : $displayCompanyName}</td>
-                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#000] lg:bg-[#202020] text-white font-medium">Ticker</td>
-                  <td class="bg-[#000] lg:border-b lg:border-[#202020] lg:bg-[#202020]">{$etfTicker}</td>
+                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#131722] lg:bg-[#131722] text-white font-medium">Name</td>
+                  <td class="bg-[#131722] lg:border-b lg:border-[#202020] lg:bg-[#131722]">{$displayCompanyName?.length > 30 ? $displayCompanyName?.slice(0,30) + '...' : $displayCompanyName}</td>
+                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#131722] lg:bg-[#131722] text-white font-medium">Ticker</td>
+                  <td class="bg-[#131722] lg:border-b lg:border-[#202020] lg:bg-[#131722]">{$etfTicker}</td>
                 </tr>
                  <!-- row 3 -->
                  <tr class="text-white border-b border-[#202020]" style="font-size: 0.8rem">
-                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#000] lg:bg-[#202020] text-white font-medium">Provider</td>
-                  <td on:click={() => goto(`/etf/etf-providers/${provider}`)} class="text-blue-400 lg:border-b lg:border-[#202020] lg:hover:text-white cursor-pointer bg-[#000] lg:bg-[#202020]">{formatETFName(provider)}</td>
-                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#000] lg:bg-[#202020] text-white font-medium">Country</td>
-                  <td class="bg-[#000] lg:border-b lg:border-[#202020] lg:bg-[#202020]">{country?.length !== 0 ? country : '-'}</td>
+                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#131722] lg:bg-[#131722] text-white font-medium">Provider</td>
+                  <td on:click={() => goto(`/etf/etf-providers/${provider}`)} class="text-[#FFBE00] lg:border-b lg:border-[#202020] lg:hover:text-white cursor-pointer bg-[#131722] lg:bg-[#131722]">{formatETFName(provider)}</td>
+                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#131722] lg:bg-[#131722] text-white font-medium">Country</td>
+                  <td class="bg-[#131722] lg:border-b lg:border-[#202020] lg:bg-[#131722]">{country?.length !== 0 ? country : '-'}</td>
                 </tr>
                 <!-- row 2 -->
                 <tr class="text-white border-b border-[#202020]" style="font-size: 0.8rem">
-                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#000] lg:bg-[#202020] text-white font-medium">Value</td>
-                  <td class="bg-[#000] lg:border-b lg:border-[#202020] lg:bg-[#202020] whitespace-normal">{abbreviateNumber(aum,true)}</td>
-                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#000] lg:bg-[#202020] text-white font-medium">Volume</td>
-                  <td class="bg-[#000] lg:border-b lg:border-[#202020] lg:bg-[#202020] whitespace-normal">{abbreviateNumber(avgVolume)}</td>
+                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#131722] lg:bg-[#131722] text-white font-medium">Value</td>
+                  <td class="bg-[#131722] lg:border-b lg:border-[#202020] lg:bg-[#131722] whitespace-normal">{abbreviateNumber(aum,true)}</td>
+                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#131722] lg:bg-[#131722] text-white font-medium">Volume</td>
+                  <td class="bg-[#131722] lg:border-b lg:border-[#202020] lg:bg-[#131722] whitespace-normal">{abbreviateNumber(avgVolume)}</td>
                 </tr>
                 <!-- row 3 -->
                 <tr class="text-white border-b border-[#202020]" style="font-size: 0.8rem">
-                  <td class="text-start bg-[#000] lg:bg-[#202020] text-white font-medium">Holdings</td>
-                  <td class="bg-[#000] lg:bg-[#202020]">{holdingsCount} Assets</td>
-                  <td class="text-start bg-[#000] lg:bg-[#202020] text-white font-medium">Inception</td>
-                  <td class="bg-[#000] lg:bg-[#202020]">{inceptionDate}</td>
+                  <td class="text-start bg-[#131722] lg:bg-[#131722] text-white font-medium">Holdings</td>
+                  <td class="bg-[#131722] lg:bg-[#131722]">{holdingsCount} Assets</td>
+                  <td class="text-start bg-[#131722] lg:bg-[#131722] text-white font-medium">Inception</td>
+                  <td class="bg-[#131722] lg:bg-[#131722]">{inceptionDate}</td>
                 </tr>
               </tbody>
             </table>
@@ -144,7 +144,7 @@ let showFullText = false;
           </p>
         {#if description.length !== 0 }
           <div class="flex flex-row w-full items-center mt-4 pb-2 mb-2">
-            <label on:click={() => showFullText = !showFullText} class="hidden lg:block ml-3 w-full text-md mt-1 cursor-pointer font-medium text-white sm:hover:text-blue-400 sm:hover:underline">
+            <label on:click={() => showFullText = !showFullText} class="hidden lg:block ml-3 w-full text-md mt-1 cursor-pointer font-medium text-white sm:hover:text-[#FFBE00] sm:hover:underline">
               {#if showFullText}
               Show less 
               {:else}
@@ -153,7 +153,7 @@ let showFullText = false;
             </label>
   
           <div class="flex justify-end w-full relative bottom-0 right-0 mr-3">
-            <a target ="_blank" href="{website}" class="inline-flex text-sm font-medium text-white sm:hover:text-blue-400 sm:hover:underline">
+            <a target ="_blank" href="{website}" class="inline-flex text-sm font-medium text-white sm:hover:text-[#FFBE00] sm:hover:underline">
               Go to website
               <svg class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path></svg>
             </a>

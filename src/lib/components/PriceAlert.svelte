@@ -166,10 +166,10 @@ $: {
     <label for="priceAlertModal"  class="cursor-pointer modal-backdrop bg-[#fff] bg-opacity-[0.02]"></label>
     
     
-        <div class="modal-box rounded-none w-full bg-[#000] h-[450px]" >
+        <div class="modal-box rounded-none w-full bg-[#131722] h-[450px]" >
     
         <!--Start Trade Modal-->
-        <label for="priceAlertModal" class="cursor-pointer absolute right-5 top-5 bg-[#000] text-[1.8rem] text-white">
+        <label for="priceAlertModal" class="cursor-pointer absolute right-5 top-5 bg-[#131722] text-[1.8rem] text-white">
         <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="m6.4 18.308l-.708-.708l5.6-5.6l-5.6-5.6l.708-.708l5.6 5.6l5.6-5.6l.708.708l-5.6 5.6l5.6 5.6l-.708.708l-5.6-5.6z"/></svg>
         </label>
     
@@ -246,11 +246,11 @@ $: {
         <div class="drawer-side overflow-y-scroll overflow-hidden">
         
             
-          <div class="bg-[#000] min-h-screen px-5 w-screen pb-20 overflow-y-scroll overflow-hidden">
+          <div class="bg-[#131722] min-h-screen px-5 w-screen pb-20 overflow-y-scroll overflow-hidden">
       
         
          <!--Start Header-->
-         <div class="bg-[#000] w-full p-1 flex flex-col items-center pb-5 h-auto">
+         <div class="bg-[#131722] w-full p-1 flex flex-col items-center pb-5 h-auto">
             <label for="priceAlertModal" class="absolute left-6 top-6">
                 <svg class="w-6 h-6 inline-block mb-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#fff" d="M9.125 21.1L.7 12.7q-.15-.15-.213-.325T.425 12q0-.2.063-.375T.7 11.3l8.425-8.425q.35-.35.875-.35t.9.375q.375.375.375.875t-.375.875L3.55 12l7.35 7.35q.35.35.35.863t-.375.887q-.375.375-.875.375t-.875-.375Z"/></svg>
               </label>
@@ -303,7 +303,7 @@ $: {
             </button>
         </div>
     
-        <div class="flex flex-wrap pl-5 rounded-xl bg-[#000] max-w-sm mx-auto mt-5">
+        <div class="flex flex-wrap pl-5 rounded-xl bg-[#131722] max-w-sm mx-auto mt-5">
             {#each Array.from({ length: 9 }, (_, i) => i + 1) as number}
                 <div class="w-1/3">
                     <button id={"numPad-" + number} on:click={() => numPadInput(number)} class="transition ease-out w-20 h-20 text-2xl text-white font-bold rounded-full">{number}</button>

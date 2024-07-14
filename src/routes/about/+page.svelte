@@ -49,7 +49,7 @@
   <div class="w-full max-w-4xl overflow-hidden m-auto min-h-screen pt-10 mb-40">
     
     <!--Start Mission-->
-    <div class="bg-[#0F0F0F] w-full hover:border-slate-500 border-slate-600 h-auto sm:p-10 mt-3">
+    <div class="bg-[#131722] w-full hover:border-slate-500 border-slate-600 h-auto sm:p-10 mt-3">
       <div class="text-white  text-4xl sm:text-5xl text-center p-3 sm:mt-5">
           <span class="font-bold">
             A stock analysis platform by the users, for the users.
@@ -58,7 +58,7 @@
 
       
       <div class="text-white text-lg mt-3 text-center pl-10 pr-10">
-        Our mission is to create the first large-scale stock analysis platform in which the platform's interests are aligned with those of the user—a platform founded on ethical design principles. At the heart of these principles is the concept of complete transparency, which is why the entire codebase is <a href="https://github.com/stocknear" rel="noopener noreferrer" target="_blank" class="text-blue-400 sm:hover:text-white sm:hover:underline" >open source</a>. 
+        Our mission is to create the first large-scale stock analysis platform in which the platform's interests are aligned with those of the user—a platform founded on ethical design principles. At the heart of these principles is the concept of complete transparency, which is why the entire codebase is <a href="https://github.com/stocknear" rel="noopener noreferrer" target="_blank" class="text-[#FFBE00] sm:hover:text-white sm:hover:underline" >open source</a>. 
 
            <!-- Start Image -->
            <div class="m-auto flex justify-center mt-6">
@@ -89,7 +89,7 @@
 
 
         <!-- Start Section-->
-        <div class="bg-[#0F0F0F] w-full hover:border-slate-500 border-slate-600 h-auto pl-1 pr-1 sm:pl-0 sm:pr-0 pb-10 mb-8">
+        <div class="bg-[#131722] w-full hover:border-slate-500 border-slate-600 h-auto pl-1 pr-1 sm:pl-0 sm:pr-0 pb-10 mb-8">
           <div class="text-4xl sm:text-5xl text-white text-center p-3 mt-10 sm:mt-5">
               <span class="font-bold">
                 No ads. No tracking.
@@ -99,14 +99,14 @@
           
           <div class="text-white text-lg mt-3 text-center pl-10 pr-10">
             Stocknear has no ads or affiliate marketing, or tracking. 
-            Your attention and data are never monetized. If you're skeptical, just look at our code <a href="https://github.com/stocknear" rel="noopener noreferrer" target="_blank" class="text-blue-400 sm:hover:text-white sm:hover:underline" >here</a>. 
+            Your attention and data are never monetized. If you're skeptical, just look at our code <a href="https://github.com/stocknear" rel="noopener noreferrer" target="_blank" class="text-[#FFBE00] sm:hover:text-white sm:hover:underline" >here</a>. 
           </div>
       </div>
       <!--End Section-->
 
 
        <!-- Start Section-->
-       <div class="bg-[#0F0F0F] w-full hover:border-slate-500 border-slate-600 h-auto pb-10 mb-8">
+       <div class="bg-[#131722] w-full hover:border-slate-500 border-slate-600 h-auto pb-10 mb-8">
         <div class="text-4xl sm:text-5xl text-white text-center p-3 mt-10 sm:mt-5">
             <span class="font-bold">
               No Dark Patterns
@@ -121,7 +121,7 @@
     <!--End Section-->
 
     <!--Start Why we need this -->
-    <div class="bg-[#0F0F0F] w-full bg-[#0F0F0F]  sm:border-t hover:border-slate-500 border-slate-600 h-auto sm:p-10 mt-3 mb-8">
+    <div class="bg-[#131722] w-full bg-[#131722]  sm:border-t hover:border-slate-500 border-slate-600 h-auto sm:p-10 mt-3 mb-8">
       <div class="text-4xl sm:text-5xl font-bold text-white text-center p-3 mt-10 sm:mt-5">
             What we offer
       </div>
@@ -157,7 +157,7 @@
 
 
      <!--Start Why we need this -->
-     <div class="bg-[#0F0F0F] w-full bg-[#0F0F0F]  sm:border-t hover:border-slate-500 border-slate-600 h-auto sm:p-10 mt-3 mb-20 sm:mb-8">
+     <div class="bg-[#131722] w-full bg-[#131722]  sm:border-t hover:border-slate-500 border-slate-600 h-auto sm:p-10 mt-3 mb-20 sm:mb-8">
       <div class="text-4xl sm:text-5xl font-bold text-white text-center p-3 mt-10 sm:mt-5">
           <span class="font-bold">
             Why choose us
@@ -172,7 +172,7 @@
           <br>
 
           As a physicist, I prioritize transparency and rigorous analysis. 
-          During my PhD in theoretical particle physics, I developed models to describe New Physics effects beyond our current knowledge of the universe, as shown by my publication record <a href="https://inspirehep.net/authors/1838037" target="_blank" class="hover:text-white text-blue-400 underline">here</a>. 
+          During my PhD in theoretical particle physics, I developed models to describe New Physics effects beyond our current knowledge of the universe, as shown by my publication record <a href="https://inspirehep.net/authors/1838037" target="_blank" class="hover:text-white text-[#FFBE00] underline">here</a>. 
           <br class="mb-5">
           Unlike most financial websites run by programmers, I combine my programming skills with a scientific approach.
           <br>
@@ -207,7 +207,7 @@
 
 
      <!--Start Team -->
-     <div class="bg-[#0F0F0F] w-full bg-[#0F0F0F]  sm:border-t hover:border-slate-500 border-slate-600 h-auto sm:p-10 mt-3">
+     <div class="bg-[#131722] w-full bg-[#131722]  sm:border-t hover:border-slate-500 border-slate-600 h-auto sm:p-10 mt-3">
       <div class="text-4xl sm:text-5xl font-bold text-white text-center p-3 mt-10 sm:mt-5">
         Team
       </div>

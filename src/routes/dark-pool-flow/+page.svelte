@@ -220,7 +220,7 @@ function formatTime(dateString) {
           <div class="relative flex justify-center items-center overflow-hidden w-full">
               <main class="w-full">
                
-                <div class="w-full max-w-4xl m-auto sm:bg-[#202020] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8">
+                <div class="w-full max-w-4xl m-auto sm:bg-[#131722] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8">
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
                 
                     <!-- Start Column -->
@@ -289,7 +289,7 @@ function formatTime(dateString) {
                     <div class="flex flex-col items-start">
                         <span class="font-medium text-gray-200 text-sm ">Most Traded Option</span>
                         <span class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5">
-                          <a href={"/stocks/"+mostFrequentTicker?.ticker} class="text-blue-400 ">
+                          <a href={"/stocks/"+mostFrequentTicker?.ticker} class="text-[#FFBE00] ">
                             {mostFrequentTicker?.ticker}
                           </a>
                           {new Intl.NumberFormat("en", {
@@ -307,7 +307,7 @@ function formatTime(dateString) {
                     <div class="flex flex-col items-start">
                         <span class="font-medium text-gray-200 text-sm ">Highest Volume</span>
                         <span class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5">
-                          <a href={"/stocks/"+highestVolumeTicker?.ticker} class="text-blue-400 ">
+                          <a href={"/stocks/"+highestVolumeTicker?.ticker} class="text-[#FFBE00] ">
                             {highestVolumeTicker?.ticker}
                           </a>
                           {new Intl.NumberFormat("en", {
@@ -324,7 +324,7 @@ function formatTime(dateString) {
                     <div class="flex flex-col items-start">
                         <span class="font-medium text-gray-200 text-sm ">Highest Size</span>
                         <span class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5">
-                          <a href={"/stocks/"+highestSizeTicker?.ticker} class="text-blue-400 ">
+                          <a href={"/stocks/"+highestSizeTicker?.ticker} class="text-[#FFBE00] ">
                             {highestSizeTicker?.ticker}
                           </a>
                           {new Intl.NumberFormat("en", {
@@ -341,7 +341,7 @@ function formatTime(dateString) {
                       <div class="flex flex-col items-start">
                           <span class="font-medium text-gray-200 text-sm ">Highest Amount</span>
                           <span class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5">
-                            <a href={"/stocks/"+highestAmountTicker?.ticker} class="text-blue-400 ">
+                            <a href={"/stocks/"+highestAmountTicker?.ticker} class="text-[#FFBE00] ">
                               {highestAmountTicker?.ticker}
                             </a>
                             {abbreviateNumber(highestAmountTicker?.amount, true)}
@@ -358,25 +358,25 @@ function formatTime(dateString) {
                     
                   
                     <div class="w-screen sm:w-full m-auto rounded-none sm:rounded-lg mb-4 overflow-x-scroll sm:overflow-hidden">
-                      <table class="table table-sm table-compact no-scrollbar rounded-none sm:rounded-md w-full bg-[#0F0F0F] border-bg-[#0F0F0F] m-auto">
+                      <table class="table table-sm table-compact no-scrollbar rounded-none sm:rounded-md w-full bg-[#131722] border-bg-[#131722] m-auto">
                         <thead>
-                          <tr class="bg-[#0F0F0F] border-b border-blue-400">
-                            <th class="text-start bg-[#0F0F0F] text-white text-sm font-semibold">
+                          <tr class="bg-[#131722] border-b border-blue-400">
+                            <th class="text-start bg-[#131722] text-white text-sm font-semibold">
                               Time
                             </th>
-                            <th class="text-start bg-[#0F0F0F] text-white text-sm font-semibold">
+                            <th class="text-start bg-[#131722] text-white text-sm font-semibold">
                               Company
                             </th>
-                            <th class="text-start bg-[#0F0F0F] text-white text-sm font-semibold">
+                            <th class="text-start bg-[#131722] text-white text-sm font-semibold">
                               Size
                             </th>
-                            <th class="text-end bg-[#0F0F0F] text-white text-sm font-semibold">
+                            <th class="text-end bg-[#131722] text-white text-sm font-semibold">
                               Volume
                             </th>
-                            <th class="text-end bg-[#0F0F0F] text-white text-sm font-semibold">
+                            <th class="text-end bg-[#131722] text-white text-sm font-semibold">
                              Price
                             </th>
-                            <th class="text-end bg-[#0F0F0F] text-white text-sm font-semibold">
+                            <th class="text-end bg-[#131722] text-white text-sm font-semibold">
                               Amount
                              </th>
                           </tr>
@@ -384,7 +384,7 @@ function formatTime(dateString) {
                         <tbody>
                           {#each displayList as item, index}
   
-                          <tr on:click={() => goto(`/stocks/${item?.symbol}`)} class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] odd:bg-[#202020] {index+1 === displayList?.length && data?.user?.tier !== 'Pro' ? 'opacity-[0.1]' : ''} cursor-pointer">
+                          <tr on:click={() => goto(`/stocks/${item?.symbol}`)} class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] odd:bg-[#131722] {index+1 === displayList?.length && data?.user?.tier !== 'Pro' ? 'opacity-[0.1]' : ''} cursor-pointer">
  
   
                             <td class="text-start text-sm font-medium text-white">
@@ -393,7 +393,7 @@ function formatTime(dateString) {
 
                             <td class="text-sm text-start">
                               <div class="flex flex-col items-start w-32 sm:w-fit">
-                                  <span class="text-blue-400">{item?.symbol}</span>
+                                  <span class="text-[#FFBE00]">{item?.symbol}</span>
                                   <span class="text-white">
                                       {item?.name?.length > charNumber ? item?.name?.slice(0,charNumber) + "..." : item?.name}
                                   </span>
@@ -435,7 +435,7 @@ function formatTime(dateString) {
                 {:else}
                 <div class="flex justify-center items-center h-80">
                   <div class="relative">
-                    <label class="bg-[#202020] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <label class="bg-[#131722] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                       <span class="loading loading-spinner loading-md"></span>
                     </label>
                   </div>

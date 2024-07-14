@@ -298,7 +298,7 @@ $: {
   
   
   
-  <div class="modal-box overflow-hidden rounded-xl bg-[#09090B] sm:my-8 sm:m-auto sm:h-auto w-full sm:w-1/2 2xl:w-1/3 " >
+  <div class="modal-box overflow-hidden rounded-xl bg-[#2a2e39] sm:my-8 sm:m-auto sm:h-auto w-full sm:w-1/2 2xl:w-1/3 " >
 
      
     <!-- Search layout -->
@@ -307,7 +307,7 @@ $: {
           <label for="modal-search" class="sr-only">Search</label>
           <input 
           id="modal-search" 
-          class="rounded-lg w-full text-white bg-[#09090B] border border-slate-800 focus:ring-transparent placeholder-gray-200 py-3 pl-10 pr-4" 
+          class="rounded-lg w-full text-white bg-[#2a2e39] border border-slate-800 focus:ring-transparent placeholder-gray-200 py-3 pl-10 pr-4" 
           type="search" 
           placeholder="Search Anything…" 
           bind:value={searchQuery}
@@ -342,13 +342,13 @@ $: {
           {#if !showSuggestions }
             {#each popularList as item}
               <li>
-                <a data-sveltekit-preload-data="false" on:click={() => popularTicker(item?.symbol) } class="mb-2 {item?.symbol === focusedSuggestion ? 'shake-ticker cursor-pointer flex justify-start items-center p-2 text-white bg-[#404040] bg-opacity-[0.25] rounded group' : 'shake-ticker cursor-pointer bg-[#202020] rounded-lg flex justify-start items-center p-2 text-white  group'} w-full">
+                <a data-sveltekit-preload-data="false" on:click={() => popularTicker(item?.symbol) } class="mb-2 {item?.symbol === focusedSuggestion ? 'shake-ticker cursor-pointer flex justify-start items-center p-2 text-white bg-[#2a2e39] bg-opacity-[0.25] rounded group' : 'shake-ticker cursor-pointer bg-[#131722] rounded-lg flex justify-start items-center p-2 text-white  group'} w-full">
                   <div class="flex flex-row items-center w-full">
-                    <div class="rounded-full w-10 h-10 relative bg-[#000] flex items-center justify-center">
+                    <div class="rounded-full w-10 h-10 relative bg-[#131722] flex items-center justify-center">
                       <img style="clip-path: circle(50%);" class="w-6 h-6" src={`https://financialmodelingprep.com/image-stock/${item?.symbol}.png`} loading="lazy" />
                     </div>
                     <div class="flex flex-col ml-2">
-                      <span class="text-blue-400">{item?.symbol}</span>
+                      <span class="text-[#FFBE00]">{item?.symbol}</span>
                       <span class="text-white">{item?.name.length > 150 ? item?.name?.slice(0,150) + "..." : item?.name}</span>
                     </div>
 
@@ -375,11 +375,11 @@ $: {
               <li>
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <!-- svelte-ignore a11y-label-has-associated-control -->
-                <label data-sveltekit-preload-data="false" on:click={() => (searchBarTicker(item?.symbol, item?.type))} class="mb-2 {item?.symbol === focusedSuggestion ? 'shake-ticker cursor-pointer flex justify-start items-center p-2 text-white bg-[#404040] bg-opacity-[0.25] rounded group' : 'cursor-pointer mb-2 bg-[#202020] rounded-lg flex justify-start items-center p-2 text-white group'}">
+                <label data-sveltekit-preload-data="false" on:click={() => (searchBarTicker(item?.symbol, item?.type))} class="mb-2 {item?.symbol === focusedSuggestion ? 'shake-ticker cursor-pointer flex justify-start items-center p-2 text-white bg-[#2a2e39] bg-opacity-[0.25] rounded group' : 'cursor-pointer mb-2 bg-[#131722] rounded-lg flex justify-start items-center p-2 text-white group'}">
                   <div class="flex flex-row items-center w-full">
 
                     <div class="flex flex-col">
-                      <span class="text-blue-400">{item?.symbol}</span>
+                      <span class="text-[#FFBE00]">{item?.symbol}</span>
                       <span class="text-white">{item?.name?.length > 150 ? item?.name?.slice(0,150) + "..." : item?.name}</span>
                     </div>
                   
@@ -397,7 +397,7 @@ $: {
             {/each}
           {:else if showSuggestions && searchResults?.length === 0}
             <li>
-              <label class="flex items-center p-2 text-white hover:text-white hover:bg-[#404040] bg-opacity-[0.25] rounded group" >
+              <label class="flex items-center p-2 text-white hover:text-white hover:bg-[#2a2e39] bg-opacity-[0.25] rounded group" >
                 <svg class="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
                   <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
               </svg>
@@ -438,7 +438,7 @@ $: {
     
     
 
-  <div class="modal-box overflow-hidden rounded-xl bg-[#09090B] min-h-screen w-screen pt-10" >
+  <div class="modal-box overflow-hidden rounded-xl bg-[#2a2e39] min-h-screen w-screen pt-10" >
   
    
     <!-- Search layout -->
@@ -447,7 +447,7 @@ $: {
           <label for="modal-search" class="sr-only">Search</label>
           <input 
           id="modal-search" 
-          class="rounded-lg w-full text-white bg-[#09090B] border border-slate-800 focus:ring-transparent placeholder-gray-200 py-3 pl-10 pr-4" 
+          class="rounded-lg w-full text-white bg-[#2a2e39] border border-slate-800 focus:ring-transparent placeholder-gray-200 py-3 pl-10 pr-4" 
           type="search" 
           placeholder="Search Anything…" 
           bind:value={searchQuery}
@@ -482,13 +482,13 @@ $: {
           {#if !showSuggestions }
             {#each popularList as item}
               <li>
-                <a data-sveltekit-preload-data="false" on:click={() => popularTicker(item?.symbol, item?.type) } class="mb-2 {item?.symbol === focusedSuggestion ? 'shake-ticker cursor-pointer flex justify-start items-center p-2 text-white bg-[#404040] bg-opacity-[0.25] rounded group' : 'cursor-pointer bg-[#202020] rounded-lg flex justify-start items-center p-2 text-white group'} w-full">
+                <a data-sveltekit-preload-data="false" on:click={() => popularTicker(item?.symbol, item?.type) } class="mb-2 {item?.symbol === focusedSuggestion ? 'shake-ticker cursor-pointer flex justify-start items-center p-2 text-white bg-[#2a2e39] bg-opacity-[0.25] rounded group' : 'cursor-pointer bg-[#131722] rounded-lg flex justify-start items-center p-2 text-white group'} w-full">
                   <div class="flex flex-row items-center w-full">
-                    <div class="rounded-full w-10 h-10 relative bg-[#000] flex items-center justify-center">
+                    <div class="rounded-full w-10 h-10 relative bg-[#131722] flex items-center justify-center">
                       <img style="clip-path: circle(50%);" class="w-6 h-6" src={`https://financialmodelingprep.com/image-stock/${item?.symbol}.png`} loading="lazy" />
                     </div>
                     <div class="flex flex-col ml-2">
-                      <span class="text-blue-400">{item?.symbol}</span>
+                      <span class="text-[#FFBE00]">{item?.symbol}</span>
                       <span class="text-white">{item?.name.length > charNumber ? item?.name.slice(0,charNumber) + "..." : item?.name}</span>
                     </div>
 
@@ -513,11 +513,11 @@ $: {
               <li>
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <!-- svelte-ignore a11y-label-has-associated-control -->
-                <label data-sveltekit-preload-data="false" on:click={() => (searchBarTicker(item?.symbol, item?.type))} class="mb-2 {item?.symbol === focusedSuggestion ? 'shake-ticker cursor-pointer flex justify-start items-center p-2 text-white bg-[#404040] bg-opacity-[0.25] rounded group' : 'cursor-pointer mb-2 bg-[#202020] rounded-lg flex justify-start items-center p-2 text-white group'}">
+                <label data-sveltekit-preload-data="false" on:click={() => (searchBarTicker(item?.symbol, item?.type))} class="mb-2 {item?.symbol === focusedSuggestion ? 'shake-ticker cursor-pointer flex justify-start items-center p-2 text-white bg-[#2a2e39] bg-opacity-[0.25] rounded group' : 'cursor-pointer mb-2 bg-[#131722] rounded-lg flex justify-start items-center p-2 text-white group'}">
                   <div class="flex flex-row items-center w-full">
 
                     <div class="flex flex-col ml-1">
-                      <span class="text-blue-400">{item?.symbol}</span>
+                      <span class="text-[#FFBE00]">{item?.symbol}</span>
                       <span class="text-white">{item?.name?.length > charNumber ? item?.name?.slice(0,charNumber) + "..." : item?.name}</span>
                     </div>
                   
@@ -532,7 +532,7 @@ $: {
             {/each}
           {:else if showSuggestions && searchResults?.length === 0}
             <li>
-              <label class="flex items-center p-2 text-white hover:text-white hover:bg-[#404040] bg-opacity-[0.25] rounded group" >
+              <label class="flex items-center p-2 text-white hover:text-white hover:bg-[#2a2e39] bg-opacity-[0.25] rounded group" >
                 <svg class="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
                   <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
               </svg>

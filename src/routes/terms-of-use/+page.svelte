@@ -39,7 +39,7 @@
     </div>
     -->
   
-    <div  class="w-full m-auto sm:bg-[#202020] sm:rounded-xl h-auto p-10 mt-3 mb-10">
+    <div  class="w-full m-auto sm:bg-[#131722] sm:rounded-xl h-auto p-10 mt-3 mb-10">
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
     
         <!-- Start Column -->
@@ -84,7 +84,7 @@
 
 
 
-      <div class="card w-full bg-[#0F0F0F] border-t sm:border rounded-none sm:rounded-xl border-slate-700 m-auto ">
+      <div class="card w-full bg-[#131722] border-t sm:border rounded-none sm:rounded-xl border-slate-700 m-auto ">
         <div class="card-body">
 
             <p class="text-gray-400 italic mb-2 text-sm">Last updated: 21.06.2024</p>
@@ -92,7 +92,7 @@
             <p class="text-gray-300 mb-5">
                 Please carefully read the terms and conditions before using this website.
                 By using the site, you agree to these terms as well as our
-                <a href="/privacy-policy" class="text-blue-400 hover:text-white hover:underline">Privacy Policy</a>
+                <a href="/privacy-policy" class="text-[#FFBE00] hover:text-white hover:underline">Privacy Policy</a>
                 Stocknear has the right to alter or modify these conditions at any time. 
             </p>
 
@@ -167,7 +167,7 @@
                 You may be held accountable for damages (including costs and attorneys' fees) for misrepresentation or bad-faith claims on the infringement of any Content found on and/or through Service on your copyright. 
                 <br>
                 <br>
-                On this website we use some images on this website from <a href="https://de.freepik.com/" class="text-blue-400 sm:hover:text-white">FreePik</a>.
+                On this website we use some images on this website from <a href="https://de.freepik.com/" class="text-[#FFBE00] sm:hover:text-white">FreePik</a>.
               </p>
 
 
@@ -236,7 +236,7 @@
                 We are, nevertheless, dedicated to displaying the highest-quality and most accurate statistics possible. If you see any errors or inconsistencies, please let us know by using the contact form or emailing us directly at support@stocknear.com.
                 <br>
                 <br>
-                Our Financial Data is provided soley by <a href="https://site.financialmodelingprep.com/" class="text-blue-400 hover:underline">FMP</a> and <a href="https://docs.benzinga.com/home" class="text-blue-400 hover:underline">Benzinga</a>.
+                Our Financial Data is provided soley by <a href="https://site.financialmodelingprep.com/" class="text-[#FFBE00] hover:underline">FMP</a> and <a href="https://docs.benzinga.com/home" class="text-[#FFBE00] hover:underline">Benzinga</a>.
             </div>
     
 
@@ -247,9 +247,9 @@
             </h1>        
             <p class="text-gray-300 mb-5">
                 These terms and conditions of use, together with our
-                <a href="/privacy-policy" class="text-blue-400 hover:text-white hover:underline">Privacy Policy</a>
+                <a href="/privacy-policy" class="text-[#FFBE00] hover:text-white hover:underline">Privacy Policy</a>
                 and
-                <a href="/imprint" class="text-blue-400 hover:text-whitehover:underline">Imprint</a>
+                <a href="/imprint" class="text-[#FFBE00] hover:text-whitehover:underline">Imprint</a>
                 <!--
                 <a href="/impressum/" > 
                     <span class="text-[#FB6A67]">Imprint</span>,

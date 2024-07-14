@@ -74,9 +74,9 @@
         {#each (showFullStats ? correlationList : correlationList?.slice(0, 3)) as item, index}
        
 
-      <div class="shadow-lg bg-[#202020] w-full rounded-lg p-4 sm:p-3 mb-5  flex flex-row items-center {index === 0 ? 'mt-4' : ''} {index === 2 && !showFullStats && correlationList?.length > 2 ? 'opacity-[0.3]' : '' }">
+      <div class="shadow-lg bg-[#131722] w-full rounded-lg p-4 sm:p-3 mb-5  flex flex-row items-center {index === 0 ? 'mt-4' : ''} {index === 2 && !showFullStats && correlationList?.length > 2 ? 'opacity-[0.3]' : '' }">
 
-        <div on:click={() => stockSelector(item?.symbol)} class="flex-shrink-0 mr-3 rounded-full w-8 h-8 sm:w-10 sm:h-10 relative bg-[#0F0F0F]">
+        <div on:click={() => stockSelector(item?.symbol)} class="flex-shrink-0 mr-3 rounded-full w-8 h-8 sm:w-10 sm:h-10 relative bg-[#131722]">
             <img
             class="avatar rounded-full w-5 h-5 absolute inset-1/2 transform -translate-x-1/2 -translate-y-1/2" 
             src={`https://financialmodelingprep.com/image-stock/${item?.symbol}.png`} 
@@ -86,7 +86,7 @@
         <div class="flex flex-col -mt-3 sm:-mt-5s w-full">
           <div class="flex flex-row items-center w-full">
             <div class="mr-auto mt-2 mb-2 text-sm sm:text-md">
-            <span class="text-blue-400">
+            <span class="text-[#FFBE00]">
                 {item?.symbol}
             </span>
             <span class="text-white">

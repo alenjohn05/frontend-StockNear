@@ -47,10 +47,10 @@
   </script>
   
   <div class="sm:space-y-3">  
-    <div class="lg:rounded-2xl shadow-lg sm:border sm:border-slate-800 bg-[#000] lg:bg-[#202020] h-auto h-auto w-screen pt-16 sm:w-full lg:w-96 lg:pt-0">
+    <div class="lg:rounded-2xl shadow-lg sm:border sm:border-slate-800 bg-[#131722] lg:bg-[#131722] h-auto h-auto w-screen pt-16 sm:w-full lg:w-96 lg:pt-0">
 
          <!--Start Header-->
-        <div class="sm:rounded-t-2xl w-full h-[130px] bg-[#000] p-3 flex flex-col bg-cover bg-center bg-no-repeat" style="background-image: url({`${cloudFrontUrl}/stocks/cover/${$cryptoTicker?.toUpperCase()}.jpg`});">
+        <div class="sm:rounded-t-2xl w-full h-[130px] bg-[#131722] p-3 flex flex-col bg-cover bg-center bg-no-repeat" style="background-image: url({`${cloudFrontUrl}/stocks/cover/${$cryptoTicker?.toUpperCase()}.jpg`});">
 
             <div class="flex flex-row pt-1 pb-2">
               </div>
@@ -84,34 +84,34 @@
               <tbody>
                 <!-- row 1 -->
                 <tr class="text-white border-b border-[#202020]" style="font-size: 0.8rem">
-                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#000] lg:bg-[#202020] text-white font-medium">Name</td>
-                  <td class="bg-[#000] lg:border-b lg:border-[#202020] lg:bg-[#202020]">{$displayCompanyName?.length > 30 ? $displayCompanyName?.slice(0,30) + '...' : $displayCompanyName}</td>
-                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#000] lg:bg-[#202020] text-white font-medium">Ticker</td>
-                  <td class="bg-[#000] lg:border-b lg:border-[#202020] lg:bg-[#202020]">{$cryptoTicker}</td>
+                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#131722] lg:bg-[#131722] text-white font-medium">Name</td>
+                  <td class="bg-[#131722] lg:border-b lg:border-[#202020] lg:bg-[#131722]">{$displayCompanyName?.length > 30 ? $displayCompanyName?.slice(0,30) + '...' : $displayCompanyName}</td>
+                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#131722] lg:bg-[#131722] text-white font-medium">Ticker</td>
+                  <td class="bg-[#131722] lg:border-b lg:border-[#202020] lg:bg-[#131722]">{$cryptoTicker}</td>
                 </tr>
                 <!-- row 2 -->
                 <tr class="text-white border-b border-[#202020]" style="font-size: 0.8rem">
-                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#000] lg:bg-[#202020] text-white font-medium">Mkt Cap</td>
-                  <td class="bg-[#000] lg:border-b lg:border-[#202020] lg:bg-[#202020] whitespace-normal">{abbreviateNumber(marketCap,true)}</td>
-                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#000] lg:bg-[#202020] text-white font-medium">Total Volume</td>
-                  <td class="bg-[#000] lg:border-b lg:border-[#202020] lg:bg-[#202020] whitespace-normal">{abbreviateNumber(totalVolume)}</td>
+                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#131722] lg:bg-[#131722] text-white font-medium">Mkt Cap</td>
+                  <td class="bg-[#131722] lg:border-b lg:border-[#202020] lg:bg-[#131722] whitespace-normal">{abbreviateNumber(marketCap,true)}</td>
+                  <td class="text-start lg:border-b lg:border-[#202020] bg-[#131722] lg:bg-[#131722] text-white font-medium">Total Volume</td>
+                  <td class="bg-[#131722] lg:border-b lg:border-[#202020] lg:bg-[#131722] whitespace-normal">{abbreviateNumber(totalVolume)}</td>
                 </tr>
                  <!-- row 2 -->
                  <tr class="text-white border-b border-[#202020]" style="font-size: 0.8rem">
-                    <td class="text-start lg:border-b lg:border-[#202020] bg-[#000] lg:bg-[#202020] text-white font-medium">Circulating Supply</td>
-                    <td class="bg-[#000] lg:border-b lg:border-[#202020] lg:bg-[#202020] whitespace-normal">{abbreviateNumber(circulatingSupply)}</td>
-                    <td class="text-start lg:border-b lg:border-[#202020] bg-[#000] lg:bg-[#202020] text-white font-medium">Max Supply</td>
-                    <td class="bg-[#000] lg:border-b lg:border-[#202020] lg:bg-[#202020] whitespace-normal">{maxSupply !== null ? abbreviateNumber(maxSupply) : 'Uncapped'}</td>
+                    <td class="text-start lg:border-b lg:border-[#202020] bg-[#131722] lg:bg-[#131722] text-white font-medium">Circulating Supply</td>
+                    <td class="bg-[#131722] lg:border-b lg:border-[#202020] lg:bg-[#131722] whitespace-normal">{abbreviateNumber(circulatingSupply)}</td>
+                    <td class="text-start lg:border-b lg:border-[#202020] bg-[#131722] lg:bg-[#131722] text-white font-medium">Max Supply</td>
+                    <td class="bg-[#131722] lg:border-b lg:border-[#202020] lg:bg-[#131722] whitespace-normal">{maxSupply !== null ? abbreviateNumber(maxSupply) : 'Uncapped'}</td>
                   </tr>
                 <!-- row 2 -->
                  <tr class="text-white border-b border-[#202020]" style="font-size: 0.8rem">
-                    <td class="text-start lg:border-b lg:border-[#202020] bg-[#000] lg:bg-[#202020] text-white font-medium">ATH Price</td>
-                    <td class="bg-[#000] lg:border-b lg:border-[#202020] lg:bg-[#202020] whitespace-normal">${new Intl.NumberFormat("en", {
+                    <td class="text-start lg:border-b lg:border-[#202020] bg-[#131722] lg:bg-[#131722] text-white font-medium">ATH Price</td>
+                    <td class="bg-[#131722] lg:border-b lg:border-[#202020] lg:bg-[#131722] whitespace-normal">${new Intl.NumberFormat("en", {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2
                     }).format(athPrice)}</td>
-                    <td class="text-start lg:border-b lg:border-[#202020] bg-[#000] lg:bg-[#202020] text-white font-medium">ATH Date</td>
-                    <td class="bg-[#000] lg:border-b lg:border-[#202020] lg:bg-[#202020] whitespace-normal">{new Date(athDate).toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', daySuffix: '2-digit' })}</td>
+                    <td class="text-start lg:border-b lg:border-[#202020] bg-[#131722] lg:bg-[#131722] text-white font-medium">ATH Date</td>
+                    <td class="bg-[#131722] lg:border-b lg:border-[#202020] lg:bg-[#131722] whitespace-normal">{new Date(athDate).toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', daySuffix: '2-digit' })}</td>
                   </tr>
               </tbody>
             </table>
@@ -135,7 +135,7 @@
           </p>
         {#if description.length !== 0 }
           <div class="flex flex-row w-full items-center mt-4 pb-2 mb-2">
-            <label on:click={() => showFullText = !showFullText} class="hidden lg:block ml-3 w-full text-md mt-1 cursor-pointer font-medium text-white sm:hover:text-blue-400 sm:hover:underline">
+            <label on:click={() => showFullText = !showFullText} class="hidden lg:block ml-3 w-full text-md mt-1 cursor-pointer font-medium text-white sm:hover:text-[#FFBE00] sm:hover:underline">
               {#if showFullText}
               Show less 
               {:else}
@@ -144,7 +144,7 @@
             </label>
   
           <div class="flex justify-end w-full relative bottom-0 right-0 mr-3">
-            <a target ="_blank" href={website} class="inline-flex text-sm font-medium text-white sm:hover:text-blue-400 sm:hover:underline">
+            <a target ="_blank" href={website} class="inline-flex text-sm font-medium text-white sm:hover:text-[#FFBE00] sm:hover:underline">
               Go to website
               <svg class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path></svg>
             </a>

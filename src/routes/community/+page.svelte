@@ -425,7 +425,7 @@ $: {
 
 
 
-<body class="bg-[#0F0F0F] text-slate-200 sm:mt-5 ">
+<body class="bg-[#131722] text-slate-200 sm:mt-5 ">
 
 
     <!-- Page wrapper -->
@@ -467,7 +467,7 @@ $: {
                                   <!-- List container -->                  
                                   <div class="flex flex-col mt-4">
                                     <!-- Item -->
-                                    <div class="border-t border-b sm:border border-gray-700 sm:hover:border-gray-600 rounded-none sm:rounded-md bg-[#202020] rounded-[4px] sm:rounded-[8px]">
+                                    <div class="border-t border-b sm:border border-gray-700 sm:hover:border-gray-600 rounded-none sm:rounded-md bg-[#131722] rounded-[4px] sm:rounded-[8px]">
                                       <div class="flex h-14 justify-start items-center">                                           
                                         <div class="flex flex-row ml-3">
                                           <label on:click={() => handleCategoryOfPosts('hot')} class="flex flex-row w-fit pl-3 pr-4 pt-1 pb-1 tab mr-2 font-medium transition duration-150 ease-out hover:ease-in rounded-full hover:bg-[#333333] {sortingPosts === 'hot' ? 'bg-[#333333] text-white' : 'text-gray-300'} rounded-full cursor-pointer">
@@ -547,9 +547,9 @@ $: {
 
                                  <!--Start About Community -->
                                  <div class="space-y-3 mb-5">  
-                                  <div class="rounded-t-lg bg-[#202020] h-auto sm:w-96">
+                                  <div class="rounded-t-lg bg-[#131722] h-auto sm:w-96">
                                     <!--Start Header-->
-                                    <div class="bg-[#202020] w-full p-3 rounded-t-lg">
+                                    <div class="bg-[#131722] w-full p-3 rounded-t-lg">
                                       <span class="text-white text-xl ml-1 font-semibold">
                                         About Community
                                       </span>
@@ -610,7 +610,7 @@ $: {
                               <!--Start Discord -->
                               {#if discordData?.length !== 0}
                                 <div class="space-y-3 mb-5">  
-                                  <div class="bg-[#202020] h-auto sm:w-96 rounded-lg">
+                                  <div class="bg-[#131722] h-auto sm:w-96 rounded-lg">
 
                                   <!--Start Image-->
                                   <div class="flex flex-row items-center w-full p-3">
@@ -689,9 +689,9 @@ $: {
                               <!--Ticker Mentioning-->
                               <!--
                               <div class="space-y-3 mt-5 pb-3">  
-                                <div class="rounded-2xl bg-[#202020] h-96 sm:w-96">
+                                <div class="rounded-2xl bg-[#131722] h-96 sm:w-96">
                                   Start Header
-                                  <div class="bg-[#202020] border-b border-slate-700 w-full p-3 rounded-t-lg ">
+                                  <div class="bg-[#131722] border-b border-slate-700 w-full p-3 rounded-t-lg ">
                                     <span class="text-white text-xl ml-1 font-semibold">
                                       Ticker Mentions
                                     </span>
@@ -700,7 +700,7 @@ $: {
 
                                   Start Content
                                   <div class="w-full text-gray-300">
-                                    <table class="table table-xs table-zebra table-compact w-full bg-[#202020] border-b border-[#202020]">
+                                    <table class="table table-xs table-zebra table-compact w-full bg-[#131722] border-b border-[#202020]">
                                       <thead>
                                         <tr class="border-b border-slate-700">
                                           <th class="text-white font-medium text-sm border-b border-slate-800">Company</th>
@@ -710,14 +710,14 @@ $: {
                                       </thead>
                                       <tbody class="p-3">
                                         {#each tickerMentioning?.slice(0,5) as item}
-                                        <tr class="bg-[#202020] border-b border-[#202020] shake-ticker w-full">
+                                        <tr class="bg-[#131722] border-b border-[#202020] shake-ticker w-full">
                                           <td class="text-gray-200 border-b border-[#202020]">
                                             <div class="flex flex-row">
                                               <div class="rounded-full w-8 h-8 relative bg-[#20202E] flex items-center justify-center">
                                                 <img style="clip-path: circle(50%);" class="w-4 h-4" src={`https://financialmodelingprep.com/image-stock/${item.symbol}.png`} loading="lazy"/>
                                               </div>
                                               <div class="flex flex-col ml-2">
-                                                <span class="text-blue-400">{item?.symbol}</span>
+                                                <span class="text-[#FFBE00]">{item?.symbol}</span>
                                                 <span class="text-white text-xs">{item?.name.length > 10 ? item?.name.slice(0,10) + "..." : item?.name}</span>
                                               </div>
                                             </div>
@@ -756,9 +756,9 @@ $: {
 
                                <!--Community Rules-->
                                <div class="space-y-3 mt-5 fixed sticky" style="top: 5rem;">  
-                                <div class="bg-[#202020] sm:w-96 rounded-lg">
+                                <div class="bg-[#131722] sm:w-96 rounded-lg">
                                   <!--Start Header-->
-                                  <div class="bg-[#202020] border-b border-slate-700 w-full pl-6 pr-6 pt-6 pb-4 rounded-t-lg">
+                                  <div class="bg-[#131722] border-b border-slate-700 w-full pl-6 pr-6 pt-6 pb-4 rounded-t-lg">
                                     <span class="text-white text-xl ml-1 font-semibold">
                                       Community Rules
                                     </span>
@@ -922,7 +922,7 @@ $: {
 
 
   .grid-background {
-    background: linear-gradient(to bottom, #404040, #14284B);
+    background: linear-gradient(to bottom, #2a2e39, #14284B);
     width: 24rem;
     position: relative;
 }

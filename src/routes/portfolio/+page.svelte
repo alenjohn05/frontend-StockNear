@@ -167,7 +167,7 @@ if (usRegion.includes(value)) {
       
       
   
-    <div class="w-full max-w-4xl m-auto sm:bg-[#202020] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8">
+    <div class="w-full max-w-4xl m-auto sm:bg-[#131722] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8">
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
     
         <!-- Start Column -->
@@ -219,7 +219,7 @@ if (usRegion.includes(value)) {
       
         {#if portfolio.length === 0}
   
-          <div class="bg-[#202020] pt-5 pb-5 mt-5 sm:rounded-2xl border-t border-b sm:border border-slate-800">
+          <div class="bg-[#131722] pt-5 pb-5 mt-5 sm:rounded-2xl border-t border-b sm:border border-slate-800">
          
   
             <div class="flex flex-row ">
@@ -230,7 +230,7 @@ if (usRegion.includes(value)) {
               
       
               <div class="w-3/4 flex ml-auto mr-3 flex-row justify-end items-center -mt-2">
-                <a href="/leaderboard" class="text-blue-400 hover:text-white font-medium text-lg mr-3 sm:mr-8 hover:underline">
+                <a href="/leaderboard" class="text-[#FFBE00] hover:text-white font-medium text-lg mr-3 sm:mr-8 hover:underline">
                   Rank: 'n/a'
                 </a>
     
@@ -303,7 +303,7 @@ if (usRegion.includes(value)) {
         {:else}
           
 
-        <div class="bg-[#202020] border-t border-b sm:border border-slate-800 pt-5 pb-5 mt-5 sm:rounded-2xl">
+        <div class="bg-[#131722] border-t border-b sm:border border-slate-800 pt-5 pb-5 mt-5 sm:rounded-2xl">
          
           
           <div class="flex flex-row items-center">
@@ -315,7 +315,7 @@ if (usRegion.includes(value)) {
             </div>
     
             <div class="w-3/4 flex ml-auto mr-3 flex-row justify-end items-center -mt-2">
-              <a href="/leaderboard" class="text-blue-400 hover:text-white font-medium text-lg mr-3 sm:mr-8 hover:underline">
+              <a href="/leaderboard" class="text-[#FFBE00] hover:text-white font-medium text-lg mr-3 sm:mr-8 hover:underline">
                 Rank: {portfolio[0]?.rank === 0 ? 'n/a' : portfolio[0]?.rank }
               </a>
   
@@ -452,12 +452,12 @@ if (usRegion.includes(value)) {
       {#if portfolio?.length !== 0}
 
 
-      <div class="bg-[#202020] pt-5 pb-5 mt-10 sm:rounded-2xl">
+      <div class="bg-[#131722] pt-5 pb-5 mt-10 sm:rounded-2xl">
         <div class="flex flex-row justify-between items-center">
           <div class="text-slate-300 font-bold text-lg pl-5">
             Holdings
           </div>
-          <label for="holdingsCategoryInfo" class="cursor-pointer hover:underline text-blue-400 font-medium text-sm mr-3">
+          <label for="holdingsCategoryInfo" class="cursor-pointer hover:underline text-[#FFBE00] font-medium text-sm mr-3">
             {displayChange}
             <svg class="w-5 h-5 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g transform="rotate(180 12 12)"><path fill="#1a56db" d="m12 10.8l-4.6 4.6L6 14l6-6l6 6l-1.4 1.4l-4.6-4.6Z"/></g></svg>
           </label>
@@ -481,11 +481,11 @@ if (usRegion.includes(value)) {
   
           <tbody class="">
             {#each holdingsList as item, index}
-            <tr on:click={() => goto(`/${item?.assetType === 'etf' ? 'etf' : 'stocks'}/${item?.symbol}`)} class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] {index % 2 === 0 ? 'bg-opacity-[0.25] bg-[#323239]' : 'bg-[#202020]'} border-b-[#0F0F0F] cursor-pointer">
+            <tr on:click={() => goto(`/${item?.assetType === 'etf' ? 'etf' : 'stocks'}/${item?.symbol}`)} class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] {index % 2 === 0 ? 'bg-opacity-[0.25] bg-[#323239]' : 'bg-[#131722]'} border-b-[#131722] cursor-pointer">
             <td class="text-white border-b border-[#202020]">
               <div class="flex flex-row">
                 <div class="flex flex-col text-sm">
-                  <span class="text-blue-400">{item?.symbol}</span>
+                  <span class="text-[#FFBE00]">{item?.symbol}</span>
                   <span class="text-white">{item.name?.length > charNumber ? item?.name?.slice(0,charNumber) + "..." : item?.name}</span>
                   <div class="flex flex-row items-center mt-0.5">
                     <span class="bg-[#333333] rounded text-white pl-1 pr-1 w-fit">
@@ -537,7 +537,7 @@ if (usRegion.includes(value)) {
         {/if}  
       </div>
   
-      <div class="bg-[#202020] pt-5 pb-5 mt-10 sm:rounded-2xl {!showTradingHistory ? 'shadow-md' : ''}">
+      <div class="bg-[#131722] pt-5 pb-5 mt-10 sm:rounded-2xl {!showTradingHistory ? 'shadow-md' : ''}">
         <div on:click={() => showTradingHistory = !showTradingHistory}  class="cursor-pointer flex flex-row items-center justify-between">
           <div class="text-slate-300 font-bold text-lg pl-5 w-full">
             Trading History
@@ -563,11 +563,11 @@ if (usRegion.includes(value)) {
           <table class="table table-sm table-compact w-full m-auto mt-4">
             <tbody class="">
               {#each tradingHistoryList as item, index}
-              <tr class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] {index % 2 === 0 ? 'bg-opacity-[0.25] bg-[#323239]' : 'bg-[#202020]'} border-b-[#0F0F0F] cursor-pointer">
+              <tr class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] {index % 2 === 0 ? 'bg-opacity-[0.25] bg-[#323239]' : 'bg-[#131722]'} border-b-[#131722] cursor-pointer">
               <td class="text-white border-b border-[#202020]">
                 <div class="flex flex-row items-center">
                   <div class="flex flex-col">
-                    <span class="text-blue-400">{item?.symbol}</span>
+                    <span class="text-[#FFBE00]">{item?.symbol}</span>
                     <span class="text-white text-xs sm:text-sm">{item.name?.length > charNumber ? item?.name.slice(0,charNumber) + "..." : item?.name}</span>
                   </div>
   
@@ -603,7 +603,7 @@ if (usRegion.includes(value)) {
     {:else}
     <div class="flex justify-center items-center h-80">
       <div class="relative">
-      <label class="bg-[#202020] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <label class="bg-[#131722] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <span class="loading loading-spinner loading-md"></span>
       </label>
       </div>
@@ -629,10 +629,10 @@ if (usRegion.includes(value)) {
   <dialog id="accountValueInfo" class="modal modal-bottom sm:modal-middle ">
   
   
-    <label id="accountValueInfo" for="accountValueInfo"  class="cursor-pointer modal-backdrop bg-[#000] bg-opacity-[0.5]"></label>
+    <label id="accountValueInfo" for="accountValueInfo"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
     
     
-    <div class="modal-box w-full bg-[#202020]">
+    <div class="modal-box w-full bg-[#131722]">
   
   
   
@@ -656,10 +656,10 @@ if (usRegion.includes(value)) {
   <dialog id="availableCashInfo" class="modal modal-bottom sm:modal-middle ">
   
   
-    <label id="availableCashInfo" for="availableCashInfo"  class="cursor-pointer modal-backdrop bg-[#000] bg-opacity-[0.5]"></label>
+    <label id="availableCashInfo" for="availableCashInfo"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
     
     
-    <div class="modal-box w-full bg-[#202020]">
+    <div class="modal-box w-full bg-[#131722]">
   
   
       <div class="text-white mb-5">
@@ -683,10 +683,10 @@ if (usRegion.includes(value)) {
   <dialog id="overallReturnInfo" class="modal modal-bottom sm:modal-middle ">
   
   
-    <label id="overallReturnInfo" for="overallReturnInfo"  class="cursor-pointer modal-backdrop bg-[#000] bg-opacity-[0.5]"></label>
+    <label id="overallReturnInfo" for="overallReturnInfo"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
     
     
-    <div class="modal-box w-full bg-[#202020]">
+    <div class="modal-box w-full bg-[#131722]">
   
   
       <div class="text-white mb-5">
@@ -712,7 +712,7 @@ if (usRegion.includes(value)) {
     <label id="alphaInfo" for="alphaInfo"  class="cursor-pointer modal-backdrop"></label>
     
     
-    <div class="modal-box w-full bg-[#202020] ">
+    <div class="modal-box w-full bg-[#131722] ">
   
   
   
@@ -746,7 +746,7 @@ if (usRegion.includes(value)) {
     <label id="betaInfo" for="betaInfo"  class="cursor-pointer modal-backdrop"></label>
     
     
-    <div class="modal-box w-full bg-[#202020] ">
+    <div class="modal-box w-full bg-[#131722] ">
   
   
   
@@ -783,7 +783,7 @@ if (usRegion.includes(value)) {
     <label id="maxDrawdownInfo" for="maxDrawdownInfo"  class="cursor-pointer modal-backdrop bg-[#fff] bg-opacity-[0.08]"></label>
     
     
-    <div class="modal-box w-full bg-[#202020] border border-slate-800">
+    <div class="modal-box w-full bg-[#131722] border border-slate-800">
   
   
   
@@ -817,10 +817,10 @@ if (usRegion.includes(value)) {
    <dialog id="holdingsCategoryInfo" class="modal modal-bottom sm:modal-middle ">
    
    
-     <label id="holdingsCategoryInfo" for="holdingsCategoryInfo"  class="cursor-pointer modal-backdrop bg-[#000] bg-opacity-[0.5]"></label>
+     <label id="holdingsCategoryInfo" for="holdingsCategoryInfo"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
      
      
-     <div class="modal-box w-full bg-[#202020] sm:border sm:border-slate-800">
+     <div class="modal-box w-full bg-[#131722] sm:border sm:border-slate-800">
    
    
    
@@ -830,7 +830,7 @@ if (usRegion.includes(value)) {
          </h3>
    
    
-         <div class="flex flex-col items-center w-full max-w-3xl bg-[#202020]">
+         <div class="flex flex-col items-center w-full max-w-3xl bg-[#131722]">
    
    
            <label for="holdingsCategoryInfo" on:click={() => handleChange('Change in %')} class="cursor-pointer w-full flex flex-row justify-start items-center mb-5">

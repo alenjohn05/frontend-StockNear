@@ -356,14 +356,14 @@ $: {
 <svelte:window bind:innerWidth/>
 
     
-<div class="app {$page?.url?.pathname === '/' ? 'bg-[#000]' : ''}">
+<div class="app {$page?.url?.pathname === '/' ? 'bg-[#131722]' : ''}">
 
   <!--<ViewTransition />-->
 
   <!--Start Navbar-->
   {#if !data?.user}
   <header
-    class="sticky {$screenWidth < 640 && hideHeader ? 'invisible -mt-20' : ''} inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md border border-[#202020] py-3 sm:py-4 shadow-lg sm:backdrop-blur-sm bg-[#202020] sm:bg-opacity-80 md:top-3 md:rounded-2xl lg:max-w-screen-lg">
+    class="sticky {$screenWidth < 640 && hideHeader ? 'invisible -mt-20' : ''} inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md border border-[#202020] py-3 sm:py-4 shadow-lg sm:backdrop-blur-sm bg-[#131722] sm:bg-opacity-80 md:top-3 md:rounded-2xl lg:max-w-screen-lg">
     <div class="px-4">
         <div class="flex items-center justify-between">
             <div class="flex shrink-0">
@@ -395,7 +395,7 @@ $: {
     </div>
 </header>
   {:else }
-  <div id="navbar" class="navbar {$screenWidth < 640 && hideHeader ? 'invisible -mt-20' : ''} border-b border-[#0F0F0F] w-screen shadow-lg sticky top-0 z-40 bg-[#2B2B2B]">
+  <div id="navbar" class="navbar {$screenWidth < 640 && hideHeader ? 'invisible -mt-20' : ''} border-b border-[#141720] w-screen shadow-lg sticky top-0 z-40 bg-[#131722]">
 
   <div class="w-full m-auto ">
     <div class="flex flex-row items-center w-full xl:px-2">
@@ -472,7 +472,7 @@ $: {
         </label>
         
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-       <ul tabindex="1" class="border border-gray-700 mt-2 p-2 menu dropdown-content text-white bg-[#202020] rounded-md w-52">
+       <ul tabindex="1" class="border border-gray-700 mt-2 p-2 menu dropdown-content text-white bg-[#131722] rounded-md w-52">
           <li class="mb-3 hover:bg-[#2B3139] rounded-lg">
             <a href="/community/profile">
               <div class="avatar flex-shrink-0 w-8 h-8 rounded-full -ml-0.5" >
@@ -546,12 +546,12 @@ $: {
 <div class="w-full {!data?.user ? 'hidden' : ''} {hideSidebar ? 'xl:hidden' : ''}">
 <aside class:hidden={!showSidebar}
 use:clickOutside on:click_outside={handleClickOutside}
-class="fixed 2xl:block top-0 left-0 xl:left-auto w-56 sm:{collapse ? 'w-20' : 'w-56'} z-30 min-h-screen pt-12 sm:pt-16 border transition-transform -translate-x-full bg-[#2B2B2B] translate-x-0 border-r border-slate-800 xl:border-none">
-  <div class="pb-4 overflow-y-auto scroller bg-[#2B2B2B]  h-screen">
-    <ul class="mt-1 bg-[#2B2B2B]  menu pt-5 pb-20">
+class="fixed 2xl:block top-0 left-0 xl:left-auto w-56 sm:{collapse ? 'w-20' : 'w-56'} z-30 min-h-screen pt-12 sm:pt-16 border transition-transform -translate-x-full bg-[#131722] translate-x-0 border-r border-slate-800 xl:border-none">
+  <div class="pb-4 overflow-y-auto scroller bg-[#131722]  h-screen">
+    <ul class="mt-1 bg-[#131722]  menu pt-5 pb-20">
 
       <li on:click={() => showSidebar = !showSidebar} class="px-1 rounded-sm mb-2 last:mb-0 ">
-        <a href="/" for="sidebar" class="block text-slate-200 hover:text-white sm:hover:bg-purple-700 truncate transition duration-150 {$page.url.pathname=== '/' ? 'text-white bg-[#2B2B2B] rounded-md ' : ''}">
+        <a href="/" for="sidebar" class="block text-slate-200 hover:text-white sm:hover:bg-purple-700 truncate transition duration-150 {$page.url.pathname=== '/' ? 'text-white bg-[#131722] rounded-md ' : ''}">
           <div class="flex items-center justify-between">
             <div class="flex items-center">
               <svg class="w-7 h-7" viewBox="0 0 24 24" fill="#CCCCCC" xmlns="http://www.w3.org/2000/svg"><path d="M20.8593 8.36985L13.9293 2.82985C12.8593 1.96985 11.1293 1.96985 10.0693 2.81985L3.13929 8.36985C2.35929 8.98985 1.85929 10.2998 2.02929 11.2798L3.35929 19.2398C3.59929 20.6598 4.95929 21.8098 6.39929 21.8098H17.5993C19.0293 21.8098 20.3993 20.6498 20.6393 19.2398L21.9693 11.2798C22.1293 10.2998 21.6293 8.98985 20.8593 8.36985ZM11.9993 15.4998C10.6193 15.4998 9.49929 14.3798 9.49929 12.9998C9.49929 11.6198 10.6193 10.4998 11.9993 10.4998C13.3793 10.4998 14.4993 11.6198 14.4993 12.9998C14.4993 14.3798 13.3793 15.4998 11.9993 15.4998Z" fill="#CCCCCC"></path></svg>
@@ -925,12 +925,12 @@ class="fixed 2xl:block top-0 left-0 xl:left-auto w-56 sm:{collapse ? 'w-20' : 'w
 <dialog id="mobileProfileData" class="modal modal-bottom ">
 
 
-  <label for="mobileProfileData"  class="cursor-pointer modal-backdrop bg-[#000] bg-opacity-[0.5]"></label>
+  <label for="mobileProfileData"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
   
-  <div class="modal-box bg-[#202020]">
+  <div class="modal-box bg-[#131722]">
 
     {#if data?.user}
-    <ul class="menu menu-compact dropdown-content text-white bg-[#202020] rounded">
+    <ul class="menu menu-compact dropdown-content text-white bg-[#131722] rounded">
       <li class="mb-3">
         <label for ="mobileProfileData" on:click={() => goto('/community/profile/')}>
           <div class="avatar flex-shrink-0 w-10 h-10 -ml-1">

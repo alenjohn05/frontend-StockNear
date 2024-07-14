@@ -129,7 +129,7 @@ $: {
             </div>
     
             {#if h1bVisaList?.length !== 0}
-            <div class="p-3 sm:p-0 mt-2 pb-8 sm:pb-2 rounded-lg bg-[#202020] sm:bg-[#0F0F0F]">
+            <div class="p-3 sm:p-0 mt-2 pb-8 sm:pb-2 rounded-lg bg-[#131722] sm:bg-[#131722]">
                     
                 <div class="w-full flex flex-col items-start">
                     <div class="text-white text-sm sm:text-[1rem] mt-1 sm:mt-3 mb-1 w-full">
@@ -137,7 +137,7 @@ $: {
                     </div>
                 </div>
             
-                <a href="{'/stocks/'+$stockTicker+'/stats/employees'}" class="text-blue-400 hover:text-white flex justify-end mt-3 text-sm sm:text-[1rem]">
+                <a href="{'/stocks/'+$stockTicker+'/stats/employees'}" class="text-[#FFBE00] hover:text-white flex justify-end mt-3 text-sm sm:text-[1rem]">
                     Full Report
                 </a>
 

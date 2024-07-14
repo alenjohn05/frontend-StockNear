@@ -116,18 +116,18 @@ onMount(async () => {
 </svelte:head>
     
       
-  <section class="w-full max-w-5xl overflow-hidden m-auto min-h-screen sm:pt-5 sm:pb-40 bg-[#0F0F0F]">
+  <section class="w-full max-w-5xl overflow-hidden m-auto min-h-screen sm:pt-5 sm:pb-40 bg-[#131722]">
       
   
   
-    <div class="w-full max-w-3xl m-auto min-h-screen bg-[#202020] sm:rounded-lg sm:border sm:border-gray-700 overflow-hidden sm:overflow-y-scroll scroller sm:max-h-[1100px] pt-5 sm:pb-10 sm:pt-10 sm:mt-3 sm:mb-8">
+    <div class="w-full max-w-3xl m-auto min-h-screen bg-[#131722] sm:rounded-lg sm:border sm:border-gray-700 overflow-hidden sm:overflow-y-scroll scroller sm:max-h-[1100px] pt-5 sm:pb-10 sm:pt-10 sm:mt-3 sm:mb-8">
                     
         <h1 class="pl-5 text-2xl text-white font-semibold mt-2 sm:mt-0">
             Notifications
         </h1>
  
  
-     <div class="w-full m-auto mb-10 bg-[#202020] mt-10">
+     <div class="w-full m-auto mb-10 bg-[#131722] mt-10">
          <div class="flex flex-col sm:flex-row items-center w-full">
 
         
@@ -142,7 +142,7 @@ onMount(async () => {
          <div class="flex flex-col items-start w-full text-white">
          {#each notificationList as item}
            <!-- svelte-ignore a11y-click-events-have-key-events -->
-           <div on:click={()=> goToPost(item)} class="hover:bg-[#2B2B2B] p-3 mb-3 ml-1 text-gray-200 w-full {!item?.readed ? 'bg-[#F9AB00] bg-opacity-[0.1]' : ''} cursor-pointer">
+           <div on:click={()=> goToPost(item)} class="hover:bg-[#131722] p-3 mb-3 ml-1 text-gray-200 w-full {!item?.readed ? 'bg-[#F9AB00] bg-opacity-[0.1]' : ''} cursor-pointer">
             <div class="flex flex-row items-center w-full">
 
             <!-- svelte-ignore a11y-label-has-associated-control -->
@@ -159,7 +159,7 @@ onMount(async () => {
                {#if item?.notifyType === 'vote'}
                <div class="flex flex-col items-start">
                 <div>
-                 <label on:click|stopPropagation={()=> goto("/community/user/"+item?.expand?.user?.id)} class="text-blue-400 cursor-pointer">
+                 <label on:click|stopPropagation={()=> goto("/community/user/"+item?.expand?.user?.id)} class="text-[#FFBE00] cursor-pointer">
                    {item?.expand?.user?.username}
                  </label>
                  <span class="text-white text-xs sm:text-sm">
@@ -175,7 +175,7 @@ onMount(async () => {
                     <div>
                     <label on:click|stopPropagation={()=>  goto(`/${item?.liveResults?.assetType === 'stock' ? 'stocks' : 'etf'}/${item?.liveResults?.symbol}`)} class="flex flex-col items-start cursor-pointer">
                         <div class="text-md mt-0.5">
-                        Price Alert triggered for <span class="text-blue-400">${item?.liveResults?.symbol}</span>
+                        Price Alert triggered for <span class="text-[#FFBE00]">${item?.liveResults?.symbol}</span>
                         </div>
                         <div class="text-md mt-0.5">
                         The price of <span class="font-bold">${item?.liveResults?.currentPrice}</span> is {item?.liveResults?.condition} your target of <span class="font-bold">${item?.liveResults?.targetPrice}</span>
@@ -188,7 +188,7 @@ onMount(async () => {
                {:else if item?.notifyType === 'comment'}
                <div class="flex flex-col items-start">
                 <div>
-                 <label on:click={() => goto("/community/user/"+item?.expand?.user?.id)} class="text-blue-400 hover:underline cursor-pointer">
+                 <label on:click={() => goto("/community/user/"+item?.expand?.user?.id)} class="text-[#FFBE00] hover:underline cursor-pointer">
                    {item?.expand?.user?.username} 
                  </label>
                  <span class="text-white text-xs sm:text-sm">
@@ -235,7 +235,7 @@ onMount(async () => {
          {:else}
          <div class="flex justify-center items-center h-80">
           <div class="relative">
-          <label class="bg-[#202020] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <label class="bg-[#131722] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
               <span class="loading loading-spinner loading-md"></span>
           </label>
           </div>

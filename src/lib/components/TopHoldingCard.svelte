@@ -37,7 +37,7 @@ $: {
       
       <div class="space-y-3 lg:pt-5 lg:{topHoldingList?.length !== 0 ? '' : 'hidden'}">  
       
-      <div class="lg:rounded-2xl shadow-lg bg-[#000] lg:bg-[#202020] lg:border lg:border-slate-800 h-auto {$screenWidth <= 800 ? 'w-screen pt-16' : ''} lg:w-96">
+      <div class="lg:rounded-2xl shadow-lg bg-[#131722] lg:bg-[#131722] lg:border lg:border-slate-800 h-auto {$screenWidth <= 800 ? 'w-screen pt-16' : ''} lg:w-96">
       
         <div class="w-auto lg:w-full p-1 flex-1 flex flex-wrap pb-5">
     
@@ -59,22 +59,22 @@ $: {
             <table class="table table-sm table-compact mt-3 text-start flex justify-start items-center w-full px-3 m-auto">
               <thead>
                 <tr class="border-b border-blue-400">
-                  <th class="text-white font-semibold text-sm text-start bg-[#000] lg:bg-[#202020] border-b border-blue-400">Company</th>
-                  <th class="text-white font-semibold text-sm text-start bg-[#000] lg:bg-[#202020] border-b border-blue-400">Market Value</th>
-                  <th class="text-white font-semibold text-sm text-end bg-[#000] lg:bg-[#202020] border-b border-blue-400">Portfolio</th>
+                  <th class="text-white font-semibold text-sm text-start bg-[#131722] lg:bg-[#131722] border-b border-blue-400">Company</th>
+                  <th class="text-white font-semibold text-sm text-start bg-[#131722] lg:bg-[#131722] border-b border-blue-400">Market Value</th>
+                  <th class="text-white font-semibold text-sm text-end bg-[#131722] lg:bg-[#131722] border-b border-blue-400">Portfolio</th>
                 </tr>
               </thead>
               <tbody>
                 {#each topHoldingList?.slice(0,5) as item}
                 {#if item?.asset !== null}
-                <tr on:click={() => stockSelector(item?.asset)} class="lg:shake-ticker text-white cursor-pointer lg:hover:bg-[#245073] lg:hover:bg-opacity-[0.2] bg-[#000] lg:bg-[#202020] border-b border-[#000] lg:border-[#202020]">
+                <tr on:click={() => stockSelector(item?.asset)} class="lg:shake-ticker text-white cursor-pointer lg:hover:bg-[#245073] lg:hover:bg-opacity-[0.2] bg-[#131722] lg:bg-[#131722] border-b border-[#000] lg:border-[#202020]">
                     <td class="text-gray-200">
                       <div class="flex flex-row items-center">
                         <div class="rounded-full w-10 h-10 relative  flex items-center justify-center">
                           <img style="clip-path: circle(50%);" class="w-6 h-6 rounded-full" src={item?.asset?.length !== 0 ? `https://financialmodelingprep.com/image-stock/${item?.asset}.png` : defaultLogo} loading="lazy"/>
                         </div>
                         <div class="flex flex-col ml-3 w-full">
-                          <span class="text-blue-400 text-sm font-medium">{item?.asset ?? '-'}</span>
+                          <span class="text-[#FFBE00] text-sm font-medium">{item?.asset ?? '-'}</span>
                           <span class="text-white  text-xs">
                             {#if typeof item?.name !== 'undefined'}
                               {item?.name?.length > 10 ? formatString(item?.name?.slice(0,10)) + "..." : formatString(item?.name)}

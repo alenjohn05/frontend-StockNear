@@ -206,7 +206,7 @@ const toolbarOptions = {
             });
 
             editor.querySelectorAll('a').forEach((a) => {
-                a.classList.add('text-blue-400', 'hover:text-white','underline');
+                a.classList.add('text-[#FFBE00]', 'hover:text-white','underline');
             });
 
             editor.querySelectorAll('ol').forEach((ol) => {
@@ -264,7 +264,7 @@ onDestroy(() => {
 <div class="drawer drawer-end overflow-hidden" style="z-index: 9999;">
   <input id="mobileTextEditorModal" type="checkbox" class="drawer-toggle"/>
     <div class="drawer-side overflow-hidden">
-      <div class="rounded-xl bg-[#000] min-h-screen w-screen pb-20 overflow-y-auto overflow-hidden">
+      <div class="rounded-xl bg-[#131722] min-h-screen w-screen pb-20 overflow-y-auto overflow-hidden">
     <!--
     <h1 class="text-white sm:hidden font-medium text-xl mt-10 pl-2">
       {@html post?.title}

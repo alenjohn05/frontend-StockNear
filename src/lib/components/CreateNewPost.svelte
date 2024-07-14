@@ -9,7 +9,7 @@
   <!-- List container -->                  
   <div class="flex flex-col">
       <!-- Item -->
-      <div class="sm:border border-gray-700 sm:hover:border-gray-600 rounded-none sm:rounded-md bg-[#202020] rounded-[4px] sm:rounded-[8px]">
+      <div class="sm:border border-gray-700 sm:hover:border-gray-600 rounded-none sm:rounded-md bg-[#131722] rounded-[4px] sm:rounded-[8px]">
         <div class="flex h-14 sm:h-16 justify-start items-center">
           <div class="ml-2 sm:ml-3 avatar relative">
             <div class="w-8 sm:w-10 rounded-full">
@@ -21,7 +21,7 @@
           </div>
           
 
-          <a href="/community/create-post/" class="pl-3 sm:pl-5 text-white text-sm rounded-md h-10 sm:h-12 w-full bg-[#313131] cursor-pointer ml-3 flex justify-start items-center">
+          <a href="/community/create-post/" class="pl-3 sm:pl-5 text-white text-sm rounded-md h-10 sm:h-12 w-full bg-[#2A2E39] cursor-pointer ml-3 flex justify-start items-center">
               Create Post
           </a>
           <div class="flex justify-start items-center ml-2">

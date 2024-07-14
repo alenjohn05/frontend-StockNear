@@ -170,7 +170,7 @@ function sectorSelector(sector) {
                     </div>
 
                     <div class="p-2 sm:p-0">
-                      <div class="stats stats-horizontal bg-[#202020] rounded-lg shadow w-full rounded-none sm:rounded-lg mt-12 mb-5">
+                      <div class="stats stats-horizontal bg-[#131722] rounded-lg shadow w-full rounded-none sm:rounded-lg mt-12 mb-5">
               
                           <div class="grid grid-cols-2 sm:grid-cols-4 ">
                                     
@@ -211,7 +211,7 @@ function sectorSelector(sector) {
 
                         <div class="mt-5 mb-3">
                           {#each data?.getAnalystStats?.mainSectors as sector}
-                            <label on:click={() => sectorSelector(sector)} class="mr-2 cursor-pointer w-fit bg-[#404040] bg-opacity-[0.5] sm:hover:bg-opacity-[0.6] px-3 sm:px-4 py-2 text-sm font-medium rounded-xl sm:hover:text-white text-blue-400">
+                            <label on:click={() => sectorSelector(sector)} class="mr-2 cursor-pointer w-fit bg-[#2a2e39] bg-opacity-[0.5] sm:hover:bg-opacity-[0.6] px-3 sm:px-4 py-2 text-sm font-medium rounded-xl sm:hover:text-white text-[#FFBE00]">
                               {sector}
                             </label>
                           {/each}
@@ -230,17 +230,17 @@ function sectorSelector(sector) {
                     <div class="w-screen sm:w-full m-auto mt-10">
                   
                       <div class="w-screen sm:w-full m-auto rounded-none sm:rounded-lg mb-4 overflow-x-scroll">
-                        <table class="table table-sm table-compact rounded-none sm:rounded-md w-full bg-[#0F0F0F] border-bg-[#0F0F0F] m-auto">
+                        <table class="table table-sm table-compact rounded-none sm:rounded-md w-full bg-[#131722] border-bg-[#131722] m-auto">
                           <thead>
-                            <tr class="bg-[#0F0F0F] border-b border-blue-400">
-                              <th class="text-start bg-[#0F0F0F] text-gray-200 text-sm sm:text-[1rem] font-semibold">
+                            <tr class="bg-[#131722] border-b border-blue-400">
+                              <th class="text-start bg-[#131722] text-gray-200 text-sm sm:text-[1rem] font-semibold">
                                 Stock
                               </th>
-                              <th class="text-start bg-[#0F0F0F] text-white text-sm sm:text-[1rem] font-semibold">
+                              <th class="text-start bg-[#131722] text-white text-sm sm:text-[1rem] font-semibold">
                                 Action
                               </th>
     
-                              <th class="text-end hidden sm:table-cell bg-[#0F0F0F] text-white text-sm sm:text-[1rem] font-semibold">
+                              <th class="text-end hidden sm:table-cell bg-[#131722] text-white text-sm sm:text-[1rem] font-semibold">
                                 Price Target
                               </th>
                               <th class="text-white font-semibold text-end text-sm sm:text-[1rem]">
@@ -251,11 +251,11 @@ function sectorSelector(sector) {
                           <tbody>
                             {#each ratingsList as item, index}
     
-                            <tr on:click={() => goto(`/stocks/${item?.ticker}`)} class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] odd:bg-[#202020] cursor-pointer">
+                            <tr on:click={() => goto(`/stocks/${item?.ticker}`)} class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] odd:bg-[#131722] cursor-pointer">
     
                               <td class="text-sm text-start">
                                 <div class="flex flex-col items-start w-20 sm:w-fit">
-                                  <span class="text-blue-400 text-sm">{item?.ticker} </span>
+                                  <span class="text-[#FFBE00] text-sm">{item?.ticker} </span>
                                   <span class="text-white text-xs sm:text-sm">{item?.name} </span>
                               </div>
                                   

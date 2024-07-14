@@ -13,9 +13,9 @@
         <label id="discountBanner" for="discountBanner"  class="cursor-pointer modal-backdrop bg-[#fff] bg-opacity-[0.05]"></label>
         
         
-        <div class="modal-box w-full bg-[#000]">
+        <div class="modal-box w-full bg-[#131722]">
 
-            <div class="card bg-[#000] w-full">
+            <div class="card bg-[#131722] w-full">
                 <figure><img class="rounded-xl" src={discountBanner} alt="discount" /></figure>
                 <div class="card-body">
                     <h2 class="card-title">Limited Offer: </h2>

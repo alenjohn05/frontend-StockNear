@@ -36,7 +36,7 @@
 <div class="w-full max-w-4xl overflow-hidden m-auto mt-10 min-h-screen pt-10 mb-40">
   
 
-  <div class="w-full sm:rounded-xl bg-[#202020] h-auto sm:p-10 mt-3">
+  <div class="w-full sm:rounded-xl bg-[#131722] h-auto sm:p-10 mt-3">
     <div class="text-white text-4xl sm:text-5xl text-center p-3 mt-10 sm:mt-5">
         <h1 class="font-bold ">Announcement and Rules</h1>
     </div>
@@ -73,7 +73,7 @@
   </div>
 
   
-  <div class="flex flex-col bg-[#202020] w-full sm:rounded-xl h-auto sm:p-10 mt-10">
+  <div class="flex flex-col bg-[#131722] w-full sm:rounded-xl h-auto sm:p-10 mt-10">
 
       <h2 class="text-white text-4xl sm:text-5xl text-center font-medium mt-10 sm:mt-5">
           Winning Prizes
@@ -89,14 +89,14 @@
 
 
       <span class="text-white text-md mt-10 p-3 text-center ">
-          The Top 3 participant in the <a href="/leaderboard" class="text-blue-500 hover:text-white">
+          The Top 3 participant in the <a href="/leaderboard" class="text-[#FFBE00] hover:text-white">
               Leaderboard</a>
                will be rewarded accordingly with custom badges in their profile.
       </span>
   </div>
 
 
-  <div class="flex flex-col bg-[#202020] w-full sm:rounded-xl h-auto sm:p-10 mt-10">
+  <div class="flex flex-col bg-[#131722] w-full sm:rounded-xl h-auto sm:p-10 mt-10">
 
       <h3 class="text-white text-4xl sm:text-5xl font-medium text-center m-auto mt-10 sm:mt-5">
           Rules
@@ -137,7 +137,7 @@
 
 
 
-<div class="bg-[#202020] w-full sm:rounded-xl h-auto sm:p-10 mt-10">
+<div class="bg-[#131722] w-full sm:rounded-xl h-auto sm:p-10 mt-10">
   <h4 class="text-white text-4xl text-center font-medium mb-3 mt-10 sm:mt-3 p-3">
       Terms and Conditions of Participation
   </h4>
@@ -192,10 +192,10 @@
           shall be deemed to have been agreed upon that come as close as possible to the economic objectives.
         </li>
         <li class="p-1">
-          Furthermore, the <a href="/imprint" class="text-blue-400 hover:text-white">Imprint</a>, <a href="/terms-of-use" class="text-blue-400 hover:text-white">
+          Furthermore, the <a href="/imprint" class="text-[#FFBE00] hover:text-white">Imprint</a>, <a href="/terms-of-use" class="text-[#FFBE00] hover:text-white">
             Terms of Use
           </a> and our 
-          <a href="/privacy-policy" class="text-blue-400 hover:text-white">
+          <a href="/privacy-policy" class="text-[#FFBE00] hover:text-white">
             Privacy Policy
           </a>
           apply. 

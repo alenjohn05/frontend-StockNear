@@ -63,7 +63,7 @@ class="hidden sm:block [mask-image:linear-gradient(to_bottom_right,white,transpa
 />
 
 
-<div class="w-full max-w-screen overflow-hidden m-auto min-h-screen bg-[#000]">
+<div class="w-full max-w-screen overflow-hidden m-auto min-h-screen bg-[#131722]">
 
 
   <div class="m-auto flex flex-wrap flex-col justify-center items-center md:flex-row ">

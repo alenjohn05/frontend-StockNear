@@ -223,7 +223,7 @@
                     {#if data?.user?.tier === 'Pro'}
 
                     {#if fairPrice !== null}
-                    <div class="p-3 sm:p-0 mt-2 pb-8 sm:pb-2 rounded-lg bg-[#202020] sm:bg-[#0F0F0F]">
+                    <div class="p-3 sm:p-0 mt-2 pb-8 sm:pb-2 rounded-lg bg-[#131722] sm:bg-[#131722]">
 
                         <div class="mt-4 text-white text-[1rem] sm:text-xl pb-4 sm:pb-0 m-auto text-start">
                             The DCF model signals a
@@ -261,7 +261,7 @@
                         {/if}
         
                         <div class="text-white text-md mt-2">
-                            <span class="text-blue-400">${$stockTicker}</span> 
+                            <span class="text-[#FFBE00]">${$stockTicker}</span> 
                             (${lastPrice}) is trading {change < 0 ? 'below' : 'above'} 
                             our estimate of fair value (${fairPrice}).
                         </div>
@@ -269,7 +269,7 @@
                         <br>
         
                         <div class="text-white text-md mb-10 -mt-3">
-                            What is the Fair Price of <span class="font-normal text-blue-400">${$stockTicker}</span> when looking at its future cash flows? For this estimate we use a Discounted Cash Flow model (DCF).
+                            What is the Fair Price of <span class="font-normal text-[#FFBE00]">${$stockTicker}</span> when looking at its future cash flows? For this estimate we use a Discounted Cash Flow model (DCF).
                         </div>
                         
                         <Lazy height={300} fadeOption={{delay: 100, duration: 500}} keep={true}>
@@ -281,7 +281,7 @@
                         {#if Math?.abs(change) > 30}
                         <div class=" mb-5 text-gray-100 text-sm sm:text-[1rem] sm:rounded-lg h-auto border border-slate-800 p-4">
                             <svg class="w-5 h-5 inline-block mr-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="#a474f6" d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24m-4 48a12 12 0 1 1-12 12a12 12 0 0 1 12-12m12 112a16 16 0 0 1-16-16v-40a8 8 0 0 1 0-16a16 16 0 0 1 16 16v40a8 8 0 0 1 0 16"/></svg>
-                            Caution: The DCF model may not be reliable for <span class="text-blue-400">${$stockTicker}</span> due to significant deviation between intrinsic value and current price.
+                            Caution: The DCF model may not be reliable for <span class="text-[#FFBE00]">${$stockTicker}</span> due to significant deviation between intrinsic value and current price.
                         </div>
                         {/if}
                     </div>
@@ -298,9 +298,9 @@
 
 
             {:else}
-            <div class="shadow-lg shadow-bg-[#000] bg-[#202020] sm:bg-opacity-[0.5] text-sm sm:text-[1rem] rounded-md w-full p-4 min-h-24 mt-4 text-white m-auto flex justify-center items-center text-center font-semibold">
+            <div class="shadow-lg shadow-bg-[#131722] bg-[#131722] sm:bg-opacity-[0.5] text-sm sm:text-[1rem] rounded-md w-full p-4 min-h-24 mt-4 text-white m-auto flex justify-center items-center text-center font-semibold">
                 <svg class="mr-1.5 w-5 h-5 inline-block"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#A3A3A3" d="M17 9V7c0-2.8-2.2-5-5-5S7 4.2 7 7v2c-1.7 0-3 1.3-3 3v7c0 1.7 1.3 3 3 3h10c1.7 0 3-1.3 3-3v-7c0-1.7-1.3-3-3-3M9 7c0-1.7 1.3-3 3-3s3 1.3 3 3v2H9z"/></svg>
-                Unlock content with <a class="inline-block ml-2 text-blue-400 hover:sm:text-white" href="/pricing">Pro Subscription</a>
+                Unlock content with <a class="inline-block ml-2 text-[#FFBE00] hover:sm:text-white" href="/pricing">Pro Subscription</a>
                 </div>
             {/if}
     

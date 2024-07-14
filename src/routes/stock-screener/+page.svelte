@@ -260,7 +260,7 @@ onMount(async () => {
     </ul>
   </div>
       
-  <div class="w-full max-w-4xl m-auto sm:bg-[#202020] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8">
+  <div class="w-full max-w-4xl m-auto sm:bg-[#131722] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
   
       <!-- Start Column -->
@@ -324,7 +324,7 @@ onMount(async () => {
     
       <div class="hidden sm:block">
       {#each strategyList as st, index}
-      <div class=" sm:rounded-xl shadow-lg bg-[#202020] pt-5 pb-5 sm:pb-0 mt-5">
+      <div class=" sm:rounded-xl shadow-lg bg-[#131722] pt-5 pb-5 sm:pb-0 mt-5">
         
         <div class="flex flex-row {$screenWidth >= 640 ? '-mb-4' : ''} ">
           <div class="text-white font-bold text-lg pl-5">
@@ -436,7 +436,7 @@ onMount(async () => {
 
       <div class="relative p-2 sm:hidden -mt-2">
         {#each strategyList as item, index}
-          <div class="bg-[#202020] shadow-lg rounded-lg border border-slate-800 h-fit pb-2 pl-4 pr-4 pt-4 mb-7">
+          <div class="bg-[#131722] shadow-lg rounded-lg border border-slate-800 h-fit pb-2 pl-4 pr-4 pt-4 mb-7">
               <div class="flex flex-row items-center">
                 <label class="font-medium cursor-pointer flex flex-col w-40">
                   <span class="text-slate-300">No. Strategy</span>
@@ -510,7 +510,7 @@ onMount(async () => {
     {:else}
     <div class="flex justify-center items-center h-80">
       <div class="relative">
-      <label class="bg-[#202020] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <label class="bg-[#131722] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <span class="loading loading-spinner loading-md"></span>
       </label>
       </div>
@@ -546,10 +546,10 @@ onMount(async () => {
   <dialog id="addStrategy" class="modal modal-bottom sm:modal-middle">
   
   
-    <label for="addStrategy"  class="cursor-pointer modal-backdrop bg-[#000] bg-opacity-[0.5]"></label>
+    <label for="addStrategy"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
     
     
-    <div class="modal-box w-full bg-[#202020]" >
+    <div class="modal-box w-full bg-[#131722]" >
   
         <h1 class="text-white text-2xl font-bold">
           New Strategy
@@ -599,7 +599,7 @@ onMount(async () => {
     
     <div class="modal-box w-full" >
   
-      <ul class="mt-3 menu menu-compact text-[#A4AAB8] bg-[#000] rounded-md pt-3">
+      <ul class="mt-3 menu menu-compact text-[#A4AAB8] bg-[#131722] rounded-md pt-3">
         <!--<hr>-->
         <li class="mb-3">
           <label on:click|stopPropagation={() => goto("/stock-screener/"+editStrategyId)} class="text-sm text-white cursor-pointer">
@@ -630,10 +630,10 @@ onMount(async () => {
   <dialog id="deleteStrategy" class="modal modal-bottom sm:modal-middle">
   
   
-    <label for="deleteStrategy"  class="cursor-pointer modal-backdrop bg-[#000] bg-opacity-[0.5]"></label>
+    <label for="deleteStrategy"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
     
     
-    <div class="modal-box w-full bg-[#202020] overflow-hidden ">
+    <div class="modal-box w-full bg-[#131722] overflow-hidden ">
   
       <h3 class="font-bold text-md sm:text-lg flex justify-center items-center mt-10 text-white">
         Are you sure you want to delete the strategy?
@@ -664,10 +664,10 @@ onMount(async () => {
   <dialog id="viewStrategy" class="modal modal-bottom sm:modal-middle">
   
   
-    <label for="viewStrategy"  class="cursor-pointer modal-backdrop bg-[#000] bg-opacity-[0.5]"></label>
+    <label for="viewStrategy"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
     
     
-    <div class="modal-box w-full bg-[#202020] border border-slate-600 overflow-y-scroll overflow-hidden {$screenWidth < 640 ? 'min-h-screen' : 'h-[800px]'}">
+    <div class="modal-box w-full bg-[#131722] border border-slate-600 overflow-y-scroll overflow-hidden {$screenWidth < 640 ? 'min-h-screen' : 'h-[800px]'}">
   
   
       <!--Start Rule Preview-->
@@ -715,7 +715,7 @@ onMount(async () => {
     
     
 
-  <div class="w-screen min-h-full bg-[#000] text-base-content overflow-y-scroll overflow-hidden p-2 pb-10">
+  <div class="w-screen min-h-full bg-[#131722] text-base-content overflow-y-scroll overflow-hidden p-2 pb-10">
     <!-- Search layout -->
     <div class="text-white font-bold text-2xl flex justify-start items-center pl-3 mt-5 pb-5 pt-10">
       {ruleOfList?.length} Rules · {strategyTitle}
@@ -724,7 +724,7 @@ onMount(async () => {
 
     {#each ruleOfList as rule,index}
           <div class="pl-3 pr-3 pb-2 text-white">
-            <div class="flex flex-row items-center w-full bg-[#202020] p-3 rounded-lg">
+            <div class="flex flex-row items-center w-full bg-[#131722] p-3 rounded-lg">
                 <div class="text-sm w-full mt-2">
                   <span class="mr-1">{index+1}.</span>
                   <!--<svg class="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 text-green-400 indine-block" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>-->

@@ -41,7 +41,7 @@ export const config = {
 	addClassToTag('h6', 'text-lg');
   
 	// Add classes to anchor tags
-	addClassToTag('a', 'text-blue-400 hover:text-white underline');
+	addClassToTag('a', 'text-[#FFBE00] hover:text-white underline');
   
 	// Add classes to ordered lists
 	addClassToTag('ol', 'list-decimal ml-10 text-sm');

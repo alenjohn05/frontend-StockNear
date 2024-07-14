@@ -124,7 +124,7 @@ function latestInfoDate(inputDate) {
         
         <div class="w-full mt-4">
 
-            <a href="{'/stocks/'+$stockTicker+'/analyst'}" class="text-blue-400 hover:text-white flex justify-end mb-3 text-sm sm:text-[1rem]">
+            <a href="{'/stocks/'+$stockTicker+'/analyst'}" class="text-[#FFBE00] hover:text-white flex justify-end mb-3 text-sm sm:text-[1rem]">
                 See All Ratings
             </a>
     
@@ -137,13 +137,13 @@ function latestInfoDate(inputDate) {
                         <!--Start Item-->
                         <div class="flex flex-row items-center w-full mb-6">
                 
-                            <div class="w-full rounded-lg {latestInfoDate(rawData?.date) ? 'bg-[#F9AB00] bg-opacity-[0.1]' : 'bg-[#202020]'} shadow-lg h-full pl-3 pt-2 pb-4">
+                            <div class="w-full rounded-lg {latestInfoDate(rawData?.date) ? 'bg-[#F9AB00] bg-opacity-[0.1]' : 'bg-[#131722]'} shadow-lg h-full pl-3 pt-2 pb-4">
                                 <div class="flex flex-col items-start"> 
 
                                     <div class="flex flex-row items-start w-full pt-2">
                                         <span class="text-white text-[0.915rem] pl-2 italic">Last Report from {rawData.date}</span>
                                         {#if latestInfoDate(rawData.date)}
-                                            <label class="bg-[#2D4F8A] text-white font-medium text-xs rounded-lg px-2 py-0.5 ml-3">New</label>
+                                            <label class="bg-[#2962ff] text-white font-medium text-xs rounded-lg px-2 py-0.5 ml-3">New</label>
                                         {/if}
                                     </div>
 
@@ -173,7 +173,7 @@ function latestInfoDate(inputDate) {
         {:else}
         <div class="flex justify-center items-center h-80">
             <div class="relative">
-            <label class="bg-[#202020] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <label class="bg-[#131722] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 <span class="loading loading-spinner loading-md"></span>
             </label>
             </div>
@@ -181,9 +181,9 @@ function latestInfoDate(inputDate) {
         {/if}
   
         {:else}
-        <div class="shadow-lg shadow-bg-[#000] bg-[#202020] sm:bg-opacity-[0.5] text-sm sm:text-[1rem] rounded-md w-full p-4 min-h-24 mt-4 text-white m-auto flex justify-center items-center text-center font-semibold">
+        <div class="shadow-lg shadow-bg-[#131722] bg-[#131722] sm:bg-opacity-[0.5] text-sm sm:text-[1rem] rounded-md w-full p-4 min-h-24 mt-4 text-white m-auto flex justify-center items-center text-center font-semibold">
             <svg class="mr-1.5 w-5 h-5 inline-block"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#A3A3A3" d="M17 9V7c0-2.8-2.2-5-5-5S7 4.2 7 7v2c-1.7 0-3 1.3-3 3v7c0 1.7 1.3 3 3 3h10c1.7 0 3-1.3 3-3v-7c0-1.7-1.3-3-3-3M9 7c0-1.7 1.3-3 3-3s3 1.3 3 3v2H9z"/></svg>
-            Unlock content with <a class="inline-block ml-2 text-blue-400 hover:sm:text-white" href="/pricing">Pro Subscription</a>
+            Unlock content with <a class="inline-block ml-2 text-[#FFBE00] hover:sm:text-white" href="/pricing">Pro Subscription</a>
           </div>
         {/if}
   

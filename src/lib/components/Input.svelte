@@ -150,7 +150,7 @@ $: {
 	</label>
 	<div class="relative">
 		{#if type === 'file'}
-			<label for={id} class="flex flex-col items-center bg-[#313131] rounded-md cursor-pointer {inputValue.length === 0 ? 'p-10' : ''} {isHovering ? 'ring-2' : ''}"
+			<label for={id} class="flex flex-col items-center bg-[#2A2E39] rounded-md cursor-pointer {inputValue.length === 0 ? 'p-10' : ''} {isHovering ? 'ring-2' : ''}"
 			on:dragenter={() => isHovering = true}
 			on:dragleave={() => isHovering = false}
 			on:drop={handleDrop}
@@ -161,7 +161,7 @@ $: {
 			{#if inputValue.length !== 0}
 			<label on:click={handleCancel} class="btn btn-sm btn-circle bg-red-600 absolute right-0 -top-3 z-20">✕</label>
 			
-			<div class="absolute inset-0 bg-cover object-fill bg-center bg-[#000]"></div>
+			<div class="absolute inset-0 bg-cover object-fill bg-center bg-[#131722]"></div>
 			<img class="w-auto max-h-[400px] object-fill bg-center bg-contain z-10 {showVideo ? 'hidden' : ''} "
 				alt="Image preview"
 				id="image-preview"
@@ -201,7 +201,7 @@ $: {
 			/>
 
 			{#if showVideo}
-			<div class="absolute inset-0 bg-cover object-fill bg-center bg-[#000]"></div>
+			<div class="absolute inset-0 bg-cover object-fill bg-center bg-[#131722]"></div>
 			<video controls
 			class="w-auto max-h-[500px] z-10"
 			src={videoInput}
@@ -213,7 +213,7 @@ $: {
 		</label>
 		{:else}
 			<input
-				class="input input-bordered w-full max-w-lg bg-[#313131] placeholder-gray-300 text-white whitespace-normal ring-2"
+				class="input input-bordered w-full max-w-lg bg-[#2A2E39] placeholder-gray-300 text-white whitespace-normal ring-2"
 				{type}
 				{placeholder}
 				{required}
