@@ -520,7 +520,7 @@ $: {
       
 
                        <!--Start Share Button-->
-                      <label class="mr-4" on:click={() => shareContent('https://stocknear.com/stocks/'+$stockTicker)} >
+                      <label class="mr-4" on:click={() => shareContent('https://octopi.com/stocks/'+$stockTicker)} >
                         <svg class="w-6 h-6 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M336 192h40a40 40 0 0 1 40 40v192a40 40 0 0 1-40 40H136a40 40 0 0 1-40-40V232a40 40 0 0 1 40-40h40m160-64l-80-80l-80 80m80 193V48"/></svg>
                       </label>
                         <!--End Share Button-->

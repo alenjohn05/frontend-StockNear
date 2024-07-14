@@ -157,19 +157,19 @@ isLoaded = true;
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>
-    {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {$displayCompanyName} ({$etfTicker}) US Congress & Senate Trading · stocknear
+    {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {$displayCompanyName} ({$etfTicker}) US Congress & Senate Trading · octopi
   </title>
   <meta name="description" content={`Get the latest US congress & senate trading of ${$displayCompanyName} (${$etfTicker}) from democrates and republicans.`} />
   
   <!-- Other meta tags -->
-  <meta property="og:title" content={`${$displayCompanyName} (${$etfTicker}) US Congress & Senate Trading · stocknear`}/>
+  <meta property="og:title" content={`${$displayCompanyName} (${$etfTicker}) US Congress & Senate Trading · octopi`}/>
   <meta property="og:description" content={`Get the latest US congress & senate trading of ${$displayCompanyName} (${$etfTicker}) from democrates and republicans.`} />
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
 
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content={`${$displayCompanyName} (${$etfTicker}) US Congress & Senate Trading · stocknear`}/>
+  <meta name="twitter:title" content={`${$displayCompanyName} (${$etfTicker}) US Congress & Senate Trading · octopi`}/>
   <meta name="twitter:description" content={`Get the latest US congress & senate trading of ${$displayCompanyName} (${$etfTicker}) from democrates and republicans.`} />
   <!-- Add more Twitter meta tags as needed -->
 

@@ -5,23 +5,23 @@
   
   
   <svelte:head>
-    <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Markdown Guide · stocknear</title>
+    <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Markdown Guide · octopi</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
   
-    <meta name="description" content="Markdown Guide to Post on Stocknear Community Page">
+    <meta name="description" content="Markdown Guide to Post on Octopi Community Page">
     <!-- Other meta tags -->
-    <meta property="og:title" content="Markdown Guide · stocknear"/>
-    <meta property="og:description" content="Markdown Guide to Post on Stocknear Community Page">
-    <meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+    <meta property="og:title" content="Markdown Guide · octopi"/>
+    <meta property="og:description" content="Markdown Guide to Post on Octopi Community Page">
+    <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
     <meta property="og:type" content="website"/>
     <!-- Add more Open Graph meta tags as needed -->
   
     <!-- Twitter specific meta tags -->
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content="Markdown Guide · stocknear"/>
-    <meta name="twitter:description" content="Markdown Guide to Post on Stocknear Community Page">
-    <meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+    <meta name="twitter:title" content="Markdown Guide · octopi"/>
+    <meta name="twitter:description" content="Markdown Guide to Post on Octopi Community Page">
+    <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
     <!-- Add more Twitter meta tags as needed -->
   </svelte:head>
   
@@ -41,7 +41,7 @@
     </h1>
     
     <span class="text-white">
-        We use <a href="https://en.wikipedia.org/wiki/Markdown" rel="noopener noreferrer" target="_blank" class="text-[#FFBE00] sm:hover:text-white">Markdown</a> to format posts and comments on Stocknear. We support CommonMark and Github Flavored Markdown (with the exception of image tags and raw HTML).
+        We use <a href="https://en.wikipedia.org/wiki/Markdown" rel="noopener noreferrer" target="_blank" class="text-[#FFBE00] sm:hover:text-white">Markdown</a> to format posts and comments on Octopi. We support CommonMark and Github Flavored Markdown (with the exception of image tags and raw HTML).
     </span>
 
     <div class="w-full m-auto mt-10 bg-[#131722] rounded-lg">

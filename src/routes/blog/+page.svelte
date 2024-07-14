@@ -59,23 +59,23 @@ let allBlogPosts = data?.getAllBlogPost;
   
 
 <svelte:head>
-  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Stock Analysis Blog · stocknear</title>
+  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Stock Analysis Blog · octopi</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
 
   <meta name="description" content="Get the latest blog post to understand and invest correctly into companies.">
   <!-- Other meta tags -->
-  <meta property="og:title" content="Stock Analysis Blog · stocknear"/>
+  <meta property="og:title" content="Stock Analysis Blog · octopi"/>
   <meta property="og:description" content="Get the latest blog post to understand and invest correctly into companies.">
-  <meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
 
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Stock Analysis Blog · stocknear"/>
+  <meta name="twitter:title" content="Stock Analysis Blog · octopi"/>
   <meta name="twitter:description" content="Get the latest blog post to understand and invest correctly into companies.">
-  <meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
     

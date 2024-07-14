@@ -8,18 +8,18 @@ export let data;
 
 
 <svelte:head>
-  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Changelog · stocknear</title>
+  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Changelog · octopi</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
 
   <!-- Other meta tags -->
-  <meta property="og:title" content="Changelog · stocknear"/>
+  <meta property="og:title" content="Changelog · octopi"/>
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
 
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Changelog · stocknear"/>
+  <meta name="twitter:title" content="Changelog · octopi"/>
   <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
 	    
@@ -62,7 +62,7 @@ export let data;
                                     What's New
                                 </h1>
                                 <div class="max-w-3xl m-auto flex justify-center items-center">
-                                    <p class="w-5/6 text-center text-xl sm:text-2xl text-white">New updates and improvements to Stocknear.</p>
+                                    <p class="w-5/6 text-center text-xl sm:text-2xl text-white">New updates and improvements to Octopi.</p>
                                 </div>
                             </div>
     
@@ -207,7 +207,7 @@ export let data;
                                     </div>
                                 </div>
                                 <h2 class="text-center m-auto text-[1rem] sm:text-lg text-white font-medium pb-4">
-                                    Try Stocknear Platform for 7 days. No credit card required.
+                                    Try Octopi Platform for 7 days. No credit card required.
                                 </h2>
                                     <a href='/register'
                                     class="animate-shine mt-5 w-56 sm:w-80 m-auto group relative grid overflow-hidden rounded-xl px-6 py-3 shadow-[0_1000px_0_0_hsl(0_0%_20%)_inset] transition-colors"

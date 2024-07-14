@@ -48,22 +48,22 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>
-      {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''}  Top 100 Strong Buy Stocks · stocknear
+      {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''}  Top 100 Strong Buy Stocks · octopi
   </title>
   <meta name="description" content={`The top 100 "Strong Buy" stocks according to the best performing Wall Street analysts, with a rating of 5 stars.`} />
   
   <!-- Other meta tags -->
-  <meta property="og:title" content={`Top 100 Strong Buy Stocks · stocknear`}/>
+  <meta property="og:title" content={`Top 100 Strong Buy Stocks · octopi`}/>
   <meta property="og:description" content={`The top 100 "Strong Buy" stocks according to the best performing Wall Street analysts, with a rating of 5 stars.`} />
-  <meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
   
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content={`Top 100 Strong Buy Stocks · stocknear`}/>
+  <meta name="twitter:title" content={`Top 100 Strong Buy Stocks · octopi`}/>
   <meta name="twitter:description" content={`The top 100 "Strong Buy" stocks according to the best performing Wall Street analysts, with a rating of 5 stars.`} />
-  <meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <!-- Add more Twitter meta tags as needed -->
   
   </svelte:head>

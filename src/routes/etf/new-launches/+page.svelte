@@ -29,22 +29,22 @@ $: {
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
 <title>
-    {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} 100 Newest ETFs · stocknear
+    {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} 100 Newest ETFs · octopi
 </title>
 <meta name="description" content={`A list of the 100 most recently launched ETFs on the US stock market, sorted by the inception date.`} />
 
 <!-- Other meta tags -->
-<meta property="og:title" content={`100 Newest ETFs · stocknear`}/>
+<meta property="og:title" content={`100 Newest ETFs · octopi`}/>
 <meta property="og:description" content={`A list of the 100 most recently launched ETFs on the US stock market, sorted by the inception date.`} />
-<meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+<meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
 <meta property="og:type" content="website"/>
 <!-- Add more Open Graph meta tags as needed -->
 
 <!-- Twitter specific meta tags -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content={`100 Newest ETFs · stocknear`}/>
+<meta name="twitter:title" content={`100 Newest ETFs · octopi`}/>
 <meta name="twitter:description" content={`A list of the 100 most recently launched ETFs on the US stock market, sorted by the inception date.`} />
-<meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+<meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
 <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
               

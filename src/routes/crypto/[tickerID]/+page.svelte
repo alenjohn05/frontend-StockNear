@@ -1,3 +1,4 @@
+
 <script lang="ts">
 
   import {AreaSeries, Chart, PriceLine, CandlestickSeries} from 'svelte-lightweight-charts';
@@ -695,22 +696,22 @@ afterUpdate(async () => {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>
-      {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {$displayCompanyName} ({$cryptoTicker}) Stock Price, Quote & News · stocknear
+      {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {$displayCompanyName} ({$cryptoTicker}) Stock Price, Quote & News · octopi
     </title>
   
     <meta name="description" content={`Get a real-time ${$displayCompanyName} (${$cryptoTicker}) stock price quote with breaking news, financials, statistics, charts and more.`}>
     <!-- Other meta tags -->
-    <meta property="og:title" content={`${$displayCompanyName} (${$cryptoTicker}) Stock Price, Quote & News · stocknear`}/>
+    <meta property="og:title" content={`${$displayCompanyName} (${$cryptoTicker}) Stock Price, Quote & News · octopi`}/>
     <meta property="og:description" content={`Get a real-time ${$displayCompanyName} (${$cryptoTicker}) stock price quote with breaking news, financials, statistics, charts and more.`} />
-    <!--<meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>-->
+    <!--<meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>-->
     <meta property="og:type" content="website"/>
     <!-- Add more Open Graph meta tags as needed -->
   
     <!-- Twitter specific meta tags -->
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content={`${$displayCompanyName} (${$cryptoTicker}) Stock Price, Quote & News · stocknear`}/>
+    <meta name="twitter:title" content={`${$displayCompanyName} (${$cryptoTicker}) Stock Price, Quote & News · octopi`}/>
     <meta name="twitter:description" content={`Get a real-time ${$displayCompanyName} (${$cryptoTicker}) stock price quote with breaking news, financials, statistics, charts and more.`} />
-    <!--<meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>-->
+    <!--<meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>-->
     <!-- Add more Twitter meta tags as needed -->
   
   </svelte:head>

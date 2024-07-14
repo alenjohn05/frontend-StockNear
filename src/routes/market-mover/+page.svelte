@@ -1,3 +1,4 @@
+
 <script lang='ts'>
 import { goto } from '$app/navigation';
 import { screenWidth, numberOfUnreadNotification } from '$lib/store';
@@ -197,22 +198,22 @@ $: {
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
 <title>
-  {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Today's Top Stock Gainers, Losers and Most Active · stocknear
+  {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Today's Top Stock Gainers, Losers and Most Active · octopi
 </title>
 <meta name="description" content={`A list of the stocks with the highest percentage gain, highest percentage loss and most active today. See stock price, volume, market cap and more.`} />
 
 <!-- Other meta tags -->
-<meta property="og:title" content={`Today's Top Stock Gainers, Losers and Most Active · stocknear`}/>
+<meta property="og:title" content={`Today's Top Stock Gainers, Losers and Most Active · octopi`}/>
 <meta property="og:description" content={`A list of the stocks with the highest percentage gain, highest percentage loss and most active today. See stock price, volume, market cap and more.`} />
-<meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+<meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
 <meta property="og:type" content="website"/>
 <!-- Add more Open Graph meta tags as needed -->
 
 <!-- Twitter specific meta tags -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content={`Today's Top Stock Gainers, Losers and Most Active · stocknear`}/>
+<meta name="twitter:title" content={`Today's Top Stock Gainers, Losers and Most Active · octopi`}/>
 <meta name="twitter:description" content={`A list of the stocks with the highest percentage gain, highest percentage loss and most active today. See stock price, volume, market cap and more.`} />
-<meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+<meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
 <!-- Add more Twitter meta tags as needed -->
 
 </svelte:head>

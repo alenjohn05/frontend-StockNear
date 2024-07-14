@@ -185,19 +185,19 @@ function formatTime(dateString) {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>
-      {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Dark Pool Flow · stocknear
+      {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Dark Pool Flow · octopi
   </title>
   <meta name="description" content={`Realtime Dark Pool Trades from Hedge Funds & Major Institutional Traders.`} />
   
   <!-- Other meta tags -->
-  <meta property="og:title" content={`Dark Pool Flow · stocknear`}/>
+  <meta property="og:title" content={`Dark Pool Flow · octopi`}/>
   <meta property="og:description" content={`Realtime Dark Pool Trades from Hedge Funds & Major Institutional Traders.`} />
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
   
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content={`Dark Pool Flow · stocknear`}/>
+  <meta name="twitter:title" content={`Dark Pool Flow · octopi`}/>
   <meta name="twitter:description" content={`Realtime Dark Pool Trades from Hedge Funds & Major Institutional Traders.`} />
   <!-- Add more Twitter meta tags as needed -->
   
@@ -337,7 +337,8 @@ function formatTime(dateString) {
                   <!--End Highest Size-->
 
                     <!--Start Amount-->  
-                    <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-lg h-20">
+                    <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#131722] border border-[#2a2e39]
+                     shadow-lg rounded-lg h-20">
                       <div class="flex flex-col items-start">
                           <span class="font-medium text-gray-200 text-sm ">Highest Amount</span>
                           <span class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5">

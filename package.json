@@ -99,7 +99,7 @@
     "uuid": "^9.0.1",
     "vaul-svelte": "^0.3.0"
   },
-  "description": "UI of stocknear - Stock Analysis & Community Platform for Small Investors.",
+  "description": "UI of octopi - Stock Analysis & Community Platform for Small Investors.",
   "main": "svelte.config.js",
   "directories": {
     "test": "tests"

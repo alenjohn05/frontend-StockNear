@@ -398,20 +398,20 @@ $: {
 
 
 <svelte:head>
-  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} A community for discussion, insights, news and memes about financial markets. · stocknear</title>
+  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} A community for discussion, insights, news and memes about financial markets. · octopi</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
 
   <meta name="description" content="A community for discussion, insights, news and memes about financial markets.">
   <!-- Other meta tags -->
-  <meta property="og:title" content="A community for discussion, insights, news and memes about financial markets. · stocknear"/>
+  <meta property="og:title" content="A community for discussion, insights, news and memes about financial markets. · octopi"/>
   <meta property="og:description" content="A community for discussion, insights, news and memes about financial markets.">
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
 
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="A community for discussion, insights, news and memes about financial markets. · stocknear"/>
+  <meta name="twitter:title" content="A community for discussion, insights, news and memes about financial markets. · octopi"/>
   <meta name="twitter:description" content="A community for discussion, insights, news and memes about financial markets.">
   <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
@@ -808,7 +808,7 @@ $: {
                                     </div>
       
                                     <span class="text-sm text-gray-400  mt-1.5">
-                                      © 2024 stocknear
+                                      © 2024 octopi
                                     </span>
       
                                   </div>

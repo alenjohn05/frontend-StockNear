@@ -1,3 +1,4 @@
+
 <script>
 import { numberOfUnreadNotification, globalForm } from '$lib/store';
 import { openLemonSqueezyUrl } from '$lib/lemonsqueezy';
@@ -10,7 +11,7 @@ export let data;
 let cloudFrontUrl = import.meta.env.VITE_IMAGE_URL;
 
 let mode = false;
-const emailAddress = 'support@stocknear.com';
+const emailAddress = 'support@octopi.com';
 
 function toggleMode()
 {
@@ -57,7 +58,7 @@ async function purchasePlan() {
         }
         const isDarkMode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
         const checkoutUrl =
-            `https://stocknear.lemonsqueezy.com/checkout/buy/${subId}?` +
+            `https://octopi.lemonsqueezy.com/checkout/buy/${subId}?` +
             new URLSearchParams({
                 embed: "1",
                 dark: isDarkMode ? "1" : "0",
@@ -67,7 +68,7 @@ async function purchasePlan() {
             }).toString();
 
         openLemonSqueezyUrl(checkoutUrl);
-        //goto(`https://stocknear.lemonsqueezy.com/checkout/buy/${subId}`)
+        //goto(`https://octopi.lemonsqueezy.com/checkout/buy/${subId}`)
     }
 }
 
@@ -79,24 +80,24 @@ async function purchasePlan() {
 
 <meta name="viewport" content="width=device-width" />
 <title>
-  {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Pricing · stocknear
+  {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Pricing · octopi
 </title>
 <meta name="description" content={`Get unlimited access to all of our data and tools, including full financial history, full ETF holdings, and more.`} />
 
 <!-- Other meta tags -->
-<meta property="og:title" content={`Pricing · stocknear`}/>
+<meta property="og:title" content={`Pricing · octopi`}/>
 <meta property="og:description" content={`Get unlimited access to all of our data and tools, including full financial history, full ETF holdings, and more.`} />
 <meta property="og:type" content="website"/>
 <!-- Add more Open Graph meta tags as needed -->
 
 <!-- Twitter specific meta tags -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content={`Pricing · stocknear`}/>
+<meta name="twitter:title" content={`Pricing · octopi`}/>
 <meta name="twitter:description" content={`Get unlimited access to all of our data and tools, including full financial history, full ETF holdings, and more.`} />
 <!-- Add more Twitter meta tags as needed -->
 
 
-<script>window.lemonSqueezyAffiliateConfig = { store: "stocknear" };</script>
+<script>window.lemonSqueezyAffiliateConfig = { store: "octopi" };</script>
 <script src="https://lmsqueezy.com/affiliate.js" defer></script>
 
 
@@ -574,10 +575,10 @@ async function purchasePlan() {
                     <ul class="mx-auto divide-y divide-slate-400">
                         <li>
                             <details class="collapse collapse-arrow">
-                                <summary class="collapse-title text-white font-semibold text-[1rem] sm:text-xl flex items-center justify-between w-full text-left py-5">What are the advantages of Stocknear Service?</summary>
+                                <summary class="collapse-title text-white font-semibold text-[1rem] sm:text-xl flex items-center justify-between w-full text-left py-5">What are the advantages of Octopi Service?</summary>
                                 <div class="collapse-content"> 
                                     <p class="text-sm sm:text-[1rem] pb-5 text-gray-200 overflow-hidden transition-all duration-300 ease-in-out">
-                                        Stocknear Service provides simplified, actionable trading data and an extensive tool suite for every trader, featuring exclusive, high-quality Wall Street data at an unmatched price. We also offer proprietary AI models for accurate forecasting and timely alerts, all within a single, unified platform.
+                                        Octopi Service provides simplified, actionable trading data and an extensive tool suite for every trader, featuring exclusive, high-quality Wall Street data at an unmatched price. We also offer proprietary AI models for accurate forecasting and timely alerts, all within a single, unified platform.
                                     </p>
                                 </div>
                             </details>

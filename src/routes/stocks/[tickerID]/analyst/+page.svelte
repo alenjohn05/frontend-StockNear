@@ -84,19 +84,19 @@ function latestInfoDate(inputDate) {
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
 <title>
-    {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {$displayCompanyName} ({$stockTicker}) Analyst Ratings · stocknear
+    {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {$displayCompanyName} ({$stockTicker}) Analyst Ratings · octopi
 </title>
 <meta name="description" content={`A list of analyst ratings for Advanced Micro Devices (AMD) stock. See upgrades, downgrades, price targets and more from top Wall Street stock analysts.`} />
 
 <!-- Other meta tags -->
-<meta property="og:title" content={`${$displayCompanyName} (${$stockTicker}) Analyst Ratings · stocknear`}/>
+<meta property="og:title" content={`${$displayCompanyName} (${$stockTicker}) Analyst Ratings · octopi`}/>
 <meta property="og:description" content={`A list of analyst ratings for Advanced Micro Devices (AMD) stock. See upgrades, downgrades, price targets and more from top Wall Street stock analysts.`} />
 <meta property="og:type" content="website"/>
 <!-- Add more Open Graph meta tags as needed -->
 
 <!-- Twitter specific meta tags -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content={`${$displayCompanyName} (${$stockTicker}) Analyst Ratings · stocknear`}/>
+<meta name="twitter:title" content={`${$displayCompanyName} (${$stockTicker}) Analyst Ratings · octopi`}/>
 <meta name="twitter:description" content={`A list of analyst ratings for Advanced Micro Devices (AMD) stock. See upgrades, downgrades, price targets and more from top Wall Street stock analysts.`} />
 <!-- Add more Twitter meta tags as needed -->
 

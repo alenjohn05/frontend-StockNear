@@ -1,32 +1,35 @@
+
+
 <script>
   import logo from '$lib/images/feedback_logo.png';
   import { numberOfUnreadNotification } from '$lib/store';
   
-  const emailAddress = 'support@stocknear.com';
+  const emailAddress = 'support@octopi.com';
 </script>
 
 
 <svelte:head>
 
 <meta charset="utf-8" />
+
 <meta name="viewport" content="width=device-width" />
 <title>
-  {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Contact Us · stocknear
+  {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Contact Us · octopi
 </title>
 <meta name="description" content={`Need help, found a bug or you have a feature request. Please contact us to resolve any issues.`} />
 
 <!-- Other meta tags -->
-<meta property="og:title" content={`Contact Us · stocknear`}/>
+<meta property="og:title" content={`Contact Us · octopi`}/>
 <meta property="og:description" content={`Need help, found a bug or you have a feature request. Please contact us to resolve any issues.`} />
-<meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+<meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
 <meta property="og:type" content="website"/>
 <!-- Add more Open Graph meta tags as needed -->
 
 <!-- Twitter specific meta tags -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content={`Contact Us · stocknear`}/>
+<meta name="twitter:title" content={`Contact Us · octopi`}/>
 <meta name="twitter:description" content={`Need help, found a bug or you have a feature request. Please contact us to resolve any issues.`} />
-<meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+<meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
 <!-- Add more Twitter meta tags as needed -->
 
 </svelte:head>

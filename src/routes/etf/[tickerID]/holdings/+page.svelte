@@ -69,19 +69,19 @@ $: {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>
-    {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {$displayCompanyName} ({$etfTicker}) Holdings List · stocknear
+    {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {$displayCompanyName} ({$etfTicker}) Holdings List · octopi
   </title>
   <meta name="description" content={`Get the Holdings List of ${$displayCompanyName} (${$etfTicker}).`} />
   
   <!-- Other meta tags -->
-  <meta property="og:title" content={`${$displayCompanyName} (${$etfTicker}) Holdings List · stocknear`}/>
+  <meta property="og:title" content={`${$displayCompanyName} (${$etfTicker}) Holdings List · octopi`}/>
   <meta property="og:description" content={`Get the Holdings List of ${$displayCompanyName} (${$etfTicker}).`} />
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
 
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content={`${$displayCompanyName} (${$etfTicker}) Holdings List · stocknear`}/>
+  <meta name="twitter:title" content={`${$displayCompanyName} (${$etfTicker}) Holdings List · octopi`}/>
   <meta name="twitter:description" content={`Get the Holdings List of ${$displayCompanyName} (${$etfTicker}).`} />
   <!-- Add more Twitter meta tags as needed -->
 

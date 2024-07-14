@@ -95,23 +95,23 @@ onMount(async () => {
     
         
 <svelte:head>
-    <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Notifications · stocknear</title>
+    <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Notifications · octopi</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
 
     <meta name="description" content="Free Stock Analysis">
     <!-- Other meta tags -->
-    <meta property="og:title" content="Notifications · stocknear"/>
+    <meta property="og:title" content="Notifications · octopi"/>
     <meta property="og:description" content="Free Stock Analysis">
-    <meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+    <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
     <meta property="og:type" content="website"/>
     <!-- Add more Open Graph meta tags as needed -->
 
     <!-- Twitter specific meta tags -->
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content="Notifications · stocknear"/>
+    <meta name="twitter:title" content="Notifications · octopi"/>
     <meta name="twitter:description" content="Free Stock Analysis">
-    <meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+    <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
     <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
     

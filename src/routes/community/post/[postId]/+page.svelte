@@ -142,7 +142,7 @@
   
   const handleCopyLink = async () => {
       dropdownOpen = !dropdownOpen;
-      await navigator.clipboard.writeText("https://stocknear.com/community/post/"+post.id);
+      await navigator.clipboard.writeText("https://octopi.com/community/post/"+post.id);
   
       toast.success('Link copied', {
       style: 'border-radius: 200px; background: #333; color: #fff;'
@@ -528,20 +528,20 @@ function updateVote(postVote) {
   
       
   <svelte:head>
-    <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {post.title} · stocknear</title>
+    <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {post.title} · octopi</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
   
     <meta name="description" content="Your daily dose of stock market funny memes, GIFs, videos and weird news stories. We deliver hundreds of new stock market memes daily.">
     <!-- Other meta tags -->
-    <meta property="og:title" content="{post.title} · stocknear"/>
+    <meta property="og:title" content="{post.title} · octopi"/>
     <meta property="og:description" content="Your daily dose of stock market funny memes, GIFs, videos and weird news stories. We deliver hundreds of new stock market memes daily.">
     <meta property="og:type" content="website"/>
     <!-- Add more Open Graph meta tags as needed -->
   
     <!-- Twitter specific meta tags -->
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content="{post.title} · stocknear"/>
+    <meta name="twitter:title" content="{post.title} · octopi"/>
     <meta name="twitter:description" content="Your daily dose of stock market funny memes, GIFs, videos and weird news stories. We deliver hundreds of new stock market memes daily.">
     <!-- Add more Twitter meta tags as needed -->
   </svelte:head>

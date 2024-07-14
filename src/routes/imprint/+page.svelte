@@ -1,7 +1,7 @@
 <script>
   import { numberOfUnreadNotification } from '$lib/store';
 
-  const emailAddress = 'support@stocknear.com';
+  const emailAddress = 'support@octopi.com';
   let cloudFrontUrl = import.meta.env.VITE_IMAGE_URL;
 
 
@@ -9,23 +9,23 @@
 
 
 <svelte:head>
-  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Imprint · stocknear</title>
+  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Imprint · octopi</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
 
-  <meta name="description" content="Imprint of Stocknear. Contact Information if you need help.">
+  <meta name="description" content="Imprint of Octopi. Contact Information if you need help.">
   <!-- Other meta tags -->
-  <meta property="og:title" content="Imprint · stocknear"/>
-  <meta property="og:description" content="Imprint of Stocknear. Contact Information if you need help.">
-  <meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta property="og:title" content="Imprint · octopi"/>
+  <meta property="og:description" content="Imprint of Octopi. Contact Information if you need help.">
+  <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
 
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Imprint · stocknear"/>
-  <meta name="twitter:description" content="Imprint of Stocknear. Contact Information if you need help.">
-  <meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta name="twitter:title" content="Imprint · octopi"/>
+  <meta name="twitter:description" content="Imprint of Octopi. Contact Information if you need help.">
+  <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
 
@@ -91,7 +91,7 @@
         </p>
 
           <p class="text-white mb-5">
-            Stocknear GmbH
+            Octopi GmbH
             <br>
             Am Lohgraben 30
             <br>

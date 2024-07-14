@@ -220,23 +220,23 @@ onMount(async () => {
 
 
 <svelte:head>
-  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {userData?.username} · stocknear</title>
+  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {userData?.username} · octopi</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
 
-  <meta name="description" content="Explore {userData?.username}'s latest posts, comments, and notebooks on stocknear. Discover new insights and connect with other users in the stocknear community.">
+  <meta name="description" content="Explore {userData?.username}'s latest posts, comments, and notebooks on octopi. Discover new insights and connect with other users in the octopi community.">
   <!-- Other meta tags -->
-  <meta property="og:title" content="{userData?.username} · stocknear"/>
-  <meta property="og:description" content="Explore {userData?.username}'s latest posts, comments, and notebooks on stocknear. Discover new insights and connect with other users in the stocknear community.">
-  <meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta property="og:title" content="{userData?.username} · octopi"/>
+  <meta property="og:description" content="Explore {userData?.username}'s latest posts, comments, and notebooks on octopi. Discover new insights and connect with other users in the octopi community.">
+  <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
 
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="{userData?.username} · stocknear"/>
-  <meta name="twitter:description" content="Explore {userData?.username}'s latest posts, comments, and notebooks on stocknear. Discover new insights and connect with other users in the stocknear community.">
-  <meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta name="twitter:title" content="{userData?.username} · octopi"/>
+  <meta name="twitter:description" content="Explore {userData?.username}'s latest posts, comments, and notebooks on octopi. Discover new insights and connect with other users in the octopi community.">
+  <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
 
@@ -377,7 +377,7 @@ onMount(async () => {
                                   </div>
             
                                   <span class="text-sm text-gray-400  mt-1.5">
-                                    © 2024 stocknear
+                                    © 2024 octopi
                                   </span>
             
                                 </div>

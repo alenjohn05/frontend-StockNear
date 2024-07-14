@@ -53,19 +53,19 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>
-      {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Most Retail Investor Volume · stocknear
+      {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Most Retail Investor Volume · octopi
   </title>
   <meta name="description" content={`On a daily basis we update the retail investor volume to see where most money flows into.`} />
   
   <!-- Other meta tags -->
-  <meta property="og:title" content={`Most Retail Investor Volume · stocknear`}/>
+  <meta property="og:title" content={`Most Retail Investor Volume · octopi`}/>
   <meta property="og:description" content={`On a daily basis we update the retail investor volume to see where most money flows into.`} />
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
   
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content={`Most Retail Investor Volume · stocknear`}/>
+  <meta name="twitter:title" content={`Most Retail Investor Volume · octopi`}/>
   <meta name="twitter:description" content={`On a daily basis we update the retail investor volume to see where most money flows into.`} />
   <!-- Add more Twitter meta tags as needed -->
   

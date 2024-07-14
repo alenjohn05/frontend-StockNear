@@ -109,23 +109,23 @@ async function handleInput(event) {
   
   <!-- HEADER FOR BETTER SEO -->
   <svelte:head>
-    <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} All listed Hedge Funds · stocknear</title>
+    <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} All listed Hedge Funds · octopi</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0">
   
     <meta name="description" content="Find all listed Hedge Funds based on the US Market.">
     <!-- Other meta tags -->
-    <meta property="og:title" content="All listed Hedge Funds · stocknear"/>
+    <meta property="og:title" content="All listed Hedge Funds · octopi"/>
     <meta property="og:description" content="Find all listed Hedge Funds based on the US Market.">
-    <meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+    <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
     <meta property="og:type" content="website"/>
     <!-- Add more Open Graph meta tags as needed -->
   
     <!-- Twitter specific meta tags -->
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content="All listed Hedge Funds · stocknear"/>
+    <meta name="twitter:title" content="All listed Hedge Funds · octopi"/>
     <meta name="twitter:description" content="Find all listed Hedge Funds based on the US Market.">
-    <meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+    <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
     <!-- Add more Twitter meta tags as needed -->
   </svelte:head>
 

@@ -9,23 +9,23 @@
 
 
 <svelte:head>
-  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Portfolio Tournament Rules · stocknear</title>
+  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Portfolio Tournament Rules · octopi</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
 
   <meta name="description" content="Tournament Rules for our monthyl Portfolio competition.">
   <!-- Other meta tags -->
-  <meta property="og:title" content="Portfolio Tournament Rules · stocknear"/>
+  <meta property="og:title" content="Portfolio Tournament Rules · octopi"/>
   <meta property="og:description" content="Tournament Rules for our monthyl Portfolio competition.">
-  <meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
 
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Portfolio Tournament Rules · stocknear"/>
+  <meta name="twitter:title" content="Portfolio Tournament Rules · octopi"/>
   <meta name="twitter:description" content="Tournament Rules for our monthyl Portfolio competition.">
-  <meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
     
@@ -42,7 +42,7 @@
     </div>
 
     <div class="text-white text-lg mt-3 text-center pl-10 pr-10">
-        I am thrilled to announce our latest stocknear exclusive Portfolio Tournament! This exciting event offers you the incredible opportunity to win fantastic prizes each and every month. Join us now and experience the thrill of competing for one or more prizes on a regular basis!
+        I am thrilled to announce our latest octopi exclusive Portfolio Tournament! This exciting event offers you the incredible opportunity to win fantastic prizes each and every month. Join us now and experience the thrill of competing for one or more prizes on a regular basis!
 
          <!-- Start Image -->
          <div class="m-auto flex justify-center mt-3">
@@ -144,7 +144,7 @@
 
       
       <ol class="text-white list-decimal ml-6 sm:ml-3 p-2">
-        <li class="p-1">The organizer of the Prize competition is stocknear.</li>
+        <li class="p-1">The organizer of the Prize competition is octopi.</li>
         <li class="p-1">Participation is free of charge.</li>
         <li class="p-1">
           All individuals worldwide who have reached the age of 18 and comply with the laws and regulations of their respective countries are eligible to participate. Persons involved in the conception and implementation of this prize competition are excluded - this explicitly does not apply to voluntary moderators or other voluntary members who have a special status on the platform.
@@ -159,7 +159,7 @@
           The prizes to be awarded may change from month to month.
         </li>
         <li class="p-1">
-          After the draw, the accounts of the winners will be checked for possible fraud attempts. If no abnormalities are found, the potential winners will be notified by email from stocknear.
+          After the draw, the accounts of the winners will be checked for possible fraud attempts. If no abnormalities are found, the potential winners will be notified by email from octopi.
           If any abnormalities are found, the draw will be repeated. The organizer reserves the right to refuse and reclaim prizes even after the fact and to permanently exclude participants from competitions in case of suspicion of attempted fraud or manipulation for their own benefit or the benefit of third parties as well as to temporarily or permanently block their accounts.
         </li>
         <li class="p-1">

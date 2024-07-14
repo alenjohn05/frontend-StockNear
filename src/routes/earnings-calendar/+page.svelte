@@ -1,4 +1,5 @@
 
+
 <script lang="ts">
 
   import { format, startOfWeek, addDays, addWeeks, subWeeks, differenceInWeeks } from 'date-fns'
@@ -232,22 +233,22 @@ $: {
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
 <title>
-  {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Earnings Calendar · stocknear
+  {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Earnings Calendar · octopi
 </title>
 <meta name="description" content={`A list of upcoming earnings on the US stock market, with dates, times and estimated revenue and earnings growth.`} />
 
 <!-- Other meta tags -->
-<meta property="og:title" content={`Earnings Calendar · stocknear`}/>
+<meta property="og:title" content={`Earnings Calendar · octopi`}/>
 <meta property="og:description" content={`A list of upcoming earnings on the US stock market, with dates, times and estimated revenue and earnings growth.`} />
-<meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+<meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
 <meta property="og:type" content="website"/>
 <!-- Add more Open Graph meta tags as needed -->
 
 <!-- Twitter specific meta tags -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content={`Earnings Calendar · stocknear`}/>
+<meta name="twitter:title" content={`Earnings Calendar · octopi`}/>
 <meta name="twitter:description" content={`A list of upcoming earnings on the US stock market, with dates, times and estimated revenue and earnings growth.`} />
-<meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+<meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
 <!-- Add more Twitter meta tags as needed -->
 
 </svelte:head>

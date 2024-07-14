@@ -73,7 +73,7 @@
   const handleCopyLink = async () => {
   
   
-    await navigator.clipboard.writeText("https://stocknear.com/community/post/"+posts?.id);
+    await navigator.clipboard.writeText("https://octopi.com/community/post/"+posts?.id);
   
     toast.success('Link copied', {
       style: 'border-radius: 200px; background: #333; color: #fff;'
@@ -632,7 +632,7 @@ $: {
                   </a>
                 <!--End Comment Counter-->
                 <!--Start Share Button-->
-                  <Share url ={'https://stocknear.com/community/post/'+posts?.id} />
+                  <Share url ={'https://octopi.com/community/post/'+posts?.id} />
                 <!--End Share Button-->
                 
                 </div>

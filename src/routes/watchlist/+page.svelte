@@ -351,23 +351,23 @@ onDestroy( () => {
 
 
 <svelte:head>
-  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Stock Watchlist · stocknear</title>
+  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Stock Watchlist · octopi</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
 
   <meta name="description" content="A stock watchlist tracker tool. Add stocks and ETFs to keep track of their performance.">
   <!-- Other meta tags -->
-  <meta property="og:title" content="Stock Watchlist · stocknear"/>
+  <meta property="og:title" content="Stock Watchlist · octopi"/>
   <meta property="og:description" content="A stock watchlist tracker tool. Add stocks and ETFs to keep track of their performance.">
-  <meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
 
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Stock Watchlist · stocknear"/>
+  <meta name="twitter:title" content="Stock Watchlist · octopi"/>
   <meta name="twitter:description" content="A stock watchlist tracker tool. Add stocks and ETFs to keep track of their performance.">
-  <meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
     

@@ -52,22 +52,22 @@ function checkIfYoutubeVideo(link) {
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
 <title>
-  {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Today's Stock Market News and Breaking Stories · stocknear
+  {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Today's Stock Market News and Breaking Stories · octopi
 </title>
 <meta name="description" content={`Get the latest stock market news and breaking stories from the world's best finance and investing websites.`} />
 
 <!-- Other meta tags -->
-<meta property="og:title" content={`Today's Stock Market News and Breaking Stories · stocknear`}/>
+<meta property="og:title" content={`Today's Stock Market News and Breaking Stories · octopi`}/>
 <meta property="og:description" content={`Get the latest stock market news and breaking stories from the world's best finance and investing websites.`} />
-<meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+<meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
 <meta property="og:type" content="website"/>
 <!-- Add more Open Graph meta tags as needed -->
 
 <!-- Twitter specific meta tags -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content={`Today's Stock Market News and Breaking Stories · stocknear`}/>
+<meta name="twitter:title" content={`Today's Stock Market News and Breaking Stories · octopi`}/>
 <meta name="twitter:description" content={`Get the latest stock market news and breaking stories from the world's best finance and investing websites.`} />
-<meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+<meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
 <!-- Add more Twitter meta tags as needed -->
 
 </svelte:head>
@@ -82,7 +82,8 @@ function checkIfYoutubeVideo(link) {
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       {#if news.length !== 0}
                       {#each news as item}
-                          <div class="flex flex-col w-full mt-5 bg-[#131722] border border-[#2a2e39] shadow-lg h-auto sm:h-[430px] pb-10 sm:pb-5 rounded-none sm:rounded-lg m-auto">
+                          <div class="flex flex-col w-full mt-5 bg-[#131722] border border-[#2a2e39]
+                           shadow-lg h-auto sm:h-[430px] pb-10 sm:pb-5 rounded-none sm:rounded-lg m-auto">
                             {#if videoId = checkIfYoutubeVideo(item.url)}
                                 <iframe
                                     class="w-full h-56 rounded-none sm:rounded-lg"

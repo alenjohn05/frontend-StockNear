@@ -22,21 +22,21 @@
 </script>
 
 <svelte:head>
-  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} About · stocknear</title>
+  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} About · octopi</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
 
-  <meta name="description" content="Welcome to Stocknear — a site that aims to be the internet's best source of free stock data and information for small investors.">
+  <meta name="description" content="Welcome to Octopi — a site that aims to be the internet's best source of free stock data and information for small investors.">
   <!-- Other meta tags -->
-  <meta property="og:title" content="About · stocknear"/>
-  <meta property="og:description" content="Welcome to Stocknear — a site that aims to be the internet's best source of free stock data and information for small investors.">
+  <meta property="og:title" content="About · octopi"/>
+  <meta property="og:description" content="Welcome to Octopi — a site that aims to be the internet's best source of free stock data and information for small investors.">
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
 
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="About · stocknear"/>
-  <meta name="twitter:description" content="Welcome to Stocknear — a site that aims to be the internet's best source of free stock data and information for small investors.">
+  <meta name="twitter:title" content="About · octopi"/>
+  <meta name="twitter:description" content="Welcome to Octopi — a site that aims to be the internet's best source of free stock data and information for small investors.">
   <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
     
@@ -58,7 +58,7 @@
 
       
       <div class="text-white text-lg mt-3 text-center pl-10 pr-10">
-        Our mission is to create the first large-scale stock analysis platform in which the platform's interests are aligned with those of the user—a platform founded on ethical design principles. At the heart of these principles is the concept of complete transparency, which is why the entire codebase is <a href="https://github.com/stocknear" rel="noopener noreferrer" target="_blank" class="text-[#FFBE00] sm:hover:text-white sm:hover:underline" >open source</a>. 
+        Our mission is to create the first large-scale stock analysis platform in which the platform's interests are aligned with those of the user—a platform founded on ethical design principles. At the heart of these principles is the concept of complete transparency, which is why the entire codebase is <a href="https://github.com/octopi" rel="noopener noreferrer" target="_blank" class="text-[#FFBE00] sm:hover:text-white sm:hover:underline" >open source</a>. 
 
            <!-- Start Image -->
            <div class="m-auto flex justify-center mt-6">
@@ -98,8 +98,8 @@
 
           
           <div class="text-white text-lg mt-3 text-center pl-10 pr-10">
-            Stocknear has no ads or affiliate marketing, or tracking. 
-            Your attention and data are never monetized. If you're skeptical, just look at our code <a href="https://github.com/stocknear" rel="noopener noreferrer" target="_blank" class="text-[#FFBE00] sm:hover:text-white sm:hover:underline" >here</a>. 
+            Octopi has no ads or affiliate marketing, or tracking. 
+            Your attention and data are never monetized. If you're skeptical, just look at our code <a href="https://github.com/octopi" rel="noopener noreferrer" target="_blank" class="text-[#FFBE00] sm:hover:text-white sm:hover:underline" >here</a>. 
           </div>
       </div>
       <!--End Section-->
@@ -115,7 +115,7 @@
 
         
         <div class="text-white text-lg mt-3 text-center pl-10 pr-10">
-          On Stocknear, you won't encounter intrusive pop-ups prompting you to sign up unless it's essential for accessing all platform features. We don't manipulate you into using our platform more than you want to. If you wish to cancel your subscription, there's no survey to fill out; you can cancel it in just 2 seconds.
+          On Octopi, you won't encounter intrusive pop-ups prompting you to sign up unless it's essential for accessing all platform features. We don't manipulate you into using our platform more than you want to. If you wish to cancel your subscription, there's no survey to fill out; you can cancel it in just 2 seconds.
         </div>
     </div>
     <!--End Section-->
@@ -177,7 +177,7 @@
           Unlike most financial websites run by programmers, I combine my programming skills with a scientific approach.
           <br>
           <br>
-          If you find value in stocknear's approach to tackling stock analysis tasks, that's great. If not, I wish you all the best on your trading journey and maybe we will see us again in the future.
+          If you find value in octopi's approach to tackling stock analysis tasks, that's great. If not, I wish you all the best on your trading journey and maybe we will see us again in the future.
           <!-- Start Image -->
            <div class="m-auto flex justify-center mt-5">
             <div class="relative">

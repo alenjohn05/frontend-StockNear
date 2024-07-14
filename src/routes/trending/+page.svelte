@@ -56,23 +56,23 @@ $: {
     
   <!-- HEADER FOR BETTER SEO -->
   <svelte:head>
-    <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Today's Top Trending Stocks · stocknear</title>
+    <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Today's Top Trending Stocks · octopi</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
   
     <meta name="description" content="A list of the most popular stocks today based on pageviews. The list is updated every 15 min.">
     <!-- Other meta tags -->
-    <meta property="og:title" content="Today's Top Trending Stocks · stocknear"/>
+    <meta property="og:title" content="Today's Top Trending Stocks · octopi"/>
     <meta property="og:description" content="A list of the most popular stocks today based on pageviews. The list is updated every 15 min.">
-    <meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+    <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
     <meta property="og:type" content="website"/>
     <!-- Add more Open Graph meta tags as needed -->
   
     <!-- Twitter specific meta tags -->
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content="Today's Top Trending Stocks · stocknear"/>
+    <meta name="twitter:title" content="Today's Top Trending Stocks · octopi"/>
     <meta name="twitter:description" content="A list of the most popular stocks today based on pageviews. The list is updated every 15 min.">
-    <meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+    <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
     <!-- Add more Twitter meta tags as needed -->
   </svelte:head>
       

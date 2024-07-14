@@ -164,19 +164,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>
-      {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {$displayCompanyName} ({$etfTicker}) Dividend History, Dates & Yield · stocknear
+      {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {$displayCompanyName} ({$etfTicker}) Dividend History, Dates & Yield · octopi
     </title>
   
     <meta name="description" content={`Get the latest dividend data for ${$displayCompanyName} (${$etfTicker}) stock price quote with breaking news, financials, statistics, charts and more.`}>
     <!-- Other meta tags -->
-    <meta property="og:title" content={`${$displayCompanyName} (${$etfTicker}) Dividend History, Dates & Yield · stocknear`}/>
+    <meta property="og:title" content={`${$displayCompanyName} (${$etfTicker}) Dividend History, Dates & Yield · octopi`}/>
     <meta property="og:description" content={`Get the latest dividend data for ${$displayCompanyName} (${$etfTicker}), including dividend history, yield, key dates, growth and other metrics.`} />
     <meta property="og:type" content="website"/>
     <!-- Add more Open Graph meta tags as needed -->
   
     <!-- Twitter specific meta tags -->
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content={`${$displayCompanyName} (${$etfTicker}) Dividend History, Dates & Yield · stocknear`}/>
+    <meta name="twitter:title" content={`${$displayCompanyName} (${$etfTicker}) Dividend History, Dates & Yield · octopi`}/>
     <meta name="twitter:description" content={`Get the latest dividend data for ${$displayCompanyName} (${$etfTicker}) stock price quote with breaking news, financials, statistics, charts and more.`} />
     <!-- Add more Twitter meta tags as needed -->
   

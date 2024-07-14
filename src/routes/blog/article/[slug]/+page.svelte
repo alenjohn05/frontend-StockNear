@@ -17,7 +17,7 @@ const article = data?.getArticle;
 <svelte:head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {article?.title} · stocknear</title>
+    <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {article?.title} · octopi</title>
     <meta name="description" content="Latest articles on stocks, finance and investing">
     <!-- Other meta tags -->
     <meta property="og:title" content="{article?.title}"/>

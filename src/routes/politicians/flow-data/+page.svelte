@@ -363,23 +363,23 @@
   
   <!-- HEADER FOR BETTER SEO -->
   <svelte:head>
-      <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Latest Congressional Trading · stocknear</title>
+      <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Latest Congressional Trading · octopi</title>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width" />
   
       <meta name="description" content="Find the latest congress trading and see what insiders who have access to regulations are investing.">
       <!-- Other meta tags -->
-      <meta property="og:title" content="Latest Congressional Trading · stocknear"/>
+      <meta property="og:title" content="Latest Congressional Trading · octopi"/>
       <meta property="og:description" content="Find the latest congress trading and see what insiders who have access to regulations are investing.">
-      <meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+      <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
       <meta property="og:type" content="website"/>
       <!-- Add more Open Graph meta tags as needed -->
   
       <!-- Twitter specific meta tags -->
       <meta name="twitter:card" content="summary_large_image"/>
-      <meta name="twitter:title" content="Latest Congressional Trading · stocknear"/>
+      <meta name="twitter:title" content="Latest Congressional Trading · octopi"/>
       <meta name="twitter:description" content="Find the latest congress trading and see what insiders who have access to regulations are investing.">
-      <meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+      <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
       <!-- Add more Twitter meta tags as needed -->
   </svelte:head>
   

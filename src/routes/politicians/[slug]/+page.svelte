@@ -209,22 +209,22 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>
-      {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''}  Which stocks is {name} trading? · stocknear
+      {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''}  Which stocks is {name} trading? · octopi
   </title>
   <meta name="description" content={`A list of all trades from the US Politician ${name}.`} />
   
   <!-- Other meta tags -->
-  <meta property="og:title" content={`Which stocks is ${name} trading? · stocknear`}/>
+  <meta property="og:title" content={`Which stocks is ${name} trading? · octopi`}/>
   <meta property="og:description" content={`A list of all trades from the US Politician ${name}.`} />
-  <meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
   
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content={`Which stocks is ${name} trading? · stocknear`}/>
+  <meta name="twitter:title" content={`Which stocks is ${name} trading? · octopi`}/>
   <meta name="twitter:description" content={`A list of all trades from the US Politician ${name}.`} />
-  <meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <!-- Add more Twitter meta tags as needed -->
   
   </svelte:head>

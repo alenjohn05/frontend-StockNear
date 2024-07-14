@@ -254,19 +254,19 @@ $: {
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
 <title>
-  {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {$displayCompanyName} ({$etfTicker}) Options Activity · stocknear
+  {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {$displayCompanyName} ({$etfTicker}) Options Activity · octopi
 </title>
 <meta name="description" content={`Detailed informaton of unusual options activity for ${$displayCompanyName} (${$etfTicker}).`} />
 
 <!-- Other meta tags -->
-<meta property="og:title" content={`${$displayCompanyName} (${$etfTicker}) Options Activity · stocknear`}/>
+<meta property="og:title" content={`${$displayCompanyName} (${$etfTicker}) Options Activity · octopi`}/>
 <meta property="og:description" content={`Detailed informaton of unusual options activity for ${$displayCompanyName} (${$etfTicker}).`} />
 <meta property="og:type" content="website"/>
 <!-- Add more Open Graph meta tags as needed -->
 
 <!-- Twitter specific meta tags -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content={`${$displayCompanyName} (${$etfTicker}) Options Activity · stocknear`}/>
+<meta name="twitter:title" content={`${$displayCompanyName} (${$etfTicker}) Options Activity · octopi`}/>
 <meta name="twitter:description" content={`Detailed informaton of unusual options activity for ${$displayCompanyName} (${$etfTicker}).`} />
 <!-- Add more Twitter meta tags as needed -->
 

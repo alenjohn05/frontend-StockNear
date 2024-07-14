@@ -62,12 +62,12 @@ grid: {
 <svelte:head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Long Call Options · stocknear</title>
+    <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Long Call Options · octopi</title>
     <meta name="description" content="Latest articles on stocks, finance and investing">
     <!-- Other meta tags -->
     <meta property="og:title" content="Long Call Options"/>
     <meta property="og:description" content="Understand what call options are and when they become profitable in your trading strategy."/>
-    <meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+    <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
     <meta property="og:type" content="article"/>
     <!-- Add more Open Graph meta tags as needed -->
 
@@ -75,7 +75,7 @@ grid: {
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content="Long Call Options"/>
     <meta name="twitter:description" content="Understand what call options are and when they become profitable in your trading strategy."/>
-    <meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+    <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
     <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
 

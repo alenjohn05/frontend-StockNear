@@ -1,3 +1,4 @@
+
 <script lang='ts'>
   import { stockTicker, userRegion, getCache, setCache, displayCompanyName, screenWidth, numberOfUnreadNotification } from '$lib/store';
   import InfiniteLoading from '$lib/components/InfiniteLoading.svelte';
@@ -120,22 +121,22 @@
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width" />
       <title>
-        {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {$displayCompanyName} ({$stockTicker}) · Q{quarter} {year} · Earnings Call Transcript · stocknear
+        {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {$displayCompanyName} ({$stockTicker}) · Q{quarter} {year} · Earnings Call Transcript · octopi
       </title>
       <meta name="description" content={`Get the latest Earnings Call Transcript of ${$displayCompanyName} (${$stockTicker}) for different years and quarters.`} />
       
       <!-- Other meta tags -->
-      <meta property="og:title" content={`${$displayCompanyName} (${$stockTicker}) · Q${quarter} ${year} · Earnings Call Transcript · stocknear`}/>
+      <meta property="og:title" content={`${$displayCompanyName} (${$stockTicker}) · Q${quarter} ${year} · Earnings Call Transcript · octopi`}/>
       <meta property="og:description" content={`Get the latest Earnings Call Transcript of ${$displayCompanyName} (${$stockTicker}) for different years and quarters.`} />
-      <meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+      <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
       <meta property="og:type" content="website"/>
       <!-- Add more Open Graph meta tags as needed -->
     
       <!-- Twitter specific meta tags -->
       <meta name="twitter:card" content="summary_large_image"/>
-      <meta name="twitter:title" content={`${$displayCompanyName} (${$stockTicker}) · Q${quarter} ${year} · Earnings Call Transcript · stocknear`}/>
+      <meta name="twitter:title" content={`${$displayCompanyName} (${$stockTicker}) · Q${quarter} ${year} · Earnings Call Transcript · octopi`}/>
       <meta name="twitter:description" content={`Get the latest Earnings Call Transcript of ${$displayCompanyName} (${$stockTicker}) for different years and quarters.`} />
-      <meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+      <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
       <!-- Add more Twitter meta tags as needed -->
     
     </svelte:head>

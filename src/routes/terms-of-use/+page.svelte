@@ -8,20 +8,20 @@
 
 
 <svelte:head>
-  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Terms of Use · stocknear</title>
+  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Terms of Use · octopi</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
 
   <!-- Other meta tags -->
-  <meta property="og:title" content="Terms of Use · stocknear"/>
-  <meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta property="og:title" content="Terms of Use · octopi"/>
+  <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
 
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Terms of Use · stocknear"/>
-  <meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta name="twitter:title" content="Terms of Use · octopi"/>
+  <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
 	    
@@ -93,45 +93,45 @@
                 Please carefully read the terms and conditions before using this website.
                 By using the site, you agree to these terms as well as our
                 <a href="/privacy-policy" class="text-[#FFBE00] hover:text-white hover:underline">Privacy Policy</a>
-                Stocknear has the right to alter or modify these conditions at any time. 
+                Octopi has the right to alter or modify these conditions at any time. 
             </p>
 
          
         
             <h1 class="text-white text-2xl font-medium text-start underline">
-                Stocknear does not provide investment advice
+                Octopi does not provide investment advice
             </h1> 
             <p class="text-gray-300 mb-5">
                 The information provided is solely for educational purposes only.
                 Before making any investments or financial decisions, we recommend that you consult with a knowledgeable financial adviser.
                 <br>
                 <br>
-                Stocknear's content is not financial advice in any way. We do not and will never make recommendations on our website. Our analyst data is supplied by a third source, and we do not recommend making judgments primarily exclusively on analyst price predictions or projections. We give this information so that users may learn more about equities and discover what analysts say about them. Analysts can make mistakes, thus making a conclusion purely on this data we believe is risky.
+                Octopi's content is not financial advice in any way. We do not and will never make recommendations on our website. Our analyst data is supplied by a third source, and we do not recommend making judgments primarily exclusively on analyst price predictions or projections. We give this information so that users may learn more about equities and discover what analysts say about them. Analysts can make mistakes, thus making a conclusion purely on this data we believe is risky.
                 <br>
                 <br>
-                Stocknear does not know you, your personal investment goals, or your risk tolerance, so we do not and will not give you any financial advice on our platform. 
+                Octopi does not know you, your personal investment goals, or your risk tolerance, so we do not and will not give you any financial advice on our platform. 
                 
                 <br>
                 <br>
                 We always advise seeking expert assistance, whether it is financial, legal, or tax guidance. We do not offer any.
                 <br>
                 <br>
-                Stocknear is not a broker/dealer or a licensed investment advisor.
+                Octopi is not a broker/dealer or a licensed investment advisor.
                 <br>
                 <br>
-                IN NO EVENT SHALL ANY OF THE STOCKNEAR PARTIES BE LIABLE FOR ANY INVESTMENT GAIN/LOSS YOU INCUR IN THE STOCK MARKET.
+                IN NO EVENT SHALL ANY OF THE OCTOPI PARTIES BE LIABLE FOR ANY INVESTMENT GAIN/LOSS YOU INCUR IN THE STOCK MARKET.
                 <br>
                 <br>
                 YOU AGREE THAT THE SERVICE DOES NOT PROVIDE TRADING, INVESTING, FINANCIAL, TAX, LEGAL, OR OTHER ADVICE, AND YOU ACCEPT SOLE RESPONSIBILITY FOR ANY DECISIONS YOU MAKE BASED ON INFORMATION OBTAINED FROM THE SERVICE. THE SERVICE DOES NOT PROVIDE FINANCIAL PLANNING, INVESTMENT ADVICE, BROKERAGE, OR TAX ADVICE. 
             </p>
 
             <h1 class="text-2xl font-medium text-white text-start underline">
-                Stocknear does not guarantee accuracy of data        
+                Octopi does not guarantee accuracy of data        
             </h1>
             <p class="text-gray-300 mb-5">
                 Our stock data comes from a variety of sources.
                 Although every attempt is made to assure correctness, it cannot always be guaranteed.    
-                Before making an investment choice, stocknear recommends that you confirm the accuracy of any data by reviewing a company's SEC filings.
+                Before making an investment choice, octopi recommends that you confirm the accuracy of any data by reviewing a company's SEC filings.
                 
             </p>
     
@@ -143,10 +143,10 @@
             </p>
     
             <h1 class="text-2xl font-medium text-white text-start underline">
-                Liability of stocknear and its authors        
+                Liability of octopi and its authors        
             </h1>
             <p class="text-gray-300 mb-5 ">
-                Stocknear or its authors will not be liable to any party for any damages resulting from the use of the site's content.
+                Octopi or its authors will not be liable to any party for any damages resulting from the use of the site's content.
                 The contents of our pages were created with the utmost care. However, we cannot guarantee the accuracy, completeness and timeliness of the content. As a service provider, we are responsible for our own content on these pages under the general laws according to § 7 para.1 TMG. According to §§ 8 to 10 TMG, however, we are not obligated as a service provider to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity. Obligations to remove or block the use of information under the general laws remain unaffected. However, liability in this regard is only possible from the point in time at which a concrete infringement of the law becomes known. If we become aware of such infringements, we will remove this content immediately. 
             </p>
     
@@ -181,11 +181,11 @@
                 Subscription fees are due in advance and your subscription will automatically renew for the annual or other subscription period you originally signed up for, until you notify us of your decision to terminate your subscription.
                 <br>
                 <br>
-                Cancellation can be performed via the billing portal on the Account Settings page or via email to support@stocknear.com.
+                Cancellation can be performed via the billing portal on the Account Settings page or via email to support@octopi.com.
 
                 <br>
                 <br>
-                If you are not 100% satisfied with your purchase, you can get a full refund on subscription fees up to 30 days from the initial date of purchase (i.e., subscription date). After 30 days, the fees for this product are completely non-refundable. Refund requests can be made to support@stocknear.com.
+                If you are not 100% satisfied with your purchase, you can get a full refund on subscription fees up to 30 days from the initial date of purchase (i.e., subscription date). After 30 days, the fees for this product are completely non-refundable. Refund requests can be made to support@octopi.com.
             
             </p>
 
@@ -233,7 +233,7 @@
                 All data on this website is provided solely for informational reasons and should not be used to make trading or investing decisions.
                 <br>
                 <br>
-                We are, nevertheless, dedicated to displaying the highest-quality and most accurate statistics possible. If you see any errors or inconsistencies, please let us know by using the contact form or emailing us directly at support@stocknear.com.
+                We are, nevertheless, dedicated to displaying the highest-quality and most accurate statistics possible. If you see any errors or inconsistencies, please let us know by using the contact form or emailing us directly at support@octopi.com.
                 <br>
                 <br>
                 Our Financial Data is provided soley by <a href="https://site.financialmodelingprep.com/" class="text-[#FFBE00] hover:underline">FMP</a> and <a href="https://docs.benzinga.com/home" class="text-[#FFBE00] hover:underline">Benzinga</a>.
@@ -256,7 +256,7 @@
                 
                 </a> 
                 -->
-                represent the whole agreement between you and stocknear.
+                represent the whole agreement between you and octopi.
                 <br>
                 <br>
                 YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS OF SERVICE AND AGREE TO BE BOUND BY THEM BY USING SERVICE OR OTHER SERVICES PROVIDED BY US. 

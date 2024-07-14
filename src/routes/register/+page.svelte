@@ -1,3 +1,4 @@
+
 <script>
 	
 	import { enhance } from '$app/forms';
@@ -76,9 +77,9 @@
 	<!-- HEADER FOR BETTER SEO -->
 	<svelte:head>
 		<meta charset="utf-8">
-		<title> Sign Up · stocknear</title>
+		<title> Sign Up · octopi</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<meta name="description" content="Sign Up to stocknear to become part of the largest trading community in the world.">
+		<meta name="description" content="Sign Up to octopi to become part of the largest trading community in the world.">
 	</svelte:head>
 	
 		
@@ -164,7 +165,7 @@
 							Register
 						</button>
 					</div>
-					<p class="hidden sm:block pb-1 text-xs text-center w-full max-w-lg text-white">By registering you agree to stocknear's
+					<p class="hidden sm:block pb-1 text-xs text-center w-full max-w-lg text-white">By registering you agree to octopi's
 						<a href="/terms-of-use" class="text-[#FFBE00] hover:underline">Terms of Use</a>
 						and acknowledge that you've read our <a href="/privacy-policy" class="text-[#FFBE00] hover:underline">Privacy Policy</a>.
 					</p>
@@ -223,7 +224,7 @@
 	</div>
 
 	<div class="relative sm:hidden w-5/6 flex justify-center items-center m-auto">
-		<p class="absolute bottom-5 pb-1 text-xs text-center w-full max-w-lg text-gray-300">By registering you agree to stocknear's
+		<p class="absolute bottom-5 pb-1 text-xs text-center w-full max-w-lg text-gray-300">By registering you agree to octopi's
 			<a href="/terms-of-use" class="text-[#FFBE00] hover:underline">Terms of Use</a>
 			and acknowledge that you've read our <a href="/privacy-policy" class="text-[#FFBE00] hover:underline">Privacy Policy</a>.
 		</p>

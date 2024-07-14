@@ -69,9 +69,9 @@
 	
 	<!-- HEADER FOR BETTER SEO -->
 	<svelte:head>
-		<title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Create a Post · stocknear</title>
+		<title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Create a Post · octopi</title>
 		<meta name="description" content="
-		Create a post to share your insights, latest news and memes to the stocknear community.">
+		Create a post to share your insights, latest news and memes to the octopi community.">
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 	</svelte:head>

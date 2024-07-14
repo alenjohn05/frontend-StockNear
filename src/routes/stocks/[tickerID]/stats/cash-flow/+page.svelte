@@ -1,3 +1,4 @@
+
 <script lang="ts">
 import Chart from '$lib/components/Chart.svelte'
 import {numberOfUnreadNotification,displayCompanyName, stockTicker} from '$lib/store';
@@ -372,22 +373,22 @@ $: {
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
 <title>
-  {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {$displayCompanyName} ({$stockTicker}) Cash Flow Statement · stocknear
+  {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {$displayCompanyName} ({$stockTicker}) Cash Flow Statement · octopi
 </title>
 <meta name="description" content={`Detailed cash flow statements for ${$displayCompanyName} (${$stockTicker}), including operating cash flow, capex and free cash flow.`} />
 
 <!-- Other meta tags -->
-<meta property="og:title" content={`${$displayCompanyName} (${$stockTicker}) Cash Flow Statement · stocknear`}/>
+<meta property="og:title" content={`${$displayCompanyName} (${$stockTicker}) Cash Flow Statement · octopi`}/>
 <meta property="og:description" content={`Detailed cash flow statements for ${$displayCompanyName} (${$stockTicker}), including operating cash flow, capex and free cash flow.`} />
-<meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+<meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
 <meta property="og:type" content="website"/>
 <!-- Add more Open Graph meta tags as needed -->
 
 <!-- Twitter specific meta tags -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content={`${$displayCompanyName} (${$stockTicker}) Cash Flow Statement · stocknear`}/>
+<meta name="twitter:title" content={`${$displayCompanyName} (${$stockTicker}) Cash Flow Statement · octopi`}/>
 <meta name="twitter:description" content={`Detailed cash flow statements for ${$displayCompanyName} (${$stockTicker}), including operating cash flow, capex and free cash flow.`} />
-<meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+<meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
 <!-- Add more Twitter meta tags as needed -->
 
 </svelte:head>

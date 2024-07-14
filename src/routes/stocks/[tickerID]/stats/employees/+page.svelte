@@ -278,19 +278,19 @@ optionsGrowth = plotGrowth();
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
 <title>
-{$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {$displayCompanyName} ({$stockTicker}) Number of Employees · stocknear
+{$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} {$displayCompanyName} ({$stockTicker}) Number of Employees · octopi
 </title>
 <meta name="description" content={`Detailed historical employees number for ${$displayCompanyName} (${$stockTicker}). See many years of change, growth and the impact.`} />
 
 <!-- Other meta tags -->
-<meta property="og:title" content={`${$displayCompanyName} (${$stockTicker}) Number of Employees · stocknear`}/>
+<meta property="og:title" content={`${$displayCompanyName} (${$stockTicker}) Number of Employees · octopi`}/>
 <meta property="og:description" content={`Detailed historical employees number for ${$displayCompanyName} (${$stockTicker}). See many years of change, growth and the impact.`} />
 <meta property="og:type" content="website"/>
 <!-- Add more Open Graph meta tags as needed -->
 
 <!-- Twitter specific meta tags -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content={`${$displayCompanyName} (${$stockTicker}) Number of Employees · stocknear`}/>
+<meta name="twitter:title" content={`${$displayCompanyName} (${$stockTicker}) Number of Employees · octopi`}/>
 <meta name="twitter:description" content={`Detailed historical employees number for ${$displayCompanyName} (${$stockTicker}). See many years of change, growth and the impact.`} />
 <!-- Add more Twitter meta tags as needed -->
 

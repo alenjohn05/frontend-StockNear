@@ -124,7 +124,7 @@ else {
       <div class="text-white text-sm border bg-[#2A2E39] border-gray-800 p-3 rounded-lg overflow-y-scroll h-56">
         
         <ol class="text-white list-decimal ml-3 p-2">
-          <li class="p-1">The organizer of the Prize competition is stocknear.</li>
+          <li class="p-1">The organizer of the Prize competition is octopi.</li>
           <li class="p-1">Participation is free of charge.</li>
           <li class="p-1">
             All individuals worldwide who have reached the age of 18 and comply with the laws and regulations of their respective countries are eligible to participate. Persons involved in the conception and implementation of this prize competition are excluded - this explicitly does not apply to voluntary moderators or other voluntary members who have a special status on the platform.
@@ -139,7 +139,7 @@ else {
             The prizes to be awarded may change from month to month.
           </li>
           <li class="p-1">
-            After the draw, the accounts of the winners will be checked for possible fraud attempts. If no abnormalities are found, the potential winners will be notified by email from stocknear.
+            After the draw, the accounts of the winners will be checked for possible fraud attempts. If no abnormalities are found, the potential winners will be notified by email from octopi.
             If any abnormalities are found, the draw will be repeated. The organizer reserves the right to refuse and reclaim prizes even after the fact and to permanently exclude participants from competitions in case of suspicion of attempted fraud or manipulation for their own benefit or the benefit of third parties as well as to temporarily or permanently block their accounts.
           </li>
           <li class="p-1">
@@ -266,7 +266,7 @@ else {
       <div class="text-white text-sm border bg-[#131722]  border-gray-800 p-3 rounded-lg overflow-y-scroll h-56">
         
         <ol class="text-white list-decimal ml-3 p-2">
-          <li class="p-1">The organizer of the Prize competition is stocknear.</li>
+          <li class="p-1">The organizer of the Prize competition is octopi.</li>
           <li class="p-1">Participation is free of charge.</li>
           <li class="p-1">
             All individuals worldwide who have reached the age of 18 and comply with the laws and regulations of their respective countries are eligible to participate. Persons involved in the conception and implementation of this prize competition are excluded - this explicitly does not apply to voluntary moderators or other voluntary members who have a special status on the platform.
@@ -281,7 +281,7 @@ else {
             The prizes to be awarded may change from month to month.
           </li>
           <li class="p-1">
-            After the draw, the accounts of the winners will be checked for possible fraud attempts. If no abnormalities are found, the potential winners will be notified by email from stocknear.
+            After the draw, the accounts of the winners will be checked for possible fraud attempts. If no abnormalities are found, the potential winners will be notified by email from octopi.
             If any abnormalities are found, the draw will be repeated. The organizer reserves the right to refuse and reclaim prizes even after the fact and to permanently exclude participants from competitions in case of suspicion of attempted fraud or manipulation for their own benefit or the benefit of third parties as well as to temporarily or permanently block their accounts.
           </li>
           <li class="p-1">

@@ -29,9 +29,9 @@ async function resetPassword(event) {
 <!-- HEADER FOR BETTER SEO -->
 <svelte:head>
     <meta charset="utf-8">
-    <title> Reset Password · stocknear</title>
+    <title> Reset Password · octopi</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="Reset your password to sign in to your stocknear account.">
+    <meta name="description" content="Reset your password to sign in to your octopi account.">
 </svelte:head>
 
 <div class="flex flex-col items-center min-h-screen w-full max-w-3xl m-auto mt-40">

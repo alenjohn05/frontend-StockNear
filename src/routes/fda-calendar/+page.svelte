@@ -53,19 +53,19 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>
-      {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} FDA Calendar · stocknear
+      {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} FDA Calendar · octopi
   </title>
   <meta name="description" content={`FDA Approval to track success rates of Biotech companies in the stock market.`} />
   
   <!-- Other meta tags -->
-  <meta property="og:title" content={`FDA Calendar · stocknear`}/>
+  <meta property="og:title" content={`FDA Calendar · octopi`}/>
   <meta property="og:description" content={`FDA Approval to track success rates of Biotech companies in the stock market.`} />
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
   
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content={`FDA Calendar · stocknear`}/>
+  <meta name="twitter:title" content={`FDA Calendar · octopi`}/>
   <meta name="twitter:description" content={`FDA Approval to track success rates of Biotech companies in the stock market.`} />
   <!-- Add more Twitter meta tags as needed -->
   

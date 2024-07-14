@@ -96,8 +96,8 @@ const pages = [
     
 ];
 
-const site = "https://stocknear.com"
-const website = "https://stocknear.com"
+const site = "https://octopi.com"
+const website = "https://octopi.com"
 
 
 /** @type {import('./$types').RequestHandler} */

@@ -132,20 +132,20 @@ async function loadSearchData() {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>
-    {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Free Stock Analysis Information for Small Investors · stocknear
+    {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Free Stock Analysis Information for Small Investors · octopi
   </title>
 
-  <meta name="description" content="Stocknear has everything you need to analyze stocks with help of AI, including detailed financial data, statistics, news and charts.">
+  <meta name="description" content="Octopi has everything you need to analyze stocks with help of AI, including detailed financial data, statistics, news and charts.">
   <!-- Other meta tags -->
-  <meta property="og:title" content="Free Stock Analysis Information for Small Investors · stocknear"/>
-  <meta property="og:description" content="Stocknear has everything you need to analyze stocks with help of AI, including detailed financial data, statistics, news and charts."/>
+  <meta property="og:title" content="Free Stock Analysis Information for Small Investors · octopi"/>
+  <meta property="og:description" content="Octopi has everything you need to analyze stocks with help of AI, including detailed financial data, statistics, news and charts."/>
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
 
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Free Stock Analysis Information for Small Investors · stocknear"/>
-  <meta name="twitter:description" content="Stocknear has everything you need to analyze stocks with help of AI, including detailed financial data, statistics, news and charts."/>
+  <meta name="twitter:title" content="Free Stock Analysis Information for Small Investors · octopi"/>
+  <meta name="twitter:description" content="Octopi has everything you need to analyze stocks with help of AI, including detailed financial data, statistics, news and charts."/>
   <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
 
@@ -312,7 +312,8 @@ async function loadSearchData() {
                                           </div>
                                         </div>
                                       </a>
-                                      <a href="/analysts/5874f5e45064ed0001eb1bc5" class="px-4 py-3  border border-[#2a2e39] text-white bg-[#131722] rounded-lg flex flex-row items-center font-medium transition duration-150 ease-in-out group">
+                                      <a href="/analysts/5874f5e45064ed0001eb1bc5" class="px-4 py-3  border border-[#2a2e39] 
+                                      text-white bg-[#131722] rounded-lg flex flex-row items-center font-medium transition duration-150 ease-in-out group">
                                         <div class="flex flex-row items-center">
                                           <div class="shadow-lg rounded-full border border-slate-600 w-10 h-10 relative analyst-striped bg-[#737D62] flex items-center justify-center">
                                             <img style="clip-path: circle(50%);" class="rounded-full w-8" src={analystAvatar} loading="lazy"/>

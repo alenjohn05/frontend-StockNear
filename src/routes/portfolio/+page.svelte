@@ -140,23 +140,23 @@ if (usRegion.includes(value)) {
 
 
 <svelte:head>
-  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Portfolio · stocknear</title>
+  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Portfolio · octopi</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
 
   <meta name="description" content="Join our monthly Portfolio Tournament for free to win real prizes.">
   <!-- Other meta tags -->
-  <meta property="og:title" content="Portfolio · stocknear"/>
+  <meta property="og:title" content="Portfolio · octopi"/>
   <meta property="og:description" content="Join our monthly Portfolio Tournament for free to win real prizes.">
-  <meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
 
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Portfolio · stocknear"/>
+  <meta name="twitter:title" content="Portfolio · octopi"/>
   <meta name="twitter:description" content="Join our monthly Portfolio Tournament for free to win real prizes.">
-  <meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
 	    

@@ -1,3 +1,4 @@
+
 <script>
 	import { enhance } from '$app/forms';
 	import Input from '$lib/components/Input.svelte';
@@ -78,20 +79,20 @@
 
 
 <svelte:head>
-  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Sign In · stocknear</title>
+  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Sign In · octopi</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
 
   <meta name="description" content="Sign In to to improve your stock analysis for free">
   <!-- Other meta tags -->
-  <meta property="og:title" content="Sign In · stocknear"/>
+  <meta property="og:title" content="Sign In · octopi"/>
   <meta property="og:description" content="Sign In to to improve your stock analysis for free">
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
 
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Sign In · stocknear"/>
+  <meta name="twitter:title" content="Sign In · octopi"/>
   <meta name="twitter:description" content="Sign In to to improve your stock analysis for free">
   <!-- Add more Twitter meta tags as needed -->
 </svelte:head>

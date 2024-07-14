@@ -174,23 +174,23 @@ onMount(async () => {
   
   <!-- HEADER FOR BETTER SEO -->
   <svelte:head>
-      <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} US Politician Stock Trade Tracker · stocknear</title>
+      <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} US Politician Stock Trade Tracker · octopi</title>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width" />
   
       <meta name="description" content="What are US Politicians trading? Filter by Senate or House, Party, Committee, State and more - get detailed infomation about it.">
       <!-- Other meta tags -->
-      <meta property="og:title" content="US Politician Stock Trade Tracker · stocknear"/>
+      <meta property="og:title" content="US Politician Stock Trade Tracker · octopi"/>
       <meta property="og:description" content="What are US Politicians trading? Filter by Senate or House, Party, Committee, State and more - get detailed infomation about it.">
-      <meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+      <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
       <meta property="og:type" content="website"/>
       <!-- Add more Open Graph meta tags as needed -->
   
       <!-- Twitter specific meta tags -->
       <meta name="twitter:card" content="summary_large_image"/>
-      <meta name="twitter:title" content="US Politician Stock Trade Tracker · stocknear"/>
+      <meta name="twitter:title" content="US Politician Stock Trade Tracker · octopi"/>
       <meta name="twitter:description" content="What are US Politicians trading? Filter by Senate or House, Party, Committee, State and more - get detailed infomation about it.">
-      <meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+      <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
       <!-- Add more Twitter meta tags as needed -->
   </svelte:head>
   

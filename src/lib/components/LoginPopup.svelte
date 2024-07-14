@@ -349,7 +349,7 @@ function handleHoverGithub() {
 
 						</div>
 
-                        <p class="pb-1 text-xs text-gray-300 text-center">By registering you agree to stocknear's
+                        <p class="pb-1 text-xs text-gray-300 text-center">By registering you agree to octopi's
                             <a href="/terms-of-use" class="text-[#FFBE00] hover:underline ">Terms of Use</a>
                             and acknowledge that you've read our <a href="/privacy-policy" class="text-[#FFBE00] hover:underline ">Privacy Policy</a>.
                         </p>
@@ -592,7 +592,7 @@ function handleHoverGithub() {
 
 						</div>
 
-                        <p class="pb-1 text-xs text-gray-300 text-center">By registering you agree to stocknear's
+                        <p class="pb-1 text-xs text-gray-300 text-center">By registering you agree to octopi's
                             <a href="/terms-of-use" class="text-[#FFBE00] hover:underline ">Terms of Use</a>
                             and acknowledge that you've read our <a href="/privacy-policy" class="text-[#FFBE00] hover:underline ">Privacy Policy</a>.
                         </p>

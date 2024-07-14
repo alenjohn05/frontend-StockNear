@@ -1,27 +1,28 @@
+
 <script>
     import logo from '$lib/images/privacy_policy_logo_v2.png';
     import { numberOfUnreadNotification } from '$lib/store';
-    const emailAddress = 'support@stocknear.com';
+    const emailAddress = 'support@octopi.com';
 
 </script>
 
 
 
 <svelte:head>
-  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Privacy Policy · stocknear</title>
+  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Privacy Policy · octopi</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
 
   <!-- Other meta tags -->
-  <meta property="og:title" content="Privacy Policy · stocknear"/>
-  <meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta property="og:title" content="Privacy Policy · octopi"/>
+  <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
 
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Privacy Policy · stocknear"/>
-  <meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta name="twitter:title" content="Privacy Policy · octopi"/>
+  <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
 	    
@@ -90,7 +91,7 @@
             <p class="text-gray-400 italic mb-2 text-sm">Last updated: 22.06.2023</p>
 
             <p class="text-gray-300 mb-5">
-                Stocknear (the "website" or "site") respects your privacy.
+                Octopi (the "website" or "site") respects your privacy.
                 This privacy statement describes what information and data we collect from you and how we use it.
                 Please read the whole privacy policy as well as our
                 <a href="/terms-of-use" class="text-[#FFBE00] hover:underline hover:text-white">Terms of use</a>
@@ -105,7 +106,7 @@
             </h1> 
             <p class="text-gray-300">
                 Cookies are used by us. 
-                By visiting stocknear.com, you accepted to use cookies in accordance with the stocknear Privacy Policy.
+                By visiting octopi.com, you accepted to use cookies in accordance with the octopi Privacy Policy.
                 Most interactive websites employ cookies to allow us to retrieve the user's information for each visit.
                 Cookies are used by our website to facilitate the functionality of specific areas, making it easier for visitors.
             </p>

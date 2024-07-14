@@ -1,3 +1,4 @@
+
 <script lang='ts'>
   import { onMount } from 'svelte';
   import { goto} from '$app/navigation';
@@ -821,19 +822,19 @@ $: {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
   <title>
-    {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Stock Screener · stocknear
+    {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Stock Screener · octopi
   </title>
 
   <meta name="description" content={`Build your Stock Screener to find profitable stocks.`}>
   <!-- Other meta tags -->
-  <meta property="og:title" content={`Stock Screener · stocknear`}/>
+  <meta property="og:title" content={`Stock Screener · octopi`}/>
   <meta property="og:description" content={`Build your Stock Screener to find profitable stocks.`} />
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
 
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content={`Stock Screener · stocknear`}/>
+  <meta name="twitter:title" content={`Stock Screener · octopi`}/>
   <meta name="twitter:description" content={`Build your Stock Screener to find profitable stocks.`} />
   <!-- Add more Twitter meta tags as needed -->
 

@@ -396,19 +396,19 @@ const debouncedHandleInput = debounce(handleInput, 200);
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0">
 
 <title>
-{$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Options 0DTE Flow Feed · stocknear
+{$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Options 0DTE Flow Feed · octopi
 </title>
 <meta name="description" content={`Explore unusual options from big institutional traders and hedge funds.`} />
 
 <!-- Other meta tags -->
-<meta property="og:title" content={`Options 0DTE Flow Feed · stocknear`}/>
+<meta property="og:title" content={`Options 0DTE Flow Feed · octopi`}/>
 <meta property="og:description" content={`Explore unusual options from big institutional traders and hedge funds.`} />
 <meta property="og:type" content="website"/>
 <!-- Add more Open Graph meta tags as needed -->
 
 <!-- Twitter specific meta tags -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content={`Options 0DTE Flow Feed · stocknear`}/>
+<meta name="twitter:title" content={`Options 0DTE Flow Feed · octopi`}/>
 <meta name="twitter:description" content={`Explore unusual options from big institutional traders and hedge funds.`} />
 <!-- Add more Twitter meta tags as needed -->
 

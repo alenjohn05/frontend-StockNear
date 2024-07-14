@@ -1,3 +1,5 @@
+
+
 import {getCache, setCache } from '$lib/store';
 import { redirect } from '@sveltejs/kit';
 
@@ -21,7 +23,7 @@ export const load = async ({parent}) => {
     } else {
 
       // make the POST request to the endpoint
-      const response = await fetch('https://api.github.com/repos/stocknear/frontend', {
+      const response = await fetch('https://api.github.com/repos/octopi/frontend', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -44,7 +46,7 @@ export const load = async ({parent}) => {
     } else {
 
       // make the POST request to the endpoint
-      const response = await fetch('https://api.github.com/repos/stocknear/backend', {
+      const response = await fetch('https://api.github.com/repos/octopi/backend', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

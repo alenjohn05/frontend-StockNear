@@ -188,23 +188,23 @@ async function getLeaderboard() {
     
 
 <svelte:head>
-  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Leaderboard Stocks · stocknear</title>
+  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Leaderboard Stocks · octopi</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
 
   <meta name="description" content="Detailed information of the current leaderboard of our free monthly portfolio tournament.">
   <!-- Other meta tags -->
-  <meta property="og:title" content="Leaderboard · stocknear"/>
+  <meta property="og:title" content="Leaderboard · octopi"/>
   <meta property="og:description" content="Detailed information of the current leaderboard of our free monthly portfolio tournament.">
-  <meta property="og:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
 
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Leaderboard · stocknear"/>
+  <meta name="twitter:title" content="Leaderboard · octopi"/>
   <meta name="twitter:description" content="Detailed information of the current leaderboard of our free monthly portfolio tournament.">
-  <meta name="twitter:image" content="https://stocknear-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
     
