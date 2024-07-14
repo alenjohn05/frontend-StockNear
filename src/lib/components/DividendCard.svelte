@@ -1,9 +1,7 @@
 <script lang="ts">
 
-    import {etfTicker, stockTicker, screenWidth} from '$lib/store';
     import { goto } from '$app/navigation';
-    import { abbreviateNumber, formatString } from '$lib/utils';
-    import defaultLogo from '$lib/images/stocks/logo/default_logo.png';
+    import { etfTicker, screenWidth } from '$lib/store';
     
     export let dividendList;
     let eps;
