@@ -1,0 +1,1013 @@
+<script lang="ts">
+  import "../app.css";
+
+  import { Toaster } from "svelte-french-toast";
+  import { getImageURL } from "$lib/utils";
+
+  import NProgress from "nprogress";
+  import "nprogress/nprogress.css";
+
+  import { page } from "$app/stores";
+  import Footer from "$lib/components/Footer.svelte";
+  import Searchbar from "$lib/components/Searchbar.svelte";
+  import NotificationBell from "$lib/components/NotificationBell.svelte";
+  //import PullToRefresh from '$lib/components/PullToRefresh.svelte';
+
+  //import DiscountBanner from '$lib/components/DiscountBanner.svelte';
+
+  import { beforeNavigate, afterNavigate, goto } from "$app/navigation";
+  import { onMount } from "svelte";
+  import {
+    showCookieConsent,
+    newAvatar,
+    userRegion,
+    screenWidth,
+    stockTicker,
+    etfTicker,
+    searchBarData,
+    loginData,
+    numberOfUnreadNotification,
+    cachedPosts,
+    currentPagePosition,
+    clientSideCache,
+    twitchStatus
+  } from "$lib/store";
+
+  export let data;
+
+  let cloudFrontUrl = import.meta.env.VITE_IMAGE_URL;
+
+  async function pushNotification() {
+    Notification?.requestPermission()?.then((perm) => {
+      if (perm === "granted") {
+        new Notification("Octopi", {
+          body: "this is more text"
+        });
+      }
+    });
+  }
+
+  //Check Service Worker (SW)
+  async function detectSWUpdate() {
+    const registration = await navigator.serviceWorker.ready;
+
+    registration.addEventListener("updatefound", () => {
+      const newSW = registration.installing;
+      newSW?.addEventListener("statechange", () => {
+        if (newSW.state === "installed") {
+          if (confirm("New Update available! Reload to update?")) {
+            newSW.postMessage({ type: "SKIP_WAITING" });
+            window.location.reload();
+          }
+        }
+      });
+    });
+  }
+
+  $userRegion = data?.region?.split("::")[0];
+
+  let stockGuide = false;
+  let etfGuide = false;
+  let calendarGuide = false;
+  let optionsGuide = false;
+  let politicianGuide = false;
+
+  let showSidebar = false;
+  let collapse = false;
+
+  const usRegion = ["cle1", "iad1", "pdx1", "sfo1"];
+
+  let apiURL;
+  let fastifyURL;
+
+  userRegion.subscribe((value) => {
+    if (usRegion?.includes(value)) {
+      apiURL = import.meta.env.VITE_USEAST_API_URL;
+      fastifyURL = import.meta.env.VITE_USEAST_FASTIFY_URL;
+    } else {
+      apiURL = import.meta.env.VITE_EU_API_URL;
+      fastifyURL = import.meta.env.VITE_EU_FASTIFY_URL;
+    }
+  });
+
+  let hideHeader = false;
+
+  NProgress.configure({ showSpinner: false });
+
+  $: {
+    const currentPath = $page.url.pathname;
+
+    if (
+      currentPath.startsWith("/etf/etf-providers") ||
+      currentPath.startsWith("/etf/new-launches")
+    ) {
+      hideHeader = false; // Show the header for "/etf/etf-providers"
+    } else if (currentPath.startsWith("/etf/")) {
+      hideHeader = true; // Hide the header for other routes under "/etf/"
+    } else if (currentPath.startsWith("/crypto/")) {
+      hideHeader = true; // Hide the header for other routes under "/etf/"
+    } else {
+      // Specify conditions for other routes where you want to hide the header
+      hideHeader =
+        currentPath.startsWith("/community/post") ||
+        currentPath.startsWith("/stocks/");
+    }
+  }
+
+  $: hideFooter =
+    $page.url.pathname.startsWith("/options-flow") ||
+    $page.url.pathname.startsWith("/login") ||
+    $page.url.pathname.startsWith("/register") ||
+    $page.url.pathname.startsWith("/etf") ||
+    $page.url.pathname.startsWith("/stock-splits-calendar") ||
+    $page.url.pathname.startsWith("/dividends-calendar") ||
+    $page.url.pathname.startsWith("/earnings-calendar") ||
+    $page.url.pathname.startsWith("/market-mover") ||
+    $page.url.pathname.startsWith("/market-news") ||
+    $page.url.pathname.startsWith("/portfolio") ||
+    $page.url.pathname.startsWith("/hedge-funds") ||
+    $page.url.pathname.startsWith("/watchlist") ||
+    $page.url.pathname.startsWith("/stocks") ||
+    $page.url.pathname.startsWith("/community") ||
+    $page.url.pathname.startsWith("/stock-screener") ||
+    $page.url.pathname.startsWith("/price-alert");
+
+  $: hideSidebar =
+    $page.url.pathname.startsWith("/contact") ||
+    $page.url.pathname.startsWith("/imprint") ||
+    $page.url.pathname.startsWith("/privacy-policy") ||
+    $page.url.pathname.startsWith("/terms-of-use") ||
+    $page.url.pathname.startsWith("/about") ||
+    $page.url.pathname.startsWith("/community/create-post") ||
+    $page.url.pathname.startsWith("/login") ||
+    $page.url.pathname.startsWith("/register");
+
+  let hasUnreadElement = false;
+  let notificationList = [];
+
+  function handleCollapse() {
+    if ($screenWidth > 640) {
+      collapse = !collapse;
+      stockGuide = false;
+      etfGuide = false;
+      optionsGuide = false;
+      calendarGuide = false;
+    }
+  }
+
+  function handleStockGuide() {
+    stockGuide = !stockGuide;
+    collapse = false;
+  }
+
+  function handleETFGuide() {
+    etfGuide = !etfGuide;
+    collapse = false;
+  }
+
+  function handleCalendarGuide() {
+    calendarGuide = !calendarGuide;
+    collapse = false;
+  }
+
+  function handleOptionsGuide() {
+    optionsGuide = !optionsGuide;
+    collapse = false;
+  }
+
+  function handlePoliticianGuide() {
+    politicianGuide = !politicianGuide;
+    collapse = false;
+  }
+
+  /** Dispatch event on click outside of node */
+  function clickOutside(node) {
+    const handleClick = (event) => {
+      // Get the element that was clicked
+      const clickedElement = event.target;
+
+      // Check if the clicked element or its parent matches the ignoreSelector
+      if (clickedElement.closest("#navbar")) {
+        // If it does, do nothing (the click was inside the ignored element)
+        return;
+      }
+
+      // Original condition, plus the new check for the nav element
+      if (node && !node.contains(event.target) && !event.defaultPrevented) {
+        node.dispatchEvent(new CustomEvent("click_outside", node));
+      }
+    };
+
+    document.addEventListener("click", handleClick, true);
+
+    return {
+      destroy() {
+        document.removeEventListener("click", handleClick, true);
+      }
+    };
+  }
+
+  function handleClickOutside(event) {
+    showSidebar = false;
+  }
+
+  //Define web workers:
+  let syncWorker: Worker | undefined = undefined;
+  // Handling messages from the worker
+  const handleMessage = (event) => {
+    const output = event.data?.output;
+    notificationList = output?.notificationList;
+    hasUnreadElement = output?.hasUnreadElement;
+    //const unreadNotificationList = output?.unreadNotificationList;
+    $numberOfUnreadNotification = output?.numberOfUnreadNotification;
+    //pushNotification()
+  };
+
+  /*
+const handleTwitchMessage = (event) => {
+    const output = event.data?.output;
+   $twitchStatus = output?.twitchStatus;
+};
+*/
+
+  const loadWorker = async () => {
+    if ("serviceWorker" in navigator) {
+      const SyncWorker = await import("$lib/workers/notificationWorker?worker");
+      syncWorker = new SyncWorker.default();
+
+      syncWorker.postMessage({
+        message: { fastifyURL: fastifyURL, userId: data?.user?.id }
+      });
+      syncWorker.onmessage = handleMessage;
+    } else {
+      // Fallback logic here
+      await fallbackWorker();
+    }
+  };
+
+  async function fallbackWorker() {
+    // Implement fallback logic here, e.g., using timers or other techniques
+    console.log("Fallback worker activated");
+
+    const postData = { userId: data?.user?.id };
+    const response = await fetch(fastifyURL + "/get-notifications", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(postData)
+    });
+
+    notificationList = (await response.json())?.items;
+    hasUnreadElement = notificationList?.length !== 0 ? true : false;
+    $numberOfUnreadNotification = notificationList?.length;
+  }
+
+  /*
+const loadTwitchWorker = async () => {
+
+const SyncWorker = await import('$lib/workers/twitchStatusWorker?worker');
+syncWorker = new SyncWorker.default();
+
+syncWorker.postMessage({ message: {'fastifyURL': fastifyURL }});
+syncWorker.onmessage = handleTwitchMessage;
+
+};
+*/
+
+  let Cookie;
+  $showCookieConsent =
+    typeof data?.cookieConsent !== "undefined" ? false : true;
+
+  onMount(async () => {
+    await loadWorker();
+
+    //await pushNotification()
+
+    if ($showCookieConsent === true) {
+      Cookie = (await import("$lib/components/Cookie.svelte")).default;
+    }
+    //await loadTwitchWorker();
+
+    /*
+  if (window.innerWidth <= 768) {
+    detectSWUpdate();
+  }
+  */
+  });
+
+  beforeNavigate(async () => {
+    NProgress.start();
+  });
+
+  afterNavigate(async () => {
+    NProgress.done();
+  });
+
+  //Delete cached Posts when going to other directories
+  $: {
+    if (
+      $page.url.pathname === "/community" ||
+      $page.url.pathname.startsWith("/community/post")
+    ) {
+    } else {
+      $cachedPosts = [];
+      $currentPagePosition = 0;
+    }
+  }
+
+  $: {
+    if ($page.url.pathname) {
+      $loginData = data?.user;
+      //data.currentPath = $page.url.pathname
+    }
+  }
+
+  let innerWidth;
+
+  $: {
+    if ($stockTicker && !$clientSideCache[$stockTicker]) {
+      $clientSideCache[$stockTicker] = {};
+    }
+  }
+
+  $: {
+    if ($etfTicker && !$clientSideCache[$etfTicker]) {
+      $clientSideCache[$etfTicker] = {};
+    }
+  }
+
+  $: {
+    if ($newAvatar?.length !== 0) {
+      data.user.avatar = $newAvatar;
+      $newAvatar = "";
+    }
+  }
+
+  $: {
+    if (innerWidth) {
+      $screenWidth = innerWidth;
+    }
+  }
+
+  $: {
+    if ($screenWidth < 1536) {
+      collapse = false;
+    }
+  }
+</script>
+
+<svelte:window bind:innerWidth />
+
+<div class="app {$page?.url?.pathname === '/' ? 'bg-[#131722]' : ''}">
+  <!--<ViewTransition />-->
+
+  <!--Start Navbar-->
+  {#if !data?.user}
+    <header
+      class="sticky {$screenWidth < 640 && hideHeader
+        ? 'invisible -mt-20'
+        : ''} inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md border border-[#202020] py-3 sm:py-4 shadow-lg sm:backdrop-blur-sm bg-[#131722] sm:bg-opacity-80 md:top-3 md:rounded-2xl lg:max-w-screen-lg"
+    >
+      <div class="px-4">
+        <div class="flex items-center justify-between">
+          <div class="flex shrink-0">
+            <a
+              href="/"
+              class="flex-shrink-0 flex flex-row items-center {!data?.user
+                ? 'ml-4'
+                : 'ml-2'}"
+            >
+              <div
+                class="flex justify-center items-center text-lg sm:text-xl font-medium mr-auto"
+              >
+                <div class="flex flex-row items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    id="Layer_1"
+                    data-name="Layer 1"
+                    viewBox="0 0 24 24"
+                    width="30"
+                    height="30"
+                    class="fill-current text-white"
+                  >
+                    <path
+                      fill="white"
+                      d="M12,24C5.383,24,0,18.617,0,12S5.383,0,12,0s12,5.383,12,12-5.383,12-12,12ZM12,1C5.935,1,1,5.935,1,12s4.935,11,11,11,11-4.935,11-11S18.065,1,12,1Zm0,19c-4.411,0-8-3.589-8-8S7.589,4,12,4s8,3.589,8,8-3.589,8-8,8Zm0-15c-3.86,0-7,3.14-7,7s3.14,7,7,7,7-3.14,7-7-3.14-7-7-7Zm0,11c-2.206,0-4-1.794-4-4s1.794-4,4-4,4,1.794,4,4-1.794,4-4,4Zm0-7c-1.654,0-3,1.346-3,3s1.346,3,3,3,3-1.346,3-3-1.346-3-3-3Z"
+                    />
+                  </svg>
+                  <span
+                    class="ml-2 text-gray-200 font-semibold whitespace-nowrap"
+                    >Octopi</span
+                  >
+                </div>
+              </div>
+            </a>
+          </div>
+          <div
+            class="hidden md:flex md:items-center md:justify-center md:gap-5"
+          >
+            <a
+              aria-current="page"
+              class="inline-block rounded-lg px-2 py-1 text-[0.90rem] font-semibold text-white hover:text-yellow-200 transition-all duration-200 hover:bg-purple-600"
+              href="/">Home</a
+            >
+            <a
+              aria-current="page"
+              class="inline-block rounded-lg px-2 py-1 text-[0.90rem] font-semibold text-white hover:text-yellow-200 transition-all duration-200 hover:bg-purple-600"
+              href="/about">About Us</a
+            >
+            <a
+              class="inline-block rounded-lg px-2 py-1 text-[0.90rem] font-semibold text-white hover:text-yellow-200 transition-all duration-200 hover:bg-purple-600"
+              href="/pricing">Pricing</a
+            >
+          </div>
+          <div class="flex items-center justify-end gap-3">
+            <a
+              class="items-center justify-center rounded-xl bg-gray-200 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 transition-all duration-150 hover:bg-white sm:inline-flex"
+              href="/register">Start Trial</a
+            >
+            <a
+              class="inline-flex items-center justify-center rounded-xl bg-purple-600 px-3 py-2 text-sm font-semibold text-yellow-200 shadow-sm transition-all duration-150 hover:bg-purple-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
+              href="/login">Login</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+  {:else}
+    <div
+      id="navbar"
+      class="navbar {$screenWidth < 640 && hideHeader
+        ? 'invisible -mt-20'
+        : ''} border-b border-[#2a2e39] w-screen shadow-lg sticky top-0 z-40 bg-[#131722]"
+    >
+      <div class="w-full m-auto">
+        <div class="flex flex-row items-center w-full xl:px-2">
+          <div class="flex flex-row items-center cursor-pointer">
+            <button
+              on:click={() => (showSidebar = !showSidebar)}
+              class="{!data?.user
+                ? 'hidden'
+                : ''} cursor-pointer sm:ml-3 mr-1.5"
+            >
+              {#if !showSidebar}
+                <svg
+                  class="w-8 h-8 cusor-pointer text-slate-300 fill-current inline-block transition-transform duration-300 ease-in-out"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect x="4" y="7" width="14" height="1" />
+                  <rect x="4" y="11" width="14" height="1" />
+                  <rect x="4" y="15" width="14" height="1" />
+                </svg>
+              {:else}
+                <svg
+                  class="w-8 h-8 rotate-180 transition-transform duration-300 ease-in-out cusor-pointer text-slate-300 fill-current inline-block"
+                  viewBox="0 0 1024 1024"
+                  xmlns="http://www.w3.org/2000/svg"
+                  ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g><g id="SVGRepo_iconCarrier"
+                    ><path
+                      fill="#BEC8D3"
+                      d="M764.288 214.592 512 466.88 259.712 214.592a31.936 31.936 0 0 0-45.12 45.12L466.752 512 214.528 764.224a31.936 31.936 0 1 0 45.12 45.184L512 557.184l252.288 252.288a31.936 31.936 0 0 0 45.12-45.12L557.12 512.064l252.288-252.352a31.936 31.936 0 1 0-45.12-45.184z"
+                    ></path></g
+                  ></svg
+                >
+              {/if}
+            </button>
+            <a
+              href="/"
+              class="flex-shrink-0 flex flex-row items-center {!data?.user
+                ? 'ml-4'
+                : 'ml-2'}"
+            >
+              <div
+                class="flex justify-center items-center text-lg sm:text-xl font-medium mr-auto"
+              >
+                <div class="flex flex-row items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    id="Layer_1"
+                    data-name="Layer 1"
+                    viewBox="0 0 24 24"
+                    width="30"
+                    height="30"
+                    class="fill-current text-white"
+                  >
+                    <path
+                      fill="white"
+                      d="M12,24C5.383,24,0,18.617,0,12S5.383,0,12,0s12,5.383,12,12-5.383,12-12,12ZM12,1C5.935,1,1,5.935,1,12s4.935,11,11,11,11-4.935,11-11S18.065,1,12,1Zm0,19c-4.411,0-8-3.589-8-8S7.589,4,12,4s8,3.589,8,8-3.589,8-8,8Zm0-15c-3.86,0-7,3.14-7,7s3.14,7,7,7,7-3.14,7-7-3.14-7-7-7Zm0,11c-2.206,0-4-1.794-4-4s1.794-4,4-4,4,1.794,4,4-1.794,4-4,4Zm0-7c-1.654,0-3,1.346-3,3s1.346,3,3,3,3-1.346,3-3-1.346-3-3-3Z"
+                    />
+                  </svg>
+                  <span
+                    class="ml-2 text-gray-200 font-semibold whitespace-nowrap"
+                    >Octopi</span
+                  >
+                </div>
+              </div>
+            </a>
+
+            <!--<Searchbar />-->
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center">
+          <div class="mr-2">
+            <Searchbar />
+          </div>
+          {#if !data?.user}
+            <div class="mr-4">
+              <!-- svelte-ignore a11y-label-has-associated-control -->
+              <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+              <a
+                href="/login"
+                class="inline-flex items-center justify-center w-full sm:h-8 font-medium bg-blue-600 hover:bg-blue-500 ml-1 mr-2 rounded-full cursor-pointer"
+              >
+                <span
+                  class="text-white text-sm sm:text-[1rem] px-1.5 py-1.5 sm:pl-2 sm:pr-2"
+                >
+                  Login
+                </span>
+              </a>
+            </div>
+          {:else}
+            <NotificationBell {data} {hasUnreadElement} />
+            <div class="dropdown dropdown-end">
+              <!-- svelte-ignore a11y-label-has-associated-control -->
+              <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+
+              <label
+                for="mobileProfileData"
+                class="sm:hidden btn btn-ghost btn-circle avatar"
+              >
+                <div class="w-9 h-9 rounded-full">
+                  <img
+                    alt=""
+                    style="clip-path: circle(50%);"
+                    class="w-8 sm:w-36 bg-slate-300 rounded-full inline-block"
+                    src={data?.user?.avatar
+                      ? getImageURL(
+                          data?.user.collectionId,
+                          data?.user.id,
+                          data?.user.avatar
+                        )
+                      : `https://avatar.vercel.sh/${data?.user?.username}`}
+                  />
+                </div>
+              </label>
+
+              <button
+                tabindex="0"
+                class="cursor-pointer hidden sm:block w-9 h-9 rounded-full avatar mr-4"
+              >
+                <!--Remove mr-4 when you add Post button again -->
+                <img
+                  alt=""
+                  style="clip-path: circle(50%);"
+                  class="flex-shrink-0 bg-slate-300 rounded-full inline-block"
+                  src={data?.user?.avatar
+                    ? getImageURL(
+                        data?.user.collectionId,
+                        data?.user.id,
+                        data?.user.avatar
+                      )
+                    : `https://avatar.vercel.sh/${data?.user?.username}`}
+                />
+              </button>
+
+              <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+              <!-- svelte-ignore a11y-positive-tabindex -->
+              <ul
+                tabindex="1"
+                class="border border-gray-700 mt-2 p-2 menu dropdown-content text-white bg-[#131722] border border-slate-800rounded-md w-52"
+              >
+                <li class="mb-3 hover:bg-[#2B3139] rounded-lg">
+                  <a href="/community/profile">
+                    <div
+                      class="avatar flex-shrink-0 w-8 h-8 rounded-full -ml-0.5"
+                    >
+                      <svg
+                        style="clip-path: circle(50%);"
+                        class="flex-shrink-0"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 48 48"
+                        ><g fill="white"
+                          ><path
+                            d="M32 20a8 8 0 1 1-16 0a8 8 0 0 1 16 0"
+                          /><path
+                            fill-rule="evenodd"
+                            d="M23.184 43.984C12.517 43.556 4 34.772 4 24C4 12.954 12.954 4 24 4s20 8.954 20 20s-8.954 20-20 20h-.274q-.272 0-.542-.016M11.166 36.62a3.028 3.028 0 0 1 2.523-4.005c7.796-.863 12.874-.785 20.632.018a2.99 2.99 0 0 1 2.498 4.002A17.94 17.94 0 0 0 42 24c0-9.941-8.059-18-18-18S6 14.059 6 24c0 4.916 1.971 9.373 5.166 12.621"
+                            clip-rule="evenodd"
+                          /></g
+                        ></svg
+                      >
+                    </div>
+                    <div class=" flex flex-row justify-start items-center">
+                      <span class="text-white">Profile</span>
+                    </div>
+                  </a>
+                  <!--Set to /profile/ to make it default active -->
+                </li>
+                <li class="mb-3 hover:bg-[#2B3139] rounded-lg">
+                  <a href="/watchlist">
+                    <svg
+                      class="shrink-0 h-6 w-6"
+                      fill="white"
+                      viewBox="0 0 48 48"
+                      xmlns="http://www.w3.org/2000/svg"
+                      stroke="#1A1A27"
+                      ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
+                        id="SVGRepo_tracerCarrier"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></g><g id="SVGRepo_iconCarrier">
+                        <title>star-solid</title>
+                        <g id="Layer_2" data-name="Layer 2">
+                          <g id="invisible_box" data-name="invisible box">
+                            <rect width="48" height="48" fill="none"></rect>
+                          </g>
+                          <g id="icons_Q2" data-name="icons Q2">
+                            <path
+                              d="M24,3a2.1,2.1,0,0,0-1.8,1.1L16.5,15.7,3.7,17.5A2.1,2.1,0,0,0,2.6,21l9.2,8.9L9.7,42.7A2,2,0,0,0,11.6,45l1-.2,11.4-6,11.4,6,1,.2a2,2,0,0,0,1.9-2.3L36.2,29.9,45.4,21a2.1,2.1,0,0,0-1.1-3.5L31.5,15.7,25.8,4.1A2.1,2.1,0,0,0,24,3Z"
+                            ></path>
+                          </g>
+                        </g>
+                      </g></svg
+                    >
+                    <span class="ml-1 text-white font-medium">Watchlist</span>
+                  </a>
+                  <!--Set to /profile/ to make it default active -->
+                </li>
+
+                <li class="mb-3 hover:bg-[#2B3139] rounded-lg">
+                  <a href="/price-alert">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-7 h-7 inline-block"
+                      viewBox="0 0 24 24"
+                      ><g
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        ><path d="M0 0h24v24H0z" /><path
+                          fill="white"
+                          d="M16 6.072a8 8 0 1 1-11.995 7.213L4 13l.005-.285A8 8 0 0 1 16 6.072M12 10a1 1 0 0 0-1 1v1h-1l-.117.007A1 1 0 0 0 10 14h1v1l.007.117A1 1 0 0 0 13 15v-1h1l.117-.007A1 1 0 0 0 14 12h-1v-1l-.007-.117A1 1 0 0 0 12 10"
+                        /><path
+                          fill="white"
+                          d="M6.412 3.191A1 1 0 0 1 7.685 4.73l-.097.08l-2.75 2a1 1 0 0 1-1.273-1.54l.097-.08zm9.779.221a1 1 0 0 1 1.291-.288l.106.067l2.75 2a1 1 0 0 1-1.07 1.685l-.106-.067l-2.75-2a1 1 0 0 1-.22-1.397z"
+                        /></g
+                      ></svg
+                    >
+                    <span class="ml-1 text-white font-medium">Price Alert</span>
+                  </a>
+                </li>
+
+                <li class="mb-3 hover:bg-[#2B3139] rounded-lg">
+                  <a href="/portfolio">
+                    <svg
+                      class="shrink-0 h-6 w-6"
+                      viewBox="0 0 15 15"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
+                        id="SVGRepo_tracerCarrier"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></g><g id="SVGRepo_iconCarrier">
+                        <path
+                          d="M0 7.49996C0 3.52583 3.09098 0.27365 7 0.0163574V4.0354C5.30385 4.27801 4 5.73672 4 7.49996C4 9.43295 5.567 11 7.5 11C8.28618 11 9.01181 10.7407 9.5961 10.3031L12.438 13.1451C11.1188 14.3 9.39113 15 7.5 15C3.35786 15 0 11.6421 0 7.49996Z"
+                          fill="#fff"
+                        ></path>
+                        <path
+                          d="M13.1451 12.438C14.3001 11.1187 15 9.39107 15 7.49996C15 6.46644 14.7909 5.48175 14.4128 4.58586L10.7552 6.21147C10.9132 6.61024 11 7.04496 11 7.49996C11 8.28611 10.7408 9.01174 10.3032 9.59602L13.1451 12.438Z"
+                          fill="#fff"
+                        ></path>
+                        <path
+                          d="M8 4.0354V0.0163574C10.5416 0.183645 12.7373 1.61699 13.9626 3.69166L10.2541 5.33986C9.71063 4.64791 8.91203 4.16585 8 4.0354Z"
+                          fill="#fff"
+                        ></path>
+                      </g></svg
+                    >
+                    <span class="ml-1 text-white font-medium">Portfolio</span>
+                  </a>
+                </li>
+
+                <hr class="border-slate-700" />
+
+                <li class="mt-3 hover:bg-[#2B3139] rounded-lg">
+                  <form action="/logout" method="POST">
+                    <button type="submit" class="w-full text-start">
+                      <svg
+                        class="w-6 h-6 inline-block mr-2"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 32 32"
+                        ><path
+                          fill="white"
+                          d="M6 30h12a2.002 2.002 0 0 0 2-2v-3h-2v3H6V4h12v3h2V4a2.002 2.002 0 0 0-2-2H6a2.002 2.002 0 0 0-2 2v24a2.002 2.002 0 0 0 2 2Z"
+                        /><path
+                          fill="white"
+                          d="M20.586 20.586L24.172 17H10v-2h14.172l-3.586-3.586L22 10l6 6l-6 6l-1.414-1.414z"
+                        /></svg
+                      >
+                      <span class="text-start text-white">Logout</span>
+                    </button>
+                  </form>
+                </li>
+              </ul>
+            </div>
+
+            <div class="m-auto ml-2 mr-4 hidden">
+              <button
+                on:click={() => goto("/community/create-post")}
+                class="shadow-lg inline-flex items-center justify-center w-full sm:h-10 font-medium bg-purple-600 duration-150 ml-1 mr-0 sm:mr-2 rounded-full cursor-pointer"
+              >
+                <svg
+                  class="ml-4 w-4 h-4 text-white inline-block"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                  ><path
+                    fill="white"
+                    d="m362.7 19.3l-48.4 48.4l130 130l48.4-48.4c25-25 25-65.5 0-90.5l-39.4-39.5c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2c-2.5 8.5-.2 17.6 6 23.8s15.3 8.5 23.7 6.1L151 475.7c14.1-4.2 27-11.8 37.4-22.2l233.3-233.2l-130-130z"
+                  /></svg
+                >
+                <span class="text-white text-md pl-2 pr-4"> Post </span>
+              </button>
+            </div>
+          {/if}
+        </div>
+      </div>
+    </div>
+  {/if}
+  <!--End Navbar-->
+
+  <div
+    class="w-full {!data?.user ? 'hidden' : ''} {hideSidebar
+      ? 'xl:hidden'
+      : ''}"
+  >
+    <aside
+      class:hidden={!showSidebar}
+      use:clickOutside
+      on:click_outside={handleClickOutside}
+      class="fixed 2xl:block top-0 left-0 xl:left-auto w-56 sm:{collapse
+        ? 'w-20'
+        : 'w-56'} z-30 min-h-screen pt-12 sm:pt-16 border transition-transform -translate-x-full bg-[#131722] translate-x-0 border-r border-slate-800 border-r border-[#2a2e39]"
+    >
+      <div class="pb-4 overflow-y-auto scroller bg-[#131722] h-screen">
+        <ul class="mt-1 bg-[#131722] menu pt-5 pb-20">
+          <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+          <li
+            on:click={() => (showSidebar = !showSidebar)}
+            class="px-1 rounded-sm mb-2 last:mb-0"
+          >
+            <a
+              href="/"
+              for="sidebar"
+              class="block text-slate-200 hover:text-white sm:hover:bg-purple-700 truncate transition duration-150 {$page
+                .url.pathname === '/'
+                ? 'text-white bg-[#131722]  border border-slate-800rounded-md '
+                : ''}"
+            >
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    id="Layer_1"
+                    data-name="Layer 1"
+                    viewBox="0 0 24 24"
+                    class="w-5 h-5"
+                    fill="#CCCCCC"
+                    ><path
+                      d="M14.5,18h-5c-.827,0-1.5-.673-1.5-1.5v-5c0-.827,.673-1.5,1.5-1.5h5c.827,0,1.5,.673,1.5,1.5v5c0,.827-.673,1.5-1.5,1.5Zm-5-7c-.275,0-.5,.225-.5,.5v5c0,.275,.225,.5,.5,.5h5c.275,0,.5-.225,.5-.5v-5c0-.275-.225-.5-.5-.5h-5Zm10,13H4.5c-2.481,0-4.5-2.019-4.5-4.5V9.561c0-1.497,.741-2.892,1.983-3.729L9.483,.771c1.527-1.033,3.505-1.033,5.034,0l7.499,5.061c1.242,.838,1.983,2.232,1.983,3.729v9.939c0,2.481-2.019,4.5-4.5,4.5ZM12,.996c-.682,0-1.363,.201-1.957,.603L2.542,6.659c-.966,.652-1.542,1.736-1.542,2.901v9.939c0,1.93,1.57,3.5,3.5,3.5h15c1.93,0,3.5-1.57,3.5-3.5V9.561c0-1.165-.576-2.249-1.542-2.901L13.958,1.599c-.595-.401-1.276-.603-1.958-.603Z"
+                      fill="#CCCCCC"
+                    /></svg
+                  >
+                  <span
+                    class="2xl:{collapse
+                      ? 'hidden'
+                      : ''} text-md font-medium ml-3 duration-200"
+                  >
+                    Home
+                  </span>
+                </div>
+              </div>
+            </a>
+          </li>
+
+          
+
+          <!--
+      <li on:click={handleCollapse} class="hidden 2xl:block px-1 pb-20 rounded-sm" >
+        <label for="sidebar" class="block text-slate-200 hover:text-white sm:hover:bg-purple-700 truncate transition duration-150">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <svg class="w-7 h-7 {collapse ? 'rotate-180' : ''}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="m4.836 12l6.207 6.207l1.414-1.414L7.664 12l4.793-4.793l-1.414-1.414zm5.65 0l6.207 6.207l1.414-1.414L13.314 12l4.793-4.793l-1.414-1.414z"/></svg>
+                    <span class="2xl:{collapse ? 'hidden' : ''} text-md font-medium ml-3 duration-200">
+                      Collapse
+                  </span>
+                  </div>
+            </div>
+          </label>
+      </li>
+    -->
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  {#if $screenWidth < 640}
+    <!--Start Mobile Profile Data Modal-->
+    <input type="checkbox" id="mobileProfileData" class="modal-toggle" />
+
+    <dialog id="mobileProfileData" class="modal modal-bottom">
+      <label
+        for="mobileProfileData"
+        class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"
+      ></label>
+
+      <div class="modal-box bg-[#131722]">
+        {#if data?.user}
+          <ul
+            class="menu menu-compact dropdown-content text-white bg-[#131722] border border-slate-800rounded"
+          >
+            <li class="mb-3">
+              <label
+                for="mobileProfileData"
+                on:click={() => goto("/community/profile/")}
+              >
+                <div class="avatar flex-shrink-0 w-10 h-10 -ml-1">
+                  <svg
+                    style="clip-path: circle(50%);"
+                    class="flex-shrink-0 w-10 h-10"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 48 48"
+                    ><g fill="white"
+                      ><path d="M32 20a8 8 0 1 1-16 0a8 8 0 0 1 16 0" /><path
+                        fill-rule="evenodd"
+                        d="M23.184 43.984C12.517 43.556 4 34.772 4 24C4 12.954 12.954 4 24 4s20 8.954 20 20s-8.954 20-20 20h-.274q-.272 0-.542-.016M11.166 36.62a3.028 3.028 0 0 1 2.523-4.005c7.796-.863 12.874-.785 20.632.018a2.99 2.99 0 0 1 2.498 4.002A17.94 17.94 0 0 0 42 24c0-9.941-8.059-18-18-18S6 14.059 6 24c0 4.916 1.971 9.373 5.166 12.621"
+                        clip-rule="evenodd"
+                      /></g
+                    ></svg
+                  >
+                </div>
+                <div class="flex-row items-center text-[1rem]">Profile</div>
+              </label>
+              <!--Set to /profile/ to make it default active -->
+            </li>
+            <li class="mb-3">
+              <label
+                class="cursor-pointer"
+                for="mobileProfileData"
+                on:click={() => goto("/watchlist/")}
+              >
+                <svg
+                  class="shrink-0 h-7 w-7"
+                  fill="white"
+                  viewBox="0 0 48 48"
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke="#1A1A27"
+                  ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g><g id="SVGRepo_iconCarrier">
+                    <title>star-solid</title>
+                    <g id="Layer_2" data-name="Layer 2">
+                      <g id="invisible_box" data-name="invisible box">
+                        <rect width="48" height="48" fill="none"></rect>
+                      </g>
+                      <g id="icons_Q2" data-name="icons Q2">
+                        <path
+                          d="M24,3a2.1,2.1,0,0,0-1.8,1.1L16.5,15.7,3.7,17.5A2.1,2.1,0,0,0,2.6,21l9.2,8.9L9.7,42.7A2,2,0,0,0,11.6,45l1-.2,11.4-6,11.4,6,1,.2a2,2,0,0,0,1.9-2.3L36.2,29.9,45.4,21a2.1,2.1,0,0,0-1.1-3.5L31.5,15.7,25.8,4.1A2.1,2.1,0,0,0,24,3Z"
+                        ></path>
+                      </g>
+                    </g>
+                  </g></svg
+                >
+                <span class="ml-1 text-white font-medium text-[1rem]"
+                  >Watchlist</span
+                >
+              </label>
+              <!--Set to /profile/ to make it default active -->
+            </li>
+
+            <li class="mb-3">
+              <label
+                class="cursor-pointer"
+                for="mobileProfileData"
+                on:click={() => goto("/price-alert/")}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-7 h-7 inline-block"
+                  viewBox="0 0 24 24"
+                  ><g
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    ><path d="M0 0h24v24H0z" /><path
+                      fill="white"
+                      d="M16 6.072a8 8 0 1 1-11.995 7.213L4 13l.005-.285A8 8 0 0 1 16 6.072M12 10a1 1 0 0 0-1 1v1h-1l-.117.007A1 1 0 0 0 10 14h1v1l.007.117A1 1 0 0 0 13 15v-1h1l.117-.007A1 1 0 0 0 14 12h-1v-1l-.007-.117A1 1 0 0 0 12 10"
+                    /><path
+                      fill="white"
+                      d="M6.412 3.191A1 1 0 0 1 7.685 4.73l-.097.08l-2.75 2a1 1 0 0 1-1.273-1.54l.097-.08zm9.779.221a1 1 0 0 1 1.291-.288l.106.067l2.75 2a1 1 0 0 1-1.07 1.685l-.106-.067l-2.75-2a1 1 0 0 1-.22-1.397z"
+                    /></g
+                  ></svg
+                >
+                <span class="ml-1 text-white font-medium text-[1rem]"
+                  >Price Alert</span
+                >
+              </label>
+            </li>
+
+            
+            <li>
+              <span
+                style="font-size: 9px;"
+                class="block text-start text-gray-400"
+                >© 2024 octopi. All Rights Reserved.
+              </span>
+            </li>
+          </ul>
+        {:else}
+          <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+          <ul class="menu menu-compact dropdown-content text-gray-300 rounded">
+            <li class="mb-3">
+              <!-- svelte-ignore a11y-missing-attribute -->
+              <label
+                for="mobileProfileData"
+                on:click={() => goto("/login")}
+                class="cursor-pointer"
+              >
+                <svg
+                  class="shrink-0 w-7 h-7"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 32 32"
+                  ><path
+                    fill="white"
+                    d="M6 30h12a2.002 2.002 0 0 0 2-2v-3h-2v3H6V4h12v3h2V4a2.002 2.002 0 0 0-2-2H6a2.002 2.002 0 0 0-2 2v24a2.002 2.002 0 0 0 2 2Z"
+                  /><path
+                    fill="white"
+                    d="M20.586 20.586L24.172 17H10v-2h14.172l-3.586-3.586L22 10l6 6l-6 6l-1.414-1.414z"
+                  /></svg
+                >
+                <span class="ml-2 text-start">Login</span>
+              </label>
+            </li>
+
+            <hr class="border-slate-700" />
+            <li>
+              <span
+                style="font-size: 9px;"
+                class="block text-start text-gray-400"
+                >© 2024 octopi. All Rights Reserved.
+              </span>
+            </li>
+          </ul>
+        {/if}
+      </div>
+    </dialog>
+    <!--End Mobile Profile Data Modal-->
+  {/if}
+
+  <main>
+    <!--<Firefly/>-->
+    <Toaster class="bg-[#1A1A27] text-white text-medium" />
+    {#if Cookie && $showCookieConsent === true}
+      <Cookie />
+    {/if}
+
+    <!--
+  {#if $screenWidth < 640}
+    <PullToRefresh />
+  {/if}
+  -->
+
+    <!--
+    {#key data?.currentPath}
+
+      <div in:pageTransitionIn={{ duration: 250 }} out:pageTransitionOut={{duration: 250}}>
+        <slot />
+      </div>
+
+    {/key}
+    -->
+    <slot />
+
+    {#if !hideFooter}
+      <Footer />
+    {/if}
+  </main>
+</div>
+
+<style>
+  .scroller {
+    scrollbar-width: thin;
+  }
+</style>
