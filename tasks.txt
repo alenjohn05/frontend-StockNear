@@ -1,0 +1,4 @@
+sidebar
+analyis dashboard
+news dashboard
+techical charts dashboard like chart ready
