@@ -708,7 +708,7 @@
     <label id="rowList" for="rowList"  class="cursor-pointer modal-backdrop bg-[#fff] bg-opacity-[0.05] sm:bg-[#131722] sm:bg-opacity-[0.5]"></label>
     
     
-    <div class="modal-box w-full bg-[#131722] sm:bg-[#131722] sm:border sm:border-slate-800">
+    <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] sm:bg-[#131722] sm:border sm:border-slate-800">
   
       <h3 class="text-white text-2xl font-bold">
         Rows
@@ -766,7 +766,7 @@
       <label id="exportDataModal" for="exportDataModal"  class="cursor-pointer modal-backdrop bg-[#fff] bg-opacity-[0.02] sm:bg-[#131722] sm:bg-opacity-[0.5]"></label>
       
       
-      <div class="modal-box w-full bg-[#131722] sm:bg-[#131722] sm:border sm:border-slate-800">
+      <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] sm:bg-[#131722] sm:border sm:border-slate-800">
     
     
     
@@ -831,7 +831,7 @@
     <label id="filterList" for="filterList" class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
     
     
-    <div class="modal-box w-full bg-[#131722] sm:border sm:border-slate-800 max-h-[600px] overflow-y-scroll">
+    <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] sm:border sm:border-slate-800 max-h-[600px] overflow-y-scroll">
   
   
     <label for="filterList" class="cursor-pointer absolute right-5 top-2 bg-[#131722] text-[1.8rem] text-white">

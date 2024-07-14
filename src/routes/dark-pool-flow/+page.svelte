@@ -285,7 +285,7 @@ function formatTime(dateString) {
                   <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-y-3 gap-x-3 ">
         
                    <!--Start Most Traded-->  
-                   <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#262626] shadow-lg rounded-lg h-20">
+                   <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-lg h-20">
                     <div class="flex flex-col items-start">
                         <span class="font-medium text-gray-200 text-sm ">Most Traded Option</span>
                         <span class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5">
@@ -303,7 +303,7 @@ function formatTime(dateString) {
         
         
                   <!--Start Highest Volume-->  
-                  <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#262626] shadow-lg rounded-lg h-20">
+                  <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-lg h-20">
                     <div class="flex flex-col items-start">
                         <span class="font-medium text-gray-200 text-sm ">Highest Volume</span>
                         <span class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5">
@@ -320,7 +320,7 @@ function formatTime(dateString) {
                   <!--End Highest Volume-->
         
                    <!--Start Highest Size-->  
-                   <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#262626] shadow-lg rounded-lg h-20">
+                   <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-lg h-20">
                     <div class="flex flex-col items-start">
                         <span class="font-medium text-gray-200 text-sm ">Highest Size</span>
                         <span class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5">
@@ -337,7 +337,7 @@ function formatTime(dateString) {
                   <!--End Highest Size-->
 
                     <!--Start Amount-->  
-                    <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#262626] shadow-lg rounded-lg h-20">
+                    <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-lg h-20">
                       <div class="flex flex-col items-start">
                           <span class="font-medium text-gray-200 text-sm ">Highest Amount</span>
                           <span class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5">

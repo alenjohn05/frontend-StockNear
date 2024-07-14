@@ -342,7 +342,7 @@ onMount(async () => {
     <label id="filterList" for="filterList" class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
     
     
-    <div class="modal-box w-full bg-[#131722] sm:border sm:border-slate-800 max-h-[600px] overflow-y-scroll">
+    <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] sm:border sm:border-slate-800 max-h-[600px] overflow-y-scroll">
   
   
     <label for="filterList" class="cursor-pointer absolute right-5 top-2 bg-[#131722] text-[1.8rem] text-white">

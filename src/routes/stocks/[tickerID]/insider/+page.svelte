@@ -395,7 +395,7 @@ onMount(async() => {
                       <div class="w-full grid grid-cols-2 lg:grid-cols-3 gap-y-3 lg:gap-y-3 gap-x-3 ">
       
                         <!--Start Put/Call-->  
-                        <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#262626] shadow-lg rounded-md h-20">
+                        <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#131722] shadow-lg rounded-md h-20">
                           <div class="flex flex-col items-start">
                               <span class="font-medium text-gray-200 text-xs sm:text-sm">Buy/Sell</span>
                               <span class="text-start text-sm sm:text-[1rem] font-medium text-white">
@@ -422,7 +422,7 @@ onMount(async() => {
                       </div>
                       <!--End Put/Call-->
                       <!--Start Call Flow-->  
-                      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#262626] shadow-lg rounded-md h-20">
+                      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#131722] shadow-lg rounded-md h-20">
                         <div class="flex flex-col items-start">
                             <span class="font-medium text-gray-200 text-xs sm:text-sm">Bought Shares</span>
                             <span class="text-start text-sm sm:text-[1rem] font-medium text-white">
@@ -451,7 +451,7 @@ onMount(async() => {
                       </div>
                       <!--End Call Flow-->
                       <!--Start Put Flow-->  
-                      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#262626] shadow-lg rounded-md h-20">
+                      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#131722] shadow-lg rounded-md h-20">
                         <div class="flex flex-col items-start">
                             <span class="font-medium text-gray-200 text-xs sm:text-sm">Sold Shares</span>
                             <span class="text-start text-sm sm:text-[1rem] font-medium text-white">

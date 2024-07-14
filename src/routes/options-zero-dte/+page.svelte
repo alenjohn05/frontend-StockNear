@@ -525,7 +525,7 @@ const debouncedHandleInput = debounce(handleInput, 200);
     <div class="w-full mt-5 mb-10 m-auto flex justify-center items-center">
         <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-y-3 gap-x-3 ">
         <!--Start Flow Sentiment-->  
-        <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#262626] shadow-lg rounded-2xl h-20">
+        <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-2xl h-20">
             <div class="flex flex-col items-start">
                 <span class="font-medium text-gray-200 text-sm ">Flow Sentiment</span>
                 <span class="text-start text-[1rem] font-medium {flowSentiment === 'Bullish' ? 'text-[#00FC50]' : 'text-[#FC2120]'}">{flowSentiment}</span>
@@ -534,7 +534,7 @@ const debouncedHandleInput = debounce(handleInput, 200);
         </div>
         <!--End Flow Sentiment-->
          <!--Start Put/Call-->  
-         <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#262626] shadow-lg rounded-2xl h-20">
+         <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-2xl h-20">
           <div class="flex flex-col items-start">
               <span class="font-medium text-gray-200 text-sm ">Put/Call</span>
               <span class="text-start text-sm sm:text-[1rem] font-medium text-white">
@@ -561,7 +561,7 @@ const debouncedHandleInput = debounce(handleInput, 200);
       </div>
       <!--End Put/Call-->
        <!--Start Call Flow-->  
-       <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#262626] shadow-lg rounded-2xl h-20">
+       <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-2xl h-20">
         <div class="flex flex-col items-start">
             <span class="font-medium text-gray-200 text-sm ">Call Flow</span>
             <span class="text-start text-sm sm:text-[1rem] font-medium text-white">
@@ -590,7 +590,7 @@ const debouncedHandleInput = debounce(handleInput, 200);
       </div>
       <!--End Call Flow-->
       <!--Start Put Flow-->  
-      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#262626] shadow-lg rounded-2xl h-20">
+      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-2xl h-20">
         <div class="flex flex-col items-start">
             <span class="font-medium text-gray-200 text-sm ">Put Flow</span>
             <span class="text-start text-sm sm:text-[1rem] font-medium text-white">
@@ -622,7 +622,7 @@ const debouncedHandleInput = debounce(handleInput, 200);
 
       {#if showMore}
       <!--Start Most Traded-->  
-      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#262626] shadow-lg rounded-lg h-20">
+      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-lg h-20">
        <div class="flex flex-col items-start">
            <span class="font-medium text-gray-200 text-sm ">Most Traded Option</span>
            <span class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5">
@@ -639,7 +639,7 @@ const debouncedHandleInput = debounce(handleInput, 200);
      <!--End Most Traded-->
 
       <!--Start Highest Premium-->  
-      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#262626] shadow-lg rounded-lg h-20">
+      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-lg h-20">
        <div class="flex flex-col items-start">
            <span class="font-medium text-gray-200 text-sm ">Highest Premium</span>
            <span class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5">
@@ -656,7 +656,7 @@ const debouncedHandleInput = debounce(handleInput, 200);
      <!--End Highest Premium-->
 
      <!--Start Highest Volume-->  
-     <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#262626] shadow-lg rounded-lg h-20">
+     <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-lg h-20">
        <div class="flex flex-col items-start">
            <span class="font-medium text-gray-200 text-sm ">Highest Volume</span>
            <span class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5">
@@ -673,7 +673,7 @@ const debouncedHandleInput = debounce(handleInput, 200);
      <!--End Highest Volume-->
 
       <!--Start Highest Open Interest-->  
-      <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#262626] shadow-lg rounded-lg h-20">
+      <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-lg h-20">
        <div class="flex flex-col items-start">
            <span class="font-medium text-gray-200 text-sm ">Highest Open Interest</span>
            <span class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5">
@@ -834,7 +834,7 @@ const debouncedHandleInput = debounce(handleInput, 200);
     <UpgradeToPro data={data} title="Get the recent Options Flow Data from Hedge Funds and major institutional traders to never miss out"/>
 
     {:else}
-    <div class="mt-10 w-full text-center justify-center max-w-96 sm:flex sm:flex-row sm:items-center m-auto text-gray-100 bg-[#131722] sm:rounded-lg h-auto p-5 mb-4">
+    <div class="mt-10 w-full text-center justify-center max-w-96 sm:flex sm:flex-row sm:items-center m-auto text-gray-100 bg-[#131722]  border border-[#2a2e39] sm:rounded-lg h-auto p-5 mb-4">
         <svg class="w-5 h-5 inline-block sm:mr-2 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="#a474f6" d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24m-4 48a12 12 0 1 1-12 12a12 12 0 0 1 12-12m12 112a16 16 0 0 1-16-16v-40a8 8 0 0 1 0-16a16 16 0 0 1 16 16v40a8 8 0 0 1 0 16"/></svg>
         No 0DTE Contracts filed yet!
       </div>

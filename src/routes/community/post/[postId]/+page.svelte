@@ -979,7 +979,7 @@ function updateVote(postVote) {
   <label for="deletePostModal"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
   
   
-  <div class="modal-box w-full bg-[#131722] sm:border sm:border-slate-600 overflow-hidden">
+  <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] sm:border sm:border-slate-600 overflow-hidden">
   
       <h3 class="font-bold text-xl mb-5 pt-5 text-white m-auto w-3/4 text-center">
       Are you sure you want to delete the post?

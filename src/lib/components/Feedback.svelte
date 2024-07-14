@@ -117,7 +117,7 @@
       <label for="feedbackInfo"  class="cursor-pointer modal-backdrop bg-[#fff] bg-opacity-[0.05]"></label>
       
       
-      <div class="modal-box w-full bg-[#131722]" >
+      <div class="modal-box w-full bg-[#131722] border border-[#2a2e39]" >
   
       <div class="flex flex-row items-center pt-5">
           <h1 class="text-white text-xl sm:text-2xl font-bold">

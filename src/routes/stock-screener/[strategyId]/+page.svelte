@@ -861,7 +861,7 @@ $: {
                 Build Strategy
 
 
-              <label for="userLogin" on:click={handleSave} class="hidden sm:inline-flex ml-5 sm:hover:bg-[#161618] bg-[#131722] cursor-pointer font-medium text-center text-white rounded-full px-4 py-1 text-sm border border-slate-800">
+              <label for="userLogin" on:click={handleSave} class="hidden sm:inline-flex ml-5 sm:hover:bg-[#2962ffab] bg-[#131722] cursor-pointer font-medium text-center text-white rounded-full px-4 py-1 text-sm border border-slate-800">
                 Save
               </label>
     
@@ -2257,7 +2257,7 @@ $: {
   <label id="ruleModal" for="ruleModal" on:click={() => searchTerm = ''} class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
   
   
-  <div class="modal-box w-full bg-[#262626] border border-slate-800  h-[800px] overflow-hidden ">
+  <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] border border-slate-800  h-[800px] overflow-hidden ">
 
 
     <div class="flex flex-col w-full mt-10 sm:mt-0">
@@ -2288,7 +2288,7 @@ $: {
       </form>
       <!-- End Search bar-->
 
-      <div class="text-white text-sm bg-[#262626] bg-opacity-[0.4] overflow-y-scroll scroller pt-3 rounded-lg max-h-[500px] sm:max-h-[420px] md:max-h-[540px] lg:max-h-[600px]">
+      <div class="text-white text-sm bg-[#131722] bg-opacity-[0.4] overflow-y-scroll scroller pt-3 rounded-lg max-h-[500px] sm:max-h-[420px] md:max-h-[540px] lg:max-h-[600px]">
 
         <div class="text-white relative">
           
@@ -2303,13 +2303,13 @@ $: {
           <tbody>
             {#each (searchTerm?.length !== 0 ? filteredRows : allRows) as row, index}
               <tr on:click={() => changeRule(row?.rule)} class="hover:bg-[#333333] cursor-pointer">
-                <td class="border-b border-[#262626]">{index+1}</td>
-                <td class="border-b border-[#262626]">
+                <td class="border-b border-[#131722]">{index+1}</td>
+                <td class="border-b border-[#131722]">
                   {#if ruleOfList.find((rule) => rule?.name === row?.rule)}
                   <svg class="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 text-green-400 inline-block" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
                   {/if}
                 </td>
-                <td class="text-start border-b border-[#262626]">{row?.label}</td>
+                <td class="text-start border-b border-[#131722]">{row?.label}</td>
               </tr>
             {/each}
 

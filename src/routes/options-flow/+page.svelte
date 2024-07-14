@@ -546,7 +546,7 @@ $: {
           </div>
         {/if}
 
-          <div class="flex flex-col sm:flex-row items-center w-full bg-[#262626] rounded-lg px-3">
+          <div class="flex flex-col sm:flex-row items-center w-full bg-[#131722] border border-[#2a2e39] rounded-lg px-3">
           
   
               <div class="flex flex-row items-center justify-center sm:justify-start mt-6 pb-5">
@@ -630,7 +630,7 @@ $: {
           <div class="w-full mt-5 mb-10 m-auto flex justify-center items-center">
             <div class="w-full grid grid-cols-1 lg:grid-cols-4 gap-y-3 gap-x-3 ">
               <!--Start Flow Sentiment-->  
-              <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#262626] shadow-lg rounded-lg h-20">
+              <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-lg h-20">
                   <div class="flex flex-col items-start">
                       <span class="font-semibold text-gray-200 text-sm ">Flow Sentiment</span>
                       <span class="text-start text-xl font-semibold {flowSentiment === 'Bullish' ? 'text-[#00FC50]' : 'text-[#FC2120]'}">{flowSentiment}</span>
@@ -639,7 +639,7 @@ $: {
               </div>
               <!--End Flow Sentiment-->
                <!--Start Put/Call-->  
-               <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#262626] shadow-lg rounded-lg h-20">
+               <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-lg h-20">
                 <div class="flex flex-col items-start">
                     <span class="font-semibold text-gray-200 text-sm ">Put/Call</span>
                     <span class="text-start text-lg font-semibold text-white">
@@ -666,7 +666,7 @@ $: {
             </div>
             <!--End Put/Call-->
              <!--Start Call Flow-->  
-             <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#262626] shadow-lg rounded-lg h-20">
+             <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-lg h-20">
               <div class="flex flex-col items-start">
                   <span class="font-semibold text-gray-200 text-sm ">Call Flow</span>
                   <span class="text-start text-lg font-semibold text-white">
@@ -695,7 +695,7 @@ $: {
             </div>
             <!--End Call Flow-->
             <!--Start Put Flow-->  
-            <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#262626] shadow-lg rounded-lg h-20">
+            <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-lg h-20">
               <div class="flex flex-col items-start">
                   <span class="font-semibold text-gray-200 text-sm ">Put Flow</span>
                   <span class="text-start text-lg font-semibold text-white">
@@ -726,7 +726,7 @@ $: {
   
             {#if showMore}
              <!--Start Most Traded-->  
-             <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#262626] shadow-lg rounded-lg h-20">
+             <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#131722] shadow-lg rounded-lg h-20">
               <div class="flex flex-col items-start">
                   <span class="font-semibold text-gray-200 text-sm ">Most Traded Option</span>
                   <span class="text-start text-lg font-semibold text-white mt-0.5">
@@ -743,7 +743,7 @@ $: {
             <!--End Most Traded-->
   
              <!--Start Highest Premium-->  
-             <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#262626] shadow-lg rounded-lg h-20">
+             <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#131722] shadow-lg rounded-lg h-20">
               <div class="flex flex-col items-start">
                   <span class="font-semibold text-gray-200 text-sm ">Highest Premium</span>
                   <span class="text-start text-lg font-semibold text-white mt-0.5">
@@ -760,7 +760,7 @@ $: {
             <!--End Highest Premium-->
   
             <!--Start Highest Volume-->  
-            <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#262626] shadow-lg rounded-lg h-20">
+            <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#131722] shadow-lg rounded-lg h-20">
               <div class="flex flex-col items-start">
                   <span class="font-semibold text-gray-200 text-sm ">Highest Volume</span>
                   <span class="text-start text-lg font-semibold text-white mt-0.5">
@@ -777,7 +777,7 @@ $: {
             <!--End Highest Volume-->
   
              <!--Start Highest Open Interest-->  
-             <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#262626] shadow-lg rounded-lg h-20">
+             <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#131722] shadow-lg rounded-lg h-20">
               <div class="flex flex-col items-start">
                   <span class="font-semibold text-gray-200 text-sm ">Highest Open Interest</span>
                   <span class="text-start text-lg font-semibold text-white mt-0.5">
@@ -818,18 +818,18 @@ $: {
                 <table class="table table-pin-cols table-pin-rows table-sm table-compact">
                     <thead>
                       <tr class="">
-                        <td class="bg-[#161618] text-slate-300 font-bold text-xs text-start uppercase">Time</td>
-                        <th class="bg-[#161618] font-bold text-slate-300 text-xs text-start uppercase">Symbol</th>
-                        <td class="bg-[#161618] text-slate-300 font-bold text-xs text-start uppercase">Expiry</td>
-                        <td class="bg-[#161618] text-slate-300 font-bold text-xs text-start uppercase">Strike</td>
-                        <td class="bg-[#161618] text-slate-300 font-bold text-xs text-start uppercase">C/P</td>
-                        <td class="bg-[#161618] text-slate-300 font-bold text-xs text-start uppercase">Sent.</td>
-                        <td class="bg-[#161618] text-slate-300 font-bold text-xs text-start uppercase">Spot</td>
-                        <td class="bg-[#161618] text-slate-300 font-bold text-xs text-start uppercase">Price</td>
-                        <td class="bg-[#161618] text-slate-300 font-bold text-xs text-start uppercase">Prem.</td>
-                        <td class="bg-[#161618] text-slate-300 font-bold text-xs text-start uppercase">Type</td>
-                        <td class="bg-[#161618] text-slate-300 font-bold text-xs text-end uppercase">Vol</td>
-                        <td class="bg-[#161618] text-slate-300 font-bold text-xs text-end uppercase">OI</td>
+                        <td class="bg-[#2962ffab] text-slate-300 font-bold text-xs text-start uppercase">Time</td>
+                        <th class="bg-[#2962ffab] font-bold text-slate-300 text-xs text-start uppercase">Symbol</th>
+                        <td class="bg-[#2962ffab] text-slate-300 font-bold text-xs text-start uppercase">Expiry</td>
+                        <td class="bg-[#2962ffab] text-slate-300 font-bold text-xs text-start uppercase">Strike</td>
+                        <td class="bg-[#2962ffab] text-slate-300 font-bold text-xs text-start uppercase">C/P</td>
+                        <td class="bg-[#2962ffab] text-slate-300 font-bold text-xs text-start uppercase">Sent.</td>
+                        <td class="bg-[#2962ffab] text-slate-300 font-bold text-xs text-start uppercase">Spot</td>
+                        <td class="bg-[#2962ffab] text-slate-300 font-bold text-xs text-start uppercase">Price</td>
+                        <td class="bg-[#2962ffab] text-slate-300 font-bold text-xs text-start uppercase">Prem.</td>
+                        <td class="bg-[#2962ffab] text-slate-300 font-bold text-xs text-start uppercase">Type</td>
+                        <td class="bg-[#2962ffab] text-slate-300 font-bold text-xs text-end uppercase">Vol</td>
+                        <td class="bg-[#2962ffab] text-slate-300 font-bold text-xs text-end uppercase">OI</td>
                       </tr>
                     </thead>
                     <tbody>
@@ -940,7 +940,7 @@ $: {
   <label id="filterList" for="filterList" class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
   
   
-  <div class="modal-box w-full bg-[#131722] sm:border sm:border-slate-800 overflow-hidden rounded-md">
+  <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] sm:border sm:border-slate-800 overflow-hidden rounded-md">
 
 
     <div class="relative z-50 mx-2 max-h-[80vh] rounded bg-default opacity-100 bp:mx-3 sm:mx-4 w-full max-w-[1024px]" aria-modal="true">

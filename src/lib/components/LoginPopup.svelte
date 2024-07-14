@@ -155,7 +155,7 @@ function handleHoverGithub() {
         <label on:click={() => form= []} id="userLogin" for="userLogin"  class="cursor-pointer modal-backdrop bg-[#fff] bg-opacity-[0.05] "></label>
         
         
-        <div class="modal-box w-full bg-[#131722] border border-slate-800 {$screenWidth < 640 ? 'min-h-screen' : ''}">
+        <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] border border-slate-800 {$screenWidth < 640 ? 'min-h-screen' : ''}">
       
           
     

@@ -1050,7 +1050,7 @@ onDestroy(async () => {
   
 
   <!-- Desktop modal content -->
-  <form method="POST" action="?/cancelSubscription" use:enhance={submitCancellation}  class="modal-box w-full bg-[#131722] flex flex-col items-center">
+  <form method="POST" action="?/cancelSubscription" use:enhance={submitCancellation}  class="modal-box w-full bg-[#131722] border border-[#2a2e39] flex flex-col items-center">
     <div class="mx-auto mb-8 h-1.5 w-20 flex-shrink-0 rounded-full bg-[#2a2e39]" />
     <div class="text-white mb-5 text-center">
       <h3 class="font-bold text-2xl mb-5">Are you sure?</h3>
@@ -1088,7 +1088,7 @@ onDestroy(async () => {
   
 
   <!-- Desktop modal content -->
-  <form method="POST" action="?/reactivateSubscription" use:enhance={submitReactivate}  class="modal-box w-full bg-[#131722] flex flex-col items-center">
+  <form method="POST" action="?/reactivateSubscription" use:enhance={submitReactivate}  class="modal-box w-full bg-[#131722] border border-[#2a2e39] flex flex-col items-center">
     <div class="mx-auto mb-8 h-1.5 w-20 flex-shrink-0 rounded-full bg-[#2a2e39]" />
     <div class="text-white mb-5 text-center">
       <h3 class="font-bold text-2xl mb-5">Reactivate Subscription</h3>
@@ -1128,7 +1128,7 @@ onDestroy(async () => {
   
 
   <!-- Desktop modal content -->
-  <form method="POST" action="?/changeSubscription" use:enhance={submitChangePlan}  class="modal-box w-full bg-[#131722] flex flex-col items-center">
+  <form method="POST" action="?/changeSubscription" use:enhance={submitChangePlan}  class="modal-box w-full bg-[#131722] border border-[#2a2e39] flex flex-col items-center">
     <div class="mx-auto mb-8 h-1.5 w-20 flex-shrink-0 rounded-full bg-[#2a2e39]" />
     <div class="text-white mb-5 text-center">
       <h3 class="font-bold text-2xl mb-5">Are you sure?</h3>
@@ -1165,7 +1165,7 @@ onDestroy(async () => {
   
 
   <!-- Desktop modal content -->
-  <div class="modal-box w-full bg-[#131722] flex flex-col items-center">
+  <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] flex flex-col items-center">
     <div class="mx-auto mb-8 h-1.5 w-20 flex-shrink-0 rounded-full bg-[#2a2e39]" />
     <div class="text-white mb-5 text-center">
       <h3 class="font-bold text-2xl mb-5">Paypal not supported</h3>

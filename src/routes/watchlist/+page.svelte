@@ -588,7 +588,7 @@ onDestroy( () => {
       <label for="addWatchList" class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
   
       <!-- Desktop modal content -->
-      <div class="modal-box w-full bg-[#191919]">
+      <div class="modal-box w-full bg-[#131722] border border-[#2a2e39]">
         <div class="text-white mb-5">
           <h3 class="font-bold text-2xl mb-5">New Watchlist</h3>
           
@@ -635,7 +635,7 @@ onDestroy( () => {
     <label for="settingsWatchListModal"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
     
     
-    <div class="modal-box w-full bg-[#131722] pb-5">
+    <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] pb-5">
 
       <div class="flex flex-row items-center mb-8">
         <h3 class="text-white text-2xl font-bold">
@@ -691,7 +691,7 @@ onDestroy( () => {
     <label for="editNameWatchList"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
     
     
-    <div class="modal-box w-full bg-[#131722] sm:border sm:border-slate-600 " >
+    <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] sm:border sm:border-slate-600 " >
 
     <div class="flex flex-row items-center">
         <h3 class="text-white text-2xl font-bold">
@@ -739,7 +739,7 @@ onDestroy( () => {
   <label for="deleteWatchList"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
   
   
-  <div class="modal-box w-full bg-[#131722] sm:border sm:border-slate-600 overflow-hidden">
+  <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] sm:border sm:border-slate-600 overflow-hidden">
 
     <h3 class="font-bold text-xl mb-5 pt-5 text-white m-auto w-3/4 text-center">
       Are you sure you want to delete the watchlist?
@@ -774,7 +774,7 @@ onDestroy( () => {
   <label id="allList" for="allList"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
   
   
-  <div class="modal-box w-full bg-[#131722] sm:border sm:border-slate-800">
+  <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] sm:border sm:border-slate-800">
 
     <h3 class="text-white text-2xl font-bold">
       Watchlists

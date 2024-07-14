@@ -457,7 +457,7 @@ $: {
 <label id="indexModal" for="indexModal"  class="cursor-pointer modal-backdrop bg-[#fff] bg-opacity-[0.02] sm:bg-[#131722] sm:bg-opacity-[0.5]"></label>
 
 
-<div class="modal-box w-full bg-[#131722] sm:bg-[#131722] sm:border sm:border-slate-800">
+<div class="modal-box w-full bg-[#131722] border border-[#2a2e39] sm:bg-[#131722] sm:border sm:border-slate-800">
 
 
 
@@ -533,7 +533,7 @@ $: {
         <label id="exportDataModal" for="exportDataModal"  class="cursor-pointer modal-backdrop bg-[#fff] bg-opacity-[0.02] sm:bg-[#131722] sm:bg-opacity-[0.5]"></label>
         
         
-        <div class="modal-box w-full bg-[#131722] sm:bg-[#131722] sm:border sm:border-slate-800">
+        <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] sm:bg-[#131722] sm:border sm:border-slate-800">
       
       
       

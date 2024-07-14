@@ -107,7 +107,7 @@ else {
   <label for="addPortfolio"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
   
   
-  <div class="modal-box w-full bg-[#131722] overflow-hidden" >
+  <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] overflow-hidden" >
 
 
     <div class="flex flex-col w-full mt-10 sm:mt-0">

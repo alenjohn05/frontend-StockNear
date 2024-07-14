@@ -13,7 +13,7 @@
         <label id="discountBanner" for="discountBanner"  class="cursor-pointer modal-backdrop bg-[#fff] bg-opacity-[0.05]"></label>
         
         
-        <div class="modal-box w-full bg-[#131722]">
+        <div class="modal-box w-full bg-[#131722] border border-[#2a2e39]">
 
             <div class="card bg-[#131722] w-full">
                 <figure><img class="rounded-xl" src={discountBanner} alt="discount" /></figure>

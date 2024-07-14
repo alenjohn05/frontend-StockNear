@@ -284,7 +284,7 @@
       <label id="quarterModal" for="quarterModal"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
       
       
-      <div class="modal-box w-full bg-[#131722] sm:border sm:border-slate-800">
+      <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] sm:border sm:border-slate-800">
     
     
     
@@ -403,7 +403,7 @@
       <label id="yearModal" for="yearModal"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
       
       
-      <div class="modal-box w-full bg-[#131722] sm:border sm:border-slate-800">
+      <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] sm:border sm:border-slate-800">
     
     
     

@@ -22,7 +22,7 @@ export let id;
   
 
   <!-- Desktop modal content -->
-  <div class="modal-box w-full bg-[#191919] flex flex-col items-center">
+  <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] flex flex-col items-center">
     <div class="mx-auto mb-8 h-1.5 w-20 flex-shrink-0 rounded-full bg-[#2a2e39]" />
     <div class="text-white mb-5 text-center">
       <h3 class="font-bold text-2xl mb-5">{title}</h3>

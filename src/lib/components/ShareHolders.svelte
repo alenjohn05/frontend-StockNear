@@ -242,7 +242,7 @@ $: {
                 <div class="w-full mt-5 mb-10 m-auto flex justify-center items-center">
                     <div class="w-full grid grid-cols-2 lg:grid-cols-3 gap-y-3 lg:gap-y-3 gap-x-3 ">
                       <!--Start Put/Call-->  
-                      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#262626] shadow-lg rounded-md h-20">
+                      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#131722] shadow-lg rounded-md h-20">
                         <div class="flex flex-col items-start">
                             <span class="font-medium text-gray-200 text-sm ">Put/Call</span>
                             <span class="text-start text-sm sm:text-[1rem] font-medium text-white">
@@ -269,7 +269,7 @@ $: {
                     </div>
                     <!--End Put/Call-->
                     <!--Start Call Flow-->  
-                    <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#262626] shadow-lg rounded-md h-20">
+                    <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#131722] shadow-lg rounded-md h-20">
                       <div class="flex flex-col items-start">
                           <span class="font-medium text-gray-200 text-sm ">Call Flow</span>
                           <span class="text-start text-sm sm:text-[1rem] font-medium text-white">
@@ -299,7 +299,7 @@ $: {
                     <!--End Call Flow-->
 
                       <!--Start Put Flow-->  
-                      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#262626] shadow-lg rounded-md h-20">
+                      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#131722] shadow-lg rounded-md h-20">
                         <div class="flex flex-col items-start">
                             <span class="font-medium text-gray-200 text-sm ">Put Flow</span>
                             <span class="text-start text-sm sm:text-[1rem] font-medium text-white">

@@ -296,7 +296,7 @@
                    <div class="w-full mt-5 mb-10 m-auto flex justify-center items-center ">
                     <div class="w-full grid grid-cols-2 gap-y-3 lg:gap-y-3 gap-x-3 ">
                        <!--Start Total Amount Traded-->  
-                       <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#262626] rounded-2xl h-20">
+                       <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#131722] rounded-2xl h-20">
                         <div class="flex flex-col items-start">
                             <span class="font-medium text-gray-200 text-sm ">Total Amount</span>
                             <span class="text-start text-[1rem] font-medium text-white mt-0.5">
@@ -310,7 +310,7 @@
                     </div>
                     <!--End Total Amount Traded-->
                       <!--Start Buy/Sell-->  
-                      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#262626] rounded-2xl h-20">
+                      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#131722] rounded-2xl h-20">
                         <div class="flex flex-col items-start">
                             <span class="font-medium text-gray-200 text-sm sm:text-[1rem] ">Buy/Sell</span>
                             <span class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5">

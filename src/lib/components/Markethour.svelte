@@ -84,7 +84,7 @@
       <label for=extendedHoursInfo class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
   
 
-      <div class="modal-box w-full bg-[#131722]">
+      <div class="modal-box w-full bg-[#131722] border border-[#2a2e39]">
         <div class="text-white mb-5">
           <h3 class="font-bold text-2xl mb-5">Extended Hours</h3>
           <span class="text-white">

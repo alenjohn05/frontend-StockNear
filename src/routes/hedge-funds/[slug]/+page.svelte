@@ -376,7 +376,7 @@ function tabFunction(state) {
                  <div class="w-full mt-5 mb-10 m-auto flex justify-center items-center ">
                   <div class="sm:hidden w-full grid grid-cols-2 gap-y-3 lg:gap-y-3 gap-x-3 ">
                      <!--Start Total Amount Traded-->  
-                     <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#262626] rounded-2xl h-20">
+                     <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#131722] rounded-2xl h-20">
                       <div class="flex flex-col items-start">
                           <span class="font-medium text-gray-200 text-sm ">AUM</span>
                           <span class="text-start text-[1rem] font-medium text-white mt-0.5">
@@ -388,7 +388,7 @@ function tabFunction(state) {
                   <!--End Total Amount Traded-->
                   
                     <!--Start-->  
-                    <div class="sm:hidden flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#262626] rounded-2xl h-20">
+                    <div class="sm:hidden flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#131722] rounded-2xl h-20">
                       <div class="flex flex-col items-start">
                           <span class="font-medium text-gray-200 text-sm sm:text-[0.85rem]">3 Year Perf.</span>
                           <span class="text-start text-[1rem] sm:text-sm font-semibold text-white mt-0.5">
@@ -423,7 +423,7 @@ function tabFunction(state) {
                   <!--End-->
 
                   <!--Start-->  
-                   <div class="sm:hidden flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#262626] rounded-2xl h-20">
+                   <div class="sm:hidden flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#131722] rounded-2xl h-20">
                     <div class="flex flex-col items-start">
                         <span class="font-medium text-gray-200 text-sm sm:text-[0.85rem]">5 Year Perf.</span>
                         <span class="text-start text-[1rem] sm:text-sm font-semibold text-white mt-0.5">
@@ -458,7 +458,7 @@ function tabFunction(state) {
 
 
                    <!--Start-->  
-                   <div class="sm:hidden flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#262626] rounded-2xl h-20">
+                   <div class="sm:hidden flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#131722] rounded-2xl h-20">
                     <div class="flex flex-col items-start">
                         <span class="font-medium text-gray-200 text-sm sm:text-[0.85rem]">Incept. Perf.</span>
                         <span class="text-start text-[1rem] sm:text-sm font-semibold text-white mt-0.5">
@@ -540,7 +540,7 @@ function tabFunction(state) {
                  <div class="hidden sm:flex justify-center items-center w-full mt-5 mb-10 m-auto">
                   <div class="w-full grid grid-cols-4 gap-y-3 lg:gap-y-3 gap-x-3 ">
                      <!--Start Total Amount Traded-->  
-                     <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#262626] rounded-2xl h-20">
+                     <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#131722] rounded-2xl h-20">
                       <div class="flex flex-col items-start">
                           <span class="font-medium text-gray-200 text-[1rem]">AUM</span>
                           <span class="text-start text-[1rem] font-medium text-white mt-0.5">
@@ -552,7 +552,7 @@ function tabFunction(state) {
                   <!--End Total Amount Traded-->
                   
                     <!--Start-->  
-                    <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#262626] rounded-2xl h-20">
+                    <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#131722] rounded-2xl h-20">
                       <div class="flex flex-col items-start">
                           <span class="font-medium text-gray-200 text-[1rem]">3 Year Perf.</span>
                           <span class="text-start text-[1rem] font-semibold text-white mt-0.5">
@@ -578,7 +578,7 @@ function tabFunction(state) {
                   <!--End-->
 
                      <!--Start-->  
-                     <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#262626] rounded-2xl h-20">
+                     <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#131722] rounded-2xl h-20">
                       <div class="flex flex-col items-start">
                           <span class="font-medium text-gray-200 text-[1rem]">5 Year Perf.</span>
                           <span class="text-start text-[1rem] font-semibold text-white mt-0.5">
@@ -605,7 +605,7 @@ function tabFunction(state) {
   
   
                      <!--Start-->  
-                     <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#262626] rounded-2xl h-20">
+                     <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#131722] rounded-2xl h-20">
                       <div class="flex flex-col items-start">
                           <span class="font-medium text-gray-200 text-[1rem]">Incept. Perf.</span>
                           <span class="text-start text-[1rem] font-semibold text-white mt-0.5">

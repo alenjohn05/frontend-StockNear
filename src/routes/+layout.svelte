@@ -368,12 +368,28 @@ $: {
         <div class="flex items-center justify-between">
             <div class="flex shrink-0">
                 <a href="/" class="flex-shrink-0 flex flex-row items-center {!data?.user ? 'ml-4' : 'ml-2'}">
-                  <img class="avatar w-9 sm:w-10 rounded-full" src={cloudFrontUrl+"/assets/stocknear_logo.png"}
-                    alt="stocknear logo" loading="lazy" />
-                  <div class="flex justify-center items-center text-lg sm:text-xl font-medium mr-auto ml-2">
-                      <span class="self-center text-gray-200 font-semibold whitespace-nowrap">Stocknear</span>
+                  <div  class="flex justify-center items-center text-lg sm:text-xl font-medium mr-auto">
+                  <div class="flex flex-row items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        id="Layer_1"
+                        data-name="Layer 1"
+                        viewBox="0 0 24 24"
+                        width="30"
+                        height="30"
+                        class="fill-current text-white"
+                      >
+                        <path
+                          fill="white"
+                          d="M12,24C5.383,24,0,18.617,0,12S5.383,0,12,0s12,5.383,12,12-5.383,12-12,12ZM12,1C5.935,1,1,5.935,1,12s4.935,11,11,11,11-4.935,11-11S18.065,1,12,1Zm0,19c-4.411,0-8-3.589-8-8S7.589,4,12,4s8,3.589,8,8-3.589,8-8,8Zm0-15c-3.86,0-7,3.14-7,7s3.14,7,7,7,7-3.14,7-7-3.14-7-7-7Zm0,11c-2.206,0-4-1.794-4-4s1.794-4,4-4,4,1.794,4,4-1.794,4-4,4Zm0-7c-1.654,0-3,1.346-3,3s1.346,3,3,3,3-1.346,3-3-1.346-3-3-3Z"
+                        />
+                      </svg>
+                      <span class="ml-2 text-gray-200 font-semibold whitespace-nowrap"
+                        >Octopi</span
+                      >
                   </div>
-                </a>
+                </div>
+              </a>
             </div>
             <div class="hidden md:flex md:items-center md:justify-center md:gap-5">
               <a aria-current="page"
@@ -395,7 +411,7 @@ $: {
     </div>
 </header>
   {:else }
-  <div id="navbar" class="navbar {$screenWidth < 640 && hideHeader ? 'invisible -mt-20' : ''} border-b border-[#141720] w-screen shadow-lg sticky top-0 z-40 bg-[#131722]">
+  <div id="navbar" class="navbar {$screenWidth < 640 && hideHeader ? 'invisible -mt-20' : ''} border-b border-[#2a2e39] w-screen shadow-lg sticky top-0 z-40 bg-[#131722]">
 
   <div class="w-full m-auto ">
     <div class="flex flex-row items-center w-full xl:px-2">
@@ -413,12 +429,28 @@ $: {
             {/if}
           </label>
           <a href="/" class="flex-shrink-0 flex flex-row items-center {!data?.user ? 'ml-4' : 'ml-2'}">
-            <img class="avatar w-9 sm:w-10 rounded-full" src={cloudFrontUrl+"/assets/stocknear_logo.png"}
-              alt="stocknear logo" loading="lazy" />
-            <div class="flex justify-center items-center text-lg sm:text-xl font-medium mr-auto ml-2">
-                <span class="self-center text-gray-200 font-semibold whitespace-nowrap">Stocknear</span>
+            <div  class="flex justify-center items-center text-lg sm:text-xl font-medium mr-auto">
+            <div class="flex flex-row items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  id="Layer_1"
+                  data-name="Layer 1"
+                  viewBox="0 0 24 24"
+                  width="30"
+                  height="30"
+                  class="fill-current text-white"
+                >
+                  <path
+                    fill="white"
+                    d="M12,24C5.383,24,0,18.617,0,12S5.383,0,12,0s12,5.383,12,12-5.383,12-12,12ZM12,1C5.935,1,1,5.935,1,12s4.935,11,11,11,11-4.935,11-11S18.065,1,12,1Zm0,19c-4.411,0-8-3.589-8-8S7.589,4,12,4s8,3.589,8,8-3.589,8-8,8Zm0-15c-3.86,0-7,3.14-7,7s3.14,7,7,7,7-3.14,7-7-3.14-7-7-7Zm0,11c-2.206,0-4-1.794-4-4s1.794-4,4-4,4,1.794,4,4-1.794,4-4,4Zm0-7c-1.654,0-3,1.346-3,3s1.346,3,3,3,3-1.346,3-3-1.346-3-3-3Z"
+                  />
+                </svg>
+                <span class="ml-2 text-gray-200 font-semibold whitespace-nowrap"
+                  >Octopi</span
+                >
             </div>
-          </a>
+          </div>
+        </a>
 
           <!--<Searchbar />-->
 

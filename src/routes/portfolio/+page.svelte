@@ -632,7 +632,7 @@ if (usRegion.includes(value)) {
     <label id="accountValueInfo" for="accountValueInfo"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
     
     
-    <div class="modal-box w-full bg-[#131722]">
+    <div class="modal-box w-full bg-[#131722] border border-[#2a2e39]">
   
   
   
@@ -659,7 +659,7 @@ if (usRegion.includes(value)) {
     <label id="availableCashInfo" for="availableCashInfo"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
     
     
-    <div class="modal-box w-full bg-[#131722]">
+    <div class="modal-box w-full bg-[#131722] border border-[#2a2e39]">
   
   
       <div class="text-white mb-5">
@@ -686,7 +686,7 @@ if (usRegion.includes(value)) {
     <label id="overallReturnInfo" for="overallReturnInfo"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
     
     
-    <div class="modal-box w-full bg-[#131722]">
+    <div class="modal-box w-full bg-[#131722] border border-[#2a2e39]">
   
   
       <div class="text-white mb-5">
@@ -712,7 +712,7 @@ if (usRegion.includes(value)) {
     <label id="alphaInfo" for="alphaInfo"  class="cursor-pointer modal-backdrop"></label>
     
     
-    <div class="modal-box w-full bg-[#131722] ">
+    <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] ">
   
   
   
@@ -746,7 +746,7 @@ if (usRegion.includes(value)) {
     <label id="betaInfo" for="betaInfo"  class="cursor-pointer modal-backdrop"></label>
     
     
-    <div class="modal-box w-full bg-[#131722] ">
+    <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] ">
   
   
   
@@ -783,7 +783,7 @@ if (usRegion.includes(value)) {
     <label id="maxDrawdownInfo" for="maxDrawdownInfo"  class="cursor-pointer modal-backdrop bg-[#fff] bg-opacity-[0.08]"></label>
     
     
-    <div class="modal-box w-full bg-[#131722] border border-slate-800">
+    <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] border border-slate-800">
   
   
   
@@ -820,7 +820,7 @@ if (usRegion.includes(value)) {
      <label id="holdingsCategoryInfo" for="holdingsCategoryInfo"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
      
      
-     <div class="modal-box w-full bg-[#131722] sm:border sm:border-slate-800">
+     <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] sm:border sm:border-slate-800">
    
    
    

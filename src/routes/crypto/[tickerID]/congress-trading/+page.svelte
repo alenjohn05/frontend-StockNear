@@ -213,7 +213,7 @@ isLoaded = true;
                         <div class="w-full grid grid-cols-2 gap-y-3 lg:gap-y-3 gap-x-3 ">
         
                           <!--Start Buy/Sell-->  
-                          <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#262626] shadow-lg rounded-2xl h-20">
+                          <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#131722] shadow-lg rounded-2xl h-20">
                             <div class="flex flex-col items-start">
                                 <span class="font-semibold text-gray-200 text-sm sm:text-[1rem] ">Buy/Sell</span>
                                 <span class="text-start text-sm sm:text-[1rem] font-medium text-white">
@@ -240,7 +240,7 @@ isLoaded = true;
                         </div>
                         <!--End Buy/Sell-->
                         <!--Start Dem/Rep-->  
-                        <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#262626] shadow-lg rounded-2xl h-20">
+                        <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#131722] shadow-lg rounded-2xl h-20">
                           <div class="flex flex-col items-start">
                               <span class="font-semibold text-gray-200 text-sm sm:text-[rem] ">Dem/Rep</span>
                               <span class="text-start text-sm sm:text-[1rem] font-medium text-white">

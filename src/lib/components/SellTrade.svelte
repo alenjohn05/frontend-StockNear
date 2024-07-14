@@ -167,7 +167,7 @@ $: {
   <label for="sellTradeModal"  class="cursor-pointer modal-backdrop bg-[#fff] bg-opacity-[0.08]"></label>
   
   
-  <div class="modal-box w-full bg-[#131722] border border-slate-600 h-[500px]" >
+  <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] border border-slate-600 h-[500px]" >
 
    <!--Start Trade Modal-->
 

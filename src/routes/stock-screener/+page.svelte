@@ -549,7 +549,7 @@ onMount(async () => {
     <label for="addStrategy"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
     
     
-    <div class="modal-box w-full bg-[#131722]" >
+    <div class="modal-box w-full bg-[#131722] border border-[#2a2e39]" >
   
         <h1 class="text-white text-2xl font-bold">
           New Strategy
@@ -633,7 +633,7 @@ onMount(async () => {
     <label for="deleteStrategy"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
     
     
-    <div class="modal-box w-full bg-[#131722] overflow-hidden ">
+    <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] overflow-hidden ">
   
       <h3 class="font-bold text-md sm:text-lg flex justify-center items-center mt-10 text-white">
         Are you sure you want to delete the strategy?
@@ -667,7 +667,7 @@ onMount(async () => {
     <label for="viewStrategy"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
     
     
-    <div class="modal-box w-full bg-[#131722] border border-slate-600 overflow-y-scroll overflow-hidden {$screenWidth < 640 ? 'min-h-screen' : 'h-[800px]'}">
+    <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] border border-slate-600 overflow-y-scroll overflow-hidden {$screenWidth < 640 ? 'min-h-screen' : 'h-[800px]'}">
   
   
       <!--Start Rule Preview-->
