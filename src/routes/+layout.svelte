@@ -580,7 +580,7 @@ syncWorker.onmessage = handleTwitchMessage;
               <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
               <ul
                 tabindex="1"
-                class="border border-gray-700 mt-2 p-2 menu dropdown-content text-white bg-[#131722] rounded-md w-52"
+                class="border border-gray-700 mt-2 p-2 menu dropdown-content text-white bg-[#131722]  border border-slate-800rounded-md w-52"
               >
                 <li class="mb-3 hover:bg-[#2B3139] rounded-lg">
                   <a href="/community/profile">
@@ -766,7 +766,7 @@ syncWorker.onmessage = handleTwitchMessage;
               for="sidebar"
               class="block text-slate-200 hover:text-white sm:hover:bg-purple-700 truncate transition duration-150 {$page
                 .url.pathname === '/'
-                ? 'text-white bg-[#131722] rounded-md '
+                ? 'text-white bg-[#131722]  border border-slate-800rounded-md '
                 : ''}"
             >
               <div class="flex items-center justify-between">
@@ -1616,7 +1616,7 @@ syncWorker.onmessage = handleTwitchMessage;
       <div class="modal-box bg-[#131722]">
         {#if data?.user}
           <ul
-            class="menu menu-compact dropdown-content text-white bg-[#131722] rounded"
+            class="menu menu-compact dropdown-content text-white bg-[#131722]  border border-slate-800rounded"
           >
             <li class="mb-3">
               <label

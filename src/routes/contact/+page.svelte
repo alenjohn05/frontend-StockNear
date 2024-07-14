@@ -1,35 +1,32 @@
-
-
 <script>
   import logo from '$lib/images/feedback_logo.png';
   import { numberOfUnreadNotification } from '$lib/store';
   
-  const emailAddress = 'support@octopi.com';
+  const emailAddress = 'support@Octopi.com';
 </script>
 
 
 <svelte:head>
 
 <meta charset="utf-8" />
-
 <meta name="viewport" content="width=device-width" />
 <title>
-  {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Contact Us · octopi
+  {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Contact Us · Octopi
 </title>
 <meta name="description" content={`Need help, found a bug or you have a feature request. Please contact us to resolve any issues.`} />
 
 <!-- Other meta tags -->
-<meta property="og:title" content={`Contact Us · octopi`}/>
+<meta property="og:title" content={`Contact Us · Octopi`}/>
 <meta property="og:description" content={`Need help, found a bug or you have a feature request. Please contact us to resolve any issues.`} />
-<meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+<meta property="og:image" content="https://Octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
 <meta property="og:type" content="website"/>
 <!-- Add more Open Graph meta tags as needed -->
 
 <!-- Twitter specific meta tags -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content={`Contact Us · octopi`}/>
+<meta name="twitter:title" content={`Contact Us · Octopi`}/>
 <meta name="twitter:description" content={`Need help, found a bug or you have a feature request. Please contact us to resolve any issues.`} />
-<meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+<meta name="twitter:image" content="https://Octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
 <!-- Add more Twitter meta tags as needed -->
 
 </svelte:head>
@@ -94,17 +91,17 @@
 
 
 
-<div class="card w-full rounded-none sm:rounded-xl border-t border-slate-800 sm:border sm:border-slate-800 m-auto ">
+<div class="card w-full rounded-none sm:rounded-xl border-t border-[#3F3F4080] sm:border border-[#3F3F4080] m-auto ">
   <div class="card-body">
     <h2 class="card-title text-2xl mb-5 text-white">Support</h2>
     <p class="text-white ">
-      Please take a moment to share your thoughts on this website with us. We welcome any feedback you may have. If there's a feature you'd like to see implemented, please let us know and we'll work to make the website even better for you. Thank you for your time and input!
+      We value your thoughts on our website. Share your feedback and suggestions with us—we're here to listen and improve your experience. Let us know what features you'd like to see implemented. Thank you for your input and support!
   
   </p>
   <p class="text-white mt-5">
       <!-- svelte-ignore a11y-missing-content -->
       You can contact us at 
-      <a href={`mailto:${emailAddress}`} class="text-[#FFBE00] hover:text-white hover:underline">{emailAddress}</a>
+      <a href={`mailto:${emailAddress}`} class="text-[#03CA9B] hover:text-white hover:underline">{emailAddress}</a>
   </p>
   </div>
   </div>

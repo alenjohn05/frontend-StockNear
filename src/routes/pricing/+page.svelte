@@ -154,7 +154,7 @@ async function purchasePlan() {
 
         <div class="flex flex-col sm:flex-row items-center gap-10 sm:gap-5 w-full mt-10 sm:mt-20">
             <!-- Pricing Card -->
-            <div class="order-last sm:order-1 flex flex-col p-6 lg:p-8 mx-auto w-full text-center text-white bg-[#131722] rounded-lg">
+            <div class="order-last sm:order-1 flex flex-col p-6 lg:p-8 mx-auto w-full text-center text-white bg-[#131722]  border border-slate-800rounded-lg">
 
 
                 <div class="flex flex-row items-center justify-start items-center mt-2">

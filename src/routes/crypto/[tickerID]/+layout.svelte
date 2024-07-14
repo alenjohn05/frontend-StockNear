@@ -857,7 +857,7 @@ $: {
     </h3>
 
 
-    <ul class="menu dropdown-content text-white bg-[#131722] rounded -ml-6">
+    <ul class="menu dropdown-content text-white bg-[#131722]  border border-slate-800rounded -ml-6">
       <li class="mb-3">
         <label for="typeOfTrade" on:click={() => handleTypeOfTrade('buy')} class="cursor-pointer flex flex-row justify-start items-center">
           <div class="rounded-full w-10 h-10 relative bg-gray-800">

@@ -36,7 +36,7 @@
 
         </div>
 
-        <a href="https://stats.uptimerobot.com/MP0zLix9yk" rel="noopener noreferrer" target="_blank" class="flex flex-row items-center mt-4">
+        <!-- <a href="https://stats.uptimerobot.com/MP0zLix9yk" rel="noopener noreferrer" target="_blank" class="flex flex-row items-center mt-4">
           <span class="text-white hover:text-yellow-400">
             Server Status
           </span>
@@ -44,7 +44,7 @@
             <span class="absolute inline-flex h-full w-full rounded-full"></span>
             <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-400"></span>
           </span>
-        </a>
+        </a> -->
 
       </div>
       
@@ -54,12 +54,12 @@
           <li class="mt-2 inline-block mr-2 md:block md:mr-0" >
             <a href="/pricing" class="no-underline hover:underline text-gray-300  hover:text-yellow-400">Pricing</a>
           </li>
-          <li class="mt-2 inline-block mr-2 md:block md:mr-0" >
+          <!-- <li class="mt-2 inline-block mr-2 md:block md:mr-0" >
             <a href="/changelog" class="no-underline hover:underline text-gray-300  hover:text-yellow-400">Changelog</a>
           </li>
           <li class="mt-2 inline-block mr-2 md:block md:mr-0" >
             <a href="https://octopi.lemonsqueezy.com/affiliates" rel="noopener noreferrer" target="_blank" class="no-underline hover:underline text-gray-300  hover:text-yellow-400">Affiliate Program</a>
-          </li>
+          </li> -->
         </ul>
       </div>
 

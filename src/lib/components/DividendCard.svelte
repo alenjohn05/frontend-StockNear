@@ -64,7 +64,7 @@
 
                   <tbody>
                     {#each dividendHistoryList?.slice(0,5) as item}
-                    <tr class="text-white bg-[#131722] lg:bg-[#131722] border-b border-[#000] lg:border-[#202020]">
+                    <tr class="text-white bg-[#131722]  border border-slate-800lg:bg-[#131722] border-b border-[#000] lg:border-[#202020]">
                         <td class="text-start text-sm text-white font-medium">
                             {new Date(item?.date)?.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', daySuffix: '2-digit' })}
                         </td>

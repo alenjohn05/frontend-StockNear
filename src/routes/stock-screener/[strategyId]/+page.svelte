@@ -2146,10 +2146,10 @@ $: {
                     <table class="table table-sm table-compact w-full bg-[#131722] border-bg-[#131722]">
                       <thead>
                         <tr class="border-b-[#1A1A27]">
-                          <th class="text-white bg-[#131722] text-sm border-b-[#131722]">Symbol</th>
+                          <th class="text-white bg-[#131722]  border border-slate-800text-sm border-b-[#131722]">Symbol</th>
                           <th class="text-white hidden sm:table-cell bg-[#131722] text-sm border-b-[#131722]">Company Name</th>
-                          <th class="text-white bg-[#131722] text-sm border-b-[#131722]">Market Cap</th>
-                          <th class="text-white bg-[#131722] text-end text-sm border-b-[#131722]">Price</th>
+                          <th class="text-white bg-[#131722]  border border-slate-800text-sm border-b-[#131722]">Market Cap</th>
+                          <th class="text-white bg-[#131722]  border border-slate-800text-end text-sm border-b-[#131722]">Price</th>
                         </tr>
                       </thead>
                       <tbody>

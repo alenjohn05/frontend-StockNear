@@ -1,7 +1,8 @@
+
 <script>
   import { numberOfUnreadNotification } from '$lib/store';
 
-  const emailAddress = 'support@octopi.com';
+  const emailAddress = 'support@Octopi.com';
   let cloudFrontUrl = import.meta.env.VITE_IMAGE_URL;
 
 
@@ -9,23 +10,23 @@
 
 
 <svelte:head>
-  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Imprint · octopi</title>
+  <title> {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Imprint · Octopi</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
 
   <meta name="description" content="Imprint of Octopi. Contact Information if you need help.">
   <!-- Other meta tags -->
-  <meta property="og:title" content="Imprint · octopi"/>
+  <meta property="og:title" content="Imprint · Octopi"/>
   <meta property="og:description" content="Imprint of Octopi. Contact Information if you need help.">
-  <meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta property="og:image" content="https://Octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <meta property="og:type" content="website"/>
   <!-- Add more Open Graph meta tags as needed -->
 
   <!-- Twitter specific meta tags -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Imprint · octopi"/>
+  <meta name="twitter:title" content="Imprint · Octopi"/>
   <meta name="twitter:description" content="Imprint of Octopi. Contact Information if you need help.">
-  <meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
+  <meta name="twitter:image" content="https://Octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
   <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
 
@@ -52,7 +53,7 @@
         </div>
 
         <span class="text-white text-md font-medium text-center flex justify-center  items-center ">
-          because Germany loves bureaucracy
+          because India loves democracy
         </span>
       </div>
       <!-- End Column -->
@@ -84,93 +85,89 @@
   </div>
 
 
-    <div class="card w-full bg-[#131722] border-t rounded-none sm:rounded-xl sm:border border-slate-700 m-auto ">
-      <div class="card-body">
-        <p class="text-white italic mb-2">
-          According to § 5 Telemediengesetz (TMG) ‍
-        </p>
-
-          <p class="text-white mb-5">
-            Octopi GmbH
-            <br>
-            Am Lohgraben 30
-            <br>
-            57074 Siegen
-            <br>
-            Email: <a href={`mailto:${emailAddress}`} class="text-[#FFBE00] hover:text-white hover:underline">{emailAddress}</a>.
-            <br>
-            <br>
-            Managing Director (<span class="italic">Geschäftsführer</span>): Muslem Rahimi
-            <br>
-            <br>
-            Registered in the commercial register at the local court at Siegen under:  HRB 13800
-            <br>
-            VAT ID: DE366905061
-          </p>
-
-          <p class="text-white mb-5">
-            Responsible for the content according § 55 Abs. 2 RStV
-          <br>
-          Notice according to the Online Dispute Settlement Regulation
-          </p>
-
+  <div class="card w-full bg-[#131722] border-t rounded-none sm:rounded-xl sm:border border-[#3F3F4080] m-auto">
+    <div class="card-body">
+      <p class="text-white italic mb-2">
+        As per Indian regulations
+      </p>
+  
+      <p class="text-white mb-5">
+        Octopi India Pvt. Ltd.
+        <br>
+        3rd Floor, Revias Nivas
+        <br>
+        Calicut
+        <br>
+        Email: <a href="mailto:your@email.com" class="text-[#03CA9B] hover:text-white hover:underline">itsalenjohn@email.com</a>.
+        <br>
+        <br>
+        Managing Director: Alen John
+        <br>
+        <br>
+        Registered with the Registrar of Companies under: 243547453452638GDHJ
+        <br>
+        GSTIN: GDT409GH
+      </p>
+  
+      <p class="text-white mb-5">
+        Responsible for content as per Indian law
+        <br>
+        Notice according to the Online Dispute Resolution Regulation
+      </p>
+  
+      <p class="text-white mb-5">
+        Under applicable law, we inform consumers about the existence of the Indian Consumer Dispute Resolution platform for resolving disputes without going to court. The platform can be accessed at:
+        <a target="_blank" href="http://www.consumerhelpline.gov.in">http://www.consumerhelpline.gov.in</a>.
+        <br>
+        However, we are not currently participating in the dispute resolution procedure through this platform. Please contact us using the email provided above.
+      </p>
+  
+      <h1 class="text-white text-2xl text-start mb-5">
+        Notice in accordance with Indian Consumer Dispute Settlement Act (CDSA)
+      </h1>
+      <p class="text-white mb-5">
+        We are not obligated to participate in dispute resolution proceedings before a consumer arbitration board in India.
+      </p>
+  
+      <h1 class="text-white text-2xl font-bold text-start mb-5">
+        Disclaimer - Legal Notice
+      </h1>
       
-          
-          <p class="text-white mb-5">
-            Under applicable law, we are required to inform consumers of the existence of the European Online Dispute Resolution platform, which can be used to resolve disputes without having to go to court. The European Commission is responsible for setting up the platform. The European Online Dispute Resolution Platform can be found here:
-            <a target= "_blank" href="http://ec.europa.eu/odr">http://ec.europa.eu/odr.</a>
-            <br>
-            However, we would like to point out that we are not prepared to participate in the dispute resolution procedure within the framework of theEuropean Online Dispute Resolution Platform. To contact us, please use our above e-mail and phone number.
-          </p> 
-
-
-          <h1 class="text-white text-2xl text-start mb-5">
-            Notice in accordance with the Consumer Dispute Settlement Act (VSBG)
-        </h1>
-        <p class="text-white mb-5 ">
-            We are not willing and obliged to participate in dispute resolution proceedings before a consumer arbitration board.  
-        </p> 
-
-
-        
-        <h1 class="text-white text-2xl font-bold text-start mb-5">
-            Disclaimer - legal notice
-        </h1>
-        <h1 class="text-white text-xl font-bold text-start mb-3 ml-2">
-            § 1 Content warning 
-        </h1> 
-
-        <p class="text-white mb-3 ml-2">
-          The free and freely accessible content of this website has been created with the greatest possible care, but the provider of this website does not guarantee the accuracy and timeliness of the free and freely accessible journalistic advice and news. Contributions identified by name reflect the opinion of the respective author and not always the opinion of the provider. Simply by calling up the free and freely accessible content, no contractual relationship is established between the user and the provider; in this respect, there is no intention on the part of the provider to be legally bound.
-      </p>
-
       <h1 class="text-white text-xl font-bold text-start mb-3 ml-2">
-        § 2 External Links 
-      </h1> 
-      <p class="text-white mb-3 ml-2 ">
-          This website contains links to third-party websites ("external links"). These websites are subject to the liability of the respective operators. When the external links were first created, the provider checked the external content for any legal violations. At that time, no legal violations were apparent. The provider has no influence on the current and future design and content of the linked pages. The inclusion of external links does not imply that the provider adopts the content behind the reference or link as its own. A constant control of the external links is not reasonable for the provider without concrete evidence of violations. However, in the event of knowledge of legal violations, such external links will be deleted immediately.
-      </p>
-
-
-      <h1 class="text-white text-xl font-bold text-start mb-3 ml-2">
-        § 3 Copyrights and ancillary copyrights 
-      </h1> 
-      <p class="text-white mb-3 ml-2 ">
-          The content published on this website is subject to German copyright and ancillary copyright law. Any use not permitted by German copyright and ancillary copyright law requires the prior written consent of the provider or the respective copyright holder.
-          This applies in particular to the copying, editing, translation, storage, processing or reproduction of content in databases or other electronic media and systems. Contents and rights of third parties are marked as such. The unauthorized reproduction or transmission of individual content or complete pages is not permitted and is punishable by law. Only the production of copies and downloads for personal, private and non-commercial use is permitted. The display of this website in external frames is only permitted with written permission.
-      </p>
-
-     
-
-      <h1 class="text-white text-xl font-bold text-start mb-3 ml-2">
-          § 4 Special conditions of use
-      </h1> 
+        § 1 Content Disclaimer
+      </h1>
+  
       <p class="text-white mb-3 ml-2">
-          Insofar as special conditions for individual uses of this website deviate from the aforementioned paragraphs, this will be expressly pointed out at the appropriate place. In this case, the special conditions of use shall apply in the respective individual case.
+        The content of this website has been created with the utmost care, but the provider does not guarantee the accuracy and timeliness of the information. Opinions expressed in contributed content belong to their respective authors and not necessarily to the provider. Accessing the content does not establish a contractual relationship between the user and the provider.
       </p>
-          
-      </div>
+  
+      <h1 class="text-white text-xl font-bold text-start mb-3 ml-2">
+        § 2 External Links
+      </h1>
+  
+      <p class="text-white mb-3 ml-2">
+        This website may contain links to third-party websites ("external links"), which are under the liability of their respective operators. The provider reviewed external content for legal violations at the time of linking, but ongoing monitoring is not feasible without concrete evidence of violations. Upon awareness of legal violations, such links will be promptly removed.
+      </p>
+  
+      <h1 class="text-white text-xl font-bold text-start mb-3 ml-2">
+        § 3 Copyrights and Ancillary Rights
+      </h1>
+  
+      <p class="text-white mb-3 ml-2">
+        The content on this website is subject to Indian copyright and ancillary rights laws. Unauthorized use requires prior written consent from the provider or copyright holder, except for personal, private, and non-commercial purposes. Third-party content is marked accordingly. Reproduction or transmission of content, in whole or in part, without permission is prohibited and punishable by law. Displaying this website within frames of other sites requires written permission.
+      </p>
+  
+      <h1 class="text-white text-xl font-bold text-start mb-3 ml-2">
+        § 4 Special Conditions of Use
+      </h1>
+  
+      <p class="text-white mb-3 ml-2">
+        Specific terms and conditions applicable to certain uses of this website will be explicitly stated where relevant. Such terms and conditions will prevail in those specific cases.
+      </p>
+  
     </div>
+  </div>
+  
 
   
       

@@ -290,7 +290,7 @@ async function loadSearchData() {
 
                                     <div class="w-full max-w-64 sm:max-w-3xl m-auto grid grid-cols-1 md:grid-cols-3 gap-y-3 sm:gap-x-5 flex justify-center items-center">
                                       
-                                      <a href="/politicians/61b59ab669" class="px-4 py-3  border border-[#2a2e39] text-white bg-[#131722] rounded-lg flex flex-row items-center font-medium transition duration-150 ease-in-out group">
+                                      <a href="/politicians/61b59ab669" class="px-4 py-3  border border-[#2a2e39] text-white bg-[#131722]  border border-slate-800rounded-lg flex flex-row items-center font-medium transition duration-150 ease-in-out group">
                                         <div class="flex flex-row items-center">
                                           <div class="shadow-lg rounded-full border border-slate-600 w-10 h-10 relative democratic-striped bg-[#295AC7] flex items-center justify-center">
                                             <img style="clip-path: circle(50%);" class="rounded-full w-8" src={nancyPelosiProfile} loading="lazy"/>
@@ -301,7 +301,7 @@ async function loadSearchData() {
                                           </div>
                                         </div>
                                       </a>
-                                      <a href="/hedge-funds/0001067983" class="px-4 py-3  border border-[#2a2e39] text-white bg-[#131722] rounded-lg flex flex-row items-center font-medium transition duration-150 ease-in-out group">
+                                      <a href="/hedge-funds/0001067983" class="px-4 py-3  border border-[#2a2e39] text-white bg-[#131722]  border border-slate-800rounded-lg flex flex-row items-center font-medium transition duration-150 ease-in-out group">
                                         <div class="flex flex-row items-center">
                                           <div class="shadow-lg rounded-full border border-slate-600 w-10 h-10 relative hedge-fund-striped bg-[#20202E] flex items-center justify-center">
                                             <img style="clip-path: circle(50%);" class="rounded-full w-8" src={warrenBuffetProfile} loading="lazy"/>
@@ -313,7 +313,7 @@ async function loadSearchData() {
                                         </div>
                                       </a>
                                       <a href="/analysts/5874f5e45064ed0001eb1bc5" class="px-4 py-3  border border-[#2a2e39] 
-                                      text-white bg-[#131722] rounded-lg flex flex-row items-center font-medium transition duration-150 ease-in-out group">
+                                      text-white bg-[#131722]  border border-slate-800rounded-lg flex flex-row items-center font-medium transition duration-150 ease-in-out group">
                                         <div class="flex flex-row items-center">
                                           <div class="shadow-lg rounded-full border border-slate-600 w-10 h-10 relative analyst-striped bg-[#737D62] flex items-center justify-center">
                                             <img style="clip-path: circle(50%);" class="rounded-full w-8" src={analystAvatar} loading="lazy"/>
@@ -348,7 +348,7 @@ async function loadSearchData() {
           </div>
 
   <div class="w-full max-w-3xl m-auto mb-20 -mt-4 flex justify-center items-center">
-    <a href="/community" class="px-4 py-3 text-white bg-[#131722]  border border-[#2a2e39] rounded-lg flex flex-row items-center font-medium transition duration-150 ease-in-out group">
+    <a href="/community" class="px-4 py-3 text-white bg-[#131722]  border border-slate-800 border border-[#2a2e39] rounded-lg flex flex-row items-center font-medium transition duration-150 ease-in-out group">
       <svg class="w-6 h-6 mr-2"  viewBox="0 0 24 24" fill="#CCCCCC" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM7 12.75H5C4.59 12.75 4.25 12.41 4.25 12C4.25 11.59 4.59 11.25 5 11.25H7C7.41 11.25 7.75 11.59 7.75 12C7.75 12.41 7.41 12.75 7 12.75ZM12 14.25C10.76 14.25 9.75 13.24 9.75 12C9.75 10.76 10.76 9.75 12 9.75C13.24 9.75 14.25 10.76 14.25 12C14.25 13.24 13.24 14.25 12 14.25ZM19 12.75H17C16.59 12.75 16.25 12.41 16.25 12C16.25 11.59 16.59 11.25 17 11.25H19C19.41 11.25 19.75 11.59 19.75 12C19.75 12.41 19.41 12.75 19 12.75Z" fill="#CCCCCC"></path></svg>
       <span>Follow the Community </span>
       <span class="ml-1 mt-0.5 tracking-normal group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out">

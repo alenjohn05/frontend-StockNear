@@ -54,14 +54,14 @@
   <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
 
-<!-- <DotPattern
+<DotPattern
   width={20}
   height={20}
   cx={10}
   cy={10}
   cr={1}
   class="hidden sm:block [mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] "
-/> -->
+/>
 
 <div
   class="w-full max-w-screen overflow-hidden m-auto min-h-screen bg-[#131722]"
@@ -249,30 +249,6 @@
                       >
                         Explore high-quality datasets now!
                       </h1>
-
-                      <div class="relative mb-4">
-                        <div class="absolute top-0 flex w-full justify-center">
-                          <div
-                            class="h-[1px] animate-border-width rounded-full bg-gradient-to-r from-[rgba(251,206,60,0)] via-white to-[rgba(188,126,254,0)] transition-all duration-1000"
-                          />
-                        </div>
-
-                        <div
-                          class="absolute flex items-center justify-center -top-[-140px] sm:top-[270px] -translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none w-96 sm:w-[900px] aspect-square"
-                        >
-                          <div
-                            class="absolute inset-0 translate-z-0 bg-gradient-to-t from-[#E8BB28] to-purple-600 rounded-full blur-[1600px] opacity-[0.15]"
-                          ></div>
-                          <div
-                            class="absolute w-64 h-64 translate-z-0 bg-gradient-to-t from-[#E8BB28] to-purple-900 rounded-full blur-[800px]"
-                          ></div>
-                        </div>
-
-                        <div
-                          class=" m-auto flex justify-center z-20 items-center w-fit sm:w-[820px] h-full"
-                        ></div>
-                      </div>
-
                       <div
                         class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-4 w-full m-auto"
                       >
@@ -366,7 +342,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="flex flex-row max-w-6xl mx-auto  h-[400px]">
+                      <div class="flex flex-row max-w-6xl mx-auto h-[400px]">
                         <div
                           class="flex-1 p-4 flex flex-col items-start justify-end"
                         >
@@ -375,7 +351,6 @@
                           >
                             A solution for every investor.
                           </h1>
-                          
                         </div>
                         <div
                           class="flex-1 p-4 flex flex-col items-end justify-center"
@@ -519,235 +494,6 @@
                           </div>
                         </div>
                       </section>
-
-                      <h2
-                        use:intersect={intersectOptions}
-                        class="invisible text-white text-3xl sm:text-4xl text-center m-auto font-bold mt-20 w-11/12 sm:w-1/2 mb-10"
-                      >
-                        Realtime Options Flow from Hedge Funds & Major
-                        Institutions
-                      </h2>
-
-                      <div
-                        use:intersect={intersectOptions}
-                        class="invisible relative mb-4"
-                      >
-                        <div class="absolute top-0 flex w-full justify-center">
-                          <div
-                            class="h-[1px] animate-border-width rounded-full bg-gradient-to-r from-[rgba(251,206,60,0)] via-white to-[rgba(188,126,254,0)] transition-all duration-1000"
-                          />
-                        </div>
-
-                        <div
-                          class="absolute flex items-center justify-center -top-[-140px] sm:top-[270px] -translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none w-96 sm:w-[900px] aspect-square"
-                        >
-                          <div
-                            class="absolute inset-0 translate-z-0 bg-gradient-to-t from-[#E8BB28] to-purple-600 rounded-full blur-[1600px] opacity-[0.15]"
-                          ></div>
-                          <div
-                            class="absolute w-64 h-64 translate-z-0 bg-gradient-to-t from-[#E8BB28] to-purple-900 rounded-full blur-[800px]"
-                          ></div>
-                        </div>
-
-                        <div
-                          class="overlay m-auto flex justify-center items-center w-fit sm:w-[820px] h-full"
-                        >
-                          <img
-                            class="w-full"
-                            src={cloudFrontUrl +
-                              "/assets/showcase-options-flow.png"}
-                            loading="lazy"
-                            alt="logo"
-                          />
-                        </div>
-                      </div>
-
-                      <section>
-                        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-                          <div class="pt-10 pb-12 md:pt-16 md:pb-20">
-                            <!-- Items -->
-                            <div
-                              class="max-w-sm mx-auto grid gap-8 md:grid-cols-3 lg:gap-16 items-start md:max-w-none"
-                            >
-                              <!-- 1st item -->
-                              <div
-                                use:intersect={intersectOptions}
-                                class="relative flex flex-col items-center invisible"
-                              >
-                                <div
-                                  class="mb-4 rounded-full flex-shrink-0 w-16 h-16 relative flex items-center justify-center bg-gradient-to-r from-purple-800 to-purple-500"
-                                >
-                                  <svg
-                                    style="clip-path: circle(50%);"
-                                    class="w-7 h-7"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 32 32"
-                                    ><path
-                                      fill="#fff"
-                                      d="m7.288 23.292l7.997-7.997l1.414 1.414l-7.997 7.997z"
-                                    /><path
-                                      fill="#fff"
-                                      d="M17 30a1 1 0 0 1-.37-.07a1 1 0 0 1-.62-.79l-1-7l2-.28l.75 5.27L21 24.52V17a1 1 0 0 1 .29-.71l4.07-4.07A8.94 8.94 0 0 0 28 5.86V4h-1.86a8.94 8.94 0 0 0-6.36 2.64l-4.07 4.07A1 1 0 0 1 15 11H7.48l-2.61 3.26l5.27.75l-.28 2l-7-1a1 1 0 0 1-.79-.62a1 1 0 0 1 .15-1l4-5A1 1 0 0 1 7 9h7.59l3.77-3.78A10.92 10.92 0 0 1 26.14 2H28a2 2 0 0 1 2 2v1.86a10.92 10.92 0 0 1-3.22 7.78L23 17.41V25a1 1 0 0 1-.38.78l-5 4A1 1 0 0 1 17 30"
-                                    /></svg
-                                  >
-                                </div>
-                                <h4
-                                  class="text-xl text-white font-semibold mb-2"
-                                >
-                                  Track institutional activity
-                                </h4>
-                                <p
-                                  class="text-[1rem] sm:text-lg text-white text-center"
-                                >
-                                  Gain insights into the latest moves smart
-                                  money traders and hedge funds are doing.
-                                </p>
-                              </div>
-
-                              <!-- 2nd item -->
-                              <div
-                                use:intersect={intersectOptions}
-                                class="relative flex flex-col items-center invisible"
-                              >
-                                <div
-                                  class="mb-4 rounded-full flex-shrink-0 w-16 h-16 relative flex items-center justify-center bg-gradient-to-r from-purple-800 to-purple-500"
-                                >
-                                  <svg
-                                    style="clip-path: circle(50%);"
-                                    class="w-7 h-7"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 256 256"
-                                    ><path
-                                      fill="#fff"
-                                      d="M184 184a32 32 0 0 1-32 32c-13.7 0-26.95-8.93-31.5-21.22a8 8 0 0 1 15-5.56C137.74 195.27 145 200 152 200a16 16 0 0 0 0-32H40a8 8 0 0 1 0-16h112a32 32 0 0 1 32 32m-64-80a32 32 0 0 0 0-64c-13.7 0-26.95 8.93-31.5 21.22a8 8 0 0 0 15 5.56C105.74 60.73 113 56 120 56a16 16 0 0 1 0 32H24a8 8 0 0 0 0 16Zm88-32c-13.7 0-26.95 8.93-31.5 21.22a8 8 0 0 0 15 5.56C193.74 92.73 201 88 208 88a16 16 0 0 1 0 32H32a8 8 0 0 0 0 16h176a32 32 0 0 0 0-64"
-                                    /></svg
-                                  >
-                                </div>
-                                <h4
-                                  class="text-xl text-white font-semibold mb-2"
-                                >
-                                  Fast, reliable market data
-                                </h4>
-                                <p
-                                  class="text-[1rem] sm:text-lg text-white text-center"
-                                >
-                                  Get the latest options flow data delivered to
-                                  you quickly and accurately.
-                                </p>
-                              </div>
-
-                              <!-- 3rd item -->
-                              <div
-                                use:intersect={intersectOptions}
-                                class="relative flex flex-col items-center invisible"
-                                data-aos-delay="400"
-                              >
-                                <div
-                                  class="mb-4 rounded-full flex-shrink-0 w-16 h-16 relative flex items-center justify-center bg-gradient-to-r from-purple-800 to-purple-500"
-                                >
-                                  <svg
-                                    style="clip-path: circle(50%);"
-                                    class="w-7 h-7"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 2048 2048"
-                                    ><path
-                                      fill="#fff"
-                                      d="M1536 0q27 0 50 10t40 27t28 41t10 50v1792q0 27-10 50t-27 40t-41 28t-50 10H512q-27 0-50-10t-40-27t-28-41t-10-50V128q0-27 10-50t27-40t41-28t50-10zm0 128H512v1792h1024zM896 1664h256v128H896z"
-                                    /></svg
-                                  >
-                                </div>
-                                <h4
-                                  class="text-xl text-white font-semibold mb-2"
-                                >
-                                  Best User Experience
-                                </h4>
-                                <p
-                                  class="text-[1rem] sm:text-lg text-white text-center"
-                                >
-                                  Enjoy an intuitive interface that makes
-                                  finding the information you need effortless.
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </section>
-
-                      <!-- <h2
-                        use:intersect={intersectOptions}
-                        class="invisible text-white text-3xl sm:text-4xl font-bold mt-16 w-11/12 sm:w-1/2 text-center m-auto"
-                      >
-                        Loved by our Users ❤
-                      </h2> -->
-
-                      <!-- <section
-                        use:intersect={intersectOptions}
-                        class="invisible relative flex items-center justify-center"
-                      >
-                        <div
-                          class="absolute top-0 max-w-6xl m-auto px-4 sm:px-6"
-                        >
-                          <div class="pt-8 pb-12 md:pb-20">
-                            <Marquee />
-                          </div>
-                        </div>
-                      </section> -->
-
-                      <!-- <h1
-                        class="text-white w-5/6 sm:w-full m-auto text-3xl sm:text-4xl font-bold pt-96 mt-10 mb-4"
-                      >
-                        Proudly Open Source
-                      </h1>
-
-                      <div
-                        class="text-[1rem] sm:text-xl text-white font-semibold text-center w-11/12 sm:w-1/2 m-auto mb-8"
-                      >
-                        Octopi is committed to open source & transparency. You
-                        can also run it locally or self-hosted.
-                      </div>
-
-                      <a
-                        href="https://github.com/octopi"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                        class="w-fit sm:w-54 inline-flex animate-shine items-center justify-center rounded-xl text-sm border border-neutral-900 bg-[linear-gradient(110deg,#252626,55%,#fff,45%,#252626)] bg-[length:200%_100%] px-4 py-2 font-medium transition-colors"
-                      >
-                        <div
-                          class="m-auto flex-shrink-0 flex justify-center items-center"
-                        >
-                          <svg
-                            class="w-8 h-8 sm:w-10 sm:h-10"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            ><path
-                              fill="#fff"
-                              d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"
-                            /></svg
-                          >
-
-                          <span
-                            class="text-white text-[1rem] ml-2 font-semibold"
-                          >
-                            octopi
-                            {frontendStars + backendStars}
-                          </span>
-                          <svg
-                            class="ml-1 w-4 h-4"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 32 32"
-                            ><path
-                              fill="#fff"
-                              d="m18.7 4.627l2.247 4.31a2.27 2.27 0 0 0 1.686 1.189l4.746.65c2.538.35 3.522 3.479 1.645 5.219l-3.25 2.999a2.225 2.225 0 0 0-.683 2.04l.793 4.398c.441 2.45-2.108 4.36-4.345 3.24l-4.536-2.25a2.282 2.282 0 0 0-2.006 0l-4.536 2.25c-2.238 1.11-4.786-.79-4.345-3.24l.793-4.399c.14-.75-.12-1.52-.682-2.04l-3.251-2.998c-1.877-1.73-.893-4.87 1.645-5.22l4.746-.65a2.23 2.23 0 0 0 1.686-1.189l2.248-4.309c1.144-2.17 4.264-2.17 5.398 0"
-                            /></svg
-                          >
-                        </div>
-                      </a> -->
-                      <!-- 
-                      <div
-                        class="text-white text-sm sm:text-lgs font-semibold font-mono mt-5"
-                      >
-                        Leave a star to support us
-                      </div> -->
                     </div>
                   </div>
                 </div>
@@ -759,6 +505,44 @@
     </div>
   </div>
 </div>
+<section class="bg-[#0A0A0A] w-full max-w-screen p-10">
+  <div class="flex flex-row max-w-6xl mx-auto h-[600px]">
+    <div class="flex-1 p-4 flex flex-col items-start justify-end">
+      <h1
+        class="fade-down text-left text-3xl sm:text-6xl bg-gradient-to-r from-[#E8BB28] to-purple-500 bg-clip-text text-transparent font-bold mb-6 w-80 sm:w-full"
+      >
+        To equip every investor in the world, with the best data and tools;
+        empowering them to achieve more.
+      </h1>
+    </div>
+    <div class="flex-1 p-4 flex flex-col items-end justify-center">
+      <h2 class=" text-white text-end text-xl">
+        Humans love to visualize. Graphs drive today’s investing. Octopi's craft
+        starts with fitting all the world’s data into radiant views. No more
+        clunky interfaces! It’s the look and feel you wished for.
+      </h2>
+      <h1
+        class="fade-down mt-10 text-end text-2xl sm:text-3xl bg-gradient-to-r from-[#E8BB28] to-purple-500 bg-clip-text text-transparent font-bold mb-6 w-80 sm:w-full"
+      >
+      Built by investors, for investors.
+      </h1>
+    </div>
+  </div>
+  <h2
+    use:intersect={intersectOptions}
+    class="invisible text-white text-3xl sm:text-xl text-center m-auto font-bold mt-20 w-11/12 sm:w-1/2 mb-10"
+  ></h2>
+  <div
+    class="overlay m-auto flex justify-center items-center w-fit sm:w-[820px] h-full"
+  >
+    <img
+      class="w-full"
+      src={cloudFrontUrl + "/assets/showcase-options-flow.png"}
+      loading="lazy"
+      alt="logo"
+    />
+  </div>
+</section>
 
 <section class="bg-[#0A0A0A] w-full max-w-screen">
   <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
