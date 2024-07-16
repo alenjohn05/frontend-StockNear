@@ -52,24 +52,6 @@
 
       <h2 class="text-2xl font-bold leading-7 text-white sm:truncate sm:text-3xl sm:tracking-tight">Back End Developer</h2>
   </div>
-    <div class="md:flex">
-      <div class="flex md:w-7/12 p-2">
-        <div class="md:flex bg-[#131722] border border-[#2a2e39]">
-            <div class="md:shrink-0 h-38">
-              <img class=" w-full object-cover md:h-full md:w-48" src={majorNewsData?.IllustrationImage} alt="Modern building architecture">
-            </div>
-            <div class="p-8">
-              <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Company retreats</div>
-              <a href="#" class="block mt-1 text-2xl leading-tight font-medium text-white hover:underline">{majorNewsData?.heading}</a>
-              <p class="mt-2 text-white text-sm">{majorNewsData?.Arttext}</p>
-            </div>
-          </div>
-      </div>
-      <div class="flex md:w-3/12 p-2">
-        
-      </div>
-    </div>
-
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <!-- Live News Section -->
       <div>

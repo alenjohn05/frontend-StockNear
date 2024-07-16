@@ -853,11 +853,7 @@
                             <span class="ml-2 mr-2"> &#183;</span>
                           {/if}
                           <span class="text-gray-300 text-xs">
-                            {formatDate(
-                              item?.Time
-                                ? convertTimeStringToDate(item?.Time)
-                                : new Date()
-                            )} ago
+                           at {item?.Time} · {item?.Date}
                           </span>
                         </div>
                         <span class="text-white text-lg sm:text-xxl font-bold"

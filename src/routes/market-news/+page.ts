@@ -13,40 +13,32 @@ userRegion.subscribe(value => {
     apiURL = import.meta.env.VITE_EU_API_URL;
   }
 });
-
+let backendURL = import.meta.env.VITE_BACKEND_API_URL;
 
 
 
 
 export const load = async () => {
-  const getMarketNews = async () => {
+  const getMarketMajorNews = async () => {
     let output;
-
-    // Get cached data for the specific tickerID
-    const cachedData = getCache('', 'getMarketNews');
+    const cachedData = getCache("", "getMarketMajorNews");
     if (cachedData) {
       output = cachedData;
     } else {
-
-      // make the POST request to the endpoint
-      const response = await fetch(apiURL + '/market-news', {
-        method: 'GET',
+      const response = await fetch(backendURL + "/get-major-news", {
+        method: "GET",
         headers: {
-          'Content-Type': 'application/json',
-        },
+          "Content-Type": "application/json"
+        }
       });
-
       output = await response.json();
-
-      // Cache the data for this specific tickerID with a specific name 'getMarketNews'
-      setCache('', output, 'getMarketNews');
+      setCache("", output, "getMarketMajorNews");
     }
-
     return output;
   };
 
   // Make sure to return a promise
   return {
-    getMarketNews: await getMarketNews()
+    getMarketMajorNews: await getMarketMajorNews()
   };
 };
