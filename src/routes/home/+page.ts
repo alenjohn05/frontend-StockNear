@@ -4,7 +4,8 @@ import { redirect } from '@sveltejs/kit';
 
 const usRegion = ['cle1','iad1','pdx1','sfo1'];
 
-let apiURL;
+let apiURL:string;
+let backendURL =  import.meta.env.VITE_BACKEND_API_URL;
 
 userRegion.subscribe(value => {
 
@@ -17,66 +18,71 @@ userRegion.subscribe(value => {
 
 
 export const load = async ({ parent}) => {
-
   const data = await parent();
-
   if (!data?.user) {
 		redirect(303, '/');
 	}
-
+  
   const getDailyGainerLoserActive = async () => {
     let output;
-
-    // Get cached data for the specific tickerID
     const cachedData = getCache('', 'getDailyGainerLoserActive');
     if (cachedData) {
       output = cachedData;
     } else {
-
-      // make the POST request to the endpoint
       const response = await fetch(apiURL + '/market-movers', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
       });
-
       output = await response.json();
-
       setCache('', output, 'getDailyGainerLoserActive');
     }
-
     return output;
   };
 
-  const getRssFeedWIIM = async () => {
+ 
+  const getlatestRssNews = async () => {
     let output;
-
-    // Get cached data for the specific tickerID
-    const cachedData = getCache('', 'getRssFeedWIIM');
+    const cachedData = getCache('', 'getlatestRssNews');
     if (cachedData) {
       output = cachedData;
     } else {
-
-      // make the POST request to the endpoint
-      const response = await fetch(apiURL + '/rss-feed-wiim', {
+      const response = await fetch(backendURL + '/get_live_latest_news', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
       });
-
       output = await response.json();
-
-      setCache('', output, 'getRssFeedWIIM');
+      setCache('', output, 'getlatestRssNews');
     }
-
     return output;
   };
 
+
+
+  const getDailyGainerLoserActiveOcto = async () => {
+    let output;
+    const cachedData = getCache('', 'getDailyGainerLoserActiveOcto');
+    if (cachedData) {
+      output = cachedData;
+    } else {
+      const response = await fetch(backendURL + '/latest-market-movers', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      output = await response.json();
+      setCache('', output, 'getDailyGainerLoserActiveOcto');
+    }
+    return output;
+  };
   // Make sure to return a promise
   return {
     getDailyGainerLoserActive: await getDailyGainerLoserActive(),
-    getRssFeedWIIM: await getRssFeedWIIM(),
+    getlatestRssNews: await getlatestRssNews(),
+    getDailyGainerLoserActiveOcto: await getDailyGainerLoserActiveOcto(),
   };
 };

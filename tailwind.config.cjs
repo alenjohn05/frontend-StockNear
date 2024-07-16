@@ -9,38 +9,38 @@ module.exports = {
 	theme: {
 	  extend: {
 		fontFamily: {
-			sans: ['Space Grotesk', 'sans-serif'],
+			sans: ['Montserrat', 'sans-serif'],
 		  },
 		  typography: {
 			DEFAULT: {
 			  css: {
 				h1: {
-				  fontFamily: '"Space Grotesk", sans-serif',
+				  fontFamily: '"Montserrat", sans-serif',
 				  // Other h1 styles if needed
 				},
 				h2: {
-				  fontFamily: '"Space Grotesk", sans-serif',
+				  fontFamily: '"Montserrat", sans-serif',
 				  // Other h2 styles if needed
 				},
 				h3: {
-				  fontFamily: '"Space Grotesk", sans-serif',
+				  fontFamily: '"Montserrat", sans-serif',
 				  // Other h3 styles if needed
 				},
 				h4: {
-				  fontFamily: '"Space Grotesk", sans-serif',
+				  fontFamily: '"Montserrat", sans-serif',
 				  // Other h4 styles if needed
 				},
 				h5: {
-				  fontFamily: '"Space Grotesk", sans-serif',
+				  fontFamily: '"Montserrat", sans-serif',
 				  // Other h5 styles if needed
 				},
 				h6: {
-				  fontFamily: '"Space Grotesk", sans-serif',
+				  fontFamily: '"Montserrat", sans-serif',
 				  // Other h6 styles if needed
 				},
 				// You can add custom classes here as well
 				'.custom-font-class': {
-				  fontFamily: '"Space Grotesk", sans-serif',
+				  fontFamily: '"Montserrat", sans-serif',
 				  // Other styles for .custom-font-class
 				},
 			  },

@@ -1444,7 +1444,7 @@ syncWorker.onmessage = handleTwitchMessage;
             class="px-1 rounded-sm mb-2 last:mb-0"
           >
             <a
-              href={"/market-news"}
+              href={"/major-news"}
               class="block text-slate-200 hover:text-white sm:hover:bg-purple-700 truncate transition duration-150 {[
                 '/market-news',
                 '/market-news/crypto',

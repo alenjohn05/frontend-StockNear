@@ -13,6 +13,19 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export function convertTimeStringToDate(timeString: string): Date {
+  const [hours, minutes] = timeString.split(':').map(Number);
+  
+  if (isNaN(hours) || isNaN(minutes) || hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+    throw new Error('Invalid time format. Please use HH:MM (24-hour format).');
+  }
+
+  const date = new Date();
+  date.setHours(hours, minutes, 0, 0);
+  
+  return date;
+}
+
 
 export const formatDateRange = (lastDateStr) => {
   // Convert lastDateStr to Date object
@@ -193,7 +206,7 @@ export function capitalizeFirstLetter(string) {
 
     // Handle special case for exactly 1000
     if (Math.abs(number) === 1000) {
-      return addDollarSign ? (negative ? '-$1K' : '$1K') : (negative ? '-1K' : '1K');
+      return addDollarSign ? (negative ? '-1K' : '1K') : (negative ? '-1K' : '1K');
     }
 
     if (Math.abs(number) !== 0 && Math.abs(number) > 1000) {
@@ -222,21 +235,21 @@ export function capitalizeFirstLetter(string) {
         const formattedNumber = abbreviation + suffixes[index];
         
         if (addDollarSign) {
-            return (negative ? '-$' : '$') + formattedNumber;
+            return (negative ? '-' : '') + formattedNumber;
         } else {
             return negative ? '-' + formattedNumber : formattedNumber;
         }
     }
     else if (Math.abs(number) >= 0 && Math.abs(number) < 1000) {
         if (addDollarSign) {
-            return (negative ? '-$' : '$') + number;
+            return (negative ? '-' : '') + number;
         } else {
             return number;
         }
     } 
    
     else {
-        return addDollarSign ? '$0' : '0';
+        return addDollarSign ? '0' : '0';
     }
 }
 
