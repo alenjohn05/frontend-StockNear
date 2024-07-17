@@ -907,7 +907,7 @@
                           {item?.date}
                         </div>
                         <span class="ml-2 mr-2"> &#183;</span>
-                        <span class="text-gray-300 text-xs">
+                        <span class="text-gray-300 text-xs code-font">
                           at {item?.time}
                         </span>
                       </div>

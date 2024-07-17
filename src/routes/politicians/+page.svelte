@@ -1,29 +1,16 @@
 <script lang="ts">
-  import republicanBackground from "$lib/images/bg-republican.png";
   import democraticBackground from "$lib/images/bg-democratic.png";
-  import otherBackground from "$lib/images/bg-other.png";
-
-  import { screenWidth, numberOfUnreadNotification } from "$lib/store";
-  import { abbreviateNumber } from "$lib/utils";
-  import { onMount } from "svelte";
+  import { numberOfUnreadNotification, screenWidth } from "$lib/store";
   import { compareTwoStrings } from "string-similarity";
-  //  import * as XLSX from 'xlsx';
-
+  import { onMount } from "svelte";
   export let data;
 
-  let cloudFrontUrl = import.meta.env.VITE_IMAGE_URL;
-
-  let rawData = data?.getAllPolitician;
-  let slicedRawData = [];
-  let displayList = [];
-  let images = {};
+  let rawData = data?.GetInsititutionalInvestors;
+  let displayList: any[] = [];
   let filterQuery = "";
-
   let isLoaded = false;
-
-  let filterList = [];
-
-  let changeRuleFilter = false;
+  let sortBy = "";
+  let sortOrder = "desc";
 
   async function handleScroll() {
     const scrollThreshold = document.body.offsetHeight * 0.8; // 80% of the website height
@@ -34,7 +21,6 @@
       displayList = [...displayList, ...filteredNewResults];
     }
   }
-
   onMount(async () => {
     displayList = rawData?.slice(0, 20) ?? [];
     isLoaded = true;
@@ -49,91 +35,50 @@
     };
   });
 
-  async function handleFilter(e, newFilter) {
-    //e.preventDefault();
-
-    changeRuleFilter = true;
-    const filterSet = new Set(filterList);
-
-    // Check if the new filter already exists in the list
-    if (filterSet?.has(newFilter)) {
-      // If it exists, remove it from the list
-      filterSet?.delete(newFilter);
-    } else {
-      // If it doesn't exist, add it to the list
-      filterSet?.add(newFilter);
+  function applySorting() {
+    if (sortBy) {
+      rawData.sort((a: any, b: any) => {
+        let comparison = 0;
+        if (sortBy === "HoldingValue") {
+          comparison = a.HoldingValue - b.HoldingValue;
+        } else if (sortBy === "TopPeformingC3MZG") {
+          comparison = a.TopPeformingC3MZG - b.TopPeformingC3MZG;
+        }
+        return sortOrder === "asc" ? comparison : -comparison;
+      });
     }
-    filterList = Array?.from(filterSet);
-    //console.log(filterList)
-    changeRuleFilter = true;
-  }
-
-  function filterData(data) {
-    const newData = data?.filter((item) => {
-      //Democratic Party nested conditions
-      if (
-        filterList?.includes("Democratic") &&
-        item?.party &&
-        item?.party?.toLowerCase() === "democratic"
-      ) {
-        return true;
-      }
-      //Republican Party nested conditions
-      if (
-        filterList?.includes("Republican") &&
-        item?.party &&
-        item?.party?.toLowerCase() === "republican"
-      ) {
-        return true;
-      }
-
-      //Other Party nested conditions
-      if (
-        filterList?.includes("Other") &&
-        item?.party &&
-        item?.party?.toLowerCase() === "other"
-      ) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-
-    return newData;
+    displayList = rawData?.slice(0, 20);
   }
 
   function handleInput(event) {
     filterQuery = event.target.value?.toLowerCase();
     let newData = [];
-
     setTimeout(() => {
       if (filterQuery?.length !== 0) {
         newData = rawData?.filter((item) => {
-          const representative = item?.representative?.toLowerCase();
+          const representative = item?.Name?.toLowerCase();
           // Check if representative includes filterQuery
           if (representative?.includes(filterQuery)) return true;
-
           // Implement fuzzy search by checking similarity
           // You can adjust the threshold as needed
           const similarityThreshold = 0.5;
           const similarity = compareTwoStrings(representative, filterQuery);
           return similarity > similarityThreshold;
         });
-
         if (newData?.length !== 0) {
           rawData = newData;
           displayList = [...newData];
         } else {
           // Reset to original data if no matches found
-          rawData = data?.getAllPolitician;
+          rawData = data?.GetInsititutionalInvestors;
           displayList = rawData?.slice(0, 20);
         }
       } else {
         // Reset to original data if filter is empty
-        rawData = data?.getAllPolitician;
+        rawData = data?.GetInsititutionalInvestors;
         displayList = rawData?.slice(0, 20);
       }
-    }, 500);
+    }, 300);
   }
 
   let charNumber = 40;
@@ -145,37 +90,38 @@
     }
   }
 
-  $: {
-    if (filterList && changeRuleFilter === true) {
-      displayList = filterList?.length !== 0 ? filterData(rawData) : rawData;
-      displayList = [...displayList];
-      changeRuleFilter = false;
-      //console.log(slicedRawData?.length)
+  function handleSort(column: any) {
+    if (sortBy === column) {
+      sortOrder = sortOrder === "asc" ? "desc" : "asc";
+    } else {
+      sortBy = column;
+      sortOrder = "desc";
     }
+    applySorting();
   }
 </script>
 
 <!-- HEADER FOR BETTER SEO -->
 <svelte:head>
   <title>
-    {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ""} US
-    Politician Stock Trade Tracker · octopi</title
+    {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ""} Institutional
+    Investors Details · octopi</title
   >
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
 
   <meta
     name="description"
-    content="What are US Politicians trading? Filter by Senate or House, Party, Committee, State and more - get detailed infomation about it."
+    content="What are Institutional Investors? An institutional investor is a company or organization that invests money on behalf of clients or members.   "
   />
   <!-- Other meta tags -->
   <meta
     property="og:title"
-    content="US Politician Stock Trade Tracker · octopi"
+    content="Institutional Investors Details · octopi"
   />
   <meta
     property="og:description"
-    content="What are US Politicians trading? Filter by Senate or House, Party, Committee, State and more - get detailed infomation about it."
+    content="What are Institutional Investors?   An institutional investor is a company or organization that invests money on behalf of clients or members.    "
   />
   <meta
     property="og:image"
@@ -188,11 +134,11 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta
     name="twitter:title"
-    content="US Politician Stock Trade Tracker · octopi"
+    content="Institutional Investors Details · octopi"
   />
   <meta
     name="twitter:description"
-    content="What are US Politicians trading? Filter by Senate or House, Party, Committee, State and more - get detailed infomation about it."
+    content="What are US Politicians trading? An institutional investor is a company or organization that invests money on behalf of clients or members. "
   />
   <meta
     name="twitter:image"
@@ -205,13 +151,11 @@
   class="w-full max-w-6xl overflow-hidden m-auto min-h-screen pt-5 pb-60"
 >
   <div class="text-sm breadcrumbs ml-4">
-    {console.log(displayList)}
     <ul>
       <li><a href="/" class="text-gray-300">Home</a></li>
       <li class="text-gray-300">Institutional Investors</li>
     </ul>
   </div>
-
   <body class="w-full max-w-6xl overflow-hidden m-auto">
     {#if isLoaded}
       <section
@@ -253,29 +197,33 @@
                         >
                       </label>
                     </li>
-
                     <li
-                      class="pl-3 py-1.5 flex-auto text-center bg-[#2E3238] rounded-[3px]"
+                      class="text-center bg-[#2E3238] rounded-[3px] cursor-pointer flex items-center justify-center"
+                      on:click={() => handleSort("HoldingValue")}
                     >
-                      <label
-                        for="filterList"
-                        class="flex flex-row items-center cursor-pointer"
+                      <span
+                        class="text-[0.75rem] sm:text-[1rem] text-gray-400 ml-2"
                       >
-                        <span
-                          class="text-[0.75rem] sm:text-[1rem] text-gray-400 ml-2 text-start w-full px-0 py-1 bg-inherit"
-                        >
-                          Filter
-                        </span>
-                        <svg
-                          class="ml-auto mr-5 h-5 w-5 inline-block transform transition-transform mr-2 rotate-180"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 1024 1024"
-                          ><path
-                            fill="#fff"
-                            d="m488.832 344.32l-339.84 356.672a32 32 0 0 0 0 44.16l.384.384a29.44 29.44 0 0 0 42.688 0l320-335.872l319.872 335.872a29.44 29.44 0 0 0 42.688 0l.384-.384a32 32 0 0 0 0-44.16L535.168 344.32a32 32 0 0 0-46.336 0z"
-                          /></svg
-                        >
-                      </label>
+                        Sort by Holding Value {sortBy === "HoldingValue"
+                          ? sortOrder === "asc"
+                            ? "↑"
+                            : "↓"
+                          : ""}
+                      </span>
+                    </li>
+                    <li
+                      class="text-center bg-[#2E3238] rounded-[3px] cursor-pointer flex items-center justify-center"
+                      on:click={() => handleSort("TopPeformingC3MZG")}
+                    >
+                      <span
+                        class="text-[0.75rem] sm:text-[1rem] text-gray-400 ml-2"
+                      >
+                        Sort by 3M Change {sortBy === "TopPeformingC3MZG"
+                          ? sortOrder === "asc"
+                            ? "↑"
+                            : "↓"
+                          : ""}
+                      </span>
                     </li>
                   </ul>
                 </div>
@@ -310,11 +258,11 @@
                             />
                           </div>
                           <span
-                            class="text-white text-lg font-medium mt-2 mb-2"
+                            class="text-white text-2xl text-center font-medium mt-2 mb-2"
                           >
                             {item?.Name}
                           </span>
-                          <span class="text-white text-md mb-8">
+                          <span class="text-white text-sm mb-8">
                             {item?.Description}
                           </span>
                         </div>
@@ -417,260 +365,7 @@
   </body>
 </section>
 
-{#if $screenWidth >= 640}
-  <!--Start View All List-->
-  <input type="checkbox" id="filterList" class="modal-toggle" />
-
-  <dialog id="filterList" class="modal modal-bottom sm:modal-middle">
-    <label
-      id="filterList"
-      for="filterList"
-      class="cursor-pointer modal-backdrop bg-[#111111] bg-opacity-[0.5]"
-    ></label>
-
-    <div
-      class="modal-box w-full bg-[#111111] border border-[#2a2e39] sm:border sm:border-slate-800 max-h-[600px] overflow-y-scroll"
-    >
-      <label
-        for="filterList"
-        class="cursor-pointer absolute right-5 top-2 bg-[#111111] text-[1.8rem] text-white"
-      >
-        ✕
-      </label>
-
-      <div class="text-white mt-5 pb-5">
-        <div class="flex flex-col items-center justify-start">
-          <!--Start Political Party-->
-          <div class="grid grid-cols-2 mt-4 w-full ml-auto mt-4">
-            <div class="mb-4 mr-auto">
-              <h2 class="text-xl sm:text-2xl text-white font-bold mb-3">
-                Political Party
-              </h2>
-              <ul class="space-y-1">
-                <li class="mb-2 cursor-pointer">
-                  <label
-                    on:click|stopPropagation={(event) =>
-                      handleFilter(event, "Democratic")}
-                    class="cursor-pointer flex w-full items-center space-x-2 py-2 md:w-1/2 lg:w-1/3 lg:space-x-1.5 lg:py-[5px]"
-                  >
-                    <input
-                      checked={filterList?.includes("Democratic")}
-                      type="checkbox"
-                      class="cursor-pointer bg-[#2E3238] h-[18px] w-[18px] rounded-sm ring-offset-0 dark:bg-dark-600 lg:h-4 lg:w-4"
-                    />
-                    <label class="text-white text-md cursor-pointer"
-                      >Democratic</label
-                    >
-                  </label>
-                </li>
-                <li class="mb-2 cursor-pointer">
-                  <label
-                    on:click|stopPropagation={(event) =>
-                      handleFilter(event, "Republican")}
-                    class="cursor-pointer flex w-full items-center space-x-2 py-2 md:w-1/2 lg:w-1/3 lg:space-x-1.5 lg:py-[5px]"
-                  >
-                    <input
-                      checked={filterList?.includes("Republican")}
-                      type="checkbox"
-                      class="cursor-pointer bg-[#2E3238] h-[18px] w-[18px] rounded-sm ring-offset-0 dark:bg-dark-600 lg:h-4 lg:w-4"
-                    />
-                    <label class="text-white text-md cursor-pointer"
-                      >Republican</label
-                    >
-                  </label>
-                </li>
-              </ul>
-            </div>
-            <!-- Column 2 -->
-            <div class="mt-11">
-              <ul class="space-y-1">
-                <li class="mb-2 cursor-pointer">
-                  <label
-                    on:click|stopPropagation={(event) =>
-                      handleFilter(event, "Other")}
-                    class="cursor-pointer flex w-full items-center space-x-2 py-2 md:w-1/2 lg:w-1/3 lg:space-x-1.5 lg:py-[5px]"
-                  >
-                    <input
-                      checked={filterList?.includes("Other")}
-                      type="checkbox"
-                      class="cursor-pointer bg-[#2E3238] h-[18px] w-[18px] rounded-sm ring-offset-0 dark:bg-dark-600 lg:h-4 lg:w-4"
-                    />
-                    <label class="text-white text-md cursor-pointer"
-                      >Other</label
-                    >
-                  </label>
-                </li>
-                <!-- ...other list items -->
-              </ul>
-            </div>
-          </div>
-          <!--End Political Party-->
-        </div>
-      </div>
-    </div>
-  </dialog>
-  <!--End View All List-->
-{:else}
-  <div class="drawer drawer-end z-40 overflow-hidden w-screen">
-    <input id="filterList" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-side overflow-y-scroll overflow-hidden">
-      <div
-        class="bg-[#111111] min-h-screen w-screen pb-20 overflow-y-scroll overflow-hidden"
-      >
-        <label for="filterList" class="absolute left-6 top-6">
-          <svg
-            class="w-6 h-6 inline-block mb-0.5"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            ><path
-              fill="#fff"
-              d="M9.125 21.1L.7 12.7q-.15-.15-.213-.325T.425 12q0-.2.063-.375T.7 11.3l8.425-8.425q.35-.35.875-.35t.9.375q.375.375.375.875t-.375.875L3.55 12l7.35 7.35q.35.35.35.863t-.375.887q-.375.375-.875.375t-.875-.375Z"
-            /></svg
-          >
-        </label>
-
-        <div class="w-screen overflow-y-scroll">
-          <div class="space-y-3 sm:pt-5">
-            <div class="bg-[#111111] h-auto w-screen">
-              <!--Start Header-->
-              <div
-                class="bg-[#111111] w-full p-1 flex flex-col items-center pb-10 h-auto"
-              >
-                <h2
-                  class="text-center m-auto text-[1.1rem] font-medium text-white mt-5"
-                >
-                  Filter List
-                </h2>
-              </div>
-              <!--End Header-->
-
-              <div class="flex flex-col items-center justify-center">
-                <!--Start Political Party-->
-                <div class="grid grid-cols-2 mt-4 w-11/12 ml-auto mt-4">
-                  <div class="mb-4 mr-auto">
-                    <h2 class="text-xl sm:text-2xl text-white font-bold mb-3">
-                      Political Party
-                    </h2>
-                    <ul class="space-y-1">
-                      <li class="mb-2 cursor-pointer">
-                        <label
-                          on:click|stopPropagation={(event) =>
-                            handleFilter(event, "Democratic")}
-                          class="flex w-full items-center space-x-2 py-2 md:w-1/2 lg:w-1/3 lg:space-x-1.5 lg:py-[5px]"
-                        >
-                          <input
-                            checked={filterList?.includes("Democratic")}
-                            type="checkbox"
-                            class="bg-[#2E3238] h-[18px] w-[18px] rounded-sm ring-offset-0 dark:bg-dark-600 lg:h-4 lg:w-4"
-                          />
-                          <label class="text-white text-md">Democratic</label>
-                        </label>
-                      </li>
-                      <li class="mb-2 cursor-pointer">
-                        <label
-                          on:click|stopPropagation={(event) =>
-                            handleFilter(event, "Republican")}
-                          class="flex w-full items-center space-x-2 py-2 md:w-1/2 lg:w-1/3 lg:space-x-1.5 lg:py-[5px]"
-                        >
-                          <input
-                            checked={filterList?.includes("Republican")}
-                            type="checkbox"
-                            class="bg-[#2E3238] h-[18px] w-[18px] rounded-sm ring-offset-0 dark:bg-dark-600 lg:h-4 lg:w-4"
-                          />
-                          <label class="text-white text-md">Republican</label>
-                        </label>
-                      </li>
-                    </ul>
-                  </div>
-                  <!-- Column 2 -->
-                  <div class="mt-10">
-                    <ul class="space-y-1">
-                      <li class="mb-2 cursor-pointer">
-                        <label
-                          on:click|stopPropagation={(event) =>
-                            handleFilter(event, "Other")}
-                          class="flex w-full items-center space-x-2 py-2 md:w-1/2 lg:w-1/3 lg:space-x-1.5 lg:py-[5px]"
-                        >
-                          <input
-                            checked={filterList?.includes("Other")}
-                            type="checkbox"
-                            class="bg-[#2E3238] h-[18px] w-[18px] rounded-sm ring-offset-0 dark:bg-dark-600 lg:h-4 lg:w-4"
-                          />
-                          <span class="text-white text-md">Other</span>
-                        </label>
-                      </li>
-                      <!-- ...other list items -->
-                    </ul>
-                  </div>
-                </div>
-                <!--End Political Party-->
-
-                <!--Start Transaction Type-->
-                <div class="grid grid-cols-2 w-11/12 ml-auto mt-4">
-                  <div class="mb-4 mr-auto">
-                    <h2 class="text-xl sm:text-2xl text-white font-bold mb-3">
-                      Transaction Type
-                    </h2>
-                    <ul class="space-y-1">
-                      <li class="mb-2 cursor-pointer">
-                        <label
-                          on:click|stopPropagation={(event) =>
-                            handleFilter(event, "Bought")}
-                          class="flex w-full items-center space-x-2 py-2 md:w-1/2 lg:w-1/3 lg:space-x-1.5 lg:py-[5px]"
-                        >
-                          <input
-                            checked={filterList?.includes("Bought")}
-                            type="checkbox"
-                            class="bg-[#2E3238] h-[18px] w-[18px] rounded-sm ring-offset-0 dark:bg-dark-600 lg:h-4 lg:w-4"
-                          />
-                          <label class="text-white text-md">Bought</label>
-                        </label>
-                      </li>
-                    </ul>
-                  </div>
-                  <!-- Column 2 -->
-                  <div class="mt-10">
-                    <ul class="space-y-1">
-                      <li class="mb-2 cursor-pointer">
-                        <label
-                          on:click|stopPropagation={(event) =>
-                            handleFilter(event, "Sold")}
-                          class="flex w-full items-center space-x-2 py-2 md:w-1/2 lg:w-1/3 lg:space-x-1.5 lg:py-[5px]"
-                        >
-                          <input
-                            checked={filterList?.includes("Sold")}
-                            type="checkbox"
-                            class="bg-[#2E3238] h-[18px] w-[18px] rounded-sm ring-offset-0 dark:bg-dark-600 lg:h-4 lg:w-4"
-                          />
-                          <label class="text-white text-md">Sold</label>
-                        </label>
-                      </li>
-                      <!-- ...other list items -->
-                    </ul>
-                  </div>
-                </div>
-
-                <!--End Transaction Type-->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-{/if}
-
 <style>
-  .republican-striped {
-    background-image: repeating-linear-gradient(
-      -45deg,
-      #98272b,
-      #98272b 10px,
-      #840412 10px,
-      #840412 20px
-    );
-  }
-
   .democratic-striped {
     background-image: repeating-linear-gradient(
       -45deg,
@@ -678,16 +373,6 @@
       #295ac7 10px,
       #164d9d 10px,
       #164d9d 20px
-    );
-  }
-
-  .other-striped {
-    background-image: repeating-linear-gradient(
-      -45deg,
-      #a4a6a8,
-      #a4a6a8 10px,
-      #c0c3c5 10px,
-      #c0c3c5 20px
     );
   }
 </style>

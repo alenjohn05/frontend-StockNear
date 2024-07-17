@@ -34,12 +34,22 @@ async function loadImages() {
   await Promise.all(imagesPromises);
 }
 
+function filterInvalidEntries(data: any[]) {
+  return data.filter(
+    (item) =>
+      item.ClientCount != null &&
+      item.HoldingValue != null &&
+      item.ActiveStockCount != null &&
+      item.TopPeformingC3MZG != null
+  );
+}
+
 export const load = async () => {
-  const getAllPolitician = async () => {
+  const GetInsititutionalInvestors = async () => {
     let output;
 
     // Get cached data for the specific tickerID
-    const cachedData = getCache("", "getAllPolitician");
+    const cachedData = getCache("", "GetInsititutionalInvestors");
     if (cachedData) {
       output = cachedData;
     } else {
@@ -53,10 +63,8 @@ export const load = async () => {
         }
       );
 
-      output = await response.json();
-
-      // Cache the data for this specific tickerID with a specific name 'getAllPolitician'
-
+      const filteredData = await response.json();
+      output = filterInvalidEntries(filteredData);
       await loadImages();
       output?.forEach((item) => {
         let representative = item?.representative || "";
@@ -81,16 +89,16 @@ export const load = async () => {
         };
       });
 
-      setCache("", output, "getAllPolitician");
+      setCache("", output, "GetInsititutionalInvestors");
     }
 
-    console.log(output)
+    console.log(output);
 
     return output;
   };
 
   // Make sure to return a promise
   return {
-    getAllPolitician: await getAllPolitician()
+    GetInsititutionalInvestors: await GetInsititutionalInvestors()
   };
 };

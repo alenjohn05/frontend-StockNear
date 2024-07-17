@@ -68,11 +68,11 @@
   <div class="relative flex justify-center items-center overflow-hidden">
     <main>
       <div class="w-screen sm:w-full m-auto">
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-5">
           {#if news.length !== 0}
             {#each news as item}
               <article
-                class="max-w-xl flex p-3 flex-col w-full mt-5 items-start justify-between bg-[#111111] border border-[#2a2e39] shadow-lg h-auto sm:h-[250px] pb-10 sm:pb-5 rounded-none sm:rounded-lg m-auto"
+                class="max-w-xl flex p-5 flex-col w-full items-start bg-[#1a1a1a]  shadow-lg h-auto sm:h-[300px] pb-10 sm:pb-5 rounded-none sm:rounded-lg m-auto"
               >
                 <div
                   class="flex items-center justify-between w-full gap-x-4 text-xs"
@@ -87,17 +87,17 @@
                     </div>
 
                     <div
-                      class={`relative z-10  code-font rounded-full ${item?.sentiment_category === "negative"?"bg-red-600":item?.sentiment_category ==="positive"?"bg-green-600":"bg-purple-600"} px-3 py-1.5 font-medium text-white hover:bg-purple-400`}
+                      class={`relative z-10  code-font rounded-full ${item?.sentiment_category === "negative"?"bg-red-600":item?.sentiment_category ==="positive"?"bg-green-600":"bg-gray-600"} px-3 py-1.5 font-medium text-white hover:bg-purple-400`}
                     >
                       {item?.sentiment_category}
                     </div>
                   </div>
                 </div>
-                <div class="relative mt-8 flex items-center gap-x-4">
+                <div class="relative mt-8 flex items-start gap-x-4">
                   <img
                     src={item?.IllustrationImage}
                     alt=""
-                    class="h-10 w-10 rounded-full bg-gray-50"
+                    class="h-8 w-8 rounded-full bg-gray-50 mt-3"
                   />
                   <div class="text-sm leading-6">
                     <div class="text-lg font-bold text-white">

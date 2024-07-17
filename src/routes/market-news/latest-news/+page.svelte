@@ -92,30 +92,30 @@
           {#if displayedNews.length !== 0}
             {#each displayedNews as item}
               <article
-                class="max-w-xl flex p-3 flex-col w-full mt-5 items-start bg-[#111111] border border-[#2a2e39] shadow-lg h-auto sm:h-min-[300px] pb-10 sm:pb-5 rounded-none sm:rounded-lg m-auto"
+                class="max-w-xl flex p-3 flex-col w-full items-start bg-[#1a1a1a]  shadow-lg h-auto sm:h-[350px] pb-10 sm:pb-5 rounded-none sm:rounded-lg m-auto"
               >
                 <div
-                  class="flex items-center justify-between w-full gap-x-4 text-xs cursor-pointer"
+                  class="flex items-center justify-between w-full gap-x-4 text-xs cursor-pointer p-2"
                 >
-                  <div class="text-white-500 code-font">
+                  <div class="text-white-500 code-font ml-auto">
                     {new Date(item?.Date).toDateString()}
                   </div>
                 </div>
-                <div class="relative mt-4 mb-4 flex items-start gap-x-4">
-                  {#if item?.NewsitemIndustries && item.NewsitemIndustries.length > 0}
+                <div class="relative mt-4 mb-4 flex items-start gap-x-4 mt-2 p-2">
+                  <!-- {#if item?.NewsitemIndustries && item.NewsitemIndustries.length > 0}
                     <img
                       src={item?.NewsitemIndustries?.[0]?.IndustryImageUrl}
                       alt=""
-                      class="h-10 w-10 rounded-full bg-gray-50"
+                      class="h-10 w-10 rounded-full bg-gray-50 mt-3"
                     />
-                  {/if}
+                  {/if} -->
                   <div class="text-sm leading-6">
-                    <div class="text-lg font-bold text-white">
+                    <div class="text-lg text-white">
                       {item?.Description}
                     </div>
                   </div>
                 </div>
-                <div class="flex mt-2 items-center gap-x-4 text-xs flex-wrap">
+                <div class="flex mt-2 items-center gap-x-4 text-xs flex-wrap ml-auto">
                   {#if item?.NewsitemSecurities && item.NewsitemSecurities.length > 0}
                     {#each item.NewsitemSecurities as security}
                       <a
@@ -125,8 +125,8 @@
                             ? "bg-red-600"
                             : item?.sentiment_category === "positive"
                               ? "bg-green-600"
-                              : "bg-purple-600"
-                        } px-3 py-0.5 font-medium text-white hover:bg-purple-400`}
+                              : "bg-red-500"
+                        } px-3 py-0.5 font-medium text-white hover:bg-red-700`}
                       >
                         {@html security?.SecurityName?.length > 60
                           ? security?.SecurityName?.slice(0, 60) + "..."
@@ -135,7 +135,7 @@
                     {/each}
                   {/if}
                 </div>
-                <div class="flex mt-2 items-center gap-x-4 text-xs flex-wrap">
+                <div class="flex mt-2 items-center gap-x-4 text-xs flex-wrap ml-auto">
                   {#if item?.NewsitemSectors && item.NewsitemSectors.length > 0}
                     {#each item.NewsitemSectors as sector}
                       <a
