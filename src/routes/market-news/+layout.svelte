@@ -19,6 +19,22 @@
       link: "/market-news/foreign_market",
     },
     {
+      title: "Corporate",
+      link: "/market-news/corporate",
+    },
+    {
+      title: "Debt Market",
+      link: "/market-news/debt-markets",
+    },
+    {
+      title: "Mutual Funds",
+      link: "/market-news/mutual-fund",
+    },
+    {
+      title: "Economy",
+      link: "/market-news/economy",
+    },
+    {
       title: "Crypto",
       link: "/market-news/crypto",
     },
@@ -26,6 +42,7 @@
       title: "General",
       link: "/market-news/general",
     },
+   
   ];
 </script>
 
@@ -106,7 +123,7 @@
         {#each navigation as item}
           <a
             href={item?.link}
-            class="flex flex-col items-center w-fit text-center text-md mr-0 sm:mr-5 rounded-md transition font-semibold hover:text-white {item?.link ===
+            class="flex flex-col items-center w-fit text-center text-sm mr-0 sm:mr-5 rounded-md transition font-semibold hover:text-white {item?.link ===
               $page.url.pathname || item?.link + '/' === $page.url.pathname
               ? ' text-white'
               : 'text-[#9A9996]'}"

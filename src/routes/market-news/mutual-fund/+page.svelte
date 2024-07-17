@@ -1,13 +1,11 @@
 <script lang="ts">
   import InfiniteLoading from "$lib/components/InfiniteLoading.svelte";
-  import InfoModal from "$lib/components/InfoModal.svelte";
-    import NewsModal from "$lib/components/NewsModal.svelte";
   import { numberOfUnreadNotification } from "$lib/store";
-  import { formatDate } from "$lib/utils";
 
   export let data;
 
-  let rawData = data?.Get_foreign_markets;
+  let rawData = data?.Get_mutual_fund;
+  console.log(rawData)
   let news = rawData?.slice(0, 15) ?? [];
 
   async function infiniteHandler({ detail: { loaded, complete } }) {
@@ -18,23 +16,6 @@
       const newArticles = rawData?.slice(nextIndex, nextIndex + 5);
       news = [...news, ...newArticles];
       loaded();
-    }
-  }
-
-  let videoId = null;
-
-  function checkIfYoutubeVideo(link) {
-    const url = new URL(link);
-    if (url.hostname === "www.youtube.com") {
-      const searchParams = url.searchParams;
-      searchParams.delete("t"); // Remove the "t" parameter
-      const videoIdMatch = url.search.match(/v=([^&]+)/);
-
-      if (videoIdMatch) {
-        return videoIdMatch[1];
-      }
-    } else {
-      return null;
     }
   }
 </script>
@@ -109,36 +90,20 @@
                     </div>
                   </div>
                 </div>
-                <div class="relative mt-3 flex items-center gap-x-4">
+                <div class="relative mt-8 flex items-center gap-x-4">
                   <img
                     src={item?.IllustrationImage}
                     alt=""
                     class="h-10 w-10 rounded-full bg-gray-50"
                   />
                   <div class="text-sm leading-6">
-                    <label
-                      for={item?.sno}
-                      class="text-lg font-bold text-white cursor-pointer hover:underline"
-                    >
+                    <div class="text-lg font-bold text-white">
                       {item?.heading}
-                    </label>
-                    <NewsModal
-                      title={item?.heading}
-                      content={item?.Arttext}
-                      id={item?.sno}
-                      image={item?.IllustrationImage}
-                      time={item?.time}
-                      date={item?.date} 
-                      Sentiment={item?.sentiment_category} 
-                    />
+                    </div>
                   </div>
                 </div>
                 <div class="group relative">
-                  <p class="text-white text-sm mt-2">
-                    {@html item?.Arttext?.length > 150
-                      ? item?.Arttext?.slice(0, 150) + "..."
-                      : item?.Arttext}
-                  </p>
+                  <p class="text-white text-sm mt-2">{item?.caption}</p>
                 </div>
               </article>
             {/each}
