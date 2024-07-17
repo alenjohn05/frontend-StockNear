@@ -148,7 +148,7 @@
   <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
 
-<div class="w-full max-w-6xl overflow-hidden m-auto min-h-screen bg-[#131722]">
+<div class="w-full max-w-6xl overflow-hidden m-auto min-h-screen bg-[#111111]">
   <div
     class=" m-auto flex flex-wrap flex-col justify-center items-center md:flex-row sm:px-5"
   >
@@ -192,7 +192,7 @@
                             >
                               <a
                                 href="/pricing"
-                                class="text-white antialiased bg-[#131722] w-full px-4 py-2 rounded-xl m-auto font-medium text-sm flex items-center"
+                                class="text-white antialiased bg-[#111111] w-full px-4 py-2 rounded-xl m-auto font-medium text-sm flex items-center"
                               >
                                 <span class="font-semibold uppercase"
                                   >SAVE 50% Off Subscription – Summer Special!</span
@@ -214,7 +214,7 @@
                             >
                               <a
                                 href="/dark-pool-flow"
-                                class="text-white antialiased bg-[#131722] w-full px-4 py-2 rounded-xl m-auto font-medium text-sm flex items-center"
+                                class="text-white antialiased bg-[#111111] w-full px-4 py-2 rounded-xl m-auto font-medium text-sm flex items-center"
                               >
                                 <span class="font-semibold"
                                   >Realtime Dark Pool Trades from Hedge Funds</span
@@ -265,7 +265,7 @@
                             <label
                               on:click={loadSearchData}
                               for="searchBarModal"
-                              class="shadow-lg w-96 h-10 sm:h-12 flex flex-row items-center justify-start bg-[#131722] appearance-none py-3 cursor-pointer border border-slate-600 rounded-lg"
+                              class="shadow-lg w-96 h-10 sm:h-12 flex flex-row items-center justify-start bg-[#111111] appearance-none py-3 cursor-pointer border border-slate-600 rounded-lg"
                             >
                               <svg
                                 class="w-4 h-4 shrink-0 ml-3 sm:ml-5 text-white inline-block"
@@ -322,7 +322,7 @@
                             >
                               <a
                                 href="/politicians/61b59ab669"
-                                class="px-4 py-3 border border-[#2a2e39] text-white bg-[#131722] rounded-lg flex flex-row items-center font-medium transition duration-150 ease-in-out group"
+                                class="px-4 py-3 border border-[#2a2e39] text-white bg-[#111111] rounded-lg flex flex-row items-center font-medium transition duration-150 ease-in-out group"
                               >
                                 <div class="flex flex-row items-center">
                                   <div
@@ -348,7 +348,7 @@
                               </a>
                               <a
                                 href="/hedge-funds/0001067983"
-                                class="px-4 py-3 border border-[#2a2e39] text-white bg-[#131722] rounded-lg flex flex-row items-center font-medium transition duration-150 ease-in-out group"
+                                class="px-4 py-3 border border-[#2a2e39] text-white bg-[#111111] rounded-lg flex flex-row items-center font-medium transition duration-150 ease-in-out group"
                               >
                                 <div class="flex flex-row items-center">
                                   <div
@@ -374,7 +374,7 @@
                               <a
                                 href="/analysts/5874f5e45064ed0001eb1bc5"
                                 class="px-4 py-3 border border-[#2a2e39]
-                                      text-white bg-[#131722] rounded-lg flex flex-row items-center font-medium transition duration-150 ease-in-out group"
+                                      text-white bg-[#111111] rounded-lg flex flex-row items-center font-medium transition duration-150 ease-in-out group"
                               >
                                 <div class="flex flex-row items-center">
                                   <div
@@ -413,7 +413,7 @@
             >
               <a
                 href="/community"
-                class="px-4 py-3 text-white bg-[#131722] border border-slate-800 border border-[#2a2e39] rounded-lg flex flex-row items-center font-medium transition duration-150 ease-in-out group"
+                class="px-4 py-3 text-white bg-[#111111] border border-slate-800 border border-[#2a2e39] rounded-lg flex flex-row items-center font-medium transition duration-150 ease-in-out group"
               >
                 <svg
                   class="w-6 h-6 mr-2"
@@ -482,7 +482,7 @@
                   class="table table-sm table-pin-rows table-compact rounded-none sm:rounded-lg"
                 >
                   <thead class="rounded-lg">
-                    <tr class="bg-[#131722] border-b border-[#2a2e39]">
+                    <tr class="bg-[#111111] border-b border-[#2a2e39]">
                       <th class="text-white font-semibold text-sm">Company</th>
                       <th class="text-white font-semibold text-sm"
                         >Current Price</th
@@ -497,7 +497,7 @@
                     {#each gainerLoserTickers as item}
                       <tr
                         on:click={() => goto("/stocks/" + item.SecurityID)}
-                        class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] odd:bg-[#131722] border-b border-[#2a2e39] shake-ticker cursor-pointer"
+                        class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] odd:bg-[#111111] border-b border-[#2a2e39] shake-ticker cursor-pointer"
                       >
                         <td class="text-white">
                           {item?.Name?.length > 50
@@ -596,7 +596,7 @@
                     on:click={() => scrollToItem("gainer")}
                     class="flex flex-row items-center {trendingText === 'gainer'
                       ? 'bg-[#333333]'
-                      : 'bg-[#131722]'} rounded-xl py-1"
+                      : 'bg-[#111111]'} rounded-xl py-1"
                   >
                     <svg
                       class="ml-2 w-5"
@@ -615,7 +615,7 @@
                     on:click={() => scrollToItem("loser")}
                     class="flex flex-row items-center {trendingText === 'loser'
                       ? 'bg-[#333333]'
-                      : 'bg-[#131722]'} rounded-xl py-1 ml-4"
+                      : 'bg-[#111111]'} rounded-xl py-1 ml-4"
                   >
                     <svg
                       class="ml-2 w-5"
@@ -634,7 +634,7 @@
                     on:click={() => scrollToItem("active")}
                     class="flex flex-row items-center {trendingText === 'active'
                       ? 'bg-[#333333]'
-                      : 'bg-[#131722]'} rounded-xl py-1 ml-4"
+                      : 'bg-[#111111]'} rounded-xl py-1 ml-4"
                   >
                     <svg
                       class="ml-2 w-5"
@@ -657,7 +657,7 @@
                   {#each trendingText === "gainer" ? oct_gainer : trendingText === "loser" ? oct_loser : oct_active as item, index}
                     <a
                       href={"/stocks/" + item?.SecurityID}
-                      class="bg-[#131722] rounded-lg h-[90px] w-36 relative"
+                      class="bg-[#111111] rounded-lg h-[90px] w-36 relative"
                     >
                       <span class="stroke-text absolute right-32 bottom-0">
                         {index + 1}
@@ -667,7 +667,7 @@
                           {item?.SecuritySlug}
                         </span>
                         <div
-                          class="rounded-full w-7 h-7 relative bg-[#131722] flex items-center justify-center"
+                          class="rounded-full w-7 h-7 relative bg-[#111111] flex items-center justify-center"
                         >
                           <img
                             style="clip-path: circle(50%);"
@@ -746,10 +746,10 @@
                   </div>
 
                   <table
-                    class="table table-sm table-compact table-pin-rows shadow-md rounded-none sm:rounded-lg bg-[#131722]"
+                    class="table table-sm table-compact table-pin-rows shadow-md rounded-none sm:rounded-lg bg-[#111111]"
                   >
                     <thead>
-                      <tr class="bg-[#131722] border-b border-[#2a2e39]">
+                      <tr class="bg-[#111111] border-b border-[#2a2e39]">
                         <th class="text-white font-semibold text-sm">Name</th>
                         <th class="text-white font-semibold text-sm"
                           >Current Price</th
@@ -763,7 +763,7 @@
                       {#each oct_active as item, index}
                         <tr
                           on:click={() => goto("/stocks/" + item?.SecurityID)}
-                          class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] odd:bg-[#131722] border-b border-[#2a2e39] shake-ticker cursor-pointer"
+                          class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] odd:bg-[#111111] border-b border-[#2a2e39] shake-ticker cursor-pointer"
                         >
                           <td class="text-white">
                             {item?.SecurityName?.length > 60
@@ -839,7 +839,7 @@
                 </h2>
                 {#each getlatestRssNews?.slice(0, 6) as item}
                   <div
-                    class="shadow-md bg-[#131722] border border-[#2a2e39] p-6 mb-4 rounded-lg text-start"
+                    class="shadow-md bg-[#111111] border border-[#2a2e39] p-6 mb-4 rounded-lg text-start"
                   >
                     <div class="text-sm text-white">
                       <div class="flex flex-col items-start">
@@ -891,7 +891,7 @@
                   Live Market Commentary
                 </h2>
                 {#each getliveMarketCommentary?.slice(0, 9) as item}
-                <div class="shadow-md bg-[#131722] border border-[#2a2e39] mb-4 rounded-lg flex flex-col sm:flex-row">
+                <div class="shadow-md bg-[#111111] border border-[#2a2e39] mb-4 rounded-lg flex flex-col sm:flex-row">
                   <div class="sm:hidden w-full h-48 overflow-hidden rounded-lg">
                     <img
                       class="w-full h-full object-cover rounded-lg"

@@ -171,7 +171,7 @@
       <label for="buyTradeModal"  class="cursor-pointer modal-backdrop bg-[#fff] bg-opacity-[0.08]"></label>
       
       
-      <div class="modal-box rounded-none w-full bg-[#131722] h-[500px]" >
+      <div class="modal-box rounded-none w-full bg-[#111111] h-[500px]" >
     
        <!--Start Trade Modal-->
     
@@ -184,7 +184,7 @@
     
             <div class= "flex flex-col">
                 <div class="text-white text-md flex flex-col flex-shrink-0">
-                    <div class="rounded-full w-10 h-10 relative bg-[#131722] mb-2">
+                    <div class="rounded-full w-10 h-10 relative bg-[#111111] mb-2">
                         <img class="rounded-full w-6 h-6 absolute inset-1/2 transform -translate-x-1/2 -translate-y-1/2" src={`https://financialmodelingprep.com/image-stock/${$assetType === 'stock' ? $stockTicker : $assetType === 'etf' ? $etfTicker : $cryptoTicker}.png`} loading="lazy"/>
                     </div>
                     <span class="mb-1">
@@ -211,7 +211,7 @@
     
                         <input bind:value={numberOfShares} on:input={handleInputChange} type="text" placeholder="Number of Shares" class="text-slate-200 input {estimatedTotal > availableCash ? 'input-error' : ''} bg-gray-900 input-md w-54 sm:w-full max-w-xs" />
                     </div>
-                    <label on:click={handleMaxOrder} class="mt-9 btn bg-[#131722] hover:bg-[#fff] hover:text-black text-white cursor-pointer sm:px-5 border rounded-lg">
+                    <label on:click={handleMaxOrder} class="mt-9 btn bg-[#111111] hover:bg-[#fff] hover:text-black text-white cursor-pointer sm:px-5 border rounded-lg">
                         Show Max
                     </label>
                 </div>
@@ -254,7 +254,7 @@
     
     
                 <div class="w-5/6 max-w-lg pt-10 pb-20 m-auto">
-                    <button on:click={changeTab} class="btn bg-[#131722] hover:bg-[#fff] hover:text-black border border-slate-500 btn-md w-full rounded-lg m-auto text-white font-bold text-md">
+                    <button on:click={changeTab} class="btn bg-[#111111] hover:bg-[#fff] hover:text-black border border-slate-500 btn-md w-full rounded-lg m-auto text-white font-bold text-md">
                         Preview Buy Order
                     </button>
                 </div>
@@ -276,28 +276,28 @@
                 <tbody>
                 <!-- row 1 -->
                 <tr class="text-white" style="font-size: 0.8rem">
-                    <td class="text-start bg-[#131722] text-white font-medium">Price per Share</td>
-                    <td class="bg-[#131722] whitespace-normal">${$currentPortfolioPrice}</td>
+                    <td class="text-start bg-[#111111] text-white font-medium">Price per Share</td>
+                    <td class="bg-[#111111] whitespace-normal">${$currentPortfolioPrice}</td>
                 </tr>
                 <tr class="text-white" style="font-size: 0.8rem">
-                    <td class="text-start bg-[#131722] text-white font-medium">Number of Shares</td>
-                    <td class="bg-[#131722] whitespace-normal">{numberOfShares}</td>
+                    <td class="text-start bg-[#111111] text-white font-medium">Number of Shares</td>
+                    <td class="bg-[#111111] whitespace-normal">{numberOfShares}</td>
                 </tr>
                 <tr class="text-white" style="font-size: 0.8rem">
-                    <td class="text-start bg-[#131722] text-white font-medium">Commission</td>
-                    <td class="bg-[#131722] whitespace-normal">${commissionPrice}</td>
+                    <td class="text-start bg-[#111111] text-white font-medium">Commission</td>
+                    <td class="bg-[#111111] whitespace-normal">${commissionPrice}</td>
                 </tr>
                 <tr class="text-white" style="font-size: 0.8rem">
-                    <td class="text-start bg-[#131722] text-white font-medium">Estimated Total</td>
-                    <td class="bg-[#131722] whitespace-normal">{estimatedTotal?.toLocaleString(undefined, {
+                    <td class="text-start bg-[#111111] text-white font-medium">Estimated Total</td>
+                    <td class="bg-[#111111] whitespace-normal">{estimatedTotal?.toLocaleString(undefined, {
                         style: 'currency',
                         currency: 'USD',
                     })}
                     </td>
                 </tr>
                 <tr class="text-white" style="font-size: 0.8rem">
-                    <td class="text-start bg-[#131722] text-white font-medium">Available Cash After</td>
-                    <td class="bg-[#131722] whitespace-normal">{(availableCash-estimatedTotal-commissionPrice)?.toLocaleString(undefined, {
+                    <td class="text-start bg-[#111111] text-white font-medium">Available Cash After</td>
+                    <td class="bg-[#111111] whitespace-normal">{(availableCash-estimatedTotal-commissionPrice)?.toLocaleString(undefined, {
                         style: 'currency',
                         currency: 'USD',
                     })}
@@ -309,11 +309,11 @@
     
     
                 <div class="max-w-lg pt-10 m-auto pb-5 flex flex-row justify-center items-center">
-                    <button on:click={changeTab} class="w-3/4 mr-8 btn bg-[#131722] hover:bg-[#fff] hover:text-black border border-slate-500 btn-md rounded-lg text-white font-bold text-md">
+                    <button on:click={changeTab} class="w-3/4 mr-8 btn bg-[#111111] hover:bg-[#fff] hover:text-black border border-slate-500 btn-md rounded-lg text-white font-bold text-md">
                         Change Order
                     </button>    
                     
-                    <button on:click={handleBuyOrder} class="w-3/4 btn bg-[#131722] hover:bg-[#fff] hover:text-black border border-slate-500 btn-md rounded-lg text-white font-bold text-md">
+                    <button on:click={handleBuyOrder} class="w-3/4 btn bg-[#111111] hover:bg-[#fff] hover:text-black border border-slate-500 btn-md rounded-lg text-white font-bold text-md">
                             Buy
                     </button>
                 </div>
@@ -343,7 +343,7 @@
         <div class="drawer-side">
         
         
-            <div class="modal-box overflow-hidden rounded-xl bg-[#131722] min-h-screen w-screen" >
+            <div class="modal-box overflow-hidden rounded-xl bg-[#111111] min-h-screen w-screen" >
                
     
     
@@ -353,7 +353,7 @@
             
                     <div class= "flex flex-col">
                         <div class="text-white text-md flex flex-col flex-shrink-0">
-                            <div class="rounded-full w-10 h-10 relative bg-[#131722] mb-2">
+                            <div class="rounded-full w-10 h-10 relative bg-[#111111] mb-2">
                                 <img class="rounded-full w-6 h-6 absolute inset-1/2 transform -translate-x-1/2 -translate-y-1/2" src={`https://financialmodelingprep.com/image-stock/${$assetType === 'stock' ? $stockTicker : $etfTicker}.png`} loading="lazy"/>
                             </div>
                             <span class="mb-1">
@@ -380,7 +380,7 @@
             
                                 <input inputmode="tel" pattern="[0-9]*" bind:value={numberOfShares} on:input={handleInputChange} type="text" placeholder="Number of Shares" class="text-slate-200 input {estimatedTotal > availableCash ? 'input-error' : ''} bg-gray-900 input-md w-54 sm:w-full max-w-xs" />
                             </div>
-                            <label on:click={handleMaxOrder} class="mt-9 btn bg-[#131722] hover:bg-[#fff] hover:text-black text-white cursor-pointer sm:px-5 border rounded-lg">
+                            <label on:click={handleMaxOrder} class="mt-9 btn bg-[#111111] hover:bg-[#fff] hover:text-black text-white cursor-pointer sm:px-5 border rounded-lg">
                                 Show Max
                             </label>
                         </div>
@@ -442,7 +442,7 @@
             
             
                         <div class="w-5/6 max-w-lg pt-16 pb-10 m-auto">
-                            <button on:click={changeTab} class="btn bg-[#131722] hover:bg-[#fff] hover:text-black border border-slate-500 btn-md w-full rounded-lg m-auto text-white font-bold text-md">
+                            <button on:click={changeTab} class="btn bg-[#111111] hover:bg-[#fff] hover:text-black border border-slate-500 btn-md w-full rounded-lg m-auto text-white font-bold text-md">
                                 Preview Buy Order
                             </button>
                         </div>
@@ -465,28 +465,28 @@
                         <tbody>
                         <!-- row 1 -->
                         <tr class="text-white" style="font-size: 0.8rem">
-                            <td class="text-start bg-[#131722] text-white font-medium">Price per Share</td>
-                            <td class="bg-[#131722] whitespace-normal">${$currentPortfolioPrice}</td>
+                            <td class="text-start bg-[#111111] text-white font-medium">Price per Share</td>
+                            <td class="bg-[#111111] whitespace-normal">${$currentPortfolioPrice}</td>
                         </tr>
                         <tr class="text-white" style="font-size: 0.8rem">
-                            <td class="text-start bg-[#131722] text-white font-medium">Number of Shares</td>
-                            <td class="bg-[#131722] whitespace-normal">{numberOfShares}</td>
+                            <td class="text-start bg-[#111111] text-white font-medium">Number of Shares</td>
+                            <td class="bg-[#111111] whitespace-normal">{numberOfShares}</td>
                         </tr>
                         <tr class="text-white" style="font-size: 0.8rem">
-                            <td class="text-start bg-[#131722] text-white font-medium">Commission</td>
-                            <td class="bg-[#131722] whitespace-normal">${commissionPrice}</td>
+                            <td class="text-start bg-[#111111] text-white font-medium">Commission</td>
+                            <td class="bg-[#111111] whitespace-normal">${commissionPrice}</td>
                         </tr>
                         <tr class="text-white" style="font-size: 0.8rem">
-                            <td class="text-start bg-[#131722] text-white font-medium">Estimated Total</td>
-                            <td class="bg-[#131722] whitespace-normal">{estimatedTotal?.toLocaleString(undefined, {
+                            <td class="text-start bg-[#111111] text-white font-medium">Estimated Total</td>
+                            <td class="bg-[#111111] whitespace-normal">{estimatedTotal?.toLocaleString(undefined, {
                                 style: 'currency',
                                 currency: 'USD',
                             })}
                             </td>
                         </tr>
                         <tr class="text-white" style="font-size: 0.8rem">
-                            <td class="text-start bg-[#131722] text-white font-medium">Available Cash After</td>
-                            <td class="bg-[#131722] whitespace-normal">{(availableCash-estimatedTotal-commissionPrice)?.toLocaleString(undefined, {
+                            <td class="text-start bg-[#111111] text-white font-medium">Available Cash After</td>
+                            <td class="bg-[#111111] whitespace-normal">{(availableCash-estimatedTotal-commissionPrice)?.toLocaleString(undefined, {
                                 style: 'currency',
                                 currency: 'USD',
                             })}
@@ -500,11 +500,11 @@
                     
             
                         <div class="w-5/6 max-w-lg pt-10 m-auto pb-5 flex flex-col items-center">
-                            <button on:click={changeTab} class="btn bg-[#131722] hover:bg-[#fff] hover:text-black border border-slate-500 btn-md w-full rounded-lg m-auto text-white font-bold text-md">
+                            <button on:click={changeTab} class="btn bg-[#111111] hover:bg-[#fff] hover:text-black border border-slate-500 btn-md w-full rounded-lg m-auto text-white font-bold text-md">
                                 Change Order
                             </button> 
     
-                            <button on:click={handleBuyOrder} class="mt-6 btn bg-[#131722] hover:bg-[#fff] hover:text-black border border-slate-500 btn-md w-full rounded-lg m-auto text-white font-bold text-md">
+                            <button on:click={handleBuyOrder} class="mt-6 btn bg-[#111111] hover:bg-[#fff] hover:text-black border border-slate-500 btn-md w-full rounded-lg m-auto text-white font-bold text-md">
                                 Buy Order
                             </button>
                         </div>

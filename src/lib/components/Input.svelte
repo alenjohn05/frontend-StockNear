@@ -161,7 +161,7 @@ $: {
 			{#if inputValue.length !== 0}
 			<label on:click={handleCancel} class="btn btn-sm btn-circle bg-red-600 absolute right-0 -top-3 z-20">✕</label>
 			
-			<div class="absolute inset-0 bg-cover object-fill bg-center bg-[#131722]"></div>
+			<div class="absolute inset-0 bg-cover object-fill bg-center bg-[#111111]"></div>
 			<img class="w-auto max-h-[400px] object-fill bg-center bg-contain z-10 {showVideo ? 'hidden' : ''} "
 				alt="Image preview"
 				id="image-preview"
@@ -201,7 +201,7 @@ $: {
 			/>
 
 			{#if showVideo}
-			<div class="absolute inset-0 bg-cover object-fill bg-center bg-[#131722]"></div>
+			<div class="absolute inset-0 bg-cover object-fill bg-center bg-[#111111]"></div>
 			<video controls
 			class="w-auto max-h-[500px] z-10"
 			src={videoInput}

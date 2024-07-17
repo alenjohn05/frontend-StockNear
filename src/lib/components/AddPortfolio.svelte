@@ -104,10 +104,10 @@ else {
 <dialog id="addPortfolio" class="modal modal-bottom sm:modal-middle overflow-hidden">
 
 
-  <label for="addPortfolio"  class="cursor-pointer modal-backdrop bg-[#131722] bg-opacity-[0.5]"></label>
+  <label for="addPortfolio"  class="cursor-pointer modal-backdrop bg-[#111111] bg-opacity-[0.5]"></label>
   
   
-  <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] overflow-hidden" >
+  <div class="modal-box w-full bg-[#111111] border border-[#2a2e39] overflow-hidden" >
 
 
     <div class="flex flex-col w-full mt-10 sm:mt-0">
@@ -252,7 +252,7 @@ else {
     <div class="drawer-side overflow-y-scroll overflow-hidden">
     
         
-      <div class="bg-[#131722] min-h-screen px-5 pt-16 w-screen pb-20 overflow-y-scroll overflow-hidden">
+      <div class="bg-[#111111] min-h-screen px-5 pt-16 w-screen pb-20 overflow-y-scroll overflow-hidden">
   
       <h1 class="text-white sm:hidden font-bold text-2xl mb-5">
         Portfolio Tournament 🔥🚀
@@ -263,7 +263,7 @@ else {
         Terms and Conditions of Participation
       </div>
 
-      <div class="text-white text-sm border bg-[#131722]  border-gray-800 p-3 rounded-lg overflow-y-scroll h-56">
+      <div class="text-white text-sm border bg-[#111111]  border-gray-800 p-3 rounded-lg overflow-y-scroll h-56">
         
         <ol class="text-white list-decimal ml-3 p-2">
           <li class="p-1">The organizer of the Prize competition is octopi.</li>

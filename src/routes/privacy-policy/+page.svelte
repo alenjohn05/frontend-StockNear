@@ -1,4 +1,4 @@
-<div  class="w-full m-auto sm:bg-[#131722] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8 border-slate-700"></div>
+<div  class="w-full m-auto sm:bg-[#111111] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8 border-slate-700"></div>
 <script>
     import logo from '$lib/images/privacy_policy_logo_v2.png';
     import { numberOfUnreadNotification } from '$lib/store';
@@ -37,7 +37,7 @@
   </div>
   -->
 
-  <div class="w-full m-auto sm:bg-[#131722] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8">
+  <div class="w-full m-auto sm:bg-[#111111] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
   
       <!-- Start Column -->
@@ -84,7 +84,7 @@
 
 
 
-    <div class="card w-full bg-[#131722] border-t sm:border rounded-none sm:rounded-xl border-[#3F3F4080] m-auto ">
+    <div class="card w-full bg-[#111111] border-t sm:border rounded-none sm:rounded-xl border-[#3F3F4080] m-auto ">
       <div class="card-body">
 
           <p class="text-gray-400 italic mb-2 text-sm">Last updated: 22.06.2023</p>

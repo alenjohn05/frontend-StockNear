@@ -161,10 +161,10 @@ $: {
 
 <div class="space-y-3 sm:pt-5">  
   
-  <div class="bg-[#131722] h-auto w-screen">
+  <div class="bg-[#111111] h-auto w-screen">
   
     <!--Start Header-->
-    <div class="bg-[#131722] w-full p-1 flex flex-col items-center pb-5 h-auto">
+    <div class="bg-[#111111] w-full p-1 flex flex-col items-center pb-5 h-auto">
       <h2 class="text-center m-auto text-[1.1rem] font-medium text-white mt-5">
         SEC Filings
       </h2>
@@ -226,12 +226,12 @@ $: {
       <div class="mt-5 w-full">
 
         {#each displayList as item}
-          <div class="flex flex-col justify-center m-auto items-start rounded-md bg-[#131722] shadow-lg h-auto w-11/12 mb-3" transition:fade={{ delay: 0, duration: 80 }} in={accordionOpen[item?.year]}>
+          <div class="flex flex-col justify-center m-auto items-start rounded-md bg-[#111111] shadow-lg h-auto w-11/12 mb-3" transition:fade={{ delay: 0, duration: 80 }} in={accordionOpen[item?.year]}>
             
           
             <div class="flex flex-row items-center w-full p-3">
 
-                <div class="flex-shrink-0 mr-2 rounded-full w-12 h-12 relative bg-[#131722]">
+                <div class="flex-shrink-0 mr-2 rounded-full w-12 h-12 relative bg-[#111111]">
                     <svg class="rounded-full w-7 h-7 absolute inset-1/2 transform -translate-x-1/2 -translate-y-1/2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="m18 22l3-3l-.7-.7l-1.8 1.8V16h-1v4.1l-1.8-1.8l-.7.7zm-6-11.15l5.925-3.425L12 4L6.075 7.425zm-9 6.275V6.875L12 1.7l9 5.175V12h-2V9.1l-7.025 4.05L5 9.1v6.85l6.025 3.475v2.3zM18 24q-2.075 0-3.537-1.463T13 19q0-2.075 1.463-3.537T18 14q2.075 0 3.538 1.463T23 19q0 2.075-1.463 3.538T18 24m-6.975-12.275"/></svg>
                 </div>
 
@@ -251,7 +251,7 @@ $: {
             </div>
             {#if accordionOpen[item?.year]}
             {#each item?.data as entry}
-              <div class="shadow-lg bg-[#131722] bg-opacity-[0.5] w-11/12 rounded-md p-4 mb-3 m-auto flex flex-row justify-center items-center">
+              <div class="shadow-lg bg-[#111111] bg-opacity-[0.5] w-11/12 rounded-md p-4 mb-3 m-auto flex flex-row justify-center items-center">
 
                 <div class="flex flex-col -mt-2 w-full">
                     <div class="flex flex-row items-center w-full">
@@ -285,7 +285,7 @@ $: {
     {:else}
       <div class="flex justify-center items-center h-80">
         <div class="relative">
-          <label class="bg-[#131722] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <label class="bg-[#111111] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <span class="loading loading-spinner loading-md"></span>
           </label>
         </div>

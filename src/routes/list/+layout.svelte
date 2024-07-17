@@ -205,7 +205,7 @@ const combinedNavigation = navigation?.concat(updatedNavigation);
 
 
 
-        <div class="hidden sm:block w-full max-w-4xl m-auto bg-[#131722] sm:rounded-xl h-auto p-10 mt-3 mb-8">
+        <div class="hidden sm:block w-full max-w-4xl m-auto bg-[#111111] sm:rounded-xl h-auto p-10 mt-3 mb-8">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
         
             <!-- Start Column -->
@@ -252,7 +252,7 @@ const combinedNavigation = navigation?.concat(updatedNavigation);
 
 
         
-        <div class="mt-10 sm:mt-0 w-full max-w-4xl m-auto mb-10 bg-[#131722] pl-3 pr-3 overflow-hidden">
+        <div class="mt-10 sm:mt-0 w-full max-w-4xl m-auto mb-10 bg-[#111111] pl-3 pr-3 overflow-hidden">
         
         
             <!--Start Top Winners/Losers-->

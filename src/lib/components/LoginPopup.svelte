@@ -155,7 +155,7 @@ function handleHoverGithub() {
         <label on:click={() => form= []} id="userLogin" for="userLogin"  class="cursor-pointer modal-backdrop bg-[#fff] bg-opacity-[0.05] "></label>
         
         
-        <div class="modal-box w-full bg-[#131722] border border-[#2a2e39] border border-slate-800 {$screenWidth < 640 ? 'min-h-screen' : ''}">
+        <div class="modal-box w-full bg-[#111111] border border-[#2a2e39] border border-slate-800 {$screenWidth < 640 ? 'min-h-screen' : ''}">
       
           
     
@@ -356,7 +356,7 @@ function handleHoverGithub() {
     {#if oauthLoading}
 	<div class="absolute right-1/2 left-1/2 top-1/2 bottom-1/2">
 		<div class="relative">
-			<label class="bg-[#131722] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+			<label class="bg-[#111111] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
 				<span class="loading loading-spinner loading-md"></span>
 			</label>
 		</div>  
@@ -377,7 +377,7 @@ function handleHoverGithub() {
     <div class="drawer-side">
     
         
-        <div class="modal-box rounded-xl bg-[#131722] min-h-screen w-screen pb-20 overflow-y-auto">
+        <div class="modal-box rounded-xl bg-[#111111] min-h-screen w-screen pb-20 overflow-y-auto">
 
             <label on:click={() => form = []} for="userLogin" class="absolute left-6 top-4">
                 <svg class="w-6 h-6 inline-block mb-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#fff" d="M9.125 21.1L.7 12.7q-.15-.15-.213-.325T.425 12q0-.2.063-.375T.7 11.3l8.425-8.425q.35-.35.875-.35t.9.375q.375.375.375.875t-.375.875L3.55 12l7.35 7.35q.35.35.35.863t-.375.887q-.375.375-.875.375t-.875-.375Z"/></svg>

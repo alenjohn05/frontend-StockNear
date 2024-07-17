@@ -87,7 +87,7 @@ $: {
             </div>
           -->
 
-          <div class="w-full max-w-4xl m-auto sm:bg-[#131722] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8">
+          <div class="w-full max-w-4xl m-auto sm:bg-[#111111] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
           
               <!-- Start Column -->
@@ -143,7 +143,7 @@ $: {
         
     
         
-        <div class="w-full max-w-4xl mt-10 m-auto mb-10 bg-[#131722] pl-3 pr-3 overflow-hidden">
+        <div class="w-full max-w-4xl mt-10 m-auto mb-10 bg-[#111111] pl-3 pr-3 overflow-hidden">
         
         
             <!--Start Top Winners/Losers-->
@@ -158,7 +158,7 @@ $: {
               <div class="border-b mt-2 border-blue-400 w-full mb-4" />
     
       
-              <table class="mt-5 table table-sm table-compact rounded-none sm:rounded-md w-full bg-[#131722] border-bg-[#131722] m-auto overflow-hidden">
+              <table class="mt-5 table table-sm table-compact rounded-none sm:rounded-md w-full bg-[#111111] border-bg-[#111111] m-auto overflow-hidden">
                 <thead>
                   <tr>
                     <th class="text-white font-medium hidden sm:table-cell text-[0.95rem] text-start">Symbol</th>
@@ -169,13 +169,13 @@ $: {
                 </thead>
                 <tbody>
                   {#each symbolList as item,index}
-                  <tr on:click={() => goto("/etf/"+item?.symbol)} class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] odd:bg-[#131722] border-b-[#131722] shake-ticker cursor-pointer">
+                  <tr on:click={() => goto("/etf/"+item?.symbol)} class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] odd:bg-[#111111] border-b-[#111111] shake-ticker cursor-pointer">
                     
-                    <td class="hidden sm:table-cell text-[#FFBE00] font-medium text-sm text-start border-b-[#131722]">
+                    <td class="hidden sm:table-cell text-[#FFBE00] font-medium text-sm text-start border-b-[#111111]">
                       {item?.symbol}
                     </td>
       
-                    <td class="text-gray-200 border-b-[#131722]">
+                    <td class="text-gray-200 border-b-[#111111]">
                       <span class="hidden sm:block text-white">{item?.name?.length > charNumber ? item?.name?.slice(0,charNumber) + "..." : item?.name}</span>
                       <div class="sm:hidden flex flex-row">
                         <div class="flex flex-col">
@@ -186,12 +186,12 @@ $: {
                     </td>
                   
                   
-                    <td class="text-white text-center border-b-[#131722]">
+                    <td class="text-white text-center border-b-[#111111]">
                       {item?.numberOfHoldings !== null ? abbreviateNumber(item?.numberOfHoldings) : '-'}
                     </td>
                     
       
-                  <td class="text-white border-b-[#131722] text-end">
+                  <td class="text-white border-b-[#111111] text-end">
                     {item?.totalAssets !== null ? abbreviateNumber(item?.totalAssets,true) : '-'}
                   </td>
           

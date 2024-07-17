@@ -220,7 +220,7 @@ function formatTime(dateString) {
           <div class="relative flex justify-center items-center overflow-hidden w-full">
               <main class="w-full">
                
-                <div class="w-full max-w-4xl m-auto sm:bg-[#131722] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8">
+                <div class="w-full max-w-4xl m-auto sm:bg-[#111111] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8">
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
                 
                     <!-- Start Column -->
@@ -285,7 +285,7 @@ function formatTime(dateString) {
                   <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-y-3 gap-x-3 ">
         
                    <!--Start Most Traded-->  
-                   <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-lg h-20">
+                   <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#111111] border border-[#2a2e39] shadow-lg rounded-lg h-20">
                     <div class="flex flex-col items-start">
                         <span class="font-medium text-gray-200 text-sm ">Most Traded Option</span>
                         <span class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5">
@@ -303,7 +303,7 @@ function formatTime(dateString) {
         
         
                   <!--Start Highest Volume-->  
-                  <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-lg h-20">
+                  <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#111111] border border-[#2a2e39] shadow-lg rounded-lg h-20">
                     <div class="flex flex-col items-start">
                         <span class="font-medium text-gray-200 text-sm ">Highest Volume</span>
                         <span class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5">
@@ -320,7 +320,7 @@ function formatTime(dateString) {
                   <!--End Highest Volume-->
         
                    <!--Start Highest Size-->  
-                   <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#131722] border border-[#2a2e39] shadow-lg rounded-lg h-20">
+                   <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#111111] border border-[#2a2e39] shadow-lg rounded-lg h-20">
                     <div class="flex flex-col items-start">
                         <span class="font-medium text-gray-200 text-sm ">Highest Size</span>
                         <span class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5">
@@ -337,7 +337,7 @@ function formatTime(dateString) {
                   <!--End Highest Size-->
 
                     <!--Start Amount-->  
-                    <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#131722] border border-[#2a2e39]
+                    <div class="flex flex-row items-center flex-wrap w-full px-5 bg-[#111111] border border-[#2a2e39]
                      shadow-lg rounded-lg h-20">
                       <div class="flex flex-col items-start">
                           <span class="font-medium text-gray-200 text-sm ">Highest Amount</span>
@@ -359,25 +359,25 @@ function formatTime(dateString) {
                     
                   
                     <div class="w-screen sm:w-full m-auto rounded-none sm:rounded-lg mb-4 overflow-x-scroll sm:overflow-hidden">
-                      <table class="table table-sm table-compact no-scrollbar rounded-none sm:rounded-md w-full bg-[#131722] border-bg-[#131722] m-auto">
+                      <table class="table table-sm table-compact no-scrollbar rounded-none sm:rounded-md w-full bg-[#111111] border-bg-[#111111] m-auto">
                         <thead>
-                          <tr class="bg-[#131722] border-b border-blue-400">
-                            <th class="text-start bg-[#131722] text-white text-sm font-semibold">
+                          <tr class="bg-[#111111] border-b border-blue-400">
+                            <th class="text-start bg-[#111111] text-white text-sm font-semibold">
                               Time
                             </th>
-                            <th class="text-start bg-[#131722] text-white text-sm font-semibold">
+                            <th class="text-start bg-[#111111] text-white text-sm font-semibold">
                               Company
                             </th>
-                            <th class="text-start bg-[#131722] text-white text-sm font-semibold">
+                            <th class="text-start bg-[#111111] text-white text-sm font-semibold">
                               Size
                             </th>
-                            <th class="text-end bg-[#131722] text-white text-sm font-semibold">
+                            <th class="text-end bg-[#111111] text-white text-sm font-semibold">
                               Volume
                             </th>
-                            <th class="text-end bg-[#131722] text-white text-sm font-semibold">
+                            <th class="text-end bg-[#111111] text-white text-sm font-semibold">
                              Price
                             </th>
-                            <th class="text-end bg-[#131722] text-white text-sm font-semibold">
+                            <th class="text-end bg-[#111111] text-white text-sm font-semibold">
                               Amount
                              </th>
                           </tr>
@@ -385,7 +385,7 @@ function formatTime(dateString) {
                         <tbody>
                           {#each displayList as item, index}
   
-                          <tr on:click={() => goto(`/stocks/${item?.symbol}`)} class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] odd:bg-[#131722] {index+1 === displayList?.length && data?.user?.tier !== 'Pro' ? 'opacity-[0.1]' : ''} cursor-pointer">
+                          <tr on:click={() => goto(`/stocks/${item?.symbol}`)} class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] odd:bg-[#111111] {index+1 === displayList?.length && data?.user?.tier !== 'Pro' ? 'opacity-[0.1]' : ''} cursor-pointer">
  
   
                             <td class="text-start text-sm font-medium text-white">
@@ -436,7 +436,7 @@ function formatTime(dateString) {
                 {:else}
                 <div class="flex justify-center items-center h-80">
                   <div class="relative">
-                    <label class="bg-[#131722] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <label class="bg-[#111111] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                       <span class="loading loading-spinner loading-md"></span>
                     </label>
                   </div>

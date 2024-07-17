@@ -106,7 +106,7 @@ function latestInfoDate(inputDate) {
                   
     
     
-<section class="bg-[#131722] overflow-hidden text-white h-full mb-40 sm:mb-0 w-full">
+<section class="bg-[#111111] overflow-hidden text-white h-full mb-40 sm:mb-0 w-full">
     <div class="flex justify-center m-auto h-full overflow-hidden w-full">
         <div class="relative flex justify-center items-center overflow-hidden w-full">
               <div class="sm:p-7 w-full m-auto mt-2 sm:mt-0">
@@ -122,7 +122,7 @@ function latestInfoDate(inputDate) {
             
                 {#if historyList?.length !== 0}
 
-                <div class="stats stats-horizontal bg-[#131722] w-full rounded-lg pr-6 sm:pr-0">
+                <div class="stats stats-horizontal bg-[#111111] w-full rounded-lg pr-6 sm:pr-0">
         
                   <div class="grid grid-cols-2">
       
@@ -251,7 +251,7 @@ function latestInfoDate(inputDate) {
 
                         <div class="w-screen -ml-3 sm:w-full sm:ml-0 flex justify-start items-center m-auto overflow-hidden">
                             
-                            <table class="table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#131722] m-auto mt-4">
+                            <table class="table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#111111] m-auto mt-4">
                                 <thead class="">
                                   <tr class="">
                                     <td class="text-white font-bold text-sm sm:text-[1rem] text-start">Analyst</td>
@@ -261,7 +261,7 @@ function latestInfoDate(inputDate) {
                                 </thead>
                                 <tbody>
                                   {#each (data?.user?.tier === 'Pro' ? historyList : historyList?.slice(0,3)) as item,index}
-                                  <tr on:click={() => goto(`/analysts/${item?.analystId}`)} class="cursor-pointer {latestInfoDate(item?.date) ? 'bg-[#F9AB00] bg-opacity-[0.1]' : 'odd:bg-[#131722]'} border-b-[#131722]  {index+1 === historyList?.slice(0,3)?.length && data?.user?.tier !== 'Pro' ? 'opacity-[0.1]' : ''}">
+                                  <tr on:click={() => goto(`/analysts/${item?.analystId}`)} class="cursor-pointer {latestInfoDate(item?.date) ? 'bg-[#F9AB00] bg-opacity-[0.1]' : 'odd:bg-[#111111]'} border-b-[#111111]  {index+1 === historyList?.slice(0,3)?.length && data?.user?.tier !== 'Pro' ? 'opacity-[0.1]' : ''}">
                                     <td class="text-sm text-start">
                                       <div class="flex flex-col items-start">
                                         <span class="text-[#FFBE00] font-medium">{item?.analyst_name} </span>

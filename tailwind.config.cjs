@@ -9,38 +9,38 @@ module.exports = {
 	theme: {
 	  extend: {
 		fontFamily: {
-			sans: ['Montserrat', 'sans-serif'],
+			sans: ['Manrope', 'sans-serif'],
 		  },
 		  typography: {
 			DEFAULT: {
 			  css: {
 				h1: {
-				  fontFamily: '"Montserrat", sans-serif',
+				  fontFamily: '"Manrope", sans-serif',
 				  // Other h1 styles if needed
 				},
 				h2: {
-				  fontFamily: '"Montserrat", sans-serif',
+				  fontFamily: '"Manrope", sans-serif',
 				  // Other h2 styles if needed
 				},
 				h3: {
-				  fontFamily: '"Montserrat", sans-serif',
+				  fontFamily: '"Manrope", sans-serif',
 				  // Other h3 styles if needed
 				},
 				h4: {
-				  fontFamily: '"Montserrat", sans-serif',
+				  fontFamily: '"Manrope", sans-serif',
 				  // Other h4 styles if needed
 				},
 				h5: {
-				  fontFamily: '"Montserrat", sans-serif',
+				  fontFamily: '"Manrope", sans-serif',
 				  // Other h5 styles if needed
 				},
 				h6: {
-				  fontFamily: '"Montserrat", sans-serif',
+				  fontFamily: '"Manrope", sans-serif',
 				  // Other h6 styles if needed
 				},
 				// You can add custom classes here as well
 				'.custom-font-class': {
-				  fontFamily: '"Montserrat", sans-serif',
+				  fontFamily: '"Manrope", sans-serif',
 				  // Other styles for .custom-font-class
 				},
 			  },

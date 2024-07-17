@@ -40,7 +40,7 @@
     
     </script>
     
-    <section class="w-auto max-w-3xl bg-[#131722] overflow-hidden text-black h-full mb-40">
+    <section class="w-auto max-w-3xl bg-[#111111] overflow-hidden text-black h-full mb-40">
       <div class="m-auto h-full overflow-hidden">
                 <main class="w-fit sm:w-full sm:max-w-2xl ">
                     <div class="m-auto">
@@ -50,24 +50,24 @@
 
    
                         <div class="sm:ml-8 w-screen sm:w-full {$screenWidth < 640 ? 'overflow-auto scrollbar no-scrollbar' : ''} mb-2" >
-                          <ul class="pr-4 sm:pr-0 w-screen flex flex-row items-center bg-[#131722] overflow-x-scroll space-x-6 rtl:space-x-reverse py-2">
+                          <ul class="pr-4 sm:pr-0 w-screen flex flex-row items-center bg-[#111111] overflow-x-scroll space-x-6 rtl:space-x-reverse py-2">
                             <li class="cursor-pointer flex flex-col items-center">
-                              <a href={`/stocks/${$stockTicker}/insider`} on:click={() => (changeSubSection('insider'))} class="text-xs sm:text-[0.85rem] font-medium text-gray-400 sm:hover:text-white {displaySubSection === 'insider' ? 'text-white ' : 'bg-[#131722]'}" >
+                              <a href={`/stocks/${$stockTicker}/insider`} on:click={() => (changeSubSection('insider'))} class="text-xs sm:text-[0.85rem] font-medium text-gray-400 sm:hover:text-white {displaySubSection === 'insider' ? 'text-white ' : 'bg-[#111111]'}" >
                                 Insider Trading
                               </a>
-                              <div class="{displaySubSection === 'insider' ? 'bg-[#75D377]' : 'bg-[#131722]'} mt-1 h-[3px] rounded-full w-[5rem]" />
+                              <div class="{displaySubSection === 'insider' ? 'bg-[#75D377]' : 'bg-[#111111]'} mt-1 h-[3px] rounded-full w-[5rem]" />
                             </li>
                             <li class="cursor-pointer flex flex-col items-center">
-                              <a href={`/stocks/${$stockTicker}/insider/congress-trading`} on:click={() => (changeSubSection('congress-trading'))} class="text-xs sm:text-[0.85rem] font-medium text-gray-400 sm:hover:text-white {displaySubSection === 'congress-trading' ? 'text-white ' : 'bg-[#131722]'}" >
+                              <a href={`/stocks/${$stockTicker}/insider/congress-trading`} on:click={() => (changeSubSection('congress-trading'))} class="text-xs sm:text-[0.85rem] font-medium text-gray-400 sm:hover:text-white {displaySubSection === 'congress-trading' ? 'text-white ' : 'bg-[#111111]'}" >
                                 Congress Trading
                               </a>
-                              <div class="{displaySubSection === 'congress-trading' ? 'bg-[#75D377]' : 'bg-[#131722]'} mt-1 h-[3px] rounded-full w-[5rem]" />
+                              <div class="{displaySubSection === 'congress-trading' ? 'bg-[#75D377]' : 'bg-[#111111]'} mt-1 h-[3px] rounded-full w-[5rem]" />
                             </li>
                             <li class="cursor-pointer flex flex-col items-center">
-                              <a href={`/stocks/${$stockTicker}/insider/transcripts`} on:click={() => (changeSubSection('transcripts'))} class="text-xs sm:text-[0.85rem] font-medium text-gray-400 sm:hover:text-white {displaySubSection === 'transcripts' ? 'text-white ' : 'bg-[#131722]'}" >
+                              <a href={`/stocks/${$stockTicker}/insider/transcripts`} on:click={() => (changeSubSection('transcripts'))} class="text-xs sm:text-[0.85rem] font-medium text-gray-400 sm:hover:text-white {displaySubSection === 'transcripts' ? 'text-white ' : 'bg-[#111111]'}" >
                                 Transcripts
                               </a>
-                              <div class="{displaySubSection === 'transcripts' ? 'bg-[#75D377]' : 'bg-[#131722]'} mt-1 h-[3px] rounded-full w-[3.5rem]" />
+                              <div class="{displaySubSection === 'transcripts' ? 'bg-[#75D377]' : 'bg-[#111111]'} mt-1 h-[3px] rounded-full w-[3.5rem]" />
                             </li>
                           </ul>
                         </div>
@@ -111,7 +111,7 @@
       ::-webkit-scrollbar {
           height: 7px;
           width: 10px;
-          background: #131722;
+          background: #111111;
       }
       
       ::-webkit-scrollbar-thumb {
@@ -121,7 +121,7 @@
       }
       
       ::-webkit-scrollbar-corner {
-          background: #131722;
+          background: #111111;
       }
       
       

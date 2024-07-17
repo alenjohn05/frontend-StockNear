@@ -60,7 +60,7 @@
 
 
 
-<div class="w-full max-w-4xl m-auto sm:bg-[#131722] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8">
+<div class="w-full max-w-4xl m-auto sm:bg-[#111111] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
 
     <!-- Start Column -->
@@ -107,7 +107,7 @@
 
 
 
-<div class="w-full max-w-4xl m-auto mb-10 bg-[#131722] overflow-hidden">
+<div class="w-full max-w-4xl m-auto mb-10 bg-[#111111] overflow-hidden">
 
 
     <!--Start Top Winners/Losers-->

@@ -91,7 +91,7 @@ $: {
                   
 
           
-<section class="bg-[#131722] overflow-hidden text-white h-full mb-40 sm:mb-0 w-full">
+<section class="bg-[#111111] overflow-hidden text-white h-full mb-40 sm:mb-0 w-full">
   <div class="flex justify-center m-auto h-full overflow-hidden w-full">
       <div class="relative flex justify-center items-center overflow-hidden w-full">
             <div class="sm:p-7 w-full m-auto mt-2 sm:mt-0">
@@ -122,21 +122,21 @@ $: {
                     <div class="flex justify-start items-center m-auto overflow-x-auto">
                                   
                                   
-                      <table class="table table-pin-cols table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#131722] m-auto mt-4 overflow-x-auto">
+                      <table class="table table-pin-cols table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#111111] m-auto mt-4 overflow-x-auto">
                           <thead>
                             <tr class="">
-                              <td class="text-white border-b border-[#141720] bg-[#131722] font-semibold text-sm">No.</td>
-                              <td class="text-white border-b border-[#141720] bg-[#131722] font-semibold text-sm">Symbol</td>
-                              <td class="text-white border-b border-[#141720] bg-[#131722] font-semibold text-sm hidden sm:table-cell">Name</td>
-                              <td class="text-white border-b border-[#141720] bg-[#131722] font-semibold text-end text-sm ">Shares</td>
-                              <td class="text-white border-b border-[#141720] bg-[#131722] font-semibold text-end text-sm">% Weight</td>
+                              <td class="text-white border-b border-[#141720] bg-[#111111] font-semibold text-sm">No.</td>
+                              <td class="text-white border-b border-[#141720] bg-[#111111] font-semibold text-sm">Symbol</td>
+                              <td class="text-white border-b border-[#141720] bg-[#111111] font-semibold text-sm hidden sm:table-cell">Name</td>
+                              <td class="text-white border-b border-[#141720] bg-[#111111] font-semibold text-end text-sm ">Shares</td>
+                              <td class="text-white border-b border-[#141720] bg-[#111111] font-semibold text-end text-sm">% Weight</td>
                             </tr>
                           </thead>
                           <tbody>
                             {#each (data?.user?.tier === 'Pro' ? holdings : holdings?.slice(0,3)) as item,index}
                         <!-- row -->
                         {#if item?.asset !== null}
-                        <tr on:click={() => stockSelector(item?.asset)} class="w-full sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] odd:bg-[#131722] {index+1 === holdings?.slice(0,3)?.length && data?.user?.tier !== 'Pro' ? 'opacity-[0.1]' : ''} {item?.asset?.length !== 0 ? 'cursor-pointer' : ''}">
+                        <tr on:click={() => stockSelector(item?.asset)} class="w-full sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] odd:bg-[#111111] {index+1 === holdings?.slice(0,3)?.length && data?.user?.tier !== 'Pro' ? 'opacity-[0.1]' : ''} {item?.asset?.length !== 0 ? 'cursor-pointer' : ''}">
                           
                           <td class="text-gray-200 border-b border-[#141720]">
                             {index+1}

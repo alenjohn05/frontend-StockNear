@@ -53,7 +53,7 @@
   <div class="w-full max-w-4xl overflow-hidden m-auto min-h-screen pt-10 mb-40">
     <!--Start Mission-->
     <div
-      class="bg-[#131722] w-full hover:border-slate-500 border-[#3F3F4080] h-auto sm:p-10 mt-3"
+      class="bg-[#111111] w-full hover:border-slate-500 border-[#3F3F4080] h-auto sm:p-10 mt-3"
     >
       <div class="text-white text-4xl sm:text-5xl text-center p-3 sm:mt-5">
         <span class="font-bold">
@@ -122,7 +122,7 @@
 
     <!-- Start Section-->
     <div
-      class="bg-[#131722] w-full hover:border-slate-500 border-[#3F3F4080] h-auto pl-1 pr-1 sm:pl-0 sm:pr-0 pb-10 mb-8"
+      class="bg-[#111111] w-full hover:border-slate-500 border-[#3F3F4080] h-auto pl-1 pr-1 sm:pl-0 sm:pr-0 pb-10 mb-8"
     >
       <div
         class="text-4xl sm:text-5xl text-white text-center p-3 mt-10 sm:mt-5"
@@ -152,7 +152,7 @@
     <!--End Section-->
     <!--Start Why we need this -->
     <div
-      class="bg-[#131722] w-full bg-[#131722] sm:border-t hover:border-slate-500 border-[#3F3F4080] h-auto sm:p-10 mt-3 mb-8"
+      class="bg-[#111111] w-full bg-[#111111] sm:border-t hover:border-slate-500 border-[#3F3F4080] h-auto sm:p-10 mt-3 mb-8"
     >
       <div
         class="text-4xl sm:text-5xl font-bold text-white text-center p-3 mt-10 sm:mt-5"

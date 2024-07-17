@@ -26,7 +26,7 @@ export let similarTicker;
 
 <div class="space-y-3 sm:pt-5  hidden lg:block sm:{similarTicker?.length !== 0 ? '' : 'hidden'}">  
 
-<div class="sm:rounded-2xl shadow-lg bg-[#131722] sm:bg-[#131722] sm:border sm:border-slate-800 h-auto {$screenWidth < 640 ? 'w-screen pt-16' : ''} md:w-96">
+<div class="sm:rounded-2xl shadow-lg bg-[#111111] sm:bg-[#111111] sm:border sm:border-slate-800 h-auto {$screenWidth < 640 ? 'w-screen pt-16' : ''} md:w-96">
 
   <div class="w-auto lg:w-full p-1 flex-1 flex flex-wrap pb-5">
     <h2 class="text-start ml-2 text-2xl font-bold text-white pb-2 p-3">
@@ -39,14 +39,14 @@ export let similarTicker;
       <table class="table table-sm table-compact mt-3 text-start flex justify-start items-center w-full px-3 m-auto">
         <thead>
           <tr class="border-b border-blue-400">
-            <th class="text-white font-semibold text-sm text-start bg-[#131722] sm:bg-[#131722] border-b border-blue-400">Fund Name</th>
-            <th class="text-white font-semibold text-sm text-start bg-[#131722] sm:bg-[#131722] border-b border-blue-400">Total Assets</th>
-            <th class="text-white font-semibold text-sm text-end bg-[#131722] sm:bg-[#131722] border-b border-blue-400">Holdings</th>
+            <th class="text-white font-semibold text-sm text-start bg-[#111111] sm:bg-[#111111] border-b border-blue-400">Fund Name</th>
+            <th class="text-white font-semibold text-sm text-start bg-[#111111] sm:bg-[#111111] border-b border-blue-400">Total Assets</th>
+            <th class="text-white font-semibold text-sm text-end bg-[#111111] sm:bg-[#111111] border-b border-blue-400">Holdings</th>
           </tr>
         </thead>
         <tbody>
           {#each similarTicker as item, index}
-          <tr on:click={() => etfSelector(item?.symbol)} class="shake-ticker text-white cursor-pointer sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#131722] sm:bg-[#131722] border-b border-[#000] sm:border-[#202020]">
+          <tr on:click={() => etfSelector(item?.symbol)} class="shake-ticker text-white cursor-pointer sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#111111] sm:bg-[#111111] border-b border-[#000] sm:border-[#202020]">
             {#if index <=6}
             
               <td class="text-gray-200">
@@ -102,10 +102,10 @@ export let similarTicker;
 <!--Start Mobile Similar Ticker Card-->
 <div class="lg:hidden space-y-3 sm:pt-5">  
   
-  <div class="bg-[#131722] h-auto w-screen">
+  <div class="bg-[#111111] h-auto w-screen">
   
    <!--Start Header-->
-   <div class="bg-[#131722] w-full  p-1 flex flex-col items-center pb-5 h-auto rounded-b-[30px]">
+   <div class="bg-[#111111] w-full  p-1 flex flex-col items-center pb-5 h-auto rounded-b-[30px]">
     <h2 class="text-center m-auto text-[1.1rem] font-medium text-white mt-5">
      Similar Ticker
     </h2>
@@ -127,9 +127,9 @@ export let similarTicker;
 <table class="table table-sm table-compact mt-3 text-start flex justify-start items-center w-full px-3 m-auto">
   <thead>
     <tr class="border-b border-blue-400">
-      <th class="text-white font-bold text-sm text-start bg-[#131722] border-b border-blue-400">Company</th>
-      <th class="text-white font-bold text-sm text-center bg-[#131722] border-b border-blue-400">Market Cap</th>
-      <th class="text-white font-bold text-sm text-end bg-[#131722] border-b border-blue-400">Change</th>
+      <th class="text-white font-bold text-sm text-start bg-[#111111] border-b border-blue-400">Company</th>
+      <th class="text-white font-bold text-sm text-center bg-[#111111] border-b border-blue-400">Market Cap</th>
+      <th class="text-white font-bold text-sm text-end bg-[#111111] border-b border-blue-400">Change</th>
     </tr>
   </thead>
   <tbody>

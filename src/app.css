@@ -18,19 +18,19 @@
   }
   tr.hover,
   tr.hover:nth-child(even) {
-    @apply [@media(hover:hover)]:hover:bg-[#131722];
+    @apply [@media(hover:hover)]:hover:bg-[#111111];
   }
 
   &-zebra {
     tr.active,
     tr.active:nth-child(even),
     &-zebra tbody tr:nth-child(even) {
-      @apply bg-[#131722];
+      @apply bg-[#111111];
     }
   }
   &-zebra tr.hover,
   &-zebra tr.hover:nth-child(even) {
-    @apply [@media(hover:hover)]:hover:bg-[#131722];
+    @apply [@media(hover:hover)]:hover:bg-[#111111];
   }
 
   :where(thead, tbody) {
