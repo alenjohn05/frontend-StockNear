@@ -10,49 +10,66 @@
   let rawData: any;
   let displayList = [];
   let optionsData = {};
+  let optionsMarCapData = {};
   let isLoading = true;
   let name = rawData?.Name;
   let numOfAssets = new Set([])?.size;
 
   async function getPlotOptions() {
     const option = {
-      title: {
-        text: "Sectorwise Allocation",
-        left: "center",
-        bottom: 0,
-        textStyle: {
-          color: "#FFFFFF",
-          fontFamily: '"Manrope", sans-serif',
-          fontWeight: "normal"
-        }
-      },
+      silent: false,
       tooltip: {
-        trigger: "item"
+        trigger: "item",
+        backgroundColor: "#111111",
+        borderColor: "#333333",
+        borderWidth: 1,
+        textStyle: {
+          color: "#ffffff",
+          fontFamily: '"Manrope", sans-serif',
+        },
+        formatter: (params: any) => {
+          return `${params.name}: ${params.percent.toFixed(2)}%`;
+        },
       },
+
       legend: false,
       series: [
         {
-          name: "Access From",
+          name: "",
           type: "pie",
-          radius: [50, 200],
+          radius: [50, $screenWidth < 640 ? 150 : 180],
           center: ["50%", "70%"],
           startAngle: 180,
           endAngle: 360,
+          color: [
+            "#5532E6",
+            "#9c27b0",
+            "#00ff19",
+            "#ad00ff",
+            "#ebff00",
+            "#da9b0a",
+            "#c75e70",
+            "#0057ff",
+            "#00bcd4",
+          ],
           data: [
-            { value: 1048, name: "Search Engine" },
-            { value: 735, name: "Direct" },
-            { value: 580, name: "Email" },
-            { value: 484, name: "Union Ads" },
-            { value: 300, name: "Video Ads" }
+            ...rawData.SectorMix.map((each: any) => {
+              return {
+                value: parseFloat(each.HoldingPercentage.toFixed(2)),
+                name: each.SectorName,
+                Holding: each.HoldingValue,
+              };
+            }),
           ],
           label: {
-            show: true,
+            show: $screenWidth < 840 ? false : true,
             position: "outside",
-            formatter: "{b}: {c} ({d}%)",
-            fontSize: 12,
+            formatter: "{b}: {d}%",
+            fontSize: 10,
             color: "#fff",
-            backgroundColor: "#191919",
-            border: "#FFFFFF",
+            backgroundColor: "#111111", // Changed to #111111
+            borderColor: "#333333", // Added a darker border color
+            borderWidth: 1, // Added border width
             borderRadius: 4,
             padding: [4, 8],
             rotate: 0,
@@ -66,37 +83,201 @@
                 lineHeight: 22,
                 align: "center",
                 fontFamily: '"Manrope", sans-serif',
-                fontWeight: "normal"
+                fontWeight: "normal",
               },
               b: {
                 fontSize: 16,
                 lineHeight: 33,
                 fontFamily: '"Manrope", sans-serif',
-                fontWeight: "normal"
-              }
-            }
+                fontWeight: "normal",
+              },
+            },
           },
           labelLine: {
             lineStyle: {
-              color: "rgba(255, 255, 255, 0.3)"
+              color: "rgba(255, 255, 255, 0.3)",
             },
             smooth: 0.2,
             length: 10,
-            length2: 20
+            length2: 20,
           },
           animationType: "scale",
-          animationEasing: "elasticOut"
-        }
-      ]
+          animationEasing: "elasticOut",
+        },
+      ],
     };
     return option;
   }
 
+  async function getMarketPlotOptions() {
+  const option = {
+    silent: false,
+    yAxis: {
+      type: "category",
+      data: [...rawData?.McapMix.map((each) => each.McapCategoryName)],
+      axisLine: {
+        lineStyle: {
+          color: "#333333",
+        },
+      },
+      axisLabel: {
+        color: "#ffffff",
+        fontFamily: '"Manrope", sans-serif',
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: "#111111",
+        },
+      },
+    },
+    xAxis: {
+      type: "value",
+      axisLine: {
+        lineStyle: {
+          color: "#333333",
+        },
+      },
+      axisLabel: {
+        color: "#ffffff",
+        fontFamily: '"Manrope", sans-serif',
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: "#1a1a1a",
+        },
+      },
+    },
+    tooltip: {
+      trigger: "axis",
+      backgroundColor: "#111111",
+      borderColor: "#333333",
+      borderWidth: 1,
+      textStyle: {
+        color: "#ffffff",
+        fontFamily: '"Manrope", sans-serif',
+      },
+      formatter: (params) => {
+        return `${params[0].name}: ${params[0].value.toFixed(2)}%`;
+      },
+    },
+    legend: false,
+    series: [
+      {
+        name: "Market Cap Distribution",
+        type: "bar",
+        data: rawData.McapMix.map((each, index) => ({
+          value: parseFloat(each.HoldingPercentage.toFixed(2)),
+          name: each.McapCategoryName,
+          itemStyle: {
+            color: ["#00bcd4", "#ebff00", "#da9b0a", "#c75e70", "#0057ff"][index % 5]
+          }
+        })),
+        label: {
+          show: true,
+          position: 'insideRight',
+          formatter: '{c}%',
+          fontFamily: '"Manrope", sans-serif',
+          color: '#ffffff',
+          fontSize: 12,
+          distance: 15
+        },
+        animationType: "scale",
+        animationEasing: "elasticOut",
+      },
+    ],
+    grid: {
+      left: "3%",
+      right: "4%",
+      top: "5%",
+      bottom: "5%",
+      containLabel: true,
+      show: true,
+      borderColor: "#111111",
+      borderWidth: 0,
+      backgroundColor: "#111111",
+      tooltip: {
+        trigger: "item",
+        formatter: "{b}: {c}",
+      },
+      zlevel: 0,
+    },
+  };
+  return option;
+}
+  function describeSectorHoldings(holdings: any) {
+    const totalValue = holdings.reduce(
+      (sum: any, sector: any) => sum + sector.HoldingValue,
+      0,
+    );
+    const topSector = holdings.reduce((max: any, sector: any) =>
+      sector.HoldingPercentage > max.HoldingPercentage ? sector : max,
+    );
+    const sectorCount = holdings.length;
+
+    // Calculate average holding value
+    const averageHoldingValue = totalValue / sectorCount;
+
+    // Find sectors above average
+    const sectorsAboveAverage = holdings.filter(
+      (sector: any) => sector.HoldingValue > averageHoldingValue,
+    );
+
+    const starIcon = `<svg data-v-74e7f429="" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="seeMoreCTA__arrow"><path data-v-74e7f429="" d="M9.31806 12.2223L8.28676 11.156L10.6549 8.7879H2.5V7.30109H10.6549L8.28676 4.93295L9.31806 3.8667L13.5 8.04449L9.31806 12.2223Z" fill="#ffffff"></path></svg>`;
+
+    return `
+    <div class="text-white text-sm space-y-4">
+      <span class="flex items-start mt-0">
+        ${starIcon}
+        <span class="ml-2">This portfolio consists of <span class="font-bold text-white">${sectorCount} sectors</span> with a total holding value of <span class="font-bold text-white">${totalValue.toLocaleString()}Cr</span>.</span>
+      </span>
+      <span class="flex items-start mt-0">
+        ${starIcon}
+        <span class="ml-2">The dominant sector is <span class="font-bold text-white">${topSector.SectorName}</span>, accounting for <span class="font-bold text-white">${topSector.HoldingPercentage.toFixed(2)}%</span> of the portfolio with a value of <span class="font-bold text-white">${topSector.HoldingValue.toLocaleString()}Cr</span>.</span>
+      </span>
+      <span class="flex items-start mt-0">
+        ${starIcon}
+        <span class="ml-2">The average holding value per sector is <span class="font-bold text-white">${averageHoldingValue.toLocaleString()}Cr</span>.</span>
+      </span>
+      <span class="flex items-start mt-0">
+        ${starIcon}
+        <span class="ml-2">${sectorsAboveAverage.length} out of ${sectorCount} sectors have above-average holdings.</span>
+      </span>
+      <span class="flex items-start mt-0">
+        ${starIcon}
+        <span class="ml-2">The smallest sector represents <span class="font-bold text-white">${holdings[holdings.length - 1].HoldingPercentage.toFixed(2)}%</span> of the portfolio.</span>
+      </span>
+    </div>
+  `;
+  }
+
+  function marketCapOverview(allocations) {
+    const totalValue = allocations.reduce(
+      (sum, cap) => sum + cap.HoldingValue,
+      0,
+    );
+    const activeAllocations = allocations.filter((cap) => cap.HoldingValue > 0);
+
+    if (activeAllocations.length === 0) {
+      return `${rawData?.Name}'s portfolio currently has no market cap allocations.`;
+    }
+
+    const overview = activeAllocations
+      .map(
+        (cap) =>
+          `${cap.McapCategoryName} (${cap.HoldingPercentage.toFixed(2)}%)`,
+      )
+      .join(", ");
+
+    return `${rawData?.Name} portfolio's market cap allocation is focused on ${overview}, with a total holding value of ${totalValue.toLocaleString()}Cr.`;
+  }
   async function processData() {
     rawData = data.getInstitutionalInvestor;
     name = rawData?.Name;
-    console.log(rawData)
+    console.log(rawData);
     optionsData = await getPlotOptions();
+    optionsMarCapData = await getMarketPlotOptions();
     isLoading = false;
   }
 
@@ -338,7 +519,9 @@
                           >&nbsp; with holding of
                         </span>
                         <span class="text-yellow-400"
-                          >&nbsp;{rawData?.HighestShareHoldingSecurityG}%</span
+                          >&nbsp;{rawData?.HighestShareHoldingSecurityG.toFixed(
+                            2,
+                          )}%</span
                         >
                       </span>
                     </div>
@@ -350,8 +533,22 @@
             </aside>
 
             <main class="w-full mt-10 sm:mt-0 sm:w-3/4 sm:ml-5">
+              <div class="flex flex-col justify-center items-center">
+                <label
+                  for=""
+                  class="mr-1 cursor-pointer flex flex-row items-center text-white text-xl sm:text-3xl mb-2 font-bold"
+                >
+                  Sectorwise Allocation
+                </label>
+                <p class="text-white text-md w-3/4 text-center">
+                  Sectorwise Allocation represents the distribution of
+                  investments across different economic sectors within a
+                  portfolio.
+                </p>
+              </div>
+
               <div
-                class="p-0 sm:p-10 bg-[#111111] sm:bg-[#111111] rounded-lg sm:min-h-auto mb-10 sm:mb-6"
+                class="p-0 sm:px-2 bg-[#111111] sm:bg-[#111111] rounded-lg sm:min-h-auto mb-10 sm:mb-6"
               >
                 <Lazy
                   height={800}
@@ -363,277 +560,50 @@
                   </div>
                 </Lazy>
               </div>
-              <div
-                class="p-0 sm:p-10 bg-[#111111] sm:bg-[#111111] rounded-lg sm:min-h-[330px]"
-              >
+              <div class="w-full flex flex-col justify-center items-center">
                 <div
-                  class="w-full m-auto h-auto sm:max-h-[500px] sm:overflow-y-scroll scroller"
+                  class="w-70 sm:w-2/3 h-auto bg-[#1A1A1A] tracking-wide mb-14 mx-1 rounded-lg relative"
                 >
-                  {#if rawData?.length !== 0}
-                    <div class="hidden sm:block">
-                      <span class="text-[#F5F5F5] font-bold text-2xl">
-                        {numOfAssets} Assets
-                      </span>
-
-                      <table
-                        class="-ml-2 table table-sm table-compact table-pin-rows table-pin-cols rounded-none sm:rounded-md w-full bg-[#111111] m-auto mt-5"
-                      >
-                        <!-- head -->
-                        <thead>
-                          <tr class="bg-[#111111]">
-                            <th
-                              class="shadow-md text-start bg-[#111111] text-white text-sm font-semibold"
-                            >
-                              Name
-                            </th>
-                            <th
-                              class="shadow-md text-start bg-[#111111] text-white text-sm font-semibold"
-                            >
-                              Transaction
-                            </th>
-                            <th
-                              class="shadow-md text-end bg-[#111111] text-white text-sm font-semibold"
-                            >
-                              Traded
-                            </th>
-                            <th
-                              class="shadow-md text-end bg-[#111111] text-white text-sm font-semibold"
-                            >
-                              Filed
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody class="p-0">
-                          {#each displayList as item}
-                            <tr
-                              on:click={() =>
-                                goto(
-                                  `/${item?.assetType === "stock" ? "stocks" : item?.assetType === "etf" ? "etf" : "crypto"}/${item?.ticker}`
-                                )}
-                              class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#111111] border-b-[#202020] cursor-pointer"
-                            >
-                              <td
-                                class="text-gray-200 pb-3 border-b border-b-[#202020]"
-                              >
-                                <div class="flex flex-row items-center">
-                                  <div
-                                    class="flex-shrink-0 rounded-full w-8 h-8 relative bg-[#111111] flex items-center justify-center"
-                                  >
-                                    <img
-                                      style="clip-path: circle(50%);"
-                                      class="avatar w-7 h-7"
-                                      src={`https://financialmodelingprep.com/image-stock/${item?.ticker}.png`}
-                                      alt="stock logo"
-                                    />
-                                  </div>
-                                  <div class="flex flex-col ml-2">
-                                    <span class="text-[#FFBE00]"
-                                      >{item?.ticker?.replace("_", " ")}</span
-                                    >
-                                    <span
-                                      class="text-white text-opacity-80 text-xs"
-                                      >{item?.name?.length > 20
-                                        ? item?.name?.slice(0, 20) + "..."
-                                        : item?.name}</span
-                                    >
-                                  </div>
-                                </div>
-                                <!--{item?.firstName} {item?.lastName}-->
-                              </td>
-
-                              <td
-                                class="text-start text-xs sm:text-sm text-white border-b border-b-[#202020]"
-                              >
-                                <div class="flex flex-col items-start">
-                                  <span class="font-semibold">
-                                    {#if item?.type === "Bought"}
-                                      <span class="text-[#57D7BA]"
-                                        >Purchase</span
-                                      >
-                                    {:else if item?.type === "Sold"}
-                                      <span class="text-[#fe5555]">Sale</span>
-                                    {:else if item?.type === "Exchange"}
-                                      <span class="text-[#C6A755]"
-                                        >Exchange</span
-                                      >
-                                    {/if}
-                                  </span>
-                                  <span>
-                                    {item?.amount}
-                                  </span>
-                                </div>
-                              </td>
-
-                              <td
-                                class="text-end text-sm text-white border-b border-b-[#202020]"
-                              >
-                                {new Date(
-                                  item?.transactionDate
-                                )?.toLocaleString("en-US", {
-                                  month: "short",
-                                  day: "numeric",
-                                  year: "numeric",
-                                  daySuffix: "2-digit"
-                                })}
-                              </td>
-
-                              <td
-                                class="text-end text-sm text-white border-b border-b-[#202020]"
-                              >
-                                {new Date(item?.disclosureDate)?.toLocaleString(
-                                  "en-US",
-                                  {
-                                    month: "short",
-                                    day: "numeric",
-                                    year: "numeric",
-                                    daySuffix: "2-digit"
-                                  }
-                                )}
-                              </td>
-                            </tr>
-                          {/each}
-                        </tbody>
-                      </table>
-                    </div>
-
-                    <div
-                      class="sm:hidden flex flex-col justify-center w-full m-auto h-full overflow-hidden mt-3"
-                    >
-                      <span class="ml-3 text-[#F5F5F5] font-bold text-2xl">
-                        {numOfAssets} Assets
-                      </span>
-
-                      <!-- Content area -->
-                      <div class="mt-4 w-full overflow-x-auto scroller">
-                        <table class="-ml-2 table mt-3 w-screen">
-                          <thead>
-                            <tr class="">
-                              <th
-                                class="shadow-md text-start bg-[#111111] text-white text-sm font-semibold"
-                              >
-                                Name
-                              </th>
-                              <th
-                                class="shadow-md text-start bg-[#111111] text-white text-sm font-semibold"
-                              >
-                                Transaction
-                              </th>
-                              <th
-                                class="shadow-md text-end bg-[#111111] text-white text-sm font-semibold"
-                              >
-                                Traded
-                              </th>
-                              <th
-                                class="shadow-md text-end bg-[#111111] text-white text-sm font-semibold"
-                              >
-                                Filed
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {#each displayList as item, index}
-                              <!-- row -->
-                              <tr
-                                on:click={() =>
-                                  goto(
-                                    `/${item?.assetType === "stock" ? "stocks" : item?.assetType === "etf" ? "etf" : "crypto"}/${item?.ticker}`
-                                  )}
-                                class="w-screen [#111111] border-b-[#111111]"
-                              >
-                                <td
-                                  class="text-gray-200 pb-3 border-b border-b-[#111111] w-32"
-                                >
-                                  <div class="flex flex-row items-center">
-                                    <div class="flex flex-col">
-                                      <span class="text-[#FFBE00] text-sm"
-                                        >{item?.ticker?.replace("_", " ")}</span
-                                      >
-                                      <span
-                                        class="text-white text-opacity-80 text-xs"
-                                        >{item?.name?.length > 15
-                                          ? item?.name?.slice(0, 15) + "..."
-                                          : item?.name}</span
-                                      >
-                                    </div>
-                                  </div>
-                                  <!--{item?.firstName} {item?.lastName}-->
-                                </td>
-
-                                <td
-                                  class="text-start text-sm text-white border-b border-b-[#111111]"
-                                >
-                                  <div class="flex flex-col items-start">
-                                    <span class="font-semibold">
-                                      {#if item?.type === "Bought"}
-                                        <span class="text-[#57D7BA]"
-                                          >Purchase</span
-                                        >
-                                      {:else if item?.type === "Sold"}
-                                        <span class="text-[#fe5555]">Sale</span>
-                                      {:else if item?.type === "Exchange"}
-                                        <span class="text-[#C6A755]"
-                                          >Exchange</span
-                                        >
-                                      {/if}
-                                    </span>
-                                    <span>
-                                      {item?.amount}
-                                    </span>
-                                  </div>
-                                </td>
-
-                                <td
-                                  class="text-end text-sm text-white border-b border-b-[#111111]"
-                                >
-                                  {new Date(
-                                    item?.transactionDate
-                                  )?.toLocaleString("en-US", {
-                                    month: "short",
-                                    day: "numeric",
-                                    year: "numeric",
-                                    daySuffix: "2-digit"
-                                  })}
-                                </td>
-
-                                <td
-                                  class="text-end text-sm text-white border-b border-b-[#111111]"
-                                >
-                                  {new Date(
-                                    item?.disclosureDate
-                                  )?.toLocaleString("en-US", {
-                                    month: "short",
-                                    day: "numeric",
-                                    year: "numeric",
-                                    daySuffix: "2-digit"
-                                  })}
-                                </td>
-                              </tr>
-                            {/each}
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  {:else}
-                    <div
-                      class="flex justify-center items-center m-auto sm:mt-24 mt-32 mb-6"
-                    >
-                      <div
-                        class="text-gray-100 text-sm sm:text-[1rem] sm:rounded-lg h-auto border border-slate-800 p-4"
-                      >
-                        <svg
-                          class="w-5 h-5 inline-block mr-2 flex-shrink-0"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 256 256"
-                          ><path
-                            fill="#a474f6"
-                            d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24m-4 48a12 12 0 1 1-12 12a12 12 0 0 1 12-12m12 112a16 16 0 0 1-16-16v-40a8 8 0 0 1 0-16a16 16 0 0 1 16 16v40a8 8 0 0 1 0 16"
-                          /></svg
-                        >
-                        No Trading activity found
-                      </div>
-                    </div>
-                  {/if}
+                  <h5
+                    class="text-2xl text-white font-semibold pl-6 pt-6 pr-6 pb-2"
+                  >
+                    Sectorwise Allocation
+                  </h5>
+                  <div
+                    class="text-md font-regular text-white p-6 pt-2 text-gray-500"
+                  >
+                    {@html describeSectorHoldings(rawData?.SectorMix)}
+                  </div>
                 </div>
+              </div>
+              <div
+                class="p-0 sm:p-2 bg-[#111111] sm:bg-[#111111] rounded-lg sm:min-h-auto mb-10 sm:mb-6"
+              >
+                <p class="text-center text-white"></p>
+              </div>
+              <div class="flex flex-col justify-center items-center">
+                <label
+                  for=""
+                  class="mr-1 cursor-pointer flex flex-row items-center text-white text-xl sm:text-3xl mb-2 font-bold"
+                >
+                  Market Captial Allocation
+                </label>
+                <p class="text-white text-md w-3/4 text-center">
+                  {marketCapOverview(rawData?.McapMix)}
+                </p>
+              </div>
+              <div
+                class="p-0 sm:px-2 mt-10 bg-[#111111] sm:bg-[#111111] rounded-lg sm:min-h-auto mb-10 sm:mb-6"
+              >
+                <Lazy
+                  height={800}
+                  fadeOption={{ delay: 100, duration: 500 }}
+                  keep={true}
+                >
+                  <div class="app w-full h-[800px] mt-6">
+                    <Chart options={optionsMarCapData} class="chart" />
+                  </div>
+                </Lazy>
               </div>
             </main>
           </div>

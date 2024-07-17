@@ -43,7 +43,7 @@ export const isCrosshairMoveActive = writable(<boolean>(true));
 export const twitchStatus = writable(<boolean>(false));
 
 export const clientSideCache = writable({});
-export const screenWidth = writable(<Number> (0));
+export const screenWidth = writable(<number> (0));
 
 export const globalForm = writable(<Array<any>> []);
 
