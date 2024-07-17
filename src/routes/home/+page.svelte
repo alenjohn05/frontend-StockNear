@@ -292,7 +292,7 @@
                             <div
                               class="w-auto m-auto flex flex-row items-center justify-center mt-6 text-lg sm:text-xl"
                             >
-                              <span class="text-center text-slate-100">
+                              <span class="text-center text-slate-100 ">
                                 Trending:
                               </span>
                               {#each active?.slice(0, 4) as item, index}
@@ -852,7 +852,7 @@
                             </div>
                             <span class="ml-2 mr-2"> &#183;</span>
                           {/if}
-                          <span class="text-gray-300 text-xs">
+                          <span class="text-gray-300 text-xs code-font">
                            at {item?.Time} · {item?.Date}
                           </span>
                         </div>
@@ -903,7 +903,7 @@
                   <div class="text-sm text-white text-start p-4 sm:p-6 flex-grow">
                     <div class="flex flex-col items-start">
                       <div class="flex flex-row items-center mb-3">
-                        <div class="bg-[#2962ff] text-white font-medium text-xs rounded-lg px-2 py-0.5">
+                        <div class="bg-[#2962ff] text-white font-medium text-xs rounded-lg px-2 py-0.5 code-font">
                           {item?.date}
                         </div>
                         <span class="ml-2 mr-2"> &#183;</span>

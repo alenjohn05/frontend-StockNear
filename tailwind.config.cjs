@@ -38,10 +38,8 @@ module.exports = {
 				  fontFamily: '"Manrope", sans-serif',
 				  // Other h6 styles if needed
 				},
-				// You can add custom classes here as well
 				'.custom-font-class': {
-				  fontFamily: '"Manrope", sans-serif',
-				  // Other styles for .custom-font-class
+				  fontFamily: '"M PLUS 1 Code", sans-serif',
 				},
 			  },
 			},

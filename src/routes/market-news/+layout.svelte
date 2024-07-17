@@ -11,6 +11,10 @@
       link: "/market-news",
     },
     {
+      title: "Overview",
+      link: "/market-news/latest-news",
+    },
+    {
       title: "Announcements",
       link: "/market-news/result",
     },

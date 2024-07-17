@@ -403,12 +403,12 @@
             <div>
               <div class="flex flex-row justify-center items-center">
                 <h1 class="text-3xl sm:text-4xl text-white text-center font-bold mb-5">
-                  Latest Trades of Politicians
+                  Latest Investor Profiles
                 </h1>
               </div>
       
               <span class="hidden sm:block text-white text-md font-medium text-center flex justify-center items-center ">
-                Gain from monitoring the latest trades of corrupt U.S. politicians
+                Comprehensive Investor Profiles: Holdings, Portfolio Changes, and Transaction History
               </span>
     
             </div>

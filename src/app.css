@@ -142,4 +142,9 @@ box-shadow: 0 2.5em 0 -1.3em;
 box-shadow: 0 2.5em 0 0;
 }
 }
+
+.code-font{
+  font-family: "M PLUS 1 Code", monospace !important;
+  color: #ffffff;
+}
   

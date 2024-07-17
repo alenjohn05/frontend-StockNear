@@ -1340,7 +1340,7 @@ syncWorker.onmessage = handleTwitchMessage;
                     class="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                   >
                     <span class="text-sm font-medium text-white">
-                      Flow Data
+                      Indivdual Investors
                     </span>
                   </a>
                 </li>
@@ -1356,7 +1356,7 @@ syncWorker.onmessage = handleTwitchMessage;
                     class="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                   >
                     <span class="text-sm font-medium text-white">
-                      Politicians
+                      Institutional Investors
                     </span>
                   </a>
                 </li>
@@ -1452,6 +1452,7 @@ syncWorker.onmessage = handleTwitchMessage;
                 '/market-news/result',
                 '/market-news/foreign_market',
                 '/market-news/corporate',
+                '/market-news/latest-news',
                 '/market-news/debt-markets',
                 '/market-news/currency-news',
                 '/market-news/mutual-fund',

@@ -94,13 +94,13 @@
                 <div
                   class="flex items-center justify-between w-full gap-x-4 text-xs cursor-pointer"
                 >
-                  <div class="text-white-500">{item?.time} · {item?.date}</div>
+                  <div class="text-white-500 code-font">{item?.time} · {item?.date}</div>
 
                   <div class="flex items-center gap-x-4 text-xs">
-                    <div class="text-white-500 text-xs">Sentiment :</div>
+                    <div class="text-white-500 text-xs code-font">Sentiment :</div>
 
                     <div
-                      class={`relative z-10 rounded-full ${item?.sentiment_category === "negative" ? "bg-red-600" : item?.sentiment_category === "positive" ? "bg-green-600" : "bg-purple-600"} px-3 py-1.5 font-medium text-white hover:bg-purple-400`}
+                      class={`relative z-10 rounded-full code-font ${item?.sentiment_category === "negative" ? "bg-red-600" : item?.sentiment_category === "positive" ? "bg-green-600" : "bg-purple-600"} px-3 py-1.5 font-medium text-white hover:bg-purple-400`}
                     >
                       {item?.sentiment_category}
                     </div>
