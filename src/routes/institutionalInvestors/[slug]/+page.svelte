@@ -179,7 +179,8 @@
           position: 'insideRight',
           formatter: '{c}%',
           fontFamily: '"Manrope", sans-serif',
-          color: '#ffffff',
+          color: '#111111',
+          fontStyle:"bold",
           fontSize: 12,
           distance: 15
         },
