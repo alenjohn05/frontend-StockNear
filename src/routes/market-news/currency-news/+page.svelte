@@ -1,11 +1,10 @@
 <script lang="ts">
   import InfiniteLoading from "$lib/components/InfiniteLoading.svelte";
   import { numberOfUnreadNotification } from "$lib/store";
-  import { formatDate } from "$lib/utils.js";
 
   export let data;
 
-  let rawData = data?.getCryptoNews;
+  let rawData = data?.Get_Currency_News;
   let news = rawData?.slice(0, 15) ?? [];
 
   async function infiniteHandler({ detail: { loaded, complete } }) {
@@ -73,38 +72,37 @@
           {#if news.length !== 0}
             {#each news as item}
               <article
-                class="max-w-xl flex p-3 flex-col w-full mt-5 items-start justify-between bg-[#131722] border border-[#2a2e39] shadow-lg h-auto sm:h-[280px] pb-10 sm:pb-5 rounded-none sm:rounded-lg m-auto"
+                class="max-w-xl flex p-3 flex-col w-full mt-5 items-start justify-between bg-[#131722] border border-[#2a2e39] shadow-lg h-auto sm:h-[180px] pb-10 sm:pb-5 rounded-none sm:rounded-lg m-auto"
               >
                 <div
                   class="flex items-center justify-between w-full gap-x-4 text-xs cursor-pointer"
                 >
-                  <div class="text-white-500">{formatDate(item?.publishedDate)} ago</div>
+                  <div class="text-white-500">{item?.time} · {item?.date}</div>
 
                   <div class="flex items-center gap-x-4 text-xs">
-                   
+                    <div class="text-white-500 text-xs">Sentiment :</div>
+
                     <div
                       class={`relative z-10 rounded-full ${item?.sentiment_category === "negative" ? "bg-red-600" : item?.sentiment_category === "positive" ? "bg-green-600" : "bg-purple-600"} px-3 py-1.5 font-medium text-white hover:bg-purple-400`}
                     >
-                      {item?.symbol}
+                      {item?.sentiment_category}
                     </div>
                   </div>
                 </div>
-                <div class="relative mt-2 flex items-center gap-x-4">
+                <div class="relative mt-8 flex items-center gap-x-4">
                   <img
-                    src={item?.image}
+                    src={item?.IllustrationImage}
                     alt=""
                     class="h-10 w-10 rounded-full bg-gray-50"
                   />
                   <div class="text-sm leading-6">
-                    <a href={item?.url} target="_blank" class="text-lg font-bold text-white hover:underline">
-                      {item?.title}
-                    </a>
+                    <div class="text-lg font-bold text-white">
+                      {item?.heading}
+                    </div>
                   </div>
                 </div>
                 <div class="group relative">
-                  <p class="text-white text-sm mt-2"> {@html item?.text?.length > 150
-                    ? item?.text?.slice(0, 150) + "..."
-                    : item?.text}</p>
+                  <p class="text-white text-sm mt-2">{item?.caption}</p>
                 </div>
               </article>
             {/each}

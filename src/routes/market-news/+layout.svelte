@@ -11,7 +11,7 @@
       link: "/market-news",
     },
     {
-      title: "Results Announcements",
+      title: "Announcements",
       link: "/market-news/result",
     },
     {
@@ -27,12 +27,20 @@
       link: "/market-news/debt-markets",
     },
     {
+      title: "Currency",
+      link: "/market-news/currency-news",
+    },
+    {
       title: "Mutual Funds",
       link: "/market-news/mutual-fund",
     },
     {
       title: "Economy",
       link: "/market-news/economy",
+    },
+    {
+      title: "Derivatives",
+      link: "/market-news/derivatives-news",
     },
     {
       title: "Crypto",

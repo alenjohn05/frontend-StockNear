@@ -1,140 +1,125 @@
 <script lang="ts">
-    import InfiniteLoading from '$lib/components/InfiniteLoading.svelte';
-    import { numberOfUnreadNotification } from '$lib/store';
-    import { formatDate } from '$lib/utils';
-    
-    export let data;
-    
-    
-    let rawData = data?.getGeneralNews;
-    let news = rawData.slice(0,15) ?? [];
-    
-    
-    async function infiniteHandler({ detail: { loaded, complete } }) 
-    {
-      if (news?.length === rawData?.length) {
-          complete();
-        } else {
-          const nextIndex = news?.length;
-          const newArticles = rawData?.slice(nextIndex, nextIndex + 5);
-          news = [...news, ...newArticles];
-          loaded();
-        }
-    }
+  import InfiniteLoading from "$lib/components/InfiniteLoading.svelte";
+  import { numberOfUnreadNotification } from "$lib/store";
+  import { formatDate } from "$lib/utils.js";
 
-    
-    let videoId = null;
-    
-      
-    function checkIfYoutubeVideo(link) {
-    
-      const url = new URL(link);
-      if (url.hostname === "www.youtube.com") {
-      const searchParams = url.searchParams;
-      searchParams.delete('t'); // Remove the "t" parameter
-      const videoIdMatch = url.search.match(/v=([^&]+)/);
-    
-      if (videoIdMatch) {
-        return videoIdMatch[1];
-      }
-      } else {
-        return null;
-      }
-    
+  export let data;
+
+  let rawData = data?.getGeneralNews;
+  let news = rawData?.slice(0, 15) ?? [];
+
+  async function infiniteHandler({ detail: { loaded, complete } }) {
+    if (news?.length === rawData?.length) {
+      complete();
+    } else {
+      const nextIndex = news?.length;
+      const newArticles = rawData?.slice(nextIndex, nextIndex + 5);
+      news = [...news, ...newArticles];
+      loaded();
     }
-    
-    
-    </script>
-    
+  }
+</script>
+
 <svelte:head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>
+    {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ""} Today's
+    General News and Breaking Stories · octopi
+  </title>
+  <meta
+    name="description"
+    content={`Get the latest general news and breaking stories from the world's best finance and investing websites.`}
+  />
 
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width" />
-<title>
-  {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ''} Today's General News and Breaking Stories · octopi
-</title>
-<meta name="description" content={`Get the latest general news and breaking stories from the world's best finance and investing websites.`} />
+  <!-- Other meta tags -->
+  <meta
+    property="og:title"
+    content={`Today's General News and Breaking Stories · octopi`}
+  />
+  <meta
+    property="og:description"
+    content={`Get the latest general news and breaking stories from the world's best finance and investing websites.`}
+  />
+  <meta
+    property="og:image"
+    content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"
+  />
+  <meta property="og:type" content="website" />
+  <!-- Add more Open Graph meta tags as needed -->
 
-<!-- Other meta tags -->
-<meta property="og:title" content={`Today's General News and Breaking Stories · octopi`}/>
-<meta property="og:description" content={`Get the latest general news and breaking stories from the world's best finance and investing websites.`} />
-<meta property="og:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
-<meta property="og:type" content="website"/>
-<!-- Add more Open Graph meta tags as needed -->
-
-<!-- Twitter specific meta tags -->
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content={`Today's General News and Breaking Stories · octopi`}/>
-<meta name="twitter:description" content={`Get the latest general news and breaking stories from the world's best finance and investing websites.`} />
-<meta name="twitter:image" content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"/>
-<!-- Add more Twitter meta tags as needed -->
-
+  <!-- Twitter specific meta tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content={`Today's General News and Breaking Stories · octopi`}
+  />
+  <meta
+    name="twitter:description"
+    content={`Get the latest general news and breaking stories from the world's best finance and investing websites.`}
+  />
+  <meta
+    name="twitter:image"
+    content="https://octopi-pocketbase.s3.amazonaws.com/logo/meta_logo.jpg"
+  />
+  <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
-  
-  
-  
-<section class="w-full max-w-5xl overflow-hidden m-auto mt-10">
-  
-  <div class="flex justify-center w-full m-auto overflow-hidden">
-      <div class="relative flex justify-center items-center overflow-hidden">
-          <main>
-              <div class="w-screen sm:w-full m-auto">
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      {#if news?.length !== 0}
-                      {#each news as item}
-                          <div class="flex flex-col w-full mt-5 bg-[#131722] border border-[#2a2e39] shadow-lg h-auto sm:h-[420px] pb-10 sm:pb-5 rounded-none sm:rounded-lg m-auto">
-                            {#if videoId = checkIfYoutubeVideo(item.url)}
-                                <iframe
-                                    class="w-full h-56 rounded-none sm:rounded-lg"
-                                    src={`https://www.youtube.com/embed/${videoId}`}
-                                    frameborder="0"
-                                    allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen
-                                ></iframe>
-                            {:else}
-                                <a href={item?.url} target="_blank">
-                                <div class="h-56 m-auto border border-slate-800 rounded-none sm:rounded-lg ">
-                                    <img src={item?.image} class="w-screen sm:w-full h-56 rounded-none sm:rounded-t-lg" alt="news image" loading="lazy">
-                                </div>
-                                </a>
-                            {/if}
 
-                            <div class="pl-3 pr-3">
-                              <label class="mt-3 mb-3 cursor-pointer text-xs text-gray-200 flex flex-row items-center">
-                                Source: {item?.source} · {formatDate(item?.datetime*1000)} ago
-                              </label>
-                                
-                                  <a href={item?.url} target="_blank" class="text-lg font-bold text-white">
-                                    {item?.headline?.length > 120 ? item?.headline?.slice(0,120) + "..." : item?.headline}
-                                  </a>
-                                  <p class="text-white text-sm mt-2">
-                                    {item?.summary?.length > 100 ? item?.summary?.slice(0,100) + "..." : item?.summary}
-                                  </p>
-                              </div>
-
-                        </div>
-
-                          {/each}
-
-                          <InfiniteLoading on:infinite={infiniteHandler} />
-
-  
-                      
-                      {/if}
+<div class="flex justify-center w-full m-auto overflow-hidden">
+  <div class="relative flex justify-center items-center overflow-hidden">
+    <main>
+      <div class="w-screen sm:w-full m-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          {#if news.length !== 0}
+            {#each news as item}
+              <article
+                class="max-w-xl flex p-3 flex-col w-full mt-5 items-start justify-between bg-[#131722] border border-[#2a2e39] shadow-lg h-auto sm:h-[280px] pb-10 sm:pb-5 rounded-none sm:rounded-lg m-auto"
+              >
+                <div
+                  class="flex items-center justify-between w-full gap-x-4 text-xs cursor-pointer"
+                >
+                  <div class="text-white-500">
+                    {formatDate(item?.datetime * 1000)} ago
                   </div>
 
-          </main>
+                  <div class="flex items-center gap-x-4 text-xs">
+                    <div
+                      class={`relative z-10 rounded-full ${item?.sentiment_category === "negative" ? "bg-red-600" : item?.sentiment_category === "positive" ? "bg-green-600" : "bg-purple-600"} px-3 py-1.5 font-medium text-white hover:bg-purple-400`}
+                    >
+                      {item?.category}
+                    </div>
+                  </div>
+                </div>
+                <div class="relative mt-2 flex items-center gap-x-4">
+                  <img
+                    src={item?.image}
+                    alt=""
+                    class="h-10 w-10 rounded-full bg-gray-50"
+                  />
+                  <div class="text-sm leading-6">
+                    <a
+                      href={item?.url}
+                      target="_blank"
+                      class="text-lg font-bold text-white hover:underline"
+                    >
+                      {item?.headline}
+                    </a>
+                  </div>
+                </div>
+                <div class="group relative">
+                  <p class="text-white text-sm mt-2">
+                    {@html item?.summary?.length > 150
+                      ? item?.summary?.slice(0, 150) + "..."
+                      : item?.summary}
+                  </p>
+                </div>
+              </article>
+            {/each}
+
+            <InfiniteLoading on:infinite={infiniteHandler} />
+          {/if}
+        </div>
       </div>
+    </main>
   </div>
-</section>
-
-
-
-
-
-
-  
-  
-  
-  
-  
+</div>

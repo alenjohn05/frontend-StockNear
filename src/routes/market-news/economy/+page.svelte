@@ -119,7 +119,7 @@
                   </div>
                 </div>
                 <div class="group relative">
-                  <p class="text-white text-sm mt-2">{item?.caption}</p>
+                  <p class="text-white text-sm mt-2">{@html item?.caption}</p>
                 </div>
               </article>
             {/each}
