@@ -1336,7 +1336,7 @@ syncWorker.onmessage = handleTwitchMessage;
                     : ''}"
                 >
                   <a
-                    href={"/politicians/flow-data"}
+                    href={"/institutionalInvestors"}
                     class="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                   >
                     <span class="text-sm font-medium text-white">
@@ -1347,12 +1347,12 @@ syncWorker.onmessage = handleTwitchMessage;
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
                   class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
-                    .url.pathname === '/options-flow'
+                    .url.pathname === '/institutionalInvestors'
                     ? 'text-white bg-purple-700 rounded-md '
                     : ''}"
                 >
                   <a
-                    href={"/politicians"}
+                    href={"/institutionalInvestors"}
                     class="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                   >
                     <span class="text-sm font-medium text-white">

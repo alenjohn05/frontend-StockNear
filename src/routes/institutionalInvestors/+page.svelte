@@ -235,7 +235,7 @@
                 >
                   {#each displayList as item}
                     <a
-                      href={`/politicians/${item?.ID}`}
+                      href={`/institutionalInvestors/${item?.ID}`}
                       class="w-full cursor-pointer bg-[#111111] sm:hover:bg-[#111111] transition-colors ease-in-out border sm:hover:border-[#000] sm:hover:shadow-[#191919] border-slate-800 shadow-md rounded-lg h-auto pb-4 pt-4 mb-7"
                     >
                       <div class="flex flex-col relative">

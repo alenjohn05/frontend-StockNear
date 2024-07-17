@@ -49,10 +49,10 @@
       </div>
       
       <div class="flex-1 mb-2 sm:mb-0">
-        <p class="uppercase text-slate-100 md:mb-6">Products</p>
+        <p class="uppercase text-slate-100 font-bold text-sm md:mb-6">Products</p>
         <ul class="list-reset mb-6">
           <li class="mt-2 inline-block mr-2 md:block md:mr-0" >
-            <a href="/pricing" class="no-underline hover:underline text-gray-300  hover:text-yellow-400">Pricing</a>
+            <a href="/pricing" class="no-underline hover:underline text-gray-300  hover:text-yellow-400 text-xs">Pricing</a>
           </li>
           <!-- <li class="mt-2 inline-block mr-2 md:block md:mr-0" >
             <a href="/changelog" class="no-underline hover:underline text-gray-300  hover:text-yellow-400">Changelog</a>
@@ -64,36 +64,36 @@
       </div>
 
       <div class="flex-1 mb-2 sm:mb-0">
-        <p class="uppercase text-slate-100 md:mb-6">Legal</p>
+        <p class="uppercase text-slate-100 md:mb-6 font-bold text-sm">Legal</p>
         <ul class="list-reset mb-6">
           <li class="mt-2 inline-block mr-2 md:block md:mr-0" >
-            <a href="/terms-of-use" class="no-underline hover:underline text-gray-300  hover:text-yellow-400">Terms of Use</a>
+            <a href="/terms-of-use" class="no-underline hover:underline text-gray-300  hover:text-yellow-400 text-xs">Terms of Use</a>
           </li>
           <li class="mt-2 inline-block mr-2 md:block md:mr-0" >
-            <a href="/privacy-policy" class="no-underline hover:underline text-gray-300  hover:text-yellow-400">Privacy Policy</a>
+            <a href="/privacy-policy" class="no-underline hover:underline text-gray-300  hover:text-yellow-400 text-xs">Privacy Policy</a>
           </li>
           <li class="mt-2 inline-block mr-2 md:block md:mr-0" >
-            <a href="/imprint" class="no-underline hover:underline text-gray-300  hover:text-yellow-400">Imprint</a>
+            <a href="/imprint" class="no-underline hover:underline text-gray-300  hover:text-yellow-400 text-xs">Imprint</a>
           </li>
         </ul>
       </div>
     
       <div class="flex-1 mb-2 sm:mb-0">
-        <p class="uppercase text-slate-100 md:mb-6">Company</p>
+        <p class="uppercase text-slate-100 md:mb-6 font-bold text-sm">Company</p>
         <ul class="list-reset mb-6">
 
           <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-            <a href="/about" class="no-underline hover:underline text-gray-300 hover:text-yellow-400">
+            <a href="/about" class="no-underline hover:underline text-gray-300 hover:text-yellow-400 text-xs">
               About Us
             </a>
           </li>
           <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-            <a href="/contact" class="no-underline hover:underline text-gray-300 hover:text-yellow-400">
+            <a href="/contact" class="no-underline hover:underline text-gray-300 hover:text-yellow-400 text-xs">
               Contact Us
             </a>
           </li>
           <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-            <a href="/blog" class="no-underline hover:underline text-gray-300 hover:text-yellow-400">
+            <a href="/blog" class="no-underline hover:underline text-gray-300 hover:text-yellow-400 text-xs">
               Blog
             </a>
           </li>
@@ -140,7 +140,7 @@
 
     <div class="hidden sm:flex flex-col">
       <div class="border-b border-gray-700 w-full"/>
-      <span class="flex flex-row items-center mt-6 text-md text-gray-300 mb-5">
+      <span class="flex text-xs flex-row items-center mt-6 text-md text-gray-300 mb-5 code-font">
         © 2024 Octopi. All Rights Reserved.
       </span>
     </div>
