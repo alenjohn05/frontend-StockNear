@@ -5,7 +5,7 @@
     addDays,
     addWeeks,
     subWeeks,
-    differenceInWeeks
+    differenceInWeeks,
   } from "date-fns";
   import { screenWidth, numberOfUnreadNotification } from "$lib/store";
   import logo from "$lib/images/split_logo.png";
@@ -16,8 +16,6 @@
   export let data;
   let currentWeek = startOfWeek(new Date(), { weekStartsOn: 1 });
   let getStockSplitsCalendarMain = data?.getStockSplitsCalendarMain;
-  let stockSplitsCalendarMain = data?.getStockSplitsCalendar;
-  console.log(stockSplitsCalendarMain);
   const maxWeeksChange = 4; // Maximum allowed week change
   let previousMax = false;
   let nextMax = false;
@@ -35,7 +33,7 @@
     formattedTuesday,
     formattedWednesday,
     formattedThursday,
-    formattedFriday
+    formattedFriday,
   ];
   let weekday = [];
 
@@ -46,24 +44,24 @@
   let daysOfWeek = [
     {
       name: "Monday",
-      date: formattedStartDate
+      date: formattedStartDate,
     },
     {
       name: "Tuesday",
-      date: format(addDays(startDate, 1), "yyyy-MM-dd")
+      date: format(addDays(startDate, 1), "yyyy-MM-dd"),
     },
     {
       name: "Wednesday",
-      date: format(addDays(startDate, 2), "yyyy-MM-dd")
+      date: format(addDays(startDate, 2), "yyyy-MM-dd"),
     },
     {
       name: "Thursday",
-      date: format(addDays(startDate, 3), "yyyy-MM-dd")
+      date: format(addDays(startDate, 3), "yyyy-MM-dd"),
     },
     {
       name: "Friday",
-      date: formattedEndDate
-    }
+      date: formattedEndDate,
+    },
   ];
 
   let currentDate = new Date();
@@ -124,7 +122,7 @@
       formattedTuesday,
       formattedWednesday,
       formattedThursday,
-      formattedFriday
+      formattedFriday,
     ];
     weekday = [];
 
@@ -135,33 +133,32 @@
     daysOfWeek = [
       {
         name: "Monday",
-        date: formattedStartDate
+        date: formattedStartDate,
       },
       {
         name: "Tuesday",
-        date: format(addDays(startDate, 1), "yyyy-MM-dd")
+        date: format(addDays(startDate, 1), "yyyy-MM-dd"),
       },
       {
         name: "Wednesday",
-        date: format(addDays(startDate, 2), "yyyy-MM-dd")
+        date: format(addDays(startDate, 2), "yyyy-MM-dd"),
       },
       {
         name: "Thursday",
-        date: format(addDays(startDate, 3), "yyyy-MM-dd")
+        date: format(addDays(startDate, 3), "yyyy-MM-dd"),
       },
       {
         name: "Friday",
-        date: formattedEndDate
-      }
+        date: formattedEndDate,
+      },
     ];
 
     getStockSplitsCalendarMain = daysOfWeek.map((day) => {
-      console.log(day);
       return {
         name: day.name,
         data: data?.getStockSplitsCalendarMain?.filter(
-          (item) => format(new Date(item.Date), "yyyy-MM-dd") === day.date
-        )
+          (item) => format(new Date(item.Date), "yyyy-MM-dd") === day.date,
+        ),
       };
     });
 
@@ -173,7 +170,7 @@
         // Filter out entries with company name "---"
 
         // Sort and map the filtered data
-        weekday[i] = dayData
+        weekday[i] = dayData;
       }
     }
   }
@@ -184,8 +181,8 @@
         return {
           name: day.name,
           data: data?.getStockSplitsCalendarMain?.filter(
-            (item) => format(new Date(item.Date), "yyyy-MM-dd") === day.date
-          )
+            (item) => format(new Date(item.Date), "yyyy-MM-dd") === day.date,
+          ),
         };
       });
 
@@ -193,7 +190,7 @@
         // Loop through each day of the week
         for (let i = 0; i < getStockSplitsCalendarMain.length; i++) {
           const dayData = getStockSplitsCalendarMain[i].data;
-          weekday[i] = dayData
+          weekday[i] = dayData;
         }
       }
     }
@@ -441,58 +438,61 @@
               <thead>
                 <tr>
                   <th class="text-slate-200 font-medium text-sm text-start"
-                    >Symbol</th
+                    >Logo</th
                   >
                   <th class="text-slate-200 font-medium text-sm text-start"
                     >Company Name</th
                   >
                   <th
                     class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
-                    >Earnings per Share</th
-                  >
-                  <th class="text-slate-200 font-medium text-sm text-start"
-                    >Market Cap</th
-                  >
-                  <th class="text-slate-200 font-medium text-sm text-end"
-                    >Split</th
+                    >Split Details</th
                   >
                 </tr>
               </thead>
               <tbody>
-                {#each day as item}
+                {#each day as item, index}
                   <!-- row -->
                   <tr
                     on:click={() => goto("/stocks/" + item?.symbol)}
                     class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#111111] border-b-[#111111] shake-ticker cursor-pointer"
                   >
-                    <td class="text-[#FFBE00] border-b-[#111111]">
-                      {item?.symbol}
-                    </td>
-
-                    <td class="text-white border-b-[#111111]">
-                      {item?.name?.length > 40
-                        ? item?.name?.slice(0, 40) + "..."
-                        : item?.name}
-                    </td>
-
-                    <td
-                      class="text-white font-medium hidden sm:table-cell border-b-[#111111]"
+                    <th
+                      class="{index % 2
+                        ? 'bg-[#111111]'
+                        : 'bg-[#1A1A1A]'} text-gray-200"
                     >
-                      {item?.eps !== null ? item?.eps : "-"}
-                    </td>
-
-                    <td class="text-white font-medium border-b-[#111111]">
-                      {item?.marketCap !== null
-                        ? "$" + abbreviateNumber(item?.marketCap)
-                        : "-"}
-                    </td>
-
+                      <div class="flex flex-row items-center">
+                        <div
+                          class="flex-shrink-0 rounded-full w-9 h-9 relative bg-[#111111] flex items-center justify-center"
+                        >
+                          <img
+                            style="clip-path: circle(50%);"
+                            class="rounded-full w-7"
+                            src={item?.SecurityLogoUrl}
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                      <!--{item?.firstName} {item?.lastName}-->
+                    </th>
                     <td
-                      class="text-white font-medium text-sm text-end mr-1 border-b-[#111111]"
+                      class="{index % 2
+                        ? 'bg-[#111111]'
+                        : 'bg-[#1A1A1A]'} border-b-[#111111]"
                     >
-                      <span class=""
-                        >From {item?.denominator} to {item?.numerator}</span
+                      <label
+                        on:click={() => goto("/stocks/" + item?.SecurityID)}
+                        class="cursor-pointer text-[#FFBE00]"
                       >
+                        {item?.SecurityName}
+                      </label>
+                    </td>
+                    <td
+                      class="{index % 2
+                        ? 'bg-[#111111]'
+                        : 'bg-[#1A1A1A]'} text-white border-b-[#111111]"
+                    >
+                      {item?.Purpose}
                     </td>
                   </tr>
                 {/each}
@@ -500,7 +500,7 @@
             </table>
 
             <div class="relative p-2 sm:hidden pt-5">
-              {#each day as item}
+              {#each day as item, index}
                 <div
                   class="bg-[#111111] rounded-lg border border-slate-800 h-auto pb-3 pl-2 pr-2 pt-4 mb-7"
                 >
@@ -511,16 +511,17 @@
                       <img
                         style="clip-path: circle(50%);"
                         class="w-6 h-6"
-                        src={`https://financialmodelingprep.com/image-stock/${item?.symbol}.png`}
+                        src={item?.SecurityLogoUrl}
                         loading="lazy"
                       />
                     </div>
                     <label
-                      on:click={() => goto("/stocks/" + item?.symbol)}
+                      on:click={() => goto("/stocks/" + item?.SecurityID)}
                       class="cursor-pointer flex flex-col ml-3 w-40"
                     >
-                      <span class="text-[#FFBE00] text-sm">{item?.symbol}</span>
-                      <span class="text-white text-sm">{item?.name}</span>
+                      <span class="text-white text-sm"
+                        >{item?.SecurityName}</span
+                      >
                     </label>
 
                     <div class="flex flex-col justify-end items-end ml-auto">
@@ -528,59 +529,13 @@
                         >Split</span
                       >
                       <span class="text-white text-md text-end">
-                        From {item?.denominator} to {item?.numerator}
+                        {item?.Purpose}
                       </span>
                     </div>
                   </div>
                   <div
                     class="border-1 border-b border-slate-800 w-full mt-5 mb-5"
                   />
-
-                  <div class="flex flex-row items-center">
-                    <div class="flex flex-col ml-3 w-40">
-                      <span class="font-medium text-slate-300">Market Cap</span>
-                      <span class="text-white text-md">
-                        {item?.marketCap !== null
-                          ? abbreviateNumber(item?.marketCap, true)
-                          : "-"}
-                      </span>
-                    </div>
-
-                    <div class="flex flex-col justify-end items-end ml-auto">
-                      <span class="font-medium text-slate-300 text-end"
-                        >EPS</span
-                      >
-                      <span class="text-white text-md text-end">
-                        {item?.eps !== null ? item?.eps : "-"}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div
-                    class="border-1 border-b border-slate-800 w-full mt-5 mb-5"
-                  />
-
-                  <div class="flex flex-row items-center">
-                    <div class="flex flex-col ml-3 w-40">
-                      <span class="font-medium text-slate-300">Revenue</span>
-                      <span class="text-white text-md">
-                        {item?.revenue !== null
-                          ? abbreviateNumber(item?.revenue, true)
-                          : "-"}
-                      </span>
-                    </div>
-
-                    <div class="flex flex-col justify-end items-end ml-auto">
-                      <span class="font-medium text-slate-300 text-ends"
-                        >Profit</span
-                      >
-                      <span class="text-white text-md text-end">
-                        {item?.netIncome !== null
-                          ? abbreviateNumber(item?.netIncome, true)
-                          : "-"}
-                      </span>
-                    </div>
-                  </div>
                 </div>
               {/each}
               <ScrollToTop />

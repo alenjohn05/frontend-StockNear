@@ -1,34 +1,21 @@
-import { userRegion, getCache, setCache } from '$lib/store';
-
-
-const usRegion = ['cle1','iad1','pdx1','sfo1'];
-
-let apiURL;
-
-userRegion.subscribe(value => {
-
-  if (usRegion.includes(value)) {
-    apiURL = import.meta.env.VITE_USEAST_API_URL;
-  } else {
-    apiURL = import.meta.env.VITE_EU_API_URL;
-  }
-});
+import { getCache, setCache } from '$lib/store';
 
 
 
+let backendURL = import.meta.env.VITE_BACKEND_API_URL;
 export const load = async () => {
-  const getDividendCalendar = async () => {
+  const getDividendCalenderDetails = async () => {
     let output;
 
     // Get cached data for the specific tickerID
-    const cachedData = getCache('', 'getDividendCalendar');
+    const cachedData = getCache('', 'getDividendCalenderDetails');
     if (cachedData) {
       output = cachedData;
     } else {
       
 
       // make the POST request to the endpoint
-      const response = await fetch(apiURL + '/dividends-calendar', {
+      const response = await fetch(backendURL + '/latest/get_daily_corporate_actions?EventType=9', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -37,8 +24,8 @@ export const load = async () => {
 
       output = await response.json();
 
-      // Cache the data for this specific tickerID with a specific name 'getDividendCalendar'
-      setCache('', output, 'getDividendCalendar');
+      // Cache the data for this specific tickerID with a specific name 'getDividendCalenderDetails'
+      setCache('', output, 'getDividendCalenderDetails');
     }
 
     return output;
@@ -46,6 +33,6 @@ export const load = async () => {
 
   // Make sure to return a promise
   return {
-    getDividendCalendar: await getDividendCalendar()
+    getDividendCalenderDetails: await getDividendCalenderDetails()
   };
 };

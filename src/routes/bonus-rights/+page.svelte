@@ -457,7 +457,7 @@
                     >
                       <div class="flex flex-row items-center">
                         <div
-                          class="flex-shrink-0 rounded-full w-9 h-9 relative bg-[#111111] flex items-center justify-center"
+                          class="flex-shrink-0 rounded-full w-9 h-9 relative bg-[#295AC7] flex items-center justify-center"
                         >
                           <img
                             style="clip-path: circle(50%);"
