@@ -13,7 +13,7 @@ userRegion.subscribe(value => {
     apiURL = import.meta.env.VITE_EU_API_URL;
   }
 });
-
+let apiKey = import.meta.env.VITE_STOCKNEAR_API_KEY;
 
 
 export const load = async () => {
@@ -33,7 +33,7 @@ export const load = async () => {
       const response = await fetch(apiURL + '/general-news', {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json", "X-API-KEY": apiKey
         },
       });
 

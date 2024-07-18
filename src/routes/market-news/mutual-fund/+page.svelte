@@ -5,7 +5,6 @@
   export let data;
 
   let rawData = data?.Get_mutual_fund;
-  console.log(rawData)
   let news = rawData?.slice(0, 15) ?? [];
 
   async function infiniteHandler({ detail: { loaded, complete } }) {

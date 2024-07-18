@@ -54,7 +54,7 @@ export const load = async () => {
       output = cachedData;
     } else {
       const response = await fetch(
-        backendURL + "/Get-all-invester-list?ReadyClientWatchlistType=2",
+        backendURL + "/investor/Get-all-invester-list?ReadyClientWatchlistType=2",
         {
           method: "GET",
           headers: {
@@ -92,7 +92,7 @@ export const load = async () => {
       setCache("", output, "GetInsititutionalInvestors");
     }
 
-    console.log(output);
+     
 
     return output;
   };

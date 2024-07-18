@@ -4,7 +4,7 @@ import { userRegion, getCache, setCache } from '$lib/store';
 const usRegion = ['cle1','iad1','pdx1','sfo1'];
 
 let apiURL;
-
+let apiKey = import.meta.env.VITE_STOCKNEAR_API_KEY;
 userRegion.subscribe(value => {
 
   if (usRegion.includes(value)) {
@@ -31,7 +31,7 @@ export const load = async () => {
       const response = await fetch(apiURL + '/all-crypto-tickers', {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json", "X-API-KEY": apiKey
         },
       });
 

@@ -1,9 +1,8 @@
 <script lang="ts">
-  import { goto } from "$app/navigation";
   import democraticBackground from "$lib/images/bg-democratic.png";
   import { numberOfUnreadNotification, screenWidth } from "$lib/store";
-  import { Chart } from "svelte-echarts";
   import { onMount } from "svelte";
+  import { Chart } from "svelte-echarts";
   import Lazy from "svelte-lazy";
   export let data;
 
@@ -280,7 +279,6 @@
   async function processData() {
     rawData = data.getInstitutionalInvestor;
     name = rawData?.Name;
-    console.log(rawData);
     optionsData = await getPlotOptions();
     optionsMarCapData = await getMarketPlotOptions();
     isLoading = false;

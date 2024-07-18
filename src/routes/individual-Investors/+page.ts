@@ -54,7 +54,7 @@ export const load = async () => {
       output = cachedData;
     } else {
       const response = await fetch(
-        backendURL + "/Get-individual-invester-list",
+        backendURL + "/investor/Get-individual-invester-list",
         {
           method: "GET",
           headers: {

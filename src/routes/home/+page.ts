@@ -6,6 +6,8 @@ const usRegion = ['cle1','iad1','pdx1','sfo1'];
 
 let apiURL:string;
 let backendURL =  import.meta.env.VITE_BACKEND_API_URL;
+let apiKey = import.meta.env.VITE_STOCKNEAR_API_KEY;
+
 
 userRegion.subscribe(value => {
 
@@ -32,7 +34,7 @@ export const load = async ({ parent}) => {
       const response = await fetch(apiURL + '/market-movers', {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json", "X-API-KEY": apiKey
         },
       });
       output = await response.json();
@@ -48,7 +50,7 @@ export const load = async ({ parent}) => {
     if (cachedData) {
       output = cachedData;
     } else {
-      const response = await fetch(backendURL + '/get_live_latest_news', {
+      const response = await fetch(backendURL + '/latest/get_live_latest_news', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -68,7 +70,7 @@ export const load = async ({ parent}) => {
     if (cachedData) {
       output = cachedData;
     } else {
-      const response = await fetch(backendURL + '/latest-market-movers', {
+      const response = await fetch(backendURL + '/latest/latest-market-movers', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

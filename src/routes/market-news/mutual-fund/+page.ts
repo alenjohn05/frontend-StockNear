@@ -30,7 +30,7 @@ export const load = async () => {
       };
 
       // make the POST request to the endpoint
-      const response = await fetch(backendURL + '/mutual-fund-news', {
+      const response = await fetch(backendURL + '/news/mutual-fund-news', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

@@ -14,7 +14,7 @@ export const load = async ({ params }) => {
     } else {
       const response = await fetch(
         backendURL +
-          `/Get-individual-invester-details?individual_slug=${params.slug}&quater=202312`,
+          `/investor/Get-individual-invester-details?individual_slug=${params.slug}&quater=202312`,
         {
           method: "GET",
           headers: {

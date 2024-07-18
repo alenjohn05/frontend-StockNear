@@ -9,7 +9,7 @@ export const load = async () => {
     if (cachedData) {
       output = cachedData;
     } else {
-      const response = await fetch(backendURL + "/get-major-news", {
+      const response = await fetch(backendURL + "/news/get-major-news", {
         method: "GET",
         headers: {
           "Content-Type": "application/json"

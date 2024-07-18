@@ -22,7 +22,7 @@ export const load = async ({ params }) => {
       } else {
         const response = await fetch(
           backendURL +
-            `/Get_Ready_ClientWatchlist_more?investorID=${params.slug}`,
+            `/investor/Get_Ready_ClientWatchlist_more?investorID=${params.slug}`,
           {
             method: "GET",
             headers: {
