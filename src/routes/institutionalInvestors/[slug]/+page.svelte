@@ -25,11 +25,11 @@
         borderWidth: 1,
         textStyle: {
           color: "#ffffff",
-          fontFamily: '"Manrope", sans-serif',
+          fontFamily: '"Manrope", sans-serif'
         },
         formatter: (params: any) => {
           return `${params.name}: ${params.percent.toFixed(2)}%`;
-        },
+        }
       },
 
       legend: false,
@@ -50,16 +50,16 @@
             "#da9b0a",
             "#c75e70",
             "#0057ff",
-            "#00bcd4",
+            "#00bcd4"
           ],
           data: [
             ...rawData.SectorMix.map((each: any) => {
               return {
                 value: parseFloat(each.HoldingPercentage.toFixed(2)),
                 name: each.SectorName,
-                Holding: each.HoldingValue,
+                Holding: each.HoldingValue
               };
-            }),
+            })
           ],
           label: {
             show: $screenWidth < 840 ? false : true,
@@ -83,137 +83,139 @@
                 lineHeight: 22,
                 align: "center",
                 fontFamily: '"Manrope", sans-serif',
-                fontWeight: "normal",
+                fontWeight: "normal"
               },
               b: {
                 fontSize: 16,
                 lineHeight: 33,
                 fontFamily: '"Manrope", sans-serif',
-                fontWeight: "normal",
-              },
-            },
+                fontWeight: "normal"
+              }
+            }
           },
           labelLine: {
             lineStyle: {
-              color: "rgba(255, 255, 255, 0.3)",
+              color: "rgba(255, 255, 255, 0.3)"
             },
             smooth: 0.2,
             length: 10,
-            length2: 20,
+            length2: 20
           },
           animationType: "scale",
-          animationEasing: "elasticOut",
-        },
-      ],
+          animationEasing: "elasticOut"
+        }
+      ]
     };
     return option;
   }
 
   async function getMarketPlotOptions() {
-  const option = {
-    silent: false,
-    yAxis: {
-      type: "category",
-      data: [...rawData?.McapMix.map((each) => each.McapCategoryName)],
-      axisLine: {
-        lineStyle: {
-          color: "#333333",
-        },
-      },
-      axisLabel: {
-        color: "#ffffff",
-        fontFamily: '"Manrope", sans-serif',
-      },
-      splitLine: {
-        show: true,
-        lineStyle: {
-          color: "#111111",
-        },
-      },
-    },
-    xAxis: {
-      type: "value",
-      axisLine: {
-        lineStyle: {
-          color: "#333333",
-        },
-      },
-      axisLabel: {
-        color: "#ffffff",
-        fontFamily: '"Manrope", sans-serif',
-      },
-      splitLine: {
-        show: true,
-        lineStyle: {
-          color: "#1a1a1a",
-        },
-      },
-    },
-    tooltip: {
-      trigger: "axis",
-      backgroundColor: "#111111",
-      borderColor: "#333333",
-      borderWidth: 1,
-      textStyle: {
-        color: "#ffffff",
-        fontFamily: '"Manrope", sans-serif',
-      },
-      formatter: (params) => {
-        return `${params[0].name}: ${params[0].value.toFixed(2)}%`;
-      },
-    },
-    legend: false,
-    series: [
-      {
-        name: "Market Cap Distribution",
-        type: "bar",
-        data: rawData.McapMix.map((each, index) => ({
-          value: parseFloat(each.HoldingPercentage.toFixed(2)),
-          name: each.McapCategoryName,
-          itemStyle: {
-            color: ["#00bcd4", "#ebff00", "#da9b0a", "#c75e70", "#0057ff"][index % 5]
+    const option = {
+      silent: false,
+      yAxis: {
+        type: "category",
+        data: [...rawData?.McapMix.map((each) => each.McapCategoryName)],
+        axisLine: {
+          lineStyle: {
+            color: "#333333"
           }
-        })),
-        label: {
-          show: true,
-          position: 'insideRight',
-          formatter: '{c}%',
-          fontFamily: '"Manrope", sans-serif',
-          color: '#111111',
-          fontStyle:"bold",
-          fontSize: 12,
-          distance: 15
         },
-        animationType: "scale",
-        animationEasing: "elasticOut",
+        axisLabel: {
+          color: "#ffffff",
+          fontFamily: '"Manrope", sans-serif'
+        },
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: "#111111"
+          }
+        }
       },
-    ],
-    grid: {
-      left: "3%",
-      right: "4%",
-      top: "5%",
-      bottom: "5%",
-      containLabel: true,
-      show: true,
-      borderColor: "#111111",
-      borderWidth: 0,
-      backgroundColor: "#111111",
+      xAxis: {
+        type: "value",
+        axisLine: {
+          lineStyle: {
+            color: "#333333"
+          }
+        },
+        axisLabel: {
+          color: "#ffffff",
+          fontFamily: '"Manrope", sans-serif'
+        },
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: "#1a1a1a"
+          }
+        }
+      },
       tooltip: {
-        trigger: "item",
-        formatter: "{b}: {c}",
+        trigger: "axis",
+        backgroundColor: "#111111",
+        borderColor: "#333333",
+        borderWidth: 1,
+        textStyle: {
+          color: "#ffffff",
+          fontFamily: '"Manrope", sans-serif'
+        },
+        formatter: (params) => {
+          return `${params[0].name}: ${params[0].value.toFixed(2)}%`;
+        }
       },
-      zlevel: 0,
-    },
-  };
-  return option;
-}
+      legend: false,
+      series: [
+        {
+          name: "Market Cap Distribution",
+          type: "bar",
+          data: rawData.McapMix.map((each, index) => ({
+            value: parseFloat(each.HoldingPercentage.toFixed(2)),
+            name: each.McapCategoryName,
+            itemStyle: {
+              color: ["#00bcd4", "#ebff00", "#da9b0a", "#c75e70", "#0057ff"][
+                index % 5
+              ]
+            }
+          })),
+          label: {
+            show: true,
+            position: "insideRight",
+            formatter: "{c}%",
+            fontFamily: '"Manrope", sans-serif',
+            color: "#111111",
+            fontStyle: "bold",
+            fontSize: 12,
+            distance: 15
+          },
+          animationType: "scale",
+          animationEasing: "elasticOut"
+        }
+      ],
+      grid: {
+        left: "3%",
+        right: "4%",
+        top: "5%",
+        bottom: "5%",
+        containLabel: true,
+        show: true,
+        borderColor: "#111111",
+        borderWidth: 0,
+        backgroundColor: "#111111",
+        tooltip: {
+          trigger: "item",
+          formatter: "{b}: {c}"
+        },
+        zlevel: 0
+      }
+    };
+    return option;
+  }
   function describeSectorHoldings(holdings: any) {
     const totalValue = holdings.reduce(
       (sum: any, sector: any) => sum + sector.HoldingValue,
-      0,
+      0
     );
     const topSector = holdings.reduce((max: any, sector: any) =>
-      sector.HoldingPercentage > max.HoldingPercentage ? sector : max,
+      sector.HoldingPercentage > max.HoldingPercentage ? sector : max
     );
     const sectorCount = holdings.length;
 
@@ -222,10 +224,12 @@
 
     // Find sectors above average
     const sectorsAboveAverage = holdings.filter(
-      (sector: any) => sector.HoldingValue > averageHoldingValue,
+      (sector: any) => sector.HoldingValue > averageHoldingValue
     );
 
-    const starIcon = `<svg data-v-74e7f429="" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="seeMoreCTA__arrow"><path data-v-74e7f429="" d="M9.31806 12.2223L8.28676 11.156L10.6549 8.7879H2.5V7.30109H10.6549L8.28676 4.93295L9.31806 3.8667L13.5 8.04449L9.31806 12.2223Z" fill="#ffffff"></path></svg>`;
+    const starIcon = ` <svg viewBox="0 0 24 24" class="w-4 h-4 mr-3 mt-1 flex-shrink-0 text-green-400">
+          <path fill="currentColor" d="m16.298,8.288l1.404,1.425-5.793,5.707c-.387.387-.896.58-1.407.58s-1.025-.195-1.416-.585l-2.782-2.696,1.393-1.437,2.793,2.707,5.809-5.701Zm7.702,3.712c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-2,0c0-5.514-4.486-10-10-10S2,6.486,2,12s4.486,10,10,10,10-4.486,10-10Z"/>
+        </svg>`;
 
     return `
     <div class="text-white text-sm space-y-4">
@@ -256,7 +260,7 @@
   function marketCapOverview(allocations) {
     const totalValue = allocations.reduce(
       (sum, cap) => sum + cap.HoldingValue,
-      0,
+      0
     );
     const activeAllocations = allocations.filter((cap) => cap.HoldingValue > 0);
 
@@ -267,7 +271,7 @@
     const overview = activeAllocations
       .map(
         (cap) =>
-          `${cap.McapCategoryName} (${cap.HoldingPercentage.toFixed(2)}%)`,
+          `${cap.McapCategoryName} (${cap.HoldingPercentage.toFixed(2)}%)`
       )
       .join(", ");
 
@@ -521,7 +525,7 @@
                         </span>
                         <span class="text-yellow-400"
                           >&nbsp;{rawData?.HighestShareHoldingSecurityG.toFixed(
-                            2,
+                            2
                           )}%</span
                         >
                       </span>
@@ -619,8 +623,8 @@
     scrollbar-width: thin;
   }
   .app {
-    height: 300px;
-    max-width: 100%; /* Ensure chart width doesn't exceed the container */
+    height: 400px;
+    max-width: 100%;
   }
 
   @media (max-width: 640px) {

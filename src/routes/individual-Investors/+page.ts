@@ -35,7 +35,7 @@ async function loadImages() {
 }
 
 function filterInvalidEntries(data: any[]) {
-  return data.filter(
+  return data?.filter(
     (item) =>
       item.ClientCount != null &&
       item.HoldingValue != null &&
@@ -45,16 +45,16 @@ function filterInvalidEntries(data: any[]) {
 }
 
 export const load = async () => {
-  const GetInsititutionalInvestors = async () => {
-    let output;
+  const GetIndividualInvestors = async () => {
+    let output:any;
 
     // Get cached data for the specific tickerID
-    const cachedData = getCache("", "GetInsititutionalInvestors");
+    const cachedData = getCache("", "GetIndividualInvestors");
     if (cachedData) {
       output = cachedData;
     } else {
       const response = await fetch(
-        backendURL + "/Get-all-invester-list?ReadyClientWatchlistType=2",
+        backendURL + "/Get-individual-invester-list",
         {
           method: "GET",
           headers: {
@@ -62,43 +62,18 @@ export const load = async () => {
           }
         }
       );
-
-      const filteredData = await response.json();
-      output = filterInvalidEntries(filteredData);
+      output = await response.json();
       await loadImages();
-      output?.forEach((item) => {
-        let representative = item?.representative || "";
-
-        representative = representative
-          ?.replace("Jr", "")
-          .replace(/Dr./g, "")
-          .replace(/Dr_/g, "");
-
-        const fullName = representative
-          ?.replace(/(\s(?:Dr\s)?\w(?:\.|(?=\s)))?\s/g, "_")
-          .trim();
-        item.image = images[fullName] || defaultAvatar;
-        item.representative = fullName?.replace(/_/g, " ");
-      });
-
-      output = output?.map((item) => {
-        const party = getPartyForPoliticians(item?.representative);
-        return {
-          ...item,
-          party: party
-        };
-      });
-
-      setCache("", output, "GetInsititutionalInvestors");
+      setCache("", output, "GetIndividualInvestors");
     }
 
-    console.log(output);
+    console.log(output?.results);
 
-    return output;
+    return output?.results;
   };
 
   // Make sure to return a promise
   return {
-    GetInsititutionalInvestors: await GetInsititutionalInvestors()
+    GetIndividualInvestors: await GetIndividualInvestors()
   };
 };

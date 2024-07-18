@@ -253,6 +253,19 @@ export function capitalizeFirstLetter(string) {
     }
 }
 
+export function formatAndabbreviateNumber(number) {
+  // Convert number to string and split into integer and decimal parts
+  const [integerPart] = number.toString().split('.');
+  
+  // Reverse the integer part to process from right to left
+  const reversedInteger = integerPart.split('').reverse().join('');
+  
+  // Split into groups of 2 or 3 digits
+  const groups = reversedInteger.match(/\d{1,2}/g);
+  
+  // Reverse back and join with commas
+  return  groups.reverse().join(',').replace(/^0+/, '');
+}
 
 
 export const formatDate = (dateString) => {

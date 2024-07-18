@@ -1331,12 +1331,12 @@ syncWorker.onmessage = handleTwitchMessage;
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
                   class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
-                    .url.pathname === '/options-zero-dte'
+                    .url.pathname === '/individual-Investors'
                     ? 'text-white bg-purple-700 rounded-md '
                     : ''}"
                 >
                   <a
-                    href={"/institutionalInvestors"}
+                    href={"/individual-Investors"}
                     class="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                   >
                     <span class="text-sm font-medium text-white">

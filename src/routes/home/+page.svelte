@@ -372,7 +372,7 @@
                                 </div>
                               </a>
                               <a
-                                href="/analysts/5874f5e45064ed0001eb1bc5"
+                                href="/institutionalInvestors/34"
                                 class="px-4 py-3 border border-[#2a2e39]
                                       text-white bg-[#111111] rounded-lg flex flex-row items-center font-medium transition duration-150 ease-in-out group"
                               >
