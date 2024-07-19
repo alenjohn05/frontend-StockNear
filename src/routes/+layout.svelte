@@ -1123,16 +1123,16 @@ syncWorker.onmessage = handleTwitchMessage;
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
                   class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
-                    .url.pathname === '/earnings-calendar'
+                    .url.pathname === '/board-meetings'
                     ? 'text-white bg-purple-700 rounded-md '
                     : ''}"
                 >
                   <a
-                    href={"/earnings-calendar"}
+                    href={"/board-meetings"}
                     class="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                   >
                     <span class="text-sm font-medium text-white">
-                      Earnings Calendar
+                      Board Meetings
                     </span>
                   </a>
                 </li>

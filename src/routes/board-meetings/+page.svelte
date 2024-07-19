@@ -4,50 +4,7 @@
   import { format } from "date-fns";
   import InfoModal from "$lib/components/InfoModal.svelte";
   export let data;
-  let dailyEvents = data?.GetDailyEvents;
-  let NseEvents = data?.GetDailyNSEAnnouncements?.results;
-  let BseEvents = data?.GetDailyBSEAnnouncements?.results;
-  let rawData: any[] = NseEvents;
-  let activeData: any[] = NseEvents;
-  let filterQuery = "";
-  let activeTab = "nse";
-
-  const tabs = [
-    { id: "nse", label: "NSE Announcements" },
-    { id: "bse", label: "BSE Announcements" },
-  ];
-  function setActiveTab(tabId: string) {
-    activeTab = tabId;
-    if (tabId === "nse") {
-      rawData = NseEvents;
-      activeData = NseEvents;
-    } else {
-      rawData = BseEvents;
-      activeData = BseEvents;
-    }
-  }
-  function handleInput(event) {
-    filterQuery = event.target.value?.toLowerCase();
-    let newData = [];
-    setTimeout(() => {
-      if (filterQuery?.length !== 0) {
-        newData = rawData?.filter((item) => {
-          const representative = item?.comp_name?.toLowerCase();
-          if (representative?.includes(filterQuery)) return true;
-          const similarityThreshold = 0.5;
-          const similarity = compareTwoStrings(representative, filterQuery);
-          return similarity > similarityThreshold;
-        });
-        if (newData?.length !== 0) {
-          rawData = newData;
-        } else {
-          rawData = activeData;
-        }
-      } else {
-        rawData = activeData;
-      }
-    }, 300);
-  }
+  let dailyEvents = data?.GetBoardMeetings?.results;
 </script>
 
 <svelte:head>
@@ -94,55 +51,14 @@
 >
   <div class="flex flex-row items-start">
     <h1 class="text-3xl sm:text-4xl text-white text-start font-bold mb-5">
-      Major Events & Announcements
+      Major Board Meetings
     </h1>
-  </div>
-  <div
-    class=" w-full justify-center m-auto items-center pl-2 pr-2 sm:pl-0 sm:pr-0 mb-10"
-  >
-    <h1 class="text-xl sm:text-xl text-white text-start font-bold mt-5">
-      Today's Events
-    </h1>
-    <table
-      class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#111111] m-auto mt-4"
-    >
-      <thead>
-        <tr>
-          <th class="text-slate-200 font-medium text-sm text-start">Date</th>
-          <th
-            class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
-            >Events</th
-          >
-        </tr>
-      </thead>
-      <tbody>
-        {#each dailyEvents as item, index}
-          <!-- row -->
-          <tr
-            class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#111111] border-b border-[#1a1a1a] shake-ticker cursor-pointer"
-          >
-            <td
-              class="{index % 2
-                ? 'bg-[#111111]'
-                : 'bg-[#1A1A1A]'} border-b-[#111111]"
-            >
-              {format(new Date(item.Date), "dd-MM-yyyy")}
-            </td>
-            <td
-              class="{index % 2
-                ? 'bg-[#111111]'
-                : 'bg-[#1A1A1A]'} text-white border-b-[#111111]"
-            >
-              {item?.Description}
-            </td>
-          </tr>
-        {/each}
-      </tbody>
-    </table>
   </div>
   <div class="flex items-center justify-between">
-    <h1 class="text-xl sm:text-xl text-white text-start font-bold mt-10 mb-5">
-      Exchange Announcements
+    <h1 class="text-md sm:text-md text-white text-start mt-10 mb-5 w-1/2">
+      Below are the scheduled upcoming board meetings along with their
+      respective dates. Please identify the ex-dates and agendas for these
+      meetings.
     </h1>
     <div class="bg-[#1A1A1A]">
       <label class="flex flex-row items-center">
@@ -152,8 +68,6 @@
           class="text-white ml-2 text-[1rem] placeholder-gray-400 border-transparent focus:border-transparent focus:ring-0 flex items-center justify-center w-full px-0 py-1 bg-inherit"
           placeholder="Find by company name"
           autocomplete="off"
-          bind:value={filterQuery}
-          on:input={handleInput}
         />
         <svg
           class="ml-auto mr-5 h-8 w-8 inline-block mr-2"
@@ -167,24 +81,6 @@
       </label>
     </div>
   </div>
-  <ul
-    class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-[#1A1A1A] dark:border-[#1A1A1A] dark:text-[#1A1A1A]"
-  >
-    {#each tabs as tab}
-      <li class="me-2">
-        <a
-          href="#"
-          class="inline-block p-2 {activeTab === tab.id
-            ? 'border-b border-blue-300 text-white bg-[#1A1A1A] active dark:bg-[#1a1a1a] dark:text-white'
-            : ' text-gray-500 bg-[#111111] active dark:bg-[#111111] dark:text-white'}"
-          on:click|preventDefault={() => setActiveTab(tab.id)}
-        >
-          {tab.label}
-        </a>
-      </li>
-    {/each}
-  </ul>
-
   <div
     class=" w-full justify-center m-auto items-center pl-2 pr-2 sm:pl-0 sm:pr-0 mb-10"
   >
@@ -211,10 +107,10 @@
         </tr>
       </thead>
       <tbody>
-        {#each rawData as item, index}
+        {#each dailyEvents as item, index}
           <!-- row -->
           <tr
-            class="sm:hover:bg-[#245073]  sm:hover:bg-opacity-[0.2] bg-[#111111] border-b border-[#1a1a1a] shake-ticker cursor-pointer"
+            class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#111111] border-b border-[#1a1a1a] shake-ticker cursor-pointer"
           >
             <td
               class="{index % 2
@@ -242,10 +138,14 @@
                 ? 'bg-[#111111]'
                 : 'bg-[#1A1A1A]'} flex items-center text-xs justify-start text-white border-b-[#111111] hover:text-blue-500 font-bold"
             >
-              <label class="cursor-pointer" for={item?.symbol}> {item?.description}</label>
+              <label class="cursor-pointer" for={item?.symbol}
+                >{item?.description?.length > 100
+                  ? item?.description?.slice(0, 100) + "..."
+                  : item?.description}</label
+              >
               <InfoModal
                 title={item?.comp_name}
-                content={item?.memo}
+                content={item?.description}
                 id={item?.symbol}
               />
             </td>
