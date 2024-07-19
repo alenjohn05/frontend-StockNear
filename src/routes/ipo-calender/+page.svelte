@@ -11,8 +11,8 @@
   let onGoing_IPOs = data?.Get_Ongoing_IPOs;
   let upcoming_ipos = data?.Get_Upcoming_IPOs;
   let displayList: any[] = [];
-  let rawData = listedIpos;
-  let activeData = listedIpos;
+  let rawData = onGoing_IPOs;
+  let activeData = onGoing_IPOs;
   let isLoaded = false;
 
   async function handleScroll() {
@@ -61,7 +61,7 @@
         const points = newValues
           .map(
             (value, i) =>
-              `${padding + i * xScale},${height - padding - (value - yMin) * yScale}`
+              `${padding + i * xScale},${height - padding - (value - yMin) * yScale}`,
           )
           .join(" ");
 
@@ -81,7 +81,7 @@
           const x = padding + (i * (width - 2 * padding)) / 4;
           const y = height - padding;
           tickers.push(
-            `<line x1="${x}" y1="${y}" x2="${x}" y2="${y - 3}" stroke="#888" stroke-width="1" />`
+            `<line x1="${x}" y1="${y}" x2="${x}" y2="${y - 3}" stroke="#888" stroke-width="1" />`,
           );
         }
 
@@ -112,21 +112,24 @@
   };
 
   let filterQuery = "";
-  let activeTab = "UPCOMING";
+  let activeTab = "ONGOING";
 
   const tabs = [
-    { id: "UPCOMING", label: "Upcoming IPOs" },
+    { id: "ONGOING", label: "Ongoing IPOs" },
     { id: "LISTED", label: "Listed IPOs" },
-    { id: "ONGOING", label: "Ongoing IPOs" }
+    { id: "UPCOMING", label: "Upcoming IPOs" },
   ];
   function setActiveTab(tabId: string) {
     activeTab = tabId;
-    if (tabId === "UPCOMING") {
-      rawData = listedIpos;
-      displayList = listedIpos?.slice(0, 20) ?? [];
-    } else {
+    if (tabId === "ONGOING") {
       rawData = onGoing_IPOs;
       displayList = onGoing_IPOs?.slice(0, 20) ?? [];
+    } else if (tabId === "UPCOMING") {
+      rawData = upcoming_ipos;
+      displayList = upcoming_ipos?.slice(0, 20) ?? [];
+    } else {
+      rawData = listedIpos;
+      displayList = listedIpos?.slice(0, 20) ?? [];
     }
   }
   function handleInput(event) {
@@ -160,7 +163,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>
-    {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ""} IPO Calendar · octopi
+    {$numberOfUnreadNotification > 0 ? `(${$numberOfUnreadNotification})` : ""} IPO
+    Calendar · octopi
   </title>
   <meta
     name="description"
@@ -204,7 +208,7 @@
   </div>
   <div class="flex items-center justify-between">
     <h1 class="text-sm sm:text-sm text-white text-start mt-5 mb-10">
-      Exchange Announcements
+      Detailed Overview of Ongoing, Upcoming and Listed IPOs
     </h1>
     <div class="bg-[#161b22]">
       <label class="flex flex-row items-center">
@@ -248,9 +252,9 @@
   </ul>
 
   <div
-    class=" w-full justify-center m-auto items-center pl-2 pr-2 sm:pl-0 sm:pr-0 mb-10"
+    class=" w-full justify-center m-auto items-center pl-2 pr-2 sm:pl-0 sm:pr-0 mb-10 min-h-screen"
   >
-    {#if activeTab === "UPCOMING"}
+    {#if activeTab === "ONGOING"}
       <table
         class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
       >
@@ -261,7 +265,7 @@
               >Company Name</th
             >
             <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
+              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
               >Offer Price</th
             >
             <th
@@ -280,6 +284,100 @@
               class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
               >Open Date</th
             >
+            <th
+              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+              >Close Date</th
+            >
+          </tr>
+        </thead>
+        <tbody>
+          {#each displayList as item, index}
+            <!-- row -->
+            <tr
+              class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
+              ><td
+                class="{index % 2
+                  ? 'bg-[#0d1117]'
+                  : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
+              >
+                <a href={"/stocks/" + item?.ID}>{item?.SecurityName}</a>
+              </td>
+              <td
+                class="{index % 2
+                  ? 'bg-[#0d1117]'
+                  : 'bg-[#161b22]'} border-b-[#0d1117] text-xs font-bold text-end"
+              >
+                {item?.IssuePriceMin} - {item?.IssuePriceMax
+                  ? item?.IssuePriceMax
+                  : ""}
+              </td>
+              <td
+                class="{index % 2
+                  ? 'bg-[#0d1117]'
+                  : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117] text-end"
+              >
+                {item?.GrandTotal?.toFixed(2)}
+              </td>
+              <td
+                class="{index % 2
+                  ? 'bg-[#0d1117]'
+                  : 'bg-[#161b22]'} text-xs text-white border-b-[#0d1117] hover:text-blue-500 text-end"
+              >
+                {(item?.Total_Nos / 100000).toFixed(2)}
+              </td>
+              <td
+                class="{index % 2
+                  ? 'bg-[#0d1117]'
+                  : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+              >
+                {(item?.Total_NosBidFor / 100000).toFixed(2)}
+              </td>
+              <td
+                class="{index % 2
+                  ? 'bg-[#0d1117]'
+                  : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+              >
+                {format(new Date(item?.OpenDate), "dd-MM-yyyy")}
+              </td>
+              <td
+                class="{index % 2
+                  ? 'bg-[#0d1117]'
+                  : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+              >
+                {format(new Date(item?.CloseDate), "dd-MM-yyyy")}
+              </td>
+            </tr>
+          {/each}
+          <InfiniteLoading on:infinite={infiniteHandler} />
+        </tbody>
+      </table>
+    {/if}
+    {#if activeTab === "UPCOMING"}
+      <table
+        class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
+      >
+        <thead>
+          <tr>
+            <th
+              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
+              >Company Name</th
+            >
+            <th
+              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+              >Offer Price</th
+            >
+            <th
+              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+              >Open Date</th
+            >
+            <th
+              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+              >Close Date</th
+            >
+            <th
+              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+              >Issue Size(Cr)
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -291,82 +389,43 @@
               <td
                 class="{index % 2
                   ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} border-b-[#0d1117] text-xs font-bold"
-              >
-                {format(new Date(item?.Date), "dd-MM-yyyy")}
-              </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
                   : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
               >
-                <a href={"/stocks/" + item?.ID}>{item?.SecurityName}</a>
+                <a href={"/stocks/" + item?.SecurityID}>{item?.SecurityName}</a>
               </td>
               <td
                 class="{index % 2
                   ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} text-xs text-center text-white border-b-[#0d1117] hover:text-blue-500"
+                  : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
               >
-                {@html addSparkLine(item?.C1WJson, index)}
+                {item?.IssuePriceMin} - {item?.IssuePriceMax
+                  ? item?.IssuePriceMax
+                  : ""}
               </td>
               <td
                 class="{index % 2
                   ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  : 'bg-[#161b22]'} text-xs text-center text-white border-b-[#0d1117] hover:text-blue-500 text-end"
               >
-                {abbreviateNumber(item?.MCap)}
+                {format(new Date(item?.OpenDate), "dd-MM-yyyy")}
               </td>
               <td
                 class="{index % 2
                   ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
               >
-                {item?.LTP}
+                {format(new Date(item?.CloseDate), "dd-MM-yyyy")}
               </td>
+
               <td
                 class="{index % 2
                   ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
-              >
-                <div class="flex item-center justify-center">
-                  {#if item?.ChangePercent >= 0}
-                    <svg
-                      class="w-5 h-5 -mr-0.5 -mt-0.5"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      ><g id="evaArrowUpFill0"
-                        ><g id="evaArrowUpFill1"
-                          ><path
-                            id="evaArrowUpFill2"
-                            fill="#10db06"
-                            d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
-                          /></g
-                        ></g
-                      ></svg
-                    >
-                    <span class="text-[#10DB06] text-xs font-medium"
-                      >+{item?.ChangePercent ? item?.ChangePercent : 0.1}%</span
-                    >
-                  {:else}
-                    <svg
-                      class="w-5 h-5 -mr-0.5 -mt-0.5 rotate-180"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      ><g id="evaArrowUpFill0"
-                        ><g id="evaArrowUpFill1"
-                          ><path
-                            id="evaArrowUpFill2"
-                            fill="#FF2F1F"
-                            d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
-                          /></g
-                        ></g
-                      ></svg
-                    >
-                    <span class="text-[#FF2F1F] text-xs font-medium"
-                      >{item?.ChangePercent}%
-                    </span>
-                  {/if}
-                </div>
+                  : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                >{item?.IssueSizeMin
+                  ? (item?.IssueSizeMin / 10000000).toFixed(2)
+                  : ""} - {item?.IssueSizeMax
+                  ? (item?.IssueSizeMax / 10000000).toFixed(2)
+                  : ""}
               </td>
             </tr>
           {/each}
@@ -380,28 +439,29 @@
       >
         <thead>
           <tr>
-            <th class="text-slate-200 font-medium text-sm text-start w-40"
-              >Quater</th
-            >
             <th
               class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
               >Company Name</th
             >
             <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
-              >Mar-Cap</th
+              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+              >Current Price</th
             >
             <th
               class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
-              >Sales(Cr)</th
+              >Listed Price</th
             >
             <th
               class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
-              >EBITDA(Cr)</th
+              >Change in Listed Price</th
             >
             <th
               class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
-              >Profit(Cr)
+              >Issue Price
+            </th>
+            <th
+              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+              >Change over Issue Price
             </th>
           </tr>
         </thead>
@@ -414,13 +474,6 @@
               <td
                 class="{index % 2
                   ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} border-b-[#0d1117] text-xs font-bold"
-              >
-                {item?.DateEnd}
-              </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
                   : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
               >
                 <a href={"/stocks/" + item?.SecurityID}>{item?.SecurityName}</a>
@@ -428,18 +481,28 @@
               <td
                 class="{index % 2
                   ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} text-xs text-center text-white border-b-[#0d1117] hover:text-blue-500"
+                  : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
               >
-                {abbreviateNumber(item?.MCap)}
+                {item?.LTP}
               </td>
               <td
                 class="{index % 2
                   ? 'bg-[#0d1117]'
                   : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
               >
-                {item?.SALES?.toFixed(2)}
+                {item?.ListPrice?.toFixed(2)}
+                <div class="flex flex-row item-center justify-end text-[10px]">
+                  listed on {format(new Date(item?.ListingDate), "dd-MM-yyyy")}
+                </div>
+              </td>
+              <td
+                class="{index % 2
+                  ? 'bg-[#0d1117]'
+                  : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+              >
+                {item?.ListPriceZ?.toFixed(2)}
                 <div class="flex flex-row item-center justify-end">
-                  {#if item?.SALESARZG >= 0}
+                  {#if item?.ListPriceZG >= 0}
                     <svg
                       class="w-5 h-5 -mr-0.5 -mt-0.5"
                       xmlns="http://www.w3.org/2000/svg"
@@ -455,8 +518,8 @@
                       ></svg
                     >
                     <span class="text-[#10DB06] text-xs font-medium"
-                      >+{item?.SALESARZG
-                        ? item?.SALESARZG?.toFixed(2)
+                      >+{item?.ListPriceZG
+                        ? item?.ListPriceZG?.toFixed(2)
                         : 0.1}%</span
                     >
                   {:else}
@@ -475,7 +538,7 @@
                       ></svg
                     >
                     <span class="text-[#FF2F1F] text-xs font-medium"
-                      >{item?.SALESARZG?.toFixed(2)}%
+                      >{item?.ListPriceZG?.toFixed(2)}%
                     </span>
                   {/if}
                 </div>
@@ -483,59 +546,18 @@
               <td
                 class="{index % 2
                   ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
               >
-                {item?.EBITDA?.toFixed(2)}
-                <div class="flex flex-row item-center justify-end">
-                  {#if item?.EBITDAARZG >= 0}
-                    <svg
-                      class="w-5 h-5 -mr-0.5 -mt-0.5"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      ><g id="evaArrowUpFill0"
-                        ><g id="evaArrowUpFill1"
-                          ><path
-                            id="evaArrowUpFill2"
-                            fill="#10db06"
-                            d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
-                          /></g
-                        ></g
-                      ></svg
-                    >
-                    <span class="text-[#10DB06] text-xs font-medium"
-                      >+{item?.EBITDAARZG
-                        ? item?.EBITDAARZG?.toFixed(2)
-                        : 0.1}%</span
-                    >
-                  {:else}
-                    <svg
-                      class="w-5 h-5 -mr-0.5 -mt-0.5 rotate-180"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      ><g id="evaArrowUpFill0"
-                        ><g id="evaArrowUpFill1"
-                          ><path
-                            id="evaArrowUpFill2"
-                            fill="#FF2F1F"
-                            d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
-                          /></g
-                        ></g
-                      ></svg
-                    >
-                    <span class="text-[#FF2F1F] text-xs font-medium"
-                      >{item?.EBITDAARZG?.toFixed(2)}%
-                    </span>
-                  {/if}
-                </div>
+                {item?.IssuePrice}
               </td>
               <td
                 class="{index % 2
                   ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
               >
-                {item?.Profit?.toFixed(2)}
+                {item?.IssuePriceZ?.toFixed(2)}
                 <div class="flex flex-row item-center justify-end">
-                  {#if item?.ProfitARZG >= 0}
+                  {#if item?.IssuePriceZG >= 0}
                     <svg
                       class="w-5 h-5 -mr-0.5 -mt-0.5"
                       xmlns="http://www.w3.org/2000/svg"
@@ -551,8 +573,8 @@
                       ></svg
                     >
                     <span class="text-[#10DB06] text-xs font-medium"
-                      >+{item?.ProfitARZG
-                        ? item?.ProfitARZG?.toFixed(2)
+                      >+{item?.IssuePriceZG
+                        ? item?.IssuePriceZG?.toFixed(2)
                         : 0.1}%</span
                     >
                   {:else}
@@ -571,7 +593,7 @@
                       ></svg
                     >
                     <span class="text-[#FF2F1F] text-xs font-medium"
-                      >{item?.ProfitARZG?.toFixed(2)}%
+                      >{item?.IssuePriceZG?.toFixed(2)}%
                     </span>
                   {/if}
                 </div>
