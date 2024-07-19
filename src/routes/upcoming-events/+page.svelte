@@ -1,11 +1,13 @@
 <script lang="ts">
+  import ScrollToTop from "$lib/components/ScrollToTop.svelte";
   import { numberOfUnreadNotification } from "$lib/store";
   import { format } from "date-fns";
+  import debounce from "lodash.debounce"; // Import debounce from lodash
+
   export let data;
   let dailyEvents = data?.GetDailyEvents;
   let NseEvents = data?.GetDailyNSEAnnouncements;
   let BseEvents = data?.GetDailyBSEAnnouncements;
-  console.log(NseEvents);
   let rawData: any[] = NseEvents;
   let activeData: any[] = NseEvents;
   let filterQuery = "";
@@ -13,8 +15,9 @@
 
   const tabs = [
     { id: "nse", label: "NSE Announcements" },
-    { id: "bse", label: "BSE Announcements" }
+    { id: "bse", label: "BSE Announcements" },
   ];
+
   function setActiveTab(tabId: string) {
     activeTab = tabId;
     if (tabId === "nse") {
@@ -25,19 +28,23 @@
       activeData = BseEvents;
     }
   }
-  function handleInput(event) {
+
+  // Create a debounced version of the handleInput function
+  const debouncedHandleInput = debounce((event) => {
     filterQuery = event.target.value?.toLowerCase();
     let newData = [];
-    setTimeout(() => {
-      if (filterQuery.length !== 0) {
-        rawData = activeData.filter((item) => {
-          const compName = item?.SecurityName?.toLowerCase();
-          return compName?.includes(filterQuery);
-        });
-      } else {
-        rawData = activeData;
-      }
-    }, 300);
+    if (filterQuery.length !== 0) {
+      rawData = activeData.filter((item) => {
+        const compName = item?.SecurityName?.toLowerCase();
+        return compName?.includes(filterQuery);
+      });
+    } else {
+      rawData = activeData;
+    }
+  }, 300); // Adjust debounce delay as needed
+
+  function handleInput(event) {
+    debouncedHandleInput(event); // Use the debounced version of handleInput
   }
 </script>
 
@@ -98,7 +105,7 @@
       class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
     >
       <thead>
-        <tr>
+        <tr class="border-b border-gray-800">
           <th class="text-slate-200 font-medium text-sm text-start">Date</th>
           <th
             class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
@@ -107,35 +114,46 @@
         </tr>
       </thead>
       <tbody>
-        {#each dailyEvents as item, index}
-          <!-- row -->
-          <tr
-            class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
-          >
+        {#if dailyEvents.length === 0}
+          <tr>
             <td
-              class="{index % 2
-                ? 'bg-[#0d1117]'
-                : 'bg-[#161b22]'} border-b-[#0d1117]"
+              colspan="2"
+              class="text-center text-white bg-[#0d1117] border-b-[#0d1117] py-4"
             >
-              {format(new Date(item.Date), "dd-MM-yyyy")}
-            </td>
-            <td
-              class="{index % 2
-                ? 'bg-[#0d1117]'
-                : 'bg-[#161b22]'} text-white border-b-[#0d1117]"
-            >
-              {item?.Description}
+              No events found
             </td>
           </tr>
-        {/each}
+        {:else}
+          {#each dailyEvents as item, index}
+            <!-- row -->
+            <tr
+              class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
+            >
+              <td
+                class="{index % 2
+                  ? 'bg-[#0d1117]'
+                  : 'bg-[#161b22]'} border-b-[#0d1117]"
+              >
+                {format(new Date(item.Date), "dd-MM-yyyy")}
+              </td>
+              <td
+                class="{index % 2
+                  ? 'bg-[#0d1117]'
+                  : 'bg-[#161b22]'} text-white border-b-[#0d1117]"
+              >
+                {item?.Description}
+              </td>
+            </tr>
+          {/each}
+        {/if}
       </tbody>
     </table>
   </div>
-  <div class="flex items-center justify-between">
-    <h1 class="text-xl sm:text-xl text-white text-start font-bold mt-10 mb-5">
+  <div class="flex sm:flex-row flex-col items-center justify-between">
+    <h1 class="text-xl sm:text-xl text-white text-start mt-5 mb-10">
       Exchange Announcements
     </h1>
-    <div class="bg-[#161b22]">
+    <div class="bg-[#161b22] mb-10">
       <label class="flex flex-row items-center">
         <input
           id="modal-search"
@@ -159,7 +177,7 @@
     </div>
   </div>
   <ul
-    class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-[#161b22] dark:border-[#161b22] dark:text-[#161b22]"
+    class="flex text-sm font-medium text-center text-gray-500 border-b border-[#161b22] dark:border-[#161b22] dark:text-[#161b22]"
   >
     {#each tabs as tab}
       <li class="me-2">
@@ -256,6 +274,52 @@
         {/each}
       </tbody>
     </table>
+    <div class="sm:hidden w-full m-auto mt-4 space-y-4">
+      {#each rawData as item, index}
+        <div
+          class="bg-[#0d1117] p-4 rounded-md shadow-md border border-[#161b22]"
+        >
+          <div class="text-[#FFBE00] text-lg font-medium mb-2">
+            <a href={"/stocks/" + item?.SecurityID}>{item?.SecurityName}</a>
+          </div>
+          <div class="text-xs space-y-2">
+            <div class="text-slate-200 flex justify-between">
+              <span class="font-medium">Date:</span>
+              <span>{format(new Date(item?.Date), "dd-MM-yyyy")}</span>
+            </div>
+            <div class="text-slate-200">
+              <span class="font-medium">Events:</span>
+              <p class="mt-1 text-white">{item?.Subject}</p>
+            </div>
+            <div class="text-slate-200 flex justify-between items-center">
+              <span class="font-medium">File Reference:</span>
+              {#if item?.FileURL}
+                <a
+                  href={item?.FileURL}
+                  target="_blank"
+                  class="text-white hover:text-blue-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="20"
+                    height="20"
+                    class="fill-current"
+                  >
+                    <path
+                      d="m15.904,16.143c.197.193.201.51.008.707l-2.515,2.57c-.381.381-.88.574-1.378.579-.499-.004-1.034-.196-1.413-.575l-2.519-2.574c-.193-.197-.189-.514.008-.707.199-.193.516-.188.707.008l2.515,2.57c.056.056.117.103.183.143v-7.363c0-.276.224-.5.5-.5s.5.224.5.5v7.363c.066-.04.129-.088.187-.146l2.511-2.566c.193-.196.51-.201.707-.008Zm6.096-6.157v9.515c0,2.481-2.019,4.5-4.5,4.5H6.5c-2.481,0-4.5-2.019-4.5-4.5V4.5C2,2.019,4.019,0,6.5,0h5.515c1.735,0,3.368.676,4.597,1.904l3.484,3.485c1.228,1.227,1.904,2.859,1.904,4.596Zm-8-3.485c0,.827.673,1.5,1.5,1.5h5.132c-.273-.706-.693-1.353-1.244-1.904l-3.484-3.485c-.552-.551-1.199-.97-1.904-1.243v5.132Zm7,3.485c0-.334-.03-.663-.088-.985h-5.412c-1.379,0-2.5-1.122-2.5-2.5V1.088c-.322-.058-.651-.088-.985-.088h-5.515c-1.93,0-3.5,1.57-3.5,3.5v15c0,1.93,1.57,3.5,3.5,3.5h11c1.93,0,3.5-1.57,3.5-3.5v-9.515Zm-8.981,10.014c-.007,0,.006,0,0,0h0Z"
+                    />
+                  </svg>
+                </a>
+              {:else}
+                <span class="text-gray-500">No file</span>
+              {/if}
+            </div>
+          </div>
+        </div>
+      {/each}
+      <ScrollToTop />
+    </div>
   </div>
   <!-- Page wrapper -->
 </section>
