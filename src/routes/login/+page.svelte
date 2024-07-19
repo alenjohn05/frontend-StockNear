@@ -192,7 +192,7 @@
 	{#if oauthLoading}
 	<div class="absolute right-1/2 left-1/2 top-1/2 bottom-1/2">
 		<div class="relative">
-			<label class="bg-[#111111] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+			<label class="bg-[#0d1117] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
 				<span class="loading loading-spinner loading-md"></span>
 			</label>
 		</div>  

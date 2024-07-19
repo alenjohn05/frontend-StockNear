@@ -117,7 +117,7 @@ $: {
             </div>
     
             {#if lobbyingList?.length !== 0}
-            <div class="p-3 sm:p-0 mt-2 pb-8 sm:pb-2 rounded-lg bg-[#111111] sm:bg-[#111111]">
+            <div class="p-3 sm:p-0 mt-2 pb-8 sm:pb-2 rounded-lg bg-[#0d1117] sm:bg-[#0d1117]">
                     
                 <div class="w-full flex flex-col items-start">
                     <div class="text-white text-sm sm:text-[1rem] mt-1 sm:mt-3 mb-1 w-full">

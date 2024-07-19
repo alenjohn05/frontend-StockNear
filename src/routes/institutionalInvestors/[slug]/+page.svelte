@@ -19,7 +19,7 @@
       silent: false,
       tooltip: {
         trigger: "item",
-        backgroundColor: "#111111",
+        backgroundColor: "#0d1117",
         borderColor: "#333333",
         borderWidth: 1,
         textStyle: {
@@ -66,7 +66,7 @@
             formatter: "{b}: {d}%",
             fontSize: 10,
             color: "#fff",
-            backgroundColor: "#111111", // Changed to #111111
+            backgroundColor: "#0d1117", // Changed to #0d1117
             borderColor: "#333333", // Added a darker border color
             borderWidth: 1, // Added border width
             borderRadius: 4,
@@ -126,7 +126,7 @@
         splitLine: {
           show: true,
           lineStyle: {
-            color: "#111111"
+            color: "#0d1117"
           }
         }
       },
@@ -144,13 +144,13 @@
         splitLine: {
           show: true,
           lineStyle: {
-            color: "#1a1a1a"
+            color: "#161b22"
           }
         }
       },
       tooltip: {
         trigger: "axis",
-        backgroundColor: "#111111",
+        backgroundColor: "#0d1117",
         borderColor: "#333333",
         borderWidth: 1,
         textStyle: {
@@ -180,7 +180,7 @@
             position: "insideRight",
             formatter: "{c}%",
             fontFamily: '"Manrope", sans-serif',
-            color: "#111111",
+            color: "#0d1117",
             fontStyle: "bold",
             fontSize: 12,
             distance: 15
@@ -196,9 +196,9 @@
         bottom: "5%",
         containLabel: true,
         show: true,
-        borderColor: "#111111",
+        borderColor: "#0d1117",
         borderWidth: 0,
-        backgroundColor: "#111111",
+        backgroundColor: "#0d1117",
         tooltip: {
           trigger: "item",
           formatter: "{b}: {c}"
@@ -373,7 +373,7 @@
             <aside class="relative fixed w-full sm:w-1/3">
               <!--Start Card-->
               <div
-                class="w-full bg-[#111111] border border-slate-800 rounded-lg h-auto pb-4"
+                class="w-full bg-[#0d1117] border border-slate-800 rounded-lg h-auto pb-4"
               >
                 <div class="flex flex-col relative">
                   <img
@@ -470,7 +470,7 @@
                 <div class="w-full grid grid-cols-2 gap-y-3 lg:gap-y-3 gap-x-3">
                   <!--Start Total Amount Traded-->
                   <div
-                    class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#111111] rounded-2xl h-20"
+                    class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#0d1117] rounded-2xl h-20"
                   >
                     <div class="flex flex-col items-start">
                       <span class="font-medium text-gray-200 text-xs"
@@ -486,7 +486,7 @@
                   <!--End Total Amount Traded-->
                   <!--Start Buy/Sell-->
                   <div
-                    class="flex flex-row items-center justify-end flex-wrap w-full px-3 sm:px-5 bg-[#111111] rounded-2xl h-20"
+                    class="flex flex-row items-center justify-end flex-wrap w-full px-3 sm:px-5 bg-[#0d1117] rounded-2xl h-20"
                   >
                     <div class="flex flex-col items-end">
                       <span class="font-medium text-gray-200 text-xs"
@@ -508,7 +508,7 @@
                 <div class="w-full">
                   <!--Start Total Amount Traded-->
                   <div
-                    class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#111111] rounded-2xl h-20"
+                    class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#0d1117] rounded-2xl h-20"
                   >
                     <div class="flex flex-col items-start">
                       <span class="font-medium text-gray-200 text-xs"
@@ -551,7 +551,7 @@
               </div>
 
               <div
-                class="p-0 sm:px-2 bg-[#111111] sm:bg-[#111111] rounded-lg sm:min-h-auto mb-10 sm:mb-6"
+                class="p-0 sm:px-2 bg-[#0d1117] sm:bg-[#0d1117] rounded-lg sm:min-h-auto mb-10 sm:mb-6"
               >
                 <Lazy
                   height={800}
@@ -565,7 +565,7 @@
               </div>
               <div class="w-full flex flex-col justify-center items-center">
                 <div
-                  class="w-70 sm:w-2/3 h-auto bg-[#1A1A1A] tracking-wide mb-14 mx-1 rounded-lg relative"
+                  class="w-70 sm:w-2/3 h-auto bg-[#161b22] tracking-wide mb-14 mx-1 rounded-lg relative"
                 >
                   <h5
                     class="text-2xl text-white font-semibold pl-6 pt-6 pr-6 pb-2"
@@ -580,7 +580,7 @@
                 </div>
               </div>
               <div
-                class="p-0 sm:p-2 bg-[#111111] sm:bg-[#111111] rounded-lg sm:min-h-auto mb-10 sm:mb-6"
+                class="p-0 sm:p-2 bg-[#0d1117] sm:bg-[#0d1117] rounded-lg sm:min-h-auto mb-10 sm:mb-6"
               >
                 <p class="text-center text-white"></p>
               </div>
@@ -596,7 +596,7 @@
                 </p>
               </div>
               <div
-                class="p-0 sm:px-2 mt-10 bg-[#111111] sm:bg-[#111111] rounded-lg sm:min-h-auto mb-10 sm:mb-6"
+                class="p-0 sm:px-2 mt-10 bg-[#0d1117] sm:bg-[#0d1117] rounded-lg sm:min-h-auto mb-10 sm:mb-6"
               >
                 <Lazy
                   height={800}

@@ -116,18 +116,18 @@ onMount(async () => {
 </svelte:head>
     
       
-  <section class="w-full max-w-5xl overflow-hidden m-auto min-h-screen sm:pt-5 sm:pb-40 bg-[#111111]">
+  <section class="w-full max-w-5xl overflow-hidden m-auto min-h-screen sm:pt-5 sm:pb-40 bg-[#0d1117]">
       
   
   
-    <div class="w-full max-w-3xl m-auto min-h-screen bg-[#111111] sm:rounded-lg sm:border sm:border-gray-700 overflow-hidden sm:overflow-y-scroll scroller sm:max-h-[1100px] pt-5 sm:pb-10 sm:pt-10 sm:mt-3 sm:mb-8">
+    <div class="w-full max-w-3xl m-auto min-h-screen bg-[#0d1117] sm:rounded-lg sm:border sm:border-gray-700 overflow-hidden sm:overflow-y-scroll scroller sm:max-h-[1100px] pt-5 sm:pb-10 sm:pt-10 sm:mt-3 sm:mb-8">
                     
         <h1 class="pl-5 text-2xl text-white font-semibold mt-2 sm:mt-0">
             Notifications
         </h1>
  
  
-     <div class="w-full m-auto mb-10 bg-[#111111] mt-10">
+     <div class="w-full m-auto mb-10 bg-[#0d1117] mt-10">
          <div class="flex flex-col sm:flex-row items-center w-full">
 
         
@@ -142,7 +142,7 @@ onMount(async () => {
          <div class="flex flex-col items-start w-full text-white">
          {#each notificationList as item}
            <!-- svelte-ignore a11y-click-events-have-key-events -->
-           <div on:click={()=> goToPost(item)} class="hover:bg-[#111111] p-3 mb-3 ml-1 text-gray-200 w-full {!item?.readed ? 'bg-[#F9AB00] bg-opacity-[0.1]' : ''} cursor-pointer">
+           <div on:click={()=> goToPost(item)} class="hover:bg-[#0d1117] p-3 mb-3 ml-1 text-gray-200 w-full {!item?.readed ? 'bg-[#F9AB00] bg-opacity-[0.1]' : ''} cursor-pointer">
             <div class="flex flex-row items-center w-full">
 
             <!-- svelte-ignore a11y-label-has-associated-control -->
@@ -235,7 +235,7 @@ onMount(async () => {
          {:else}
          <div class="flex justify-center items-center h-80">
           <div class="relative">
-          <label class="bg-[#111111] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <label class="bg-[#0d1117] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
               <span class="loading loading-spinner loading-md"></span>
           </label>
           </div>

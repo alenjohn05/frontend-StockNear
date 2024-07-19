@@ -159,12 +159,12 @@
           >
             <main class="w-full">
               <div class="w-full pb-3">
-                <div class="relative right-0 bg-[#111111]">
+                <div class="relative right-0 bg-[#0d1117]">
                   <ul
                     class="relative grid grid-cols-1 sm:grid-cols-4 gap-y-3 gap-x-3 flex flex-wrap p-1 list-none rounded-[3px]"
                   >
                     <li
-                      class="pl-3 py-1.5 flex-auto text-center bg-[#1a1a1a] rounded-[3px]"
+                      class="pl-3 py-1.5 flex-auto text-center bg-[#161b22] rounded-[3px]"
                     >
                       <label class="flex flex-row items-center">
                         <input
@@ -198,7 +198,7 @@
                   {#each displayList as item}
                     <a
                       href={`/individual-Investors/${item?.slug}`}
-                      class="w-full cursor-pointer bg-[#111111] sm:hover:bg-[#111111] transition-colors ease-in-out border border-slate-800 sm:hover:border-[#000] sm:hover:shadow-[#00000] shadow-lg rounded-lg h-auto pb-4 pt-4 mb-7"
+                      class="w-full cursor-pointer bg-[#0d1117] sm:hover:bg-[#0d1117] transition-colors ease-in-out border border-slate-800 sm:hover:border-[#000] sm:hover:shadow-[#00000] shadow-lg rounded-lg h-auto pb-4 pt-4 mb-7"
                     >
                       <div
                         class="flex flex-col items-center justify-between relative"
@@ -289,7 +289,7 @@
       <div class="flex justify-center items-center h-80">
         <div class="relative">
           <label
-            class="bg-[#111111] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            class="bg-[#0d1117] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
           >
             <span class="loading loading-spinner loading-md"></span>
           </label>

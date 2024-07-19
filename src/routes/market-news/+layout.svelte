@@ -76,7 +76,7 @@
 
   <main>
     <div
-      class="w-full max-w-5xl m-auto sm:bg-[#111111] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8"
+      class="w-full max-w-5xl m-auto sm:bg-[#0d1117] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8"
     >
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
         <!-- Start Column -->
@@ -145,7 +145,7 @@
               class="{item?.link === $page.url.pathname ||
               item?.link + '/' === $page.url.pathname
                 ? 'bg-[#75D377]'
-                : 'bg-[#111111]'} mt-1 h-[3px] rounded-full w-[3rem] rounded-full"
+                : 'bg-[#0d1117]'} mt-1 h-[3px] rounded-full w-[3rem] rounded-full"
             />
           </a>
         {/each}

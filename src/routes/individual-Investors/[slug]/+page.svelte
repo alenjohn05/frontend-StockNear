@@ -44,7 +44,7 @@
       },
       tooltip: {
         trigger: "item",
-        backgroundColor: "#111111",
+        backgroundColor: "#0d1117",
         borderColor: "#333333",
         borderWidth: 1,
         textStyle: {
@@ -82,7 +82,7 @@
             formatter: "{b}: {d}%",
             fontSize: 12,
             color: "#fff",
-            backgroundColor: "#111111",
+            backgroundColor: "#0d1117",
             borderColor: "#333333",
             borderWidth: 1,
             borderRadius: 4,
@@ -168,13 +168,13 @@
         splitLine: {
           show: true,
           lineStyle: {
-            color: "#1a1a1a"
+            color: "#161b22"
           }
         }
       },
       tooltip: {
         trigger: "axis",
-        backgroundColor: "#111111",
+        backgroundColor: "#0d1117",
         borderColor: "#333333",
         borderWidth: 1,
         textStyle: {
@@ -218,9 +218,9 @@
         bottom: "5%",
         containLabel: true,
         show: true,
-        borderColor: "#111111",
+        borderColor: "#0d1117",
         borderWidth: 0,
-        backgroundColor: "#111111",
+        backgroundColor: "#0d1117",
         tooltip: {
           trigger: "item",
           formatter: "{b}: {c}"
@@ -425,7 +425,7 @@
             <aside class="relative fixed w-full sm:w-1/3">
               <!--Start Card-->
               <div
-                class="w-full bg-[#111111] border border-slate-800 rounded-lg h-auto pb-4"
+                class="w-full bg-[#0d1117] border border-slate-800 rounded-lg h-auto pb-4"
               >
                 <div class="flex flex-col relative">
                   <img
@@ -663,12 +663,12 @@
                     {@html `Get detailed insights of<strong> &nbsp;${investor_name}&nbsp; </strong>current holdings.`}
                   </div>
                 </div>
-                <div class="bg-[#1A1A1A] p-2 sm:p-5 rounded-lg overflow-x-auto">
+                <div class="bg-[#161b22] p-2 sm:p-5 rounded-lg overflow-x-auto">
                   <table
-                    class="table-auto w-full bg-[#111111] border-bg-[#111111] text-white text-sm"
+                    class="table-auto w-full bg-[#0d1117] border-bg-[#0d1117] text-white text-sm"
                   >
                     <thead>
-                      <tr class="bg-[#111111] border-b border-blue-400">
+                      <tr class="bg-[#0d1117] border-b border-blue-400">
                         <th class="text-start p-2 sm:p-3">Company</th>
                         <th class="text-end p-2 sm:p-3">Company Holdings</th>
                         <th class="text-end p-2 sm:p-3">Holdings</th>
@@ -680,8 +680,8 @@
                       {#each investorStockList as item, index}
                         <tr
                           class="{index % 2
-                            ? 'bg-[#111111]'
-                            : 'bg-[#1A1A1A]'} border-b border-[#1A1A1A]"
+                            ? 'bg-[#0d1117]'
+                            : 'bg-[#161b22]'} border-b border-[#161b22]"
                         >
                           <td class="p-2 sm:p-3">
                             <div class="flex items-center">

@@ -179,7 +179,7 @@ isLoaded = true;
 
     
           
-    <section class="bg-[#111111] overflow-hidden text-white h-full mb-40 sm:mb-0">
+    <section class="bg-[#0d1117] overflow-hidden text-white h-full mb-40 sm:mb-0">
         <div class="flex justify-center w-fit m-auto h-full overflow-hidden">
             <div class="relative flex justify-center items-center overflow-hidden">
                   <div class="sm:p-7 sm:w-full sm:max-w-3xl m-auto mt-5 sm:mt-0">
@@ -211,7 +211,7 @@ isLoaded = true;
                         <div class="w-full grid grid-cols-2 gap-y-3 lg:gap-y-3 gap-x-3 ">
         
                           <!--Start Buy/Sell-->  
-                          <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#111111] shadow-lg rounded-2xl h-20">
+                          <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#0d1117] shadow-lg rounded-2xl h-20">
                             <div class="flex flex-col items-start">
                                 <span class="font-semibold text-gray-200 text-sm sm:text-[1rem] ">Buy/Sell</span>
                                 <span class="text-start text-sm sm:text-[1rem] font-medium text-white">
@@ -238,7 +238,7 @@ isLoaded = true;
                         </div>
                         <!--End Buy/Sell-->
                         <!--Start Dem/Rep-->  
-                        <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#111111] shadow-lg rounded-2xl h-20">
+                        <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#0d1117] shadow-lg rounded-2xl h-20">
                           <div class="flex flex-col items-start">
                               <span class="font-semibold text-gray-200 text-sm sm:text-[rem] ">Dem/Rep</span>
                               <span class="text-start text-sm sm:text-[1rem] font-medium text-white">
@@ -269,7 +269,7 @@ isLoaded = true;
                       <!--End Widget-->
 
 
-                      <label on:click={changeStructure} class="sm:hidden w-24 sm:ml-3 mr-2 sm:mr-0 cursor-pointer bg-[#18181B] sm:hover:bg-[#111111] duration-100 transition ease-in-out px-4 py-2 rounded-lg shadow-md">
+                      <label on:click={changeStructure} class="sm:hidden w-24 sm:ml-3 mr-2 sm:mr-0 cursor-pointer bg-[#18181B] sm:hover:bg-[#0d1117] duration-100 transition ease-in-out px-4 py-2 rounded-lg shadow-md">
                         <span class="m-auto mr-0.5 text-white text-sm">
                           Switch To: {displayStructure}
                         </span>
@@ -278,16 +278,16 @@ isLoaded = true;
 
                       {#if displayStructure === 'Card'}
                       <div class="mt-6 flex justify-start items-center w-full m-auto rounded-none sm:rounded-lg mb-4">
-                        <table class="table table-sm sm:table-md table-compact rounded-none sm:rounded-md w-full bg-[#111111] border-bg-[#111111] m-auto">
+                        <table class="table table-sm sm:table-md table-compact rounded-none sm:rounded-md w-full bg-[#0d1117] border-bg-[#0d1117] m-auto">
                           <thead>
-                            <tr class="bg-[#111111]">
-                              <th class="shadow-md text-start bg-[#111111] text-white text-sm font-semibold">
+                            <tr class="bg-[#0d1117]">
+                              <th class="shadow-md text-start bg-[#0d1117] text-white text-sm font-semibold">
                                 Person
                               </th>
-                              <th class="shadow-md text-end bg-[#111111]  hidden sm:table-cell text-white text-sm font-semibold">
+                              <th class="shadow-md text-end bg-[#0d1117]  hidden sm:table-cell text-white text-sm font-semibold">
                                 Transaction Date
                               </th>
-                              <th class="shadow-md text-end bg-[#111111]  text-white text-sm font-semibold">
+                              <th class="shadow-md text-end bg-[#0d1117]  text-white text-sm font-semibold">
                                 Amount
                               </th>
                               <th class="shadow-md text-white font-semibold text-end text-sm">Type</th>
@@ -295,9 +295,9 @@ isLoaded = true;
                           </thead>
                           <tbody>
                             {#each senateTradingList as item}
-                            <tr on:click={() => goto(`/politicians/${item?.id}`)} class="odd:bg-[#111111] sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#111111] border-b-[#111111] cursor-pointer">
+                            <tr on:click={() => goto(`/politicians/${item?.id}`)} class="odd:bg-[#0d1117] sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b-[#0d1117] cursor-pointer">
     
-                              <td class="text-gray-200 pb-3 border-b border-b-[#111111]">
+                              <td class="text-gray-200 pb-3 border-b border-b-[#0d1117]">
                                 <div class="flex flex-row items-center">
                                   <div class="flex-shrink-0 rounded-full border border-slate-700 w-10 h-10 sm:w-12 sm:h-12 relative {item?.party === 'Republican' ? 'bg-[#98272B]' : item?.party === 'Democratic' ? 'bg-[#295AC7]' : 'bg-[#4E2153]'} flex items-center justify-center">
                                     <img style="clip-path: circle(50%);" class="avatar rounded-full w-7 sm:w-9" src={item?.image} loading="lazy"/>
@@ -310,14 +310,14 @@ isLoaded = true;
                                 <!--{item?.firstName} {item?.lastName}-->
                               </td>
     
-                                <td class="text-end hidden sm:table-cell text-xs sm:text-sm text-white border-b border-b-[#111111]">
+                                <td class="text-end hidden sm:table-cell text-xs sm:text-sm text-white border-b border-b-[#0d1117]">
                                     {new Date(item?.transactionDate)?.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', daySuffix: '2-digit' })}
                                 </td>
 
-                                <td class="text-end text-xs sm:text-sm text-white border-b border-b-[#111111]">
+                                <td class="text-end text-xs sm:text-sm text-white border-b border-b-[#0d1117]">
                                     {item?.amount}
                                 </td>
-                                <td class="text-start text-end text-sm text-white border-b border-b-[#111111]">
+                                <td class="text-start text-end text-sm text-white border-b border-b-[#0d1117]">
                                   {#if item?.type === 'Bought'}
                                     <span class="text-[#10DB06]">Bought</span>
                                   {:else if item?.type === 'Sold'}
@@ -337,7 +337,7 @@ isLoaded = true;
                       {:else}
                       <div class="relative w-full mt-10">
                         {#each senateTradingList as item}
-                        <div class="w-full bg-[#111111] border border-slate-800 shadow-lg h-auto pb-4 pt-4 mb-7">
+                        <div class="w-full bg-[#0d1117] border border-slate-800 shadow-lg h-auto pb-4 pt-4 mb-7">
                           <div class="flex flex-col relative ">
                             {#if item?.party === 'Republican'}
                             <img class="absolute -mt-4 w-full m-auto " src={republicanBackground} />
@@ -443,7 +443,7 @@ isLoaded = true;
                       {:else}
                       <div class="flex justify-center items-center h-80">
                         <div class="relative">
-                        <label class="bg-[#111111] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <label class="bg-[#0d1117] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                             <span class="loading loading-spinner loading-md"></span>
                         </label>
                         </div>

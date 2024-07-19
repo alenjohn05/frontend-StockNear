@@ -89,7 +89,7 @@ $: {
                 <main>
       
       
-                  <div class="w-full max-w-4xl m-auto sm:bg-[#111111] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-12">
+                  <div class="w-full max-w-4xl m-auto sm:bg-[#0d1117] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-12">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
                   
                       <!-- Start Column -->
@@ -144,40 +144,40 @@ $: {
     
                           <div class="sm:pl-2 w-screen sm:w-full {$screenWidth < 640 ? 'overflow-auto scrollbar no-scrollbar' : 'flex flex-row items-center gap-x-4'} pr-5 sm:pr-0">
                             <div class="flex flex-col items-center sm:w-fit">
-                              <button id="item1" on:click={() => (changeSection('2024','item1'))} class="text-lg font-medium text-gray-400 sm:hover:text-white {displaySection === '2024' ? 'text-white' : 'bg-[#111111]'}">
+                              <button id="item1" on:click={() => (changeSection('2024','item1'))} class="text-lg font-medium text-gray-400 sm:hover:text-white {displaySection === '2024' ? 'text-white' : 'bg-[#0d1117]'}">
                                 2024
                               </button>
-                              <div class="{displaySection === '2024' ? 'bg-[#75D377]' : 'bg-[#111111]'} mt-1 h-[3px] rounded-full w-14" />
+                              <div class="{displaySection === '2024' ? 'bg-[#75D377]' : 'bg-[#0d1117]'} mt-1 h-[3px] rounded-full w-14" />
                             </div>
                             <div class="flex flex-col items-center sm:ml-5 w-fit">
-                              <button id="item2" on:click={() => (changeSection('2023','item2'))} class="text-lg font-medium text-gray-400 sm:hover:text-white {displaySection === '2023' ? 'text-white ' : 'bg-[#111111]'}">
+                              <button id="item2" on:click={() => (changeSection('2023','item2'))} class="text-lg font-medium text-gray-400 sm:hover:text-white {displaySection === '2023' ? 'text-white ' : 'bg-[#0d1117]'}">
                                 2023
                               </button>
-                              <div class="{displaySection === '2023' ? 'bg-[#75D377]' : 'bg-[#111111]'} mt-1 h-[3px] rounded-full w-14" />
+                              <div class="{displaySection === '2023' ? 'bg-[#75D377]' : 'bg-[#0d1117]'} mt-1 h-[3px] rounded-full w-14" />
                             </div>
                             <div class="flex flex-col items-center -ml-6 sm:ml-4 w-fit">
-                              <button id="item3" on:click={() => (changeSection('2022','item3'))} class="text-lg font-medium text-gray-400 sm:hover:text-white {displaySection === '2022' ? 'text-white ' : 'bg-[#111111]'}">
+                              <button id="item3" on:click={() => (changeSection('2022','item3'))} class="text-lg font-medium text-gray-400 sm:hover:text-white {displaySection === '2022' ? 'text-white ' : 'bg-[#0d1117]'}">
                                 2022
                               </button>
-                              <div class="{displaySection === '2022' ? 'bg-[#75D377]' : 'bg-[#111111]'} mt-1 h-[3px] rounded-full w-14" />
+                              <div class="{displaySection === '2022' ? 'bg-[#75D377]' : 'bg-[#0d1117]'} mt-1 h-[3px] rounded-full w-14" />
                             </div>
                             <div class="flex flex-col items-center -ml-12 sm:ml-4 w-fit ">
-                              <button id="item4" on:click={() => (changeSection('2021','item4'))} class="text-lg font-medium text-gray-400 sm:hover:text-white {displaySection === '2021' ? 'text-white ' : 'bg-[#111111]'}">
+                              <button id="item4" on:click={() => (changeSection('2021','item4'))} class="text-lg font-medium text-gray-400 sm:hover:text-white {displaySection === '2021' ? 'text-white ' : 'bg-[#0d1117]'}">
                                 2021
                               </button>
-                              <div class="{displaySection === '2021' ? 'bg-[#75D377]' : 'bg-[#111111]'} mt-1 h-[3px] rounded-full w-14" />
+                              <div class="{displaySection === '2021' ? 'bg-[#75D377]' : 'bg-[#0d1117]'} mt-1 h-[3px] rounded-full w-14" />
                             </div>
                             <div class="flex flex-col items-center ml-2 sm:ml-4 w-fit">
-                              <button id="item5" on:click={() => (changeSection('2020','item5'))} class="text-lg font-medium text-gray-400 sm:hover:text-white {displaySection === '2020' ? 'text-white ' : 'bg-[#111111]'}">
+                              <button id="item5" on:click={() => (changeSection('2020','item5'))} class="text-lg font-medium text-gray-400 sm:hover:text-white {displaySection === '2020' ? 'text-white ' : 'bg-[#0d1117]'}">
                                 2020
                               </button>
-                              <div class="{displaySection === '2020' ? 'bg-[#75D377]' : 'bg-[#111111]'} mt-1 h-[3px] rounded-full w-14" />
+                              <div class="{displaySection === '2020' ? 'bg-[#75D377]' : 'bg-[#0d1117]'} mt-1 h-[3px] rounded-full w-14" />
                             </div>
                             <div class="flex flex-col items-center ml-2 sm:ml-4 w-fit">
-                              <button id="item6" on:click={() => (changeSection('2019','item6'))} class="text-lg font-medium text-gray-400 sm:hover:text-white {displaySection === '2019' ? 'text-white ' : 'bg-[#111111]'}">
+                              <button id="item6" on:click={() => (changeSection('2019','item6'))} class="text-lg font-medium text-gray-400 sm:hover:text-white {displaySection === '2019' ? 'text-white ' : 'bg-[#0d1117]'}">
                                 2019
                               </button>
-                              <div class="{displaySection === '2019' ? 'bg-[#75D377]' : 'bg-[#111111]'} mt-1 h-[3px] rounded-full w-14" />
+                              <div class="{displaySection === '2019' ? 'bg-[#75D377]' : 'bg-[#0d1117]'} mt-1 h-[3px] rounded-full w-14" />
                             </div>
                             
                           </div>

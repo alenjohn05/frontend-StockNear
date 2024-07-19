@@ -85,14 +85,14 @@
             bind:value={searchTerm}
             on:input={searchNews}
             placeholder="Search by security or sector.."
-            class="w-60 p-2 border border-slate-700 rounded-md p-1 bg-[#111111]"
+            class="w-60 p-2 border border-slate-700 rounded-md p-1 bg-[#0d1117]"
           />
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
           {#if displayedNews.length !== 0}
             {#each displayedNews as item}
               <article
-                class="max-w-xl flex p-3 flex-col w-full items-start bg-[#1a1a1a]  shadow-lg h-auto sm:h-[350px] pb-10 sm:pb-5 rounded-none sm:rounded-lg m-auto"
+                class="max-w-xl flex p-3 flex-col w-full items-start bg-[#161b22]  shadow-lg h-auto sm:h-[350px] pb-10 sm:pb-5 rounded-none sm:rounded-lg m-auto"
               >
                 <div
                   class="flex items-center justify-between w-full gap-x-4 text-xs cursor-pointer p-2"

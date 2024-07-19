@@ -76,9 +76,9 @@ afterUpdate(async() => {
 
 
 <div class="space-y-3 sm:pt-5">  
-  <div class="bg-[#111111] h-auto w-screen">
+  <div class="bg-[#0d1117] h-auto w-screen">
     <!--Start Header-->
-    <div class="bg-[#111111] w-full  p-1 flex flex-col items-center pb-5 h-auto rounded-b-[30px]">
+    <div class="bg-[#0d1117] w-full  p-1 flex flex-col items-center pb-5 h-auto rounded-b-[30px]">
       <h2 class="text-center m-auto text-[1.1rem] font-medium text-white mt-5">
         Executives
       </h2>
@@ -126,7 +126,7 @@ afterUpdate(async() => {
           <!--Start Item-->
           <div class="flex flex-row items-center pl-4 pr-4 w-full mb-3">
                 
-            <div class="w-full rounded-md bg-[#111111] shadow-lg h-auto pb-3 pl-3 pt-3">
+            <div class="w-full rounded-md bg-[#0d1117] shadow-lg h-auto pb-3 pl-3 pt-3">
                 <div class="flex flex-row items-center relative">  
                     <div class="flex flex-col">
                       <div class="flex flex-row items-center mr-auto mb-2 text-white font-medium text-[1rem] w-56">
@@ -178,7 +178,7 @@ afterUpdate(async() => {
     {:else}
     <div class="flex justify-center items-center h-80">
       <div class="relative">
-        <label class="bg-[#111111] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <label class="bg-[#0d1117] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <span class="loading loading-spinner loading-md"></span>
         </label>
       </div>

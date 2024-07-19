@@ -47,7 +47,7 @@ $animationSpeed: 60s;
 
 // Styling
 .slider {
-  background: #111111;
+  background: #0d1117;
   margin: auto;
   overflow: hidden;
   position: relative;

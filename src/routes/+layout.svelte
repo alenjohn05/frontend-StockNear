@@ -354,7 +354,7 @@ syncWorker.onmessage = handleTwitchMessage;
 
 <svelte:window bind:innerWidth />
 
-<div class="app {$page?.url?.pathname === '/' ? 'bg-[#111111]' : ''}">
+<div class="app {$page?.url?.pathname === '/' ? 'bg-[#0d1117]' : ''}">
   <!--<ViewTransition />-->
 
   <!--Start Navbar-->
@@ -362,7 +362,7 @@ syncWorker.onmessage = handleTwitchMessage;
     <header
       class="sticky {$screenWidth < 640 && hideHeader
         ? 'invisible -mt-20'
-        : ''} inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md border border-[#202020] py-3 sm:py-4 shadow-lg sm:backdrop-blur-sm bg-[#111111] sm:bg-opacity-80 md:top-3 md:rounded-2xl lg:max-w-screen-lg"
+        : ''} inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md border border-[#202020] py-3 sm:py-4 shadow-lg sm:backdrop-blur-sm bg-[#0d1117] sm:bg-opacity-80 md:top-3 md:rounded-2xl lg:max-w-screen-lg"
     >
       <div class="px-4">
         <div class="flex items-center justify-between">
@@ -435,7 +435,7 @@ syncWorker.onmessage = handleTwitchMessage;
       id="navbar"
       class="navbar {$screenWidth < 640 && hideHeader
         ? 'invisible -mt-20'
-        : ''} border-b border-[#2a2e39] w-screen shadow-lg sticky top-0 z-40 bg-[#111111]"
+        : ''} border-b border-[#2a2e39] w-screen shadow-lg sticky top-0 z-40 bg-[#0d1117]"
     >
       <div class="w-full m-auto">
         <div class="flex flex-row items-center w-full xl:px-2">
@@ -580,7 +580,7 @@ syncWorker.onmessage = handleTwitchMessage;
               <!-- svelte-ignore a11y-positive-tabindex -->
               <ul
                 tabindex="1"
-                class="border border-gray-700 mt-2 p-2 menu dropdown-content text-white bg-[#111111] border border-slate-800rounded-md w-52"
+                class="border border-gray-700 mt-2 p-2 menu dropdown-content text-white bg-[#0d1117] border border-slate-800rounded-md w-52"
               >
                 <li class="mb-3 hover:bg-[#2B3139] rounded-lg">
                   <a href="/community/profile">
@@ -744,12 +744,12 @@ syncWorker.onmessage = handleTwitchMessage;
 
   <div class="w-full {!data?.user ? 'hidden' : ''}">
     <aside
-      class={`fixed top-0 left-0 xl:left-auto w-56 z-30 min-h-screen pt-12 sm:pt-16 border transition-transform bg-[#111111] border-r border-slate-800 border-[#2a2e39] ${
+      class={`fixed top-0 left-0 xl:left-auto w-56 z-30 min-h-screen pt-12 sm:pt-16 border transition-transform bg-[#0d1117] border-r border-slate-800 border-[#2a2e39] ${
         $sidebarVisible ? "translate-x-0" : "-translate-x-full"
       } ${collapse ? "sm:w-20" : "sm:w-56"}`}
     >
-      <div class="pb-4 overflow-y-auto scroller bg-[#111111] h-screen">
-        <ul class="mt-1 bg-[#111111] menu pt-5 pb-20">
+      <div class="pb-4 overflow-y-auto scroller bg-[#0d1117] h-screen">
+        <ul class="mt-1 bg-[#0d1117] menu pt-5 pb-20">
           <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
           <li
             on:click={() => (showSidebar = !showSidebar)}
@@ -760,7 +760,7 @@ syncWorker.onmessage = handleTwitchMessage;
               for="sidebar"
               class="block text-slate-200 hover:text-white sm:hover:bg-purple-700 truncate transition duration-150 {$page
                 .url.pathname === '/'
-                ? 'text-white bg-[#111111]  border border-slate-800rounded-md '
+                ? 'text-white bg-[#0d1117]  border border-slate-800rounded-md '
                 : ''}"
             >
               <div class="flex items-center justify-between">
@@ -1624,13 +1624,13 @@ syncWorker.onmessage = handleTwitchMessage;
     <dialog id="mobileProfileData" class="modal modal-bottom">
       <label
         for="mobileProfileData"
-        class="cursor-pointer modal-backdrop bg-[#111111] bg-opacity-[0.5]"
+        class="cursor-pointer modal-backdrop bg-[#0d1117] bg-opacity-[0.5]"
       ></label>
 
-      <div class="modal-box bg-[#111111]">
+      <div class="modal-box bg-[#0d1117]">
         {#if data?.user}
           <ul
-            class="menu menu-compact dropdown-content text-white bg-[#111111] border border-slate-800rounded"
+            class="menu menu-compact dropdown-content text-white bg-[#0d1117] border border-slate-800rounded"
           >
             <li class="mb-3">
               <label

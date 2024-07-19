@@ -72,7 +72,7 @@
           {#if news.length !== 0}
             {#each news as item}
               <article
-                class="max-w-xl flex p-5 flex-col w-full items-start bg-[#1a1a1a]  shadow-lg h-auto sm:h-[300px] pb-10 sm:pb-5 rounded-none sm:rounded-lg m-auto"
+                class="max-w-xl flex p-5 flex-col w-full items-start bg-[#161b22]  shadow-lg h-auto sm:h-[300px] pb-10 sm:pb-5 rounded-none sm:rounded-lg m-auto"
               >
                 <div
                   class="flex items-center justify-between w-full gap-x-4 text-xs"

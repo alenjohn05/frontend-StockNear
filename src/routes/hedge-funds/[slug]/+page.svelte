@@ -318,7 +318,7 @@ function tabFunction(state) {
   
               <aside class="relative fixed w-full sm:w-1/3">        
                 <!--Start Card-->
-                <div class="w-full bg-[#111111] border border-slate-800 rounded-lg h-auto pb-4">
+                <div class="w-full bg-[#0d1117] border border-slate-800 rounded-lg h-auto pb-4">
                   <div class="flex flex-col relative ">
                     <img class="absolute w-full m-auto rounded-lg " src={cardBackground} />
                     <div class="flex flex-col justify-center items-center rounded-2xl ">
@@ -377,7 +377,7 @@ function tabFunction(state) {
                  <div class="w-full mt-5 mb-10 m-auto flex justify-center items-center ">
                   <div class="sm:hidden w-full grid grid-cols-2 gap-y-3 lg:gap-y-3 gap-x-3 ">
                      <!--Start Total Amount Traded-->  
-                     <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#111111] rounded-2xl h-20">
+                     <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#0d1117] rounded-2xl h-20">
                       <div class="flex flex-col items-start">
                           <span class="font-medium text-gray-200 text-sm ">AUM</span>
                           <span class="text-start text-[1rem] font-medium text-white mt-0.5">
@@ -389,7 +389,7 @@ function tabFunction(state) {
                   <!--End Total Amount Traded-->
                   
                     <!--Start-->  
-                    <div class="sm:hidden flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#111111] rounded-2xl h-20">
+                    <div class="sm:hidden flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#0d1117] rounded-2xl h-20">
                       <div class="flex flex-col items-start">
                           <span class="font-medium text-gray-200 text-sm sm:text-[0.85rem]">3 Year Perf.</span>
                           <span class="text-start text-[1rem] sm:text-sm font-semibold text-white mt-0.5">
@@ -424,7 +424,7 @@ function tabFunction(state) {
                   <!--End-->
 
                   <!--Start-->  
-                   <div class="sm:hidden flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#111111] rounded-2xl h-20">
+                   <div class="sm:hidden flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#0d1117] rounded-2xl h-20">
                     <div class="flex flex-col items-start">
                         <span class="font-medium text-gray-200 text-sm sm:text-[0.85rem]">5 Year Perf.</span>
                         <span class="text-start text-[1rem] sm:text-sm font-semibold text-white mt-0.5">
@@ -459,7 +459,7 @@ function tabFunction(state) {
 
 
                    <!--Start-->  
-                   <div class="sm:hidden flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#111111] rounded-2xl h-20">
+                   <div class="sm:hidden flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#0d1117] rounded-2xl h-20">
                     <div class="flex flex-col items-start">
                         <span class="font-medium text-gray-200 text-sm sm:text-[0.85rem]">Incept. Perf.</span>
                         <span class="text-start text-[1rem] sm:text-sm font-semibold text-white mt-0.5">
@@ -501,7 +501,7 @@ function tabFunction(state) {
                 <main class="w-full mt-10 sm:mt-0 sm:w-3/4 sm:ml-5">
                 
                   {#if isLoaded && Object?.keys(optionsData)?.length !== 0}
-                  <div class="p-0 sm:p-10 bg-[#111111] sm:bg-[#111111] rounded-lg sm:min-h-[330px] mb-10 sm:mb-6">
+                  <div class="p-0 sm:p-10 bg-[#0d1117] sm:bg-[#0d1117] rounded-lg sm:min-h-[330px] mb-10 sm:mb-6">
   
                     <div class="flex flex-row justify-center sm:justify-start items-center">
                       <svg class="w-7 h-7 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="#849AAE" d="M576 0c17.7 0 32 14.3 32 32v448c0 17.7-14.3 32-32 32s-32-14.3-32-32V32c0-17.7 14.3-32 32-32M448 96c17.7 0 32 14.3 32 32v352c0 17.7-14.3 32-32 32s-32-14.3-32-32V128c0-17.7 14.3-32 32-32m-96 128v256c0 17.7-14.3 32-32 32s-32-14.3-32-32V224c0-17.7 14.3-32 32-32s32 14.3 32 32m-160 64c17.7 0 32 14.3 32 32v160c0 17.7-14.3 32-32 32s-32-14.3-32-32V320c0-17.7 14.3-32 32-32M96 416v64c0 17.7-14.3 32-32 32s-32-14.3-32-32v-64c0-17.7 14.3-32 32-32s32 14.3 32 32"/></svg>
@@ -541,7 +541,7 @@ function tabFunction(state) {
                  <div class="hidden sm:flex justify-center items-center w-full mt-5 mb-10 m-auto">
                   <div class="w-full grid grid-cols-4 gap-y-3 lg:gap-y-3 gap-x-3 ">
                      <!--Start Total Amount Traded-->  
-                     <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#111111] rounded-2xl h-20">
+                     <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#0d1117] rounded-2xl h-20">
                       <div class="flex flex-col items-start">
                           <span class="font-medium text-gray-200 text-[1rem]">AUM</span>
                           <span class="text-start text-[1rem] font-medium text-white mt-0.5">
@@ -553,7 +553,7 @@ function tabFunction(state) {
                   <!--End Total Amount Traded-->
                   
                     <!--Start-->  
-                    <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#111111] rounded-2xl h-20">
+                    <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#0d1117] rounded-2xl h-20">
                       <div class="flex flex-col items-start">
                           <span class="font-medium text-gray-200 text-[1rem]">3 Year Perf.</span>
                           <span class="text-start text-[1rem] font-semibold text-white mt-0.5">
@@ -579,7 +579,7 @@ function tabFunction(state) {
                   <!--End-->
 
                      <!--Start-->  
-                     <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#111111] rounded-2xl h-20">
+                     <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#0d1117] rounded-2xl h-20">
                       <div class="flex flex-col items-start">
                           <span class="font-medium text-gray-200 text-[1rem]">5 Year Perf.</span>
                           <span class="text-start text-[1rem] font-semibold text-white mt-0.5">
@@ -606,7 +606,7 @@ function tabFunction(state) {
   
   
                      <!--Start-->  
-                     <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#111111] rounded-2xl h-20">
+                     <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#0d1117] rounded-2xl h-20">
                       <div class="flex flex-col items-start">
                           <span class="font-medium text-gray-200 text-[1rem]">Incept. Perf.</span>
                           <span class="text-start text-[1rem] font-semibold text-white mt-0.5">
@@ -635,7 +635,7 @@ function tabFunction(state) {
                   </div>
                 </div>
                 
-                <div class="p-0 sm:p-10 bg-[#111111] sm:bg-[#111111] rounded-lg sm:min-h-[430px] pt-6">
+                <div class="p-0 sm:p-10 bg-[#0d1117] sm:bg-[#0d1117] rounded-lg sm:min-h-[430px] pt-6">
                   <div class="h-auto w-full ">
                     
                     
@@ -651,32 +651,32 @@ function tabFunction(state) {
                     {#if rawList?.length !== 0}
                     <div class="hidden sm:block sm:overflow-hidden sm:overflow-y-scroll scroller w-full m-auto h-auto sm:max-h-[700px]">
 
-                      <table class="-ml-3 table table-sm table-compact table-pin-rows table-pin-cols rounded-none sm:rounded-md w-full bg-[#111111] m-auto mt-5 ">
+                      <table class="-ml-3 table table-sm table-compact table-pin-rows table-pin-cols rounded-none sm:rounded-md w-full bg-[#0d1117] m-auto mt-5 ">
                         <!-- head -->
                         <thead>
-                          <tr class="bg-[#111111]">
-                            <th class="shadow-md text-start bg-[#111111] text-white text-sm font-semibold">
+                          <tr class="bg-[#0d1117]">
+                            <th class="shadow-md text-start bg-[#0d1117] text-white text-sm font-semibold">
                               Name
                             </th>
-                            <th class="shadow-md text-start bg-[#111111] text-white text-sm font-semibold">
+                            <th class="shadow-md text-start bg-[#0d1117] text-white text-sm font-semibold">
                               % of Portfolio
                             </th>
                             {#if changeAssetType === 'Share'}
-                            <th class="shadow-md text-start bg-[#111111] text-white text-sm font-semibold">
+                            <th class="shadow-md text-start bg-[#0d1117] text-white text-sm font-semibold">
                               Change of Shares
                             </th>
-                            <th class="shadow-md text-start bg-[#111111] text-white text-sm font-semibold">
+                            <th class="shadow-md text-start bg-[#0d1117] text-white text-sm font-semibold">
                              Shares Owned
                             </th>
                             {/if}
-                            <th class="shadow-md text-start bg-[#111111] text-white text-sm font-semibold">
+                            <th class="shadow-md text-start bg-[#0d1117] text-white text-sm font-semibold">
                               Value Owned
                             </th>
-                            <th class="shadow-md text-start bg-[#111111]  text-white text-sm font-semibold">
+                            <th class="shadow-md text-start bg-[#0d1117]  text-white text-sm font-semibold">
                               Avg. Buy Price
                             </th>
                             {#if changeAssetType !== 'Share'}
-                            <th class="shadow-md text-start bg-[#111111]  text-white text-sm font-semibold">
+                            <th class="shadow-md text-start bg-[#0d1117]  text-white text-sm font-semibold">
                               Type
                             </th>
                             {/if}
@@ -684,7 +684,7 @@ function tabFunction(state) {
                         </thead>
                         <tbody class="p-0">
                           {#each deactivateContent ? displayList?.slice(0,5) : displayList as item}
-                              <tr on:click={() => goto(`/${item?.type}/${item?.symbol}`)} class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#111111] border-b-[#202020] cursor-pointer">
+                              <tr on:click={() => goto(`/${item?.type}/${item?.symbol}`)} class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b-[#202020] cursor-pointer">
       
                                 <td class="text-gray-200 pb-3 border-b border-b-[#202020]">
                                   <div class="flex flex-row items-center">
@@ -765,29 +765,29 @@ function tabFunction(state) {
   
                         <table class="-ml-1 table table-sm table-compact mt-3 w-screen">
                           <thead>
-                            <tr class="bg-[#111111]">
-                              <td class="shadow-md text-start bg-[#111111] text-white text-sm font-semibold">
+                            <tr class="bg-[#0d1117]">
+                              <td class="shadow-md text-start bg-[#0d1117] text-white text-sm font-semibold">
                                 Name
                               </td>
-                              <td class="shadow-md text-end bg-[#111111] text-white text-sm font-semibold">
+                              <td class="shadow-md text-end bg-[#0d1117] text-white text-sm font-semibold">
                                 % of Portfolio
                               </td>
                               {#if changeAssetType === 'Share'}
-                              <td class="shadow-md text-end bg-[#111111] text-white text-sm font-semibold">
+                              <td class="shadow-md text-end bg-[#0d1117] text-white text-sm font-semibold">
                                 Change of Shares
                               </td>
-                              <th class="shadow-md text-end bg-[#111111] text-white text-sm font-semibold">
+                              <th class="shadow-md text-end bg-[#0d1117] text-white text-sm font-semibold">
                                 Shares Owned
                                </th>
                               {/if}
-                              <td class="shadow-md text-end bg-[#111111] text-white text-sm font-semibold">
+                              <td class="shadow-md text-end bg-[#0d1117] text-white text-sm font-semibold">
                                 Value Owned
                               </td>
-                              <td class="shadow-md text-end bg-[#111111]  text-white text-sm font-semibold">
+                              <td class="shadow-md text-end bg-[#0d1117]  text-white text-sm font-semibold">
                                 Avg. Buy Price
                               </td>
                               {#if changeAssetType !== 'Share'}
-                              <td class="shadow-md text-end bg-[#111111]  text-white text-sm font-semibold">
+                              <td class="shadow-md text-end bg-[#0d1117]  text-white text-sm font-semibold">
                                 Type
                               </td>
                               {/if}
@@ -796,9 +796,9 @@ function tabFunction(state) {
                             <tbody>
                               {#each deactivateContent ? displayList?.slice(0,5) : displayList as item,index}
                               <!-- row -->
-                              <tr on:click={() => goto(`/${item?.type}/${item?.ticker}`)} class="bg-[#111111] cursor-pointer">
+                              <tr on:click={() => goto(`/${item?.type}/${item?.ticker}`)} class="bg-[#0d1117] cursor-pointer">
                                 
-                                <td class="text-gray-200 border-b border-b-[#111111]">
+                                <td class="text-gray-200 border-b border-b-[#0d1117]">
                                   <div class="flex flex-row items-center">
                                     <div class="flex flex-col">
                                       <span class="text-[#FFBE00] font-medium">{item?.symbol?.replace('_',' ')}</span>
@@ -809,28 +809,28 @@ function tabFunction(state) {
                                 </td>
 
 
-                              <td class="text-end text-sm font-semibold text-white border-b border-b-[#111111]">
+                              <td class="text-end text-sm font-semibold text-white border-b border-b-[#0d1117]">
                                 {item?.weight >= 0.01 ? item?.weight?.toFixed(2) : '< 0.01'}%
                               </td>
 
                               {#if changeAssetType === 'Share'}
-                              <td class="text-end text-sm font-semibold border-b border-b-[#111111] {item?.changeInSharesNumberPercentage > 0 ? 'text-[#00FC50]' : item?.changeInSharesNumberPercentage < 0 ? 'text-[#FC2120]' : 'text-white'}">
+                              <td class="text-end text-sm font-semibold border-b border-b-[#0d1117] {item?.changeInSharesNumberPercentage > 0 ? 'text-[#00FC50]' : item?.changeInSharesNumberPercentage < 0 ? 'text-[#FC2120]' : 'text-white'}">
                                 {item?.changeInSharesNumberPercentage !== 0 ? abbreviateNumber(item?.changeInSharesNumberPercentage?.toFixed(2))+'%' : '-'}
                               </td>
-                              <td class="text-end text-sm font-semibold border-b border-b-[#111111] text-white">
+                              <td class="text-end text-sm font-semibold border-b border-b-[#0d1117] text-white">
                                 {item?.sharesNumber !== 0 ? abbreviateNumber(item?.sharesNumber?.toFixed(2)) : '-'}
                               </td>
                               {/if}
 
-                              <td class="text-end text-sm text-white border-b border-b-[#111111]">
+                              <td class="text-end text-sm text-white border-b border-b-[#0d1117]">
                                 {abbreviateNumber(item?.marketValue,true)}
                             </td>
 
-                              <td class="text-end text-sm text-white font-semibold border-b border-b-[#111111]">
+                              <td class="text-end text-sm text-white font-semibold border-b border-b-[#0d1117]">
                                   ${item?.avgPricePaid}
                               </td>
                               {#if changeAssetType !== 'Share'}
-                              <td class="text-end text-sm font-semibold border-b border-b-[#111111] {item?.putCallShare === 'CALL' ? 'text-[#00FC50]' : 'text-[#FC2120]'}">
+                              <td class="text-end text-sm font-semibold border-b border-b-[#0d1117] {item?.putCallShare === 'CALL' ? 'text-[#00FC50]' : 'text-[#FC2120]'}">
                                 {formatString(item?.putCallShare)}
                               </td>
                               {/if}

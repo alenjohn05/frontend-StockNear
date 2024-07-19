@@ -396,7 +396,7 @@
       </div>
     -->
   
-        <div class="w-full max-w-4xl m-auto sm:bg-[#111111] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8">
+        <div class="w-full max-w-4xl m-auto sm:bg-[#0d1117] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
         
             <!-- Start Column -->
@@ -458,7 +458,7 @@
   
   
                 <div class="w-full pb-3">
-                  <div class="relative right-0 bg-[#111111]">
+                  <div class="relative right-0 bg-[#0d1117]">
                     <ul class="relative grid grid-cols-2 sm:grid-cols-4 gap-y-3 gap-x-3 flex flex-wrap p-1 list-none rounded-[3px]">
                       <li class="pl-3 py-1.5 flex-auto text-center bg-[#2E3238] rounded-[3px]">
                         <label on:click={changeStructure}  class="cursor-pointer border flex items-center justify-center w-full px-0 py-1 mb-0 border-0 rounded-[3px] bg-inherit">
@@ -503,7 +503,7 @@
                     {#if displayStructure === 'Card'}
                       <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-5">
                             {#each displayList as item}
-                              <label on:click={() => goto(`/politicians/${item?.id}`)} class="w-full cursor-pointer bg-[#111111] sm:hover:bg-[#111111] transition-colors ease-in-out border sm:hover:border-[#000] {item?.party ==='Republican' ? 'sm:hover:shadow-[#80000D]' : 'sm:hover:shadow-[#1358C3]' } border-slate-800 shadow-md rounded-lg h-auto pb-4 pt-4 mb-7">
+                              <label on:click={() => goto(`/politicians/${item?.id}`)} class="w-full cursor-pointer bg-[#0d1117] sm:hover:bg-[#0d1117] transition-colors ease-in-out border sm:hover:border-[#000] {item?.party ==='Republican' ? 'sm:hover:shadow-[#80000D]' : 'sm:hover:shadow-[#1358C3]' } border-slate-800 shadow-md rounded-lg h-auto pb-4 pt-4 mb-7">
                                 <div class="flex flex-col relative">
                                   {#if item?.party === 'Republican'}
                                   <img class="absolute -mt-4 w-full m-auto rounded-lg" src={republicanBackground} />
@@ -595,22 +595,22 @@
   
                       {:else}
                       <div class="w-full m-auto rounded-none sm:rounded-lg mb-4 overflow-x-scroll sm:overflow-hidden">
-                        <table class="table table-sm sm:table-md table-pin-cols table-compact rounded-none sm:rounded-md w-full bg-[#111111] border-bg-[#111111] m-auto">
+                        <table class="table table-sm sm:table-md table-pin-cols table-compact rounded-none sm:rounded-md w-full bg-[#0d1117] border-bg-[#0d1117] m-auto">
                           <thead>
-                            <tr class="bg-[#111111] border-b border-blue-400">
-                              <th class="bg-[#111111] text-start bg-[#111111] text-white text-sm font-medium sm:font-semibold">
+                            <tr class="bg-[#0d1117] border-b border-blue-400">
+                              <th class="bg-[#0d1117] text-start bg-[#0d1117] text-white text-sm font-medium sm:font-semibold">
                                 Person
                               </th>
-                              <td class="text-start bg-[#111111] text-white text-sm font-medium sm:font-semibold">
+                              <td class="text-start bg-[#0d1117] text-white text-sm font-medium sm:font-semibold">
                                 Company
                               </td>
-                              <td class="text-end bg-[#111111] text-white text-sm font-medium sm:font-semibold">
+                              <td class="text-end bg-[#0d1117] text-white text-sm font-medium sm:font-semibold">
                                 Transaction
                               </td>
-                              <td class="text-end bg-[#111111] text-white text-sm font-medium sm:font-semibold">
+                              <td class="text-end bg-[#0d1117] text-white text-sm font-medium sm:font-semibold">
                                 Disclosure
                               </td>
-                              <td class="text-center bg-[#111111] text-white text-sm font-medium sm:font-semibold">
+                              <td class="text-center bg-[#0d1117] text-white text-sm font-medium sm:font-semibold">
                                 Amount
                               </td>
                               <td class="text-white text-end text-sm font-medium sm:font-semibold">Type</td>
@@ -618,9 +618,9 @@
                           </thead>
                           <tbody>
                             {#each displayList as item, index}
-                            <tr on:click={() => goto(`/politicians/${item?.id}`)} class="cursor-pointer text-gray-200 odd:bg-[#111111] border-b-[#111111] {index+1 === rawData?.length && data?.user?.tier !== 'Pro' ? 'opacity-[0.1]' : ''}">
+                            <tr on:click={() => goto(`/politicians/${item?.id}`)} class="cursor-pointer text-gray-200 odd:bg-[#0d1117] border-b-[#0d1117] {index+1 === rawData?.length && data?.user?.tier !== 'Pro' ? 'opacity-[0.1]' : ''}">
                             
-                              <th class="{index % 2 ? 'bg-[#111111]' : 'bg-[#111111]'} text-gray-200 ">
+                              <th class="{index % 2 ? 'bg-[#0d1117]' : 'bg-[#0d1117]'} text-gray-200 ">
                                 <div class="flex flex-row items-center">
                                   <div class="flex-shrink-0 rounded-full border border-slate-700 w-9 h-9 relative {item?.party === 'Republican' ? 'bg-[#98272B]' : item?.party === 'Democratic' ? 'bg-[#295AC7]' : 'bg-[#4E2153]'} flex items-center justify-center">
                                     <img style="clip-path: circle(50%);" class="rounded-full w-7" src={item?.image} loading="lazy"/>
@@ -679,7 +679,7 @@
       {:else}
       <div class="flex justify-center items-center h-80">
         <div class="relative">
-        <label class="bg-[#111111] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <label class="bg-[#0d1117] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <span class="loading loading-spinner loading-md"></span>
         </label>
         </div>
@@ -705,27 +705,27 @@
   <dialog id="rowList" class="modal modal-bottom sm:modal-middle ">
   
   
-    <label id="rowList" for="rowList"  class="cursor-pointer modal-backdrop bg-[#fff] bg-opacity-[0.05] sm:bg-[#111111] sm:bg-opacity-[0.5]"></label>
+    <label id="rowList" for="rowList"  class="cursor-pointer modal-backdrop bg-[#fff] bg-opacity-[0.05] sm:bg-[#0d1117] sm:bg-opacity-[0.5]"></label>
     
     
-    <div class="modal-box w-full bg-[#111111] border border-[#2a2e39] sm:bg-[#111111] sm:border sm:border-slate-800">
+    <div class="modal-box w-full bg-[#0d1117] border border-[#2a2e39] sm:bg-[#0d1117] sm:border sm:border-slate-800">
   
       <h3 class="text-white text-2xl font-bold">
         Rows
       </h3>
   
-    <label for="rowList" class="sm:hidden cursor-pointer absolute right-5 top-2 bg-[#111111] sm:bg-[#111111] text-[1.8rem] text-white">
+    <label for="rowList" class="sm:hidden cursor-pointer absolute right-5 top-2 bg-[#0d1117] sm:bg-[#0d1117] text-[1.8rem] text-white">
       ✕
     </label>
   
       <div class="text-white mt-10">
   
-        <div class="flex flex-col items-center w-full max-w-3xl bg-[#111111] sm:bg-[#111111]">
+        <div class="flex flex-col items-center w-full max-w-3xl bg-[#0d1117] sm:bg-[#0d1117]">
   
           {#each rowList as rows}
             <label on:click={() => changeRows(rows)} for="rowList" class="cursor-pointer w-full flex flex-row justify-start items-center mb-5">
   
-                <div class="flex flex-row items-center w-full bg-[#111111] bg-opacity-[0.7] sm:bg-opacity-[1.0] sm:bg-[#303030] p-3 rounded-lg {rows === displayRows ? 'ring-2 ring-[#04E000]' : ''}">
+                <div class="flex flex-row items-center w-full bg-[#0d1117] bg-opacity-[0.7] sm:bg-opacity-[1.0] sm:bg-[#303030] p-3 rounded-lg {rows === displayRows ? 'ring-2 ring-[#04E000]' : ''}">
                   
                   <div class="flex flex-col items-center w-full">
                     <span class="ml-1 text-white font-medium mr-auto">
@@ -763,14 +763,14 @@
     <dialog id="exportDataModal" class="modal modal-bottom sm:modal-middle ">
     
     
-      <label id="exportDataModal" for="exportDataModal"  class="cursor-pointer modal-backdrop bg-[#fff] bg-opacity-[0.02] sm:bg-[#111111] sm:bg-opacity-[0.5]"></label>
+      <label id="exportDataModal" for="exportDataModal"  class="cursor-pointer modal-backdrop bg-[#fff] bg-opacity-[0.02] sm:bg-[#0d1117] sm:bg-opacity-[0.5]"></label>
       
       
-      <div class="modal-box w-full bg-[#111111] border border-[#2a2e39] sm:bg-[#111111] sm:border sm:border-slate-800">
+      <div class="modal-box w-full bg-[#0d1117] border border-[#2a2e39] sm:bg-[#0d1117] sm:border sm:border-slate-800">
     
     
     
-      <label for="exportDataModal" class="cursor-pointer absolute right-5 top-2 bg-[#111111] sm:bg-[#111111] text-[1.8rem] text-white">
+      <label for="exportDataModal" class="cursor-pointer absolute right-5 top-2 bg-[#0d1117] sm:bg-[#0d1117] text-[1.8rem] text-white">
         ✕
       </label>
     
@@ -781,12 +781,12 @@
           </h3>
             
     
-          <div class="flex flex-col items-center w-full max-w-3xl bg-[#111111] sm:bg-[#111111]">
+          <div class="flex flex-col items-center w-full max-w-3xl bg-[#0d1117] sm:bg-[#0d1117]">
     
     
             <label for="exportDataModal" on:click={() => exportData('excel')} class="cursor-pointer w-full flex flex-row justify-start items-center mb-5">
     
-                <div class="flex flex-row items-center w-full bg-[#111111] bg-opacity-[0.7] sm:bg-opacity-[1.0] sm:bg-[#303030] p-3 rounded-lg ring-2 ring-[#04E000]">
+                <div class="flex flex-row items-center w-full bg-[#0d1117] bg-opacity-[0.7] sm:bg-opacity-[1.0] sm:bg-[#303030] p-3 rounded-lg ring-2 ring-[#04E000]">
                   
                   <span class="ml-1 text-white font-medium mr-auto">
                     Export to Excel
@@ -799,7 +799,7 @@
     
             <label for="exportDataModal" on:click={() => exportData('csv')} class="cursor-pointer w-full flex flex-row justify-start items-center mb-5">
     
-              <div class="flex flex-row items-center w-full bg-[#111111] bg-opacity-[0.7] sm:bg-opacity-[1.0] sm:bg-[#303030] p-3 rounded-lg ring-2 ring-[#04E000]">
+              <div class="flex flex-row items-center w-full bg-[#0d1117] bg-opacity-[0.7] sm:bg-opacity-[1.0] sm:bg-[#303030] p-3 rounded-lg ring-2 ring-[#04E000]">
                 
                 <span class="ml-1 text-white font-medium mr-auto">
                   Export to CSV
@@ -828,13 +828,13 @@
   <dialog id="filterList" class="modal modal-bottom sm:modal-middle">
   
   
-    <label id="filterList" for="filterList" class="cursor-pointer modal-backdrop bg-[#111111] bg-opacity-[0.5]"></label>
+    <label id="filterList" for="filterList" class="cursor-pointer modal-backdrop bg-[#0d1117] bg-opacity-[0.5]"></label>
     
     
-    <div class="modal-box w-full bg-[#111111] border border-[#2a2e39] sm:border sm:border-slate-800 max-h-[600px] overflow-y-scroll">
+    <div class="modal-box w-full bg-[#0d1117] border border-[#2a2e39] sm:border sm:border-slate-800 max-h-[600px] overflow-y-scroll">
   
   
-    <label for="filterList" class="cursor-pointer absolute right-5 top-2 bg-[#111111] text-[1.8rem] text-white">
+    <label for="filterList" class="cursor-pointer absolute right-5 top-2 bg-[#0d1117] text-[1.8rem] text-white">
       ✕
     </label>
   
@@ -993,7 +993,7 @@
     <div class="drawer-side overflow-y-scroll overflow-hidden">
     
         
-      <div class="bg-[#111111] min-h-screen w-screen pb-20 overflow-y-scroll overflow-hidden">
+      <div class="bg-[#0d1117] min-h-screen w-screen pb-20 overflow-y-scroll overflow-hidden">
   
           <label for="filterList" class="absolute left-6 top-6">
             <svg class="w-6 h-6 inline-block mb-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#fff" d="M9.125 21.1L.7 12.7q-.15-.15-.213-.325T.425 12q0-.2.063-.375T.7 11.3l8.425-8.425q.35-.35.875-.35t.9.375q.375.375.375.875t-.375.875L3.55 12l7.35 7.35q.35.35.35.863t-.375.887q-.375.375-.875.375t-.875-.375Z"/></svg>
@@ -1005,10 +1005,10 @@
   
   <div class="space-y-3 sm:pt-5">  
     
-    <div class="bg-[#111111] h-auto w-screen">
+    <div class="bg-[#0d1117] h-auto w-screen">
     
       <!--Start Header-->
-      <div class="bg-[#111111] w-full p-1 flex flex-col items-center pb-10 h-auto">
+      <div class="bg-[#0d1117] w-full p-1 flex flex-col items-center pb-10 h-auto">
         <h2 class="text-center m-auto text-[1.1rem] font-medium text-white mt-5">
           Filter List
         </h2>

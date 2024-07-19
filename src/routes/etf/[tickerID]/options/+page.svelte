@@ -274,7 +274,7 @@ $: {
 
 
               
-    <section class="bg-[#111111] overflow-hidden text-white h-full mb-40 sm:mb-0 w-full">
+    <section class="bg-[#0d1117] overflow-hidden text-white h-full mb-40 sm:mb-0 w-full">
         <div class="flex justify-center m-auto h-full overflow-hidden w-full">
             <div class="relative flex justify-center items-center overflow-hidden w-full">
                   <div class="sm:p-7 w-full m-auto mt-2 sm:mt-0">
@@ -299,7 +299,7 @@ $: {
                 
                     {#if optionsPlotData?.length !== 0}
 
-                    <div class="stats stats-horizontal bg-[#111111] w-full rounded-lg">
+                    <div class="stats stats-horizontal bg-[#0d1117] w-full rounded-lg">
             
                       <div class="grid grid-cols-2">
           
@@ -380,7 +380,7 @@ $: {
                             </div>
                         
                             
-                            <div class="app w-full bg-[#111111] bg-opacity-1 rounded-xl">
+                            <div class="app w-full bg-[#0d1117] bg-opacity-1 rounded-xl">
                                 <Chart options={options} class="chart" />
                             </div>
                             
@@ -398,7 +398,7 @@ $: {
                             <div class="w-full mt-5 mb-10 m-auto flex justify-center items-center">
                               <div class="w-full grid grid-cols-2 lg:grid-cols-3 gap-y-3 lg:gap-y-3 gap-x-3 ">
                                 <!--Start Flow Sentiment-->  
-                                <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#111111] shadow-lg rounded-md h-20">
+                                <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#0d1117] shadow-lg rounded-md h-20">
                                     <div class="flex flex-col items-start">
                                         <span class="font-medium text-gray-200 text-sm ">Flow Sentiment</span>
                                         <span class="text-start text-[1rem] font-medium {flowSentiment === 'Bullish' ? 'text-[#00FC50]' : 'text-[#FC2120]'}">{flowSentiment}</span>
@@ -407,7 +407,7 @@ $: {
                                 </div>
                                 <!--End Flow Sentiment-->
                                 <!--Start Put/Call-->  
-                                <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#111111] shadow-lg rounded-md h-20">
+                                <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#0d1117] shadow-lg rounded-md h-20">
                                   <div class="flex flex-col items-start">
                                       <span class="font-medium text-gray-200 text-sm ">Put/Call</span>
                                       <span class="text-start text-sm sm:text-[1rem] font-medium text-white">
@@ -434,7 +434,7 @@ $: {
                               </div>
                               <!--End Put/Call-->
                               <!--Start Call Flow-->  
-                              <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#111111] shadow-lg rounded-md h-20">
+                              <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#0d1117] shadow-lg rounded-md h-20">
                                 <div class="flex flex-col items-start">
                                     <span class="font-medium text-gray-200 text-sm ">Call Flow</span>
                                     <span class="text-start text-sm sm:text-[1rem] font-medium text-white">
@@ -463,7 +463,7 @@ $: {
                               </div>
                               <!--End Call Flow-->
                               <!--Start Put Flow-->  
-                              <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#111111] shadow-lg rounded-md h-20">
+                              <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#0d1117] shadow-lg rounded-md h-20">
                                 <div class="flex flex-col items-start">
                                     <span class="font-medium text-gray-200 text-sm ">Put Flow</span>
                                     <span class="text-start text-sm sm:text-[1rem] font-medium text-white">
@@ -504,7 +504,7 @@ $: {
                             <div class="flex justify-start items-center m-auto overflow-x-auto">
                                 
                                 
-                                <table class="table table-pin-cols table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#111111] m-auto mt-4 overflow-x-auto">
+                                <table class="table table-pin-cols table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4 overflow-x-auto">
                                     <thead>
                                       <tr class="">
                                         <td class="text-slate-200 font-semibold text-sm text-start">Time</td>
@@ -524,7 +524,7 @@ $: {
                                     <tbody>
                                       {#each (data?.user?.tier === 'Pro' ? optionList : optionList?.slice(0,3)) as item, index}
                                       <!-- row -->
-                                      <tr class="odd:bg-[#111111] border-b-[#111111] {index+1 === optionList?.slice(0,3)?.length && data?.user?.tier !== 'Pro' ? 'opacity-[0.1]' : ''}">
+                                      <tr class="odd:bg-[#0d1117] border-b-[#0d1117] {index+1 === optionList?.slice(0,3)?.length && data?.user?.tier !== 'Pro' ? 'opacity-[0.1]' : ''}">
                                         
                                         <td class="text-white text-xs sm:text-sm text-start">
                                           {formatTime(item?.time)}

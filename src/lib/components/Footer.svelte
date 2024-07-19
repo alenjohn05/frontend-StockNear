@@ -5,7 +5,7 @@
 
 <!--Footer-->
 <footer
-  class="bg-[#111111] border-t border-slate-800 z-20 sm:z-50 relative bottom-0 left-0 w-full"
+  class="bg-[#0d1117] border-t border-slate-800 z-20 sm:z-50 relative bottom-0 left-0 w-full"
 >
   <div class="container mx-auto px-3">
     <div class="w-full flex flex-col md:flex-row py-6">

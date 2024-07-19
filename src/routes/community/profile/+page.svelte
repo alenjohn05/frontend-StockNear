@@ -578,7 +578,7 @@ onDestroy(async () => {
 
 
 
-<body class="bg-[#111111] text-slate-200 overflow-hidden mt-10 sm:mt-5">
+<body class="bg-[#0d1117] text-slate-200 overflow-hidden mt-10 sm:mt-5">
 
   <!-- Page wrapper -->
   <div class="flex flex-col min-h-screen overflow-hidden">
@@ -595,7 +595,7 @@ onDestroy(async () => {
 
             <div class="w-full flex flex-row">
             <!--Start Profile Pic-->
-            <div class="flex items-center justify-start mb-5 w-screen sm:w-full bg-[#111111] h-48 sm:rounded-xl border border-gray-700 sm:hover:border-gray-600">
+            <div class="flex items-center justify-start mb-5 w-screen sm:w-full bg-[#0d1117] h-48 sm:rounded-xl border border-gray-700 sm:hover:border-gray-600">
               <form 
                 on:submit={handleAvatar}
                 class="ml-5"
@@ -651,7 +651,7 @@ onDestroy(async () => {
 
                       <!--Start User Profile -->
                       <div class="space-y-6 ml-4">  
-                      <div class="rounded-xl bg-[#111111] h-48 w-full border border-gray-700 font-mono">
+                      <div class="rounded-xl bg-[#0d1117] h-48 w-full border border-gray-700 font-mono">
                         <!--Start Header-->
                         <div class="ml-2 w-full p-3">
                             <span class="text-white text-lg font-medium ml-0.5">User Profile</span>
@@ -661,17 +661,17 @@ onDestroy(async () => {
                         <!--Start Content-->
                         <div class="w-full p-2">
 
-                          <table class="font-semibold table table-compact bg-[#111111] text-start flex justify-start items-center w-full px-3 m-auto">
-                            <tbody class="bg-[#111111]">
+                          <table class="font-semibold table table-compact bg-[#0d1117] text-start flex justify-start items-center w-full px-3 m-auto">
+                            <tbody class="bg-[#0d1117]">
                               <!-- row 1 -->
                               <tr class="text-gray-300">
-                                <td class="bg-[#111111] border-b border-[#202020]">Karma: {data?.user?.karma}</td>
+                                <td class="bg-[#0d1117] border-b border-[#202020]">Karma: {data?.user?.karma}</td>
                                 <td class="bg-[#202020 border-b border-[#202020]">Posts: {userStats?.numberOfPosts}</td>
                               </tr>
                               <!-- row 2 -->
                               <tr class="text-gray-300">
-                                <td class="bg-[#111111]">Comments: {userStats?.numberOfComments}</td>
-                                <td class="bg-[#111111]"></td>
+                                <td class="bg-[#0d1117]">Comments: {userStats?.numberOfComments}</td>
+                                <td class="bg-[#0d1117]"></td>
                               </tr>
                             </tbody>
                           </table>
@@ -680,7 +680,7 @@ onDestroy(async () => {
 
                     {#if data?.user?.tier === 'Pro'}
                     <!--Start Badge-->
-                      <div class="rounded-xl bg-[#111111] h-48 w-full border border-gray-700 mt-14">
+                      <div class="rounded-xl bg-[#0d1117] h-48 w-full border border-gray-700 mt-14">
                         <!--Start Header-->
                         <div class="ml-2 w-full p-3">
                             <span class="text-white text-lg font-medium ml-0.5 ">Badge</span>
@@ -738,24 +738,24 @@ onDestroy(async () => {
               
 
               <div class="w-full" >
-                <ul class="w-full  font-medium flex flex-row items-center bg-[#111111] space-x-5 rtl:space-x-reverse py-2">
+                <ul class="w-full  font-medium flex flex-row items-center bg-[#0d1117] space-x-5 rtl:space-x-reverse py-2">
                   <li class="cursor-pointer flex flex-col items-center">
-                    <label on:click={() => changeTab('post')} class="cursor-pointer px-3 text-sm sm:text-[0.9rem] font-medium text-gray-400 sm:hover:text-white {showTab === 'post' ? 'text-white ' : 'bg-[#111111]'}" >
+                    <label on:click={() => changeTab('post')} class="cursor-pointer px-3 text-sm sm:text-[0.9rem] font-medium text-gray-400 sm:hover:text-white {showTab === 'post' ? 'text-white ' : 'bg-[#0d1117]'}" >
                       Posts
                     </label>
-                    <div class="{showTab === 'post' ? 'bg-[#75D377]' : 'bg-[#111111]'} mt-1 h-[3px] rounded-full w-[2.6rem]" />
+                    <div class="{showTab === 'post' ? 'bg-[#75D377]' : 'bg-[#0d1117]'} mt-1 h-[3px] rounded-full w-[2.6rem]" />
                   </li>
                   <li class="cursor-pointer flex flex-col items-center">
-                    <label on:click={() => changeTab('settings')} class="cursor-pointer px-3 text-sm sm:text-[0.9rem] font-medium text-gray-400 sm:hover:text-white {showTab === 'settings' ? 'text-white ' : 'bg-[#111111]'}" >
+                    <label on:click={() => changeTab('settings')} class="cursor-pointer px-3 text-sm sm:text-[0.9rem] font-medium text-gray-400 sm:hover:text-white {showTab === 'settings' ? 'text-white ' : 'bg-[#0d1117]'}" >
                       Settings
                     </label>
-                    <div class="{showTab === 'settings' ? 'bg-[#75D377]' : 'bg-[#111111]'} mt-1 h-[3px] rounded-full w-[3.5rem]" />
+                    <div class="{showTab === 'settings' ? 'bg-[#75D377]' : 'bg-[#0d1117]'} mt-1 h-[3px] rounded-full w-[3.5rem]" />
                   </li>
                   <li class="cursor-pointer flex flex-col items-center">
-                    <label on:click={() => changeTab('subscription')} class="cursor-pointer px-3 text-sm sm:text-[0.9rem] font-medium text-gray-400 sm:hover:text-white {showTab === 'subscription' ? 'text-white ' : 'bg-[#111111]'}" >
+                    <label on:click={() => changeTab('subscription')} class="cursor-pointer px-3 text-sm sm:text-[0.9rem] font-medium text-gray-400 sm:hover:text-white {showTab === 'subscription' ? 'text-white ' : 'bg-[#0d1117]'}" >
                       Subscription
                     </label>
-                    <div class="{showTab === 'subscription' ? 'bg-[#75D377]' : 'bg-[#111111]'} mt-1 h-[3px] rounded-full w-[5rem]" />
+                    <div class="{showTab === 'subscription' ? 'bg-[#75D377]' : 'bg-[#0d1117]'} mt-1 h-[3px] rounded-full w-[5rem]" />
                   </li>
                 </ul>
               </div>
@@ -808,8 +808,8 @@ onDestroy(async () => {
                               <div class="w-full">
 
                               <div class="tabs pb-10 pt-10 flex flex-row items-center">
-                                <label on:click={() => changeTab('personalData')} class="tab tab-sm pr-5 text-gray-400 hover:text-white {settingsTab === 'personalData' ? 'rounded text-white bg-[#333333]' : 'bg-[#111111]'}">Personal Data</label> 
-                                <label on:click={() => changeTab('changePassword')} class="tab tab-sm pl-5 text-gray-400 hover:text-white {settingsTab === 'changePassword' ? 'rounded text-white bg-[#333333]' : 'bg-[#111111]'}">Change Password</label> 
+                                <label on:click={() => changeTab('personalData')} class="tab tab-sm pr-5 text-gray-400 hover:text-white {settingsTab === 'personalData' ? 'rounded text-white bg-[#333333]' : 'bg-[#0d1117]'}">Personal Data</label> 
+                                <label on:click={() => changeTab('changePassword')} class="tab tab-sm pl-5 text-gray-400 hover:text-white {settingsTab === 'changePassword' ? 'rounded text-white bg-[#333333]' : 'bg-[#0d1117]'}">Change Password</label> 
                               </div>
 
                               {#if settingsTab ==='personalData'}
@@ -986,9 +986,9 @@ onDestroy(async () => {
 
                             <!--Start User Profile -->
                             <div class="space-y-6">  
-                            <div class="shadow-lg rounded-md bg-[#111111] h-auto w-full md:w-80 border border-gray-700">
+                            <div class="shadow-lg rounded-md bg-[#0d1117] h-auto w-full md:w-80 border border-gray-700">
                               <!--Start Header-->
-                              <div class="bg-[#111111] w-full p-3 ">
+                              <div class="bg-[#0d1117] w-full p-3 ">
                                 <svg style="clip-path: circle(50%);" class="flex-shrink-0 w-10 h-10 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><g fill="white"><path d="M32 20a8 8 0 1 1-16 0a8 8 0 0 1 16 0"/><path fill-rule="evenodd" d="M23.184 43.984C12.517 43.556 4 34.772 4 24C4 12.954 12.954 4 24 4s20 8.954 20 20s-8.954 20-20 20h-.274q-.272 0-.542-.016M11.166 36.62a3.028 3.028 0 0 1 2.523-4.005c7.796-.863 12.874-.785 20.632.018a2.99 2.99 0 0 1 2.498 4.002A17.94 17.94 0 0 0 42 24c0-9.941-8.059-18-18-18S6 14.059 6 24c0 4.916 1.971 9.373 5.166 12.621" clip-rule="evenodd"/></g></svg>
                                   <span class="text-white text-md ml-0.5 ">User Profile</span>
                               </div>
@@ -996,17 +996,17 @@ onDestroy(async () => {
                               <!--Start Content-->
                               <div class="w-full p-2 flex-1 flex flex-wrap">
 
-                                <table class="table table-compact bg-[#111111] text-start flex justify-start items-center w-full px-3 m-auto">
-                                  <tbody class="bg-[#111111]">
+                                <table class="table table-compact bg-[#0d1117] text-start flex justify-start items-center w-full px-3 m-auto">
+                                  <tbody class="bg-[#0d1117]">
                                     <!-- row 1 -->
                                     <tr class="text-gray-300">
-                                      <td class="bg-[#111111] border-b border-[#202020]">Karma: {data?.user?.karma}</td>
+                                      <td class="bg-[#0d1117] border-b border-[#202020]">Karma: {data?.user?.karma}</td>
                                       <td class="bg-[#202020 border-b border-[#202020]">Posts: {userStats?.numberOfPosts}</td>
                                     </tr>
                                     <!-- row 2 -->
                                     <tr class="text-gray-300">
-                                      <td class="bg-[#111111]">Comments: {userStats?.numberOfComments}</td>
-                                      <td class="bg-[#111111]"></td>
+                                      <td class="bg-[#0d1117]">Comments: {userStats?.numberOfComments}</td>
+                                      <td class="bg-[#0d1117]"></td>
                                     </tr>
                                   </tbody>
                                 </table>
@@ -1046,11 +1046,11 @@ onDestroy(async () => {
 <dialog id="cancelSubscriptionModal" class="modal modal-bottom sm:modal-middle">
 
 
-  <label for="cancelSubscriptionModal"  class="cursor-pointer modal-backdrop bg-[#111111] bg-opacity-[0.5]"></label>
+  <label for="cancelSubscriptionModal"  class="cursor-pointer modal-backdrop bg-[#0d1117] bg-opacity-[0.5]"></label>
   
 
   <!-- Desktop modal content -->
-  <form method="POST" action="?/cancelSubscription" use:enhance={submitCancellation}  class="modal-box w-full bg-[#111111] border border-[#2a2e39] flex flex-col items-center">
+  <form method="POST" action="?/cancelSubscription" use:enhance={submitCancellation}  class="modal-box w-full bg-[#0d1117] border border-[#2a2e39] flex flex-col items-center">
     <div class="mx-auto mb-8 h-1.5 w-20 flex-shrink-0 rounded-full bg-[#2a2e39]" />
     <div class="text-white mb-5 text-center">
       <h3 class="font-bold text-2xl mb-5">Are you sure?</h3>
@@ -1084,11 +1084,11 @@ onDestroy(async () => {
 <dialog id="reactivateSubscriptionModal" class="modal modal-bottom sm:modal-middle">
 
 
-  <label for="reactivateSubscriptionModal"  class="cursor-pointer modal-backdrop bg-[#111111] bg-opacity-[0.5]"></label>
+  <label for="reactivateSubscriptionModal"  class="cursor-pointer modal-backdrop bg-[#0d1117] bg-opacity-[0.5]"></label>
   
 
   <!-- Desktop modal content -->
-  <form method="POST" action="?/reactivateSubscription" use:enhance={submitReactivate}  class="modal-box w-full bg-[#111111] border border-[#2a2e39] flex flex-col items-center">
+  <form method="POST" action="?/reactivateSubscription" use:enhance={submitReactivate}  class="modal-box w-full bg-[#0d1117] border border-[#2a2e39] flex flex-col items-center">
     <div class="mx-auto mb-8 h-1.5 w-20 flex-shrink-0 rounded-full bg-[#2a2e39]" />
     <div class="text-white mb-5 text-center">
       <h3 class="font-bold text-2xl mb-5">Reactivate Subscription</h3>
@@ -1124,11 +1124,11 @@ onDestroy(async () => {
 <dialog id="changeSubscriptionModal" class="modal modal-bottom sm:modal-middle">
 
 
-  <label for="changeSubscriptionModal"  class="cursor-pointer modal-backdrop bg-[#111111] bg-opacity-[0.5]"></label>
+  <label for="changeSubscriptionModal"  class="cursor-pointer modal-backdrop bg-[#0d1117] bg-opacity-[0.5]"></label>
   
 
   <!-- Desktop modal content -->
-  <form method="POST" action="?/changeSubscription" use:enhance={submitChangePlan}  class="modal-box w-full bg-[#111111] border border-[#2a2e39] flex flex-col items-center">
+  <form method="POST" action="?/changeSubscription" use:enhance={submitChangePlan}  class="modal-box w-full bg-[#0d1117] border border-[#2a2e39] flex flex-col items-center">
     <div class="mx-auto mb-8 h-1.5 w-20 flex-shrink-0 rounded-full bg-[#2a2e39]" />
     <div class="text-white mb-5 text-center">
       <h3 class="font-bold text-2xl mb-5">Are you sure?</h3>
@@ -1161,11 +1161,11 @@ onDestroy(async () => {
 <dialog id="errorSubscriptionModal" class="modal modal-bottom sm:modal-middle">
 
 
-  <label for="errorSubscriptionModal"  class="cursor-pointer modal-backdrop bg-[#111111] bg-opacity-[0.5]"></label>
+  <label for="errorSubscriptionModal"  class="cursor-pointer modal-backdrop bg-[#0d1117] bg-opacity-[0.5]"></label>
   
 
   <!-- Desktop modal content -->
-  <div class="modal-box w-full bg-[#111111] border border-[#2a2e39] flex flex-col items-center">
+  <div class="modal-box w-full bg-[#0d1117] border border-[#2a2e39] flex flex-col items-center">
     <div class="mx-auto mb-8 h-1.5 w-20 flex-shrink-0 rounded-full bg-[#2a2e39]" />
     <div class="text-white mb-5 text-center">
       <h3 class="font-bold text-2xl mb-5">Paypal not supported</h3>

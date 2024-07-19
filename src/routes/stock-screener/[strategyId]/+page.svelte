@@ -856,13 +856,13 @@ $: {
 
             
             <!--Start Build Strategy-->
-            <div class="bg-[#111111] mt-5 sm:rounded-xl sm:border sm:hover:border-slate-700 sm:border-slate-800 pb-10">
+            <div class="bg-[#0d1117] mt-5 sm:rounded-xl sm:border sm:hover:border-slate-700 sm:border-slate-800 pb-10">
       
               <div class="text-slate-300 font-bold text-2xl flex flex-row justify-center sm:justify-start items-center pt-10 pb-5 ml-3 sm:ml-10">
                 Build Strategy
 
 
-              <label for="userLogin" on:click={handleSave} class="hidden sm:inline-flex ml-5 sm:hover:bg-[#2962ffab] bg-[#111111] cursor-pointer font-medium text-center text-white rounded-full px-4 py-1 text-sm border border-slate-800">
+              <label for="userLogin" on:click={handleSave} class="hidden sm:inline-flex ml-5 sm:hover:bg-[#2962ffab] bg-[#0d1117] cursor-pointer font-medium text-center text-white rounded-full px-4 py-1 text-sm border border-slate-800">
                 Save
               </label>
     
@@ -873,7 +873,7 @@ $: {
   
                       
               <div class="mt-3 sm:mt-0 w-full max-w-3xl flex flex-col justify-center sm:flex-row sm:justify-between items-center sm:ml-10">
-                <label id="step-1" for="ruleModal" class="w-5/6 sm:w-full text-white text-sm bg-[#111111] border border-slate-800 p-1.5 rounded-full cursor-pointer">
+                <label id="step-1" for="ruleModal" class="w-5/6 sm:w-full text-white text-sm bg-[#0d1117] border border-slate-800 p-1.5 rounded-full cursor-pointer">
                   <div class="flex justify-between items-center py-2 px-3">
                     {#if ruleName === ''}
                       Choose a rule
@@ -905,11 +905,11 @@ $: {
                  AI Trend Analysis (Bullish) {ruleCondition[ruleName]} {valueTrendAnalysis}%
   
                  <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                    <span class="label-text text-white">Below</span> 
                  </label>
                  <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                    <span class="label-text text-white">Above</span> 
                  </label>
                </div>
@@ -928,11 +928,11 @@ $: {
                   AI Fund. Analysis (Bullish) {ruleCondition[ruleName]} {valueFundamentalAnalysis}%
    
                   <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                    <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                    <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                     <span class="label-text text-white">Below</span> 
                   </label>
                   <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                    <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                    <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                     <span class="label-text text-white">Above</span> 
                   </label>
                 </div>
@@ -951,11 +951,11 @@ $: {
                 Revenue {ruleCondition[ruleName]} ${valueRevenue} Bn
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio" name="radio-revenue-below" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio" name="radio-revenue-below" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" name="radio-revenue-above" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" name="radio-revenue-above" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
       
@@ -977,11 +977,11 @@ $: {
                 Revenue Growth {ruleCondition[ruleName]} {valueGrowthRevenue} %
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
               </div>
@@ -999,11 +999,11 @@ $: {
                 Cost of Revenue {ruleCondition[ruleName]} ${valueCostOfRevenue} Bn
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio"  class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio"  class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
       
@@ -1022,11 +1022,11 @@ $: {
                 Cost of Revenue Growth {ruleCondition[ruleName]} {valueGrowthCostOfRevenue} %
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
               </div>
@@ -1043,11 +1043,11 @@ $: {
                  Cost & Expenses {ruleCondition[ruleName]} ${valueCostAndExpenses} Bn
        
                  <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                    <span class="label-text text-white">Below</span> 
                  </label>
                  <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                    <span class="label-text text-white">Above</span> 
                  </label>
        
@@ -1069,11 +1069,11 @@ $: {
                 Cost & Expenses Growth {ruleCondition[ruleName]} {valueGrowthCostAndExpenses} %
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
       
@@ -1095,11 +1095,11 @@ $: {
                 Net Income {ruleCondition[ruleName]} ${valueNetIncome} Bn
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
       
@@ -1122,11 +1122,11 @@ $: {
                 Net Income Growth {ruleCondition[ruleName]} {valueGrowthNetIncome} %
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
       
@@ -1149,11 +1149,11 @@ $: {
                 Gross Profit {ruleCondition[ruleName]} ${valueGrossProfit} Bn
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
               </div>
@@ -1172,11 +1172,11 @@ $: {
                 Gross Profit Growth {ruleCondition[ruleName]} {valueGrowthGrossProfit} %
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
       
@@ -1198,11 +1198,11 @@ $: {
                 R&D Expenses {ruleCondition[ruleName]} ${valueResearchAndDevelopmentExpenses} Bn
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
        
@@ -1224,11 +1224,11 @@ $: {
                 R&D Growth {ruleCondition[ruleName]} {valueGrowthResearchAndDevelopmentExpenses} %
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
       
@@ -1251,11 +1251,11 @@ $: {
                  Interest Income {ruleCondition[ruleName]} ${valueInterestIncome === 1000 ? `${valueInterestIncome / 1000} Bn` : `${valueInterestIncome} Mio`}
   
                  <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                    <span class="label-text text-white">Below</span> 
                  </label>
                  <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                    <span class="label-text text-white">Above</span> 
                  </label>
         
@@ -1278,11 +1278,11 @@ $: {
                   Interest Expenses {ruleCondition[ruleName]} ${valueInterestExpenses === 1000 ? `${valueInterestExpenses / 1000} Bn` : `${valueInterestExpenses} Mio`}
    
                   <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                    <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                    <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                     <span class="label-text text-white">Below</span> 
                   </label>
                   <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                    <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                    <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                     <span class="label-text text-white">Above</span> 
                   </label>
                 </div>
@@ -1301,11 +1301,11 @@ $: {
                   Avg. Volume {ruleCondition[ruleName]} {valueAvgVolume} Mio
    
                   <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                    <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                    <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                     <span class="label-text text-white">Below</span> 
                   </label>
                   <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                    <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                    <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                     <span class="label-text text-white">Above</span> 
                   </label>
                 </div>
@@ -1324,11 +1324,11 @@ $: {
                 Interest Expenses Growth {ruleCondition[ruleName]} {valueGrowthInterestExpenses} %
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
       
@@ -1351,11 +1351,11 @@ $: {
                  Operating Expenses {ruleCondition[ruleName]} ${valueOperatingExpenses} Bn
   
                  <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                    <span class="label-text text-white">Below</span> 
                  </label>
                  <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                    <span class="label-text text-white">Above</span> 
                  </label>
                </div>
@@ -1374,11 +1374,11 @@ $: {
                   Operating Expenses Growth {ruleCondition[ruleName]} {valueGrowthOperatingExpenses} %
         
                   <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                    <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                    <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                     <span class="label-text text-white">Below</span> 
                   </label>
                   <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                    <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                    <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                     <span class="label-text text-white">Above</span> 
                   </label>
         
@@ -1402,11 +1402,11 @@ $: {
                  Operating Income {ruleCondition[ruleName]} ${valueOperatingIncome} Bn
   
                  <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                    <span class="label-text text-white">Below</span> 
                  </label>
                  <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                    <span class="label-text text-white">Above</span> 
                  </label>
                </div>
@@ -1426,11 +1426,11 @@ $: {
                  Operating Income Growth {ruleCondition[ruleName]} {valueGrowthOperatingIncome} %
        
                  <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                    <span class="label-text text-white">Below</span> 
                  </label>
                  <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                    <span class="label-text text-white">Above</span> 
                  </label>
        
@@ -1477,11 +1477,11 @@ $: {
                  Market Cap {ruleCondition[ruleName]} ${valueMarketCap} Bn
        
                  <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                    <span class="label-text text-white">Below</span> 
                  </label>
                  <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                    <span class="label-text text-white">Above</span> 
                  </label>
        
@@ -1504,11 +1504,11 @@ $: {
                 EPS {ruleCondition[ruleName]} ${valueEPS}
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
       
@@ -1530,11 +1530,11 @@ $: {
                 EPS Growth {ruleCondition[ruleName]} {valueGrowthEPS} %
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
       
@@ -1556,11 +1556,11 @@ $: {
                  PE Ratio {ruleCondition[ruleName]} {valuePE}
        
                  <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                    <span class="label-text text-white">Below</span> 
                  </label>
                  <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                    <span class="label-text text-white">Above</span> 
                  </label>
        
@@ -1580,11 +1580,11 @@ $: {
                  PB Ratio {ruleCondition[ruleName]} {valuePriceToBookRatio}
        
                  <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                    <span class="label-text text-white">Below</span> 
                  </label>
                  <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                    <span class="label-text text-white">Above</span> 
                  </label>
        
@@ -1604,11 +1604,11 @@ $: {
                  PS Ratio {ruleCondition[ruleName]} {valuePriceToSalesRatio}
        
                  <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                    <span class="label-text text-white">Below</span> 
                  </label>
                  <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                    <span class="label-text text-white">Above</span> 
                  </label>
        
@@ -1630,11 +1630,11 @@ $: {
                 VaR {ruleCondition[ruleName]} {valueVaR}%
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
       
@@ -1655,11 +1655,11 @@ $: {
                  Beta {ruleCondition[ruleName]} {valueBeta}
        
                  <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                    <span class="label-text text-white">Below</span> 
                  </label>
                  <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                    <span class="label-text text-white">Above</span> 
                  </label>
                </div>
@@ -1675,11 +1675,11 @@ $: {
                   EBITDA {ruleCondition[ruleName]} ${valueEBITDA} Bn
         
                   <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                    <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                    <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                     <span class="label-text text-white">Below</span> 
                   </label>
                   <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                    <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                    <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                     <span class="label-text text-white">Above</span> 
                   </label>
         
@@ -1700,11 +1700,11 @@ $: {
                 EBITDA Growth {ruleCondition[ruleName]} {valueGrowthEBITDA} %
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
       
@@ -1728,11 +1728,11 @@ $: {
                  ESG Score {ruleCondition[ruleName]} {valueESGScore}
        
                  <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                    <span class="label-text text-white">Below</span> 
                  </label>
                  <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                    <span class="label-text text-white">Above</span> 
                  </label>
        
@@ -1753,11 +1753,11 @@ $: {
                   RSI {ruleCondition[ruleName]} {valueRSI}
        
                  <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                    <span class="label-text text-white">Below</span> 
                  </label>
                  <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                    <span class="label-text text-white">Above</span> 
                  </label>
                </div>
@@ -1775,11 +1775,11 @@ $: {
                   Stoch RSI {ruleCondition[ruleName]} {valueStochRSI}
        
                  <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                    <span class="label-text text-white">Below</span> 
                  </label>
                  <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                    <span class="label-text text-white">Above</span> 
                  </label>
                </div>
@@ -1797,11 +1797,11 @@ $: {
                   MFI {ruleCondition[ruleName]} {valueMFI}
        
                  <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                    <span class="label-text text-white">Below</span> 
                  </label>
                  <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                   <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                   <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                    <span class="label-text text-white">Above</span> 
                  </label>
                </div>
@@ -1818,11 +1818,11 @@ $: {
                  CCI {ruleCondition[ruleName]} {valueCCI}
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
               </div>
@@ -1839,11 +1839,11 @@ $: {
                  ATR {ruleCondition[ruleName]} {valueATR}
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
               </div>
@@ -1861,11 +1861,11 @@ $: {
                  SMA-50 {ruleCondition[ruleName]} {valueSMA50}
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
       
@@ -1886,11 +1886,11 @@ $: {
                  SMA-200 {ruleCondition[ruleName]} {valueSMA200}
       
                 <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                   <span class="label-text text-white">Below</span> 
                 </label>
                 <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                  <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                  <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                   <span class="label-text text-white">Above</span> 
                 </label>
       
@@ -1912,11 +1912,11 @@ $: {
                 EMA-50 {ruleCondition[ruleName]} {valueEMA50}
      
                <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                 <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                 <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                  <span class="label-text text-white">Below</span> 
                </label>
                <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                 <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                 <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                  <span class="label-text text-white">Above</span> 
                </label>
      
@@ -1937,11 +1937,11 @@ $: {
                 EMA-200 {ruleCondition[ruleName]} {valueEMA200}
      
                <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                 <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                 <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                  <span class="label-text text-white">Below</span> 
                </label>
                <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                 <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                 <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                  <span class="label-text text-white">Above</span> 
                </label>
      
@@ -1960,11 +1960,11 @@ $: {
              <div class="w-full max-w-xl text-white font-medium text-lg flex flex-row justify-center items-center">
                Change 1W {ruleCondition[ruleName]} {valueChange1W}%
               <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                 <span class="label-text text-white">Below</span> 
               </label>
               <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                 <span class="label-text text-white">Above</span> 
               </label>
               </div>
@@ -1979,11 +1979,11 @@ $: {
              <div class="w-full max-w-xl text-white font-medium text-lg flex flex-row justify-center items-center">
                Change 1M {ruleCondition[ruleName]} {valueChange1M}%
               <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                 <span class="label-text text-white">Below</span> 
               </label>
               <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                 <span class="label-text text-white">Above</span> 
               </label>
               </div>
@@ -1998,11 +1998,11 @@ $: {
              <div class="w-full max-w-xl text-white font-medium text-lg flex flex-row justify-center items-center">
                Change 3M {ruleCondition[ruleName]} {valueChange3M}%
               <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                 <span class="label-text text-white">Below</span> 
               </label>
               <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                 <span class="label-text text-white">Above</span> 
               </label>
               </div>
@@ -2017,11 +2017,11 @@ $: {
              <div class="w-full max-w-xl text-white font-medium text-lg flex flex-row justify-center items-center">
                Change 6M {ruleCondition[ruleName]} {valueChange6M}%
               <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                 <span class="label-text text-white">Below</span> 
               </label>
               <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                 <span class="label-text text-white">Above</span> 
               </label>
               </div>
@@ -2036,11 +2036,11 @@ $: {
              <div class="w-full max-w-xl text-white font-medium text-lg flex flex-row justify-center items-center">
                Change 1Y {ruleCondition[ruleName]} {valueChange1Y}%
               <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                 <span class="label-text text-white">Below</span> 
               </label>
               <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                 <span class="label-text text-white">Above</span> 
               </label>
               </div>
@@ -2055,11 +2055,11 @@ $: {
              <div class="w-full max-w-xl text-white font-medium text-lg flex flex-row justify-center items-center">
                Change 3Y {ruleCondition[ruleName]} {valueChange3Y}%
               <label on:click={() => changeRuleCondition('below')} class="ml-5 cursor-pointer flex flex-row mr-2 justify-center items-center">
-                <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
+                <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'below'} />
                 <span class="label-text text-white">Below</span> 
               </label>
               <label on:click={() => changeRuleCondition('above')} class="cursor-pointer flex flex-row ml-2 justify-center items-center">
-                <input type="radio" class="radio checked:bg-purple-600 bg-[#111111] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
+                <input type="radio" class="radio checked:bg-purple-600 bg-[#0d1117] border border-slate-800 mr-2" checked={ruleCondition[ruleName] === 'above'} />
                 <span class="label-text text-white">Above</span> 
               </label>
               </div>
@@ -2081,7 +2081,7 @@ $: {
                   <!--Start Rules Preview -->
                 
   
-                    <div id="step-3" class="w-full max-w-3xl bg-[#111111] sm:ml-10 h-auto max-h-[400px] no-scrollbar overflow-hidden overflow-y-scroll p-5 sm:rounded-xl border-b sm:border sm:hover:border-slate-700 border-slate-800 pb-10">
+                    <div id="step-3" class="w-full max-w-3xl bg-[#0d1117] sm:ml-10 h-auto max-h-[400px] no-scrollbar overflow-hidden overflow-y-scroll p-5 sm:rounded-xl border-b sm:border sm:hover:border-slate-700 border-slate-800 pb-10">
                       <div class="flex flex-row items-center pb-5 sm:pb-0">
                         <div class="text-white font-bold text-xl sm:text-2xl flex justify-start items-center">
                           {ruleOfList.length} Rules Preview
@@ -2124,7 +2124,7 @@ $: {
   
              
                <!--Start Running Mode Preview-->    
-               <div class="bg-[#111111] sm:border border-slate-800 sm:hover:border-slate-700 mt-5 sm:rounded-2xl ">
+               <div class="bg-[#0d1117] sm:border border-slate-800 sm:hover:border-slate-700 mt-5 sm:rounded-2xl ">
                 
                 
                  <!--Start Number of Matches-->
@@ -2132,7 +2132,7 @@ $: {
                   <div class="text-slate-300 font-bold text-xl flex justify-center sm:justify-start items-center ml-3 sm:ml-5 pt-5 pb-5">
                     {ruleOfList?.length !== 0 ? filteredData?.length : 0} Matches Found
                       <label for="modeInfo" class="cursor-pointer">
-                        <!--<svg class="w-6 h-6 inline-block ml-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#111111000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="info-circle"> <g> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#B46266" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> <line fill="none" stroke="#B46266" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="12" y2="16"></line> <line fill="none" stroke="#B46266" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="8"></line> </g> </g> </g> </g></svg>-->
+                        <!--<svg class="w-6 h-6 inline-block ml-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#0d1117000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="info-circle"> <g> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#B46266" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> <line fill="none" stroke="#B46266" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="12" y2="16"></line> <line fill="none" stroke="#B46266" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="8"></line> </g> </g> </g> </g></svg>-->
                       </label>
                   </div>
   
@@ -2143,19 +2143,19 @@ $: {
                 {#if displayResults?.length !== 0 && ruleOfList?.length !== 0}
                 
                   <div class="w-full rounded-lg overflow-x-auto p-0 sm:p-3">
-                    <table class="table table-sm table-compact w-full bg-[#111111] border-bg-[#111111]">
+                    <table class="table table-sm table-compact w-full bg-[#0d1117] border-bg-[#0d1117]">
                       <thead>
                         <tr class="border-b-[#1A1A27]">
-                          <th class="text-white bg-[#111111]  border border-slate-800text-sm border-b-[#111111]">Symbol</th>
-                          <th class="text-white hidden sm:table-cell bg-[#111111] text-sm border-b-[#111111]">Company Name</th>
-                          <th class="text-white bg-[#111111]  border border-slate-800text-sm border-b-[#111111]">Market Cap</th>
-                          <th class="text-white bg-[#111111]  border border-slate-800text-end text-sm border-b-[#111111]">Price</th>
+                          <th class="text-white bg-[#0d1117]  border border-slate-800text-sm border-b-[#0d1117]">Symbol</th>
+                          <th class="text-white hidden sm:table-cell bg-[#0d1117] text-sm border-b-[#0d1117]">Company Name</th>
+                          <th class="text-white bg-[#0d1117]  border border-slate-800text-sm border-b-[#0d1117]">Market Cap</th>
+                          <th class="text-white bg-[#0d1117]  border border-slate-800text-end text-sm border-b-[#0d1117]">Price</th>
                         </tr>
                       </thead>
                       <tbody>
                         {#each displayResults as item}
-                        <tr on:click={() => goto("/stocks/"+item?.symbol)} class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#111111] border-b-[#111111] odd:bg-[#111111] cursor-pointer">
-                          <td class="border-b-[#111111]">
+                        <tr on:click={() => goto("/stocks/"+item?.symbol)} class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b-[#0d1117] odd:bg-[#0d1117] cursor-pointer">
+                          <td class="border-b-[#0d1117]">
                             <div class="flex flex-col items-start">
                               <span class="text-[#FFBE00]">{item?.symbol}</span>
                               <span class="text-white text-xs sm:hidden">{item?.name?.length > charNumber ? item?.name?.slice(0,charNumber) + "..." : item?.name}</span>
@@ -2163,11 +2163,11 @@ $: {
                             
                           </td>
                           
-                          <td class="hidden sm:table-cell text-white border-b-[#111111]">
+                          <td class="hidden sm:table-cell text-white border-b-[#0d1117]">
                             {item?.name?.length > charNumber ? item?.name?.slice(0,charNumber) + "..." : item?.name}
                           </td>
                           
-                          <td class="text-white border-b-[#111111]">
+                          <td class="text-white border-b-[#0d1117]">
                             <span class="text-white text-sm ml-auto">
                               {#if item?.symbol?.includes('.DE') || item?.symbol?.includes('.F')}
                                 €{abbreviateNumber(item?.marketCap)}
@@ -2177,7 +2177,7 @@ $: {
                             </span>
                           </td>
 
-                          <td class="text-gray-200 border-b-[#111111]">
+                          <td class="text-gray-200 border-b-[#0d1117]">
                             <div class="flex flex-row justify-end items-center">
               
                               <div class="flex flex-col mt-3">
@@ -2255,10 +2255,10 @@ $: {
 <dialog id="ruleModal" class="modal modal-bottom sm:modal-middle ">
 
 
-  <label id="ruleModal" for="ruleModal" on:click={() => searchTerm = ''} class="cursor-pointer modal-backdrop bg-[#111111] bg-opacity-[0.5]"></label>
+  <label id="ruleModal" for="ruleModal" on:click={() => searchTerm = ''} class="cursor-pointer modal-backdrop bg-[#0d1117] bg-opacity-[0.5]"></label>
   
   
-  <div class="modal-box w-full bg-[#111111] border border-[#2a2e39] border border-slate-800  h-[800px] overflow-hidden ">
+  <div class="modal-box w-full bg-[#0d1117] border border-[#2a2e39] border border-slate-800  h-[800px] overflow-hidden ">
 
 
     <div class="flex flex-col w-full mt-10 sm:mt-0">
@@ -2289,7 +2289,7 @@ $: {
       </form>
       <!-- End Search bar-->
 
-      <div class="text-white text-sm bg-[#111111] bg-opacity-[0.4] overflow-y-scroll scroller pt-3 rounded-lg max-h-[500px] sm:max-h-[420px] md:max-h-[540px] lg:max-h-[600px]">
+      <div class="text-white text-sm bg-[#0d1117] bg-opacity-[0.4] overflow-y-scroll scroller pt-3 rounded-lg max-h-[500px] sm:max-h-[420px] md:max-h-[540px] lg:max-h-[600px]">
 
         <div class="text-white relative">
           
@@ -2304,13 +2304,13 @@ $: {
           <tbody>
             {#each (searchTerm?.length !== 0 ? filteredRows : allRows) as row, index}
               <tr on:click={() => changeRule(row?.rule)} class="hover:bg-[#333333] cursor-pointer">
-                <td class="border-b border-[#111111]">{index+1}</td>
-                <td class="border-b border-[#111111]">
+                <td class="border-b border-[#0d1117]">{index+1}</td>
+                <td class="border-b border-[#0d1117]">
                   {#if ruleOfList.find((rule) => rule?.name === row?.rule)}
                   <svg class="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 text-green-400 inline-block" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
                   {/if}
                 </td>
-                <td class="text-start border-b border-[#111111]">{row?.label}</td>
+                <td class="text-start border-b border-[#0d1117]">{row?.label}</td>
               </tr>
             {/each}
 
@@ -2334,8 +2334,8 @@ $: {
   <div class="drawer-side overflow-x-hidden">
     
     
-    <div class="menu w-screen min-h-full bg-[#111111] text-base-content overflow-hidden">
-      <div style="top: 0rem;" class="flex flex-row fixed sticky h-14 z-40 bg-[#111111] justify-center items-center w-full border-b border-slate-900">
+    <div class="menu w-screen min-h-full bg-[#0d1117] text-base-content overflow-hidden">
+      <div style="top: 0rem;" class="flex flex-row fixed sticky h-14 z-40 bg-[#0d1117] justify-center items-center w-full border-b border-slate-900">
           <label on:click={() => searchTerm = ''} for="ruleModal" class="cursor-pointer mr-auto ml-3">
             <svg class="w-6 h-6 inline-block " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#fff" d="M9.125 21.1L.7 12.7q-.15-.15-.213-.325T.425 12q0-.2.063-.375T.7 11.3l8.425-8.425q.35-.35.875-.35t.9.375q.375.375.375.875t-.375.875L3.55 12l7.35 7.35q.35.35.35.863t-.375.887q-.375.375-.875.375t-.875-.375Z"/></svg>
           </label>

@@ -301,7 +301,7 @@ onMount(async() => {
   
     
           
-    <section class="bg-[#111111] overflow-hidden text-white h-full mb-40 sm:mb-0">
+    <section class="bg-[#0d1117] overflow-hidden text-white h-full mb-40 sm:mb-0">
         <div class="flex justify-center w-fit m-auto h-full overflow-hidden">
             <div class="relative flex justify-center items-center overflow-hidden">
                   <div class="sm:p-7 sm:w-full sm:max-w-3xl m-auto mt-5 sm:mt-0">
@@ -396,7 +396,7 @@ onMount(async() => {
                       <div class="w-full grid grid-cols-2 lg:grid-cols-3 gap-y-3 lg:gap-y-3 gap-x-3 ">
       
                         <!--Start Put/Call-->  
-                        <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#111111] shadow-lg rounded-md h-20">
+                        <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#0d1117] shadow-lg rounded-md h-20">
                           <div class="flex flex-col items-start">
                               <span class="font-medium text-gray-200 text-xs sm:text-sm">Buy/Sell</span>
                               <span class="text-start text-sm sm:text-[1rem] font-medium text-white">
@@ -423,7 +423,7 @@ onMount(async() => {
                       </div>
                       <!--End Put/Call-->
                       <!--Start Call Flow-->  
-                      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#111111] shadow-lg rounded-md h-20">
+                      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#0d1117] shadow-lg rounded-md h-20">
                         <div class="flex flex-col items-start">
                             <span class="font-medium text-gray-200 text-xs sm:text-sm">Bought Shares</span>
                             <span class="text-start text-sm sm:text-[1rem] font-medium text-white">
@@ -452,7 +452,7 @@ onMount(async() => {
                       </div>
                       <!--End Call Flow-->
                       <!--Start Put Flow-->  
-                      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#111111] shadow-lg rounded-md h-20">
+                      <div class="flex flex-row items-center flex-wrap w-full px-3 sm:px-4 bg-[#0d1117] shadow-lg rounded-md h-20">
                         <div class="flex flex-col items-start">
                             <span class="font-medium text-gray-200 text-xs sm:text-sm">Sold Shares</span>
                             <span class="text-start text-sm sm:text-[1rem] font-medium text-white">
@@ -490,19 +490,19 @@ onMount(async() => {
 
 
                       <div class="hidden sm:flex justify-start items-center w-full m-auto rounded-none sm:rounded-lg mb-4">
-                          <table class="table table-sm table-pin-rows table-compact rounded-none sm:rounded-md w-full bg-[#111111] border-bg-[#111111] m-auto">
+                          <table class="table table-sm table-pin-rows table-compact rounded-none sm:rounded-md w-full bg-[#0d1117] border-bg-[#0d1117] m-auto">
                             <thead>
-                              <tr class="bg-[#111111] shadow-md">
-                                <th class="text-start bg-[#111111] text-white text-sm sm:font-medium">
+                              <tr class="bg-[#0d1117] shadow-md">
+                                <th class="text-start bg-[#0d1117] text-white text-sm sm:font-medium">
                                   Person
                                 </th>
-                                <th class="text-end bg-[#111111] hidden sm:table-cell text-white text-sm sm:font-medium">
+                                <th class="text-end bg-[#0d1117] hidden sm:table-cell text-white text-sm sm:font-medium">
                                   Transaction Date
                                 </th>
-                                <th class="text-end bg-[#111111]  text-white text-sm sm:font-medium">
+                                <th class="text-end bg-[#0d1117]  text-white text-sm sm:font-medium">
                                   Shares
                                 </th>
-                                <th class="text-end bg-[#111111]  text-white text-sm sm:font-medium">
+                                <th class="text-end bg-[#0d1117]  text-white text-sm sm:font-medium">
                                   Price
                                 </th>
                                 <th class="text-white sm:font-semibold text-end text-sm">Type</th>
@@ -510,7 +510,7 @@ onMount(async() => {
                             </thead>
                             <tbody>
                               {#each (data?.user?.tier === 'Pro' ? insiderTradingList : insiderTradingList?.slice(0,3)) as item, index}
-                              <tr class="text-gray-200 odd:bg-[#111111] {index+1 === insiderTradingList?.slice(0,3)?.length && data?.user?.tier !== 'Pro' ? 'opacity-[0.1]' : ''}">
+                              <tr class="text-gray-200 odd:bg-[#0d1117] {index+1 === insiderTradingList?.slice(0,3)?.length && data?.user?.tier !== 'Pro' ? 'opacity-[0.1]' : ''}">
       
                                 <td class="text-gray-200 border-b border-[#141720]">
                                   <div class="flex flex-col">
@@ -550,7 +550,7 @@ onMount(async() => {
 
                       <div class="relative sm:hidden w-full">
                         {#each insiderTradingList as item}
-                          <div class="bg-[#111111] border border-slate-800 shadow-lg rounded-lg h-auto pb-4 pl-2 pr-4 pt-4 mb-7">
+                          <div class="bg-[#0d1117] border border-slate-800 shadow-lg rounded-lg h-auto pb-4 pl-2 pr-4 pt-4 mb-7">
                               <div class="flex flex-row items-center">
                                 <label class="flex flex-col ml-2 w-40">
                                   <span class="text-white fónt-medium">Name</span>
@@ -641,7 +641,7 @@ onMount(async() => {
                   {:else}
                   <div class="flex justify-center items-center h-80">
                     <div class="relative">
-                    <label class="bg-[#111111] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <label class="bg-[#0d1117] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                         <span class="loading loading-spinner loading-md"></span>
                     </label>
                     </div>

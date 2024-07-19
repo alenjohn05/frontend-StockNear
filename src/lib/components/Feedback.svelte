@@ -117,7 +117,7 @@
       <label for="feedbackInfo"  class="cursor-pointer modal-backdrop bg-[#fff] bg-opacity-[0.05]"></label>
       
       
-      <div class="modal-box w-full bg-[#111111] border border-[#2a2e39]" >
+      <div class="modal-box w-full bg-[#0d1117] border border-[#2a2e39]" >
   
       <div class="flex flex-row items-center pt-5">
           <h1 class="text-white text-xl sm:text-2xl font-bold">
@@ -128,7 +128,7 @@
   
       <div class="p-2 mt-5 w-full ">
           <textarea
-            class="textarea textarea-bordered  placeholder-gray-300 w-full bg-[#111111] text-white border border-gray-600"
+            class="textarea textarea-bordered  placeholder-gray-300 w-full bg-[#0d1117] text-white border border-gray-600"
             placeholder="Your feedback..."
             value={inputValue}
             on:input={handleInput}
@@ -181,7 +181,7 @@
     <div class="drawer-side overflow-hidden">
     
         
-        <div class="bg-[#111111] min-h-screen w-screen pb-20 overflow-hidden">
+        <div class="bg-[#0d1117] min-h-screen w-screen pb-20 overflow-hidden">
   
           <label for="feedbackInfo" on:click={handleReturn} class="absolute left-6 top-4">
             <svg class="w-6 h-6 inline-block mb-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#fff" d="M9.125 21.1L.7 12.7q-.15-.15-.213-.325T.425 12q0-.2.063-.375T.7 11.3l8.425-8.425q.35-.35.875-.35t.9.375q.375.375.375.875t-.375.875L3.55 12l7.35 7.35q.35.35.35.863t-.375.887q-.375.375-.875.375t-.875-.375Z"/></svg>
@@ -199,7 +199,7 @@
         
             <div class="pl-7 pr-7 w-full ">
                 <textarea
-                  class="textarea textarea-bordered h-24 placeholder-gray-300 w-full bg-[#111111] text-white border border-gray-600"
+                  class="textarea textarea-bordered h-24 placeholder-gray-300 w-full bg-[#0d1117] text-white border border-gray-600"
                   placeholder="Your feedback..."
                   value={inputValue}
                   on:input={handleInput}

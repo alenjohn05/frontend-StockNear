@@ -41,7 +41,7 @@
   </div>
   -->
 
-  <div  class="w-full m-auto sm:bg-[#111111] sm:rounded-xl h-auto p-10 mt-3 mb-5 sm:mb-10">
+  <div  class="w-full m-auto sm:bg-[#0d1117] sm:rounded-xl h-auto p-10 mt-3 mb-5 sm:mb-10">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
   
       <!-- Start Column -->
@@ -85,7 +85,7 @@
   </div>
 
 
-  <div class="card w-full bg-[#111111] border-t rounded-none sm:rounded-xl sm:border border-[#3F3F4080] m-auto">
+  <div class="card w-full bg-[#0d1117] border-t rounded-none sm:rounded-xl sm:border border-[#3F3F4080] m-auto">
     <div class="card-body">
       <p class="text-white italic mb-2">
         As per Indian regulations

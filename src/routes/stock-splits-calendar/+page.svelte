@@ -279,7 +279,7 @@
   -->
 
   <div
-    class="w-full max-w-4xl m-auto sm:bg-[#111111] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pt-10 sm:pb-10 sm:mt-3 mb-8"
+    class="w-full max-w-4xl m-auto sm:bg-[#0d1117] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pt-10 sm:pb-10 sm:mt-3 mb-8"
   >
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
       <!-- Start Column -->
@@ -433,7 +433,7 @@
         {#if index === selectedWeekday}
           {#if day?.length !== 0}
             <table
-              class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#111111] m-auto mt-4"
+              class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
             >
               <thead>
                 <tr>
@@ -454,16 +454,16 @@
                   <!-- row -->
                   <tr
                     on:click={() => goto("/stocks/" + item?.symbol)}
-                    class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#111111] border-b-[#111111] shake-ticker cursor-pointer"
+                    class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b-[#0d1117] shake-ticker cursor-pointer"
                   >
                     <th
                       class="{index % 2
-                        ? 'bg-[#111111]'
-                        : 'bg-[#1A1A1A]'} text-gray-200"
+                        ? 'bg-[#0d1117]'
+                        : 'bg-[#161b22]'} text-gray-200"
                     >
                       <div class="flex flex-row items-center">
                         <div
-                          class="flex-shrink-0 rounded-full w-9 h-9 relative bg-[#111111] flex items-center justify-center"
+                          class="flex-shrink-0 rounded-full w-9 h-9 relative bg-[#0d1117] flex items-center justify-center"
                         >
                           <img
                             style="clip-path: circle(50%);"
@@ -477,8 +477,8 @@
                     </th>
                     <td
                       class="{index % 2
-                        ? 'bg-[#111111]'
-                        : 'bg-[#1A1A1A]'} border-b-[#111111]"
+                        ? 'bg-[#0d1117]'
+                        : 'bg-[#161b22]'} border-b-[#0d1117]"
                     >
                       <label
                         on:click={() => goto("/stocks/" + item?.SecurityID)}
@@ -489,8 +489,8 @@
                     </td>
                     <td
                       class="{index % 2
-                        ? 'bg-[#111111]'
-                        : 'bg-[#1A1A1A]'} text-white border-b-[#111111]"
+                        ? 'bg-[#0d1117]'
+                        : 'bg-[#161b22]'} text-white border-b-[#0d1117]"
                     >
                       {item?.Purpose}
                     </td>
@@ -502,7 +502,7 @@
             <div class="relative p-2 sm:hidden pt-5">
               {#each day as item, index}
                 <div
-                  class="bg-[#111111] rounded-lg border border-slate-800 h-auto pb-3 pl-2 pr-2 pt-4 mb-7"
+                  class="bg-[#0d1117] rounded-lg border border-slate-800 h-auto pb-3 pl-2 pr-2 pt-4 mb-7"
                 >
                   <div class="flex flex-row items-center">
                     <div

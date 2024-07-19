@@ -157,7 +157,7 @@ onMount(async() => {
   
 
           
-    <section class="bg-[#111111] overflow-hidden text-white h-full mb-40 sm:mb-0">
+    <section class="bg-[#0d1117] overflow-hidden text-white h-full mb-40 sm:mb-0">
         <div class="flex justify-center m-auto h-full overflow-hidden">
             <div class="relative flex justify-center items-center overflow-hidden">
                   <div class="sm:p-7 w-full m-auto mt-2 sm:mt-0">
@@ -198,7 +198,7 @@ onMount(async() => {
     
                       {#if stockDividends?.length !== 0}
       
-                          <div class="grid grid-cols-2 sm:grid-cols-3 gap-10 sm:gap-5 bg-[#111111] shadow-md rounded-xl p-5 flex justify-center items-center mb-2">
+                          <div class="grid grid-cols-2 sm:grid-cols-3 gap-10 sm:gap-5 bg-[#0d1117] shadow-md rounded-xl p-5 flex justify-center items-center mb-2">
                               <!--Start Column Title-->
                               <div class="flex flex-col">
                                 <div class="flex flex-row items-center">
@@ -322,24 +322,24 @@ onMount(async() => {
                             <div class="flex justify-start items-center w-full m-auto shadow-md rounded-none sm:rounded-lg mb-4">
                               <table class="table table-sm table-compact flex justify-start items-center w-full m-auto">
                                 <thead>
-                                  <tr class="bg-[#111111] border-b-slate-600 shadow-md">
-                                    <th class="text-start bg-[#111111] border-b border-[#141720] text-white text-sm font-semibold">
+                                  <tr class="bg-[#0d1117] border-b-slate-600 shadow-md">
+                                    <th class="text-start bg-[#0d1117] border-b border-[#141720] text-white text-sm font-semibold">
                                       Ex-Divid. Date
                                     </th>
-                                    <th class="text-end bg-[#111111] border-b border-[#141720] text-white text-sm font-semibold">
+                                    <th class="text-end bg-[#0d1117] border-b border-[#141720] text-white text-sm font-semibold">
                                       Cash Amount
                                     </th>
-                                    <th class="text-end bg-[#111111] border-b border-[#141720] hidden sm:table-cell text-white text-sm font-semibold">
+                                    <th class="text-end bg-[#0d1117] border-b border-[#141720] hidden sm:table-cell text-white text-sm font-semibold">
                                       Record Date
                                     </th>
-                                    <th class="text-end bg-[#111111] border-b border-[#141720] text-white text-sm font-semibold">
+                                    <th class="text-end bg-[#0d1117] border-b border-[#141720] text-white text-sm font-semibold">
                                       Pay Date
                                     </th>
                                   </tr>
                                 </thead>
                                 <tbody class="shadow-md">
                                   {#each stockDividends as item}
-                                  <tr class="text-gray-200 odd:bg-[#111111]">
+                                  <tr class="text-gray-200 odd:bg-[#0d1117]">
                                     <td class="text-start text-xs sm:text-sm text-white font-medium border-b border-[#141720]">
                                       {new Date(item?.date)?.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', daySuffix: '2-digit' })}
                                     </td>

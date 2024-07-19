@@ -64,7 +64,7 @@
 />
 
 <div
-  class="w-full max-w-screen overflow-hidden m-auto min-h-screen bg-[#111111]"
+  class="w-full max-w-screen overflow-hidden m-auto min-h-screen bg-[#0d1117]"
 >
   <div
     class="m-auto flex flex-wrap flex-col justify-center items-center md:flex-row"
@@ -254,7 +254,7 @@
                       >
                         <div
                           use:intersect={intersectOptions}
-                          class="card bg-[#111111] border border-[#2a2e39] sm:w-96 shadow-xl rounded-none sm:rounded-lg invisible"
+                          class="card bg-[#0d1117] border border-[#2a2e39] sm:w-96 shadow-xl rounded-none sm:rounded-lg invisible"
                         >
                           <div class="card-body">
                             <h2
@@ -284,7 +284,7 @@
 
                         <div
                           use:intersect={intersectOptions}
-                          class="card bg-[#111111] border border-[#2a2e39] sm:w-96 shadow-xl rounded-none sm:rounded-lg invisible"
+                          class="card bg-[#0d1117] border border-[#2a2e39] sm:w-96 shadow-xl rounded-none sm:rounded-lg invisible"
                         >
                           <div class="card-body">
                             <h2
@@ -316,7 +316,7 @@
 
                         <div
                           use:intersect={intersectOptions}
-                          class="card bg-[#111111] border border-[#2a2e39] sm:w-96 shadow-xl rounded-none sm:rounded-lg invisible"
+                          class="card bg-[#0d1117] border border-[#2a2e39] sm:w-96 shadow-xl rounded-none sm:rounded-lg invisible"
                         >
                           <div class="card-body">
                             <h2

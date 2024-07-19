@@ -164,7 +164,7 @@
                         <td class="text-start text-white font-medium">
                           1-Day Range
                         </td>
-                        <td class="bg-[#111111]">
+                        <td class="bg-[#0d1117]">
                           <div class="flex flex-col items-start">
                             <div class="flex justify-between w-full mb-1.5">
                               <span class="text-start">{dayLow}</span>
@@ -179,25 +179,25 @@
                         <td class="text-start text-white font-medium">
                           1-Day Range
                         </td>
-                        <td class="bg-[#111111]">
+                        <td class="bg-[#0d1117]">
                           {dayLow}
                         </td>
-                        <td class="bg-[#111111]">
+                        <td class="bg-[#0d1117]">
                           <!--<span class="text-center flex justify-center items-center ">158.8</span>-->
                           <progress class="progress [&::-webkit-progress-value]:bg-blue-600 [&::-moz-progress-bar]:bg-blue-600 bg-white w-[200px] sm:w-full h-[4px]" min={dayLow} value={currentPrice} max={dayHigh} />
                         </td>
-                        <td class="bg-[#111111] ">
+                        <td class="bg-[#0d1117] ">
                           {dayHigh}
                         </td>
                         {/if}
                       </tr>
                       <!--2 row -->
-                      <tr class="text-white bg-[#111111]">
+                      <tr class="text-white bg-[#0d1117]">
                         {#if $screenWidth < 640}
                         <td class="text-start text-white font-medium">
                           1-Year Range
                         </td>
-                        <td class="bg-[#111111]">
+                        <td class="bg-[#0d1117]">
                           <div class="flex flex-col items-start">
                             <div class="flex justify-between w-full mb-1.5">
                               <span class="text-start">{yearLow}</span>
@@ -212,13 +212,13 @@
                         <td class="text-start text-white font-medium">
                           1-Year Range
                         </td>
-                        <td class="bg-[#111111]">
+                        <td class="bg-[#0d1117]">
                           {yearLow}
                         </td>
-                        <td class="bg-[#111111]">
+                        <td class="bg-[#0d1117]">
                           <progress class="progress [&::-webkit-progress-value]:bg-blue-600 [&::-moz-progress-bar]:bg-blue-600 w-full bg-white h-[4px]" min={yearLow} value={currentPrice} max={yearHigh} />
                         </td>
-                        <td class="bg-[#111111]">
+                        <td class="bg-[#0d1117]">
                           {yearHigh}
                         </td>
                         {/if}
@@ -238,14 +238,14 @@
                   <table class="table table-sm table-compact text-start flex justify-start items-center w-full px-3 m-auto">
                     <tbody class="shadow-md">
                       <!-- row 1 -->
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start text-white ">Mkt Cap</td>
                         <td class="text-end"> ${marketCap}</td>
                         <td class="text-end text-white ">Volume</td>
                         <td class="text-end">{volume}</td>
                       </tr>
                       <!-- row 2 -->
-                      <tr class="text-white odd:bg-[#111111] ">
+                      <tr class="text-white odd:bg-[#0d1117] ">
                         <td class="text-start">Price</td>
                         <td class="text-end" >${currentPrice}</td>
                         <td class="text-end text-white ">Prev. Close</td>
@@ -253,7 +253,7 @@
                       </tr>
                       <!-- row 3 -->
                       
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start text-white ">Alpha</td>
                         <td class="text-end">
                           {typeof alpha !== 'undefined' ? alpha : '-'}
@@ -277,7 +277,7 @@
                 </h3>
                 <table class="table table-sm table-pin-rows table-compact text-start w-full flex justify-start items-center m-auto">
                   <thead>
-                    <tr class="bg-[#111111] border-slate-800 rounded text-white font-semibold">
+                    <tr class="bg-[#0d1117] border-slate-800 rounded text-white font-semibold">
                       <th class="text-start text-sm w-36 sm:w-56">Started</th>
                       <th class="text-sm text-end">Recovered</th>
                       <th class="text-sm text-end">Drawdown</th>
@@ -286,7 +286,7 @@
                   </thead>
                   <tbody class="shadow-md">
                     {#each quantStats[$cryptoTicker?.toUpperCase()]['Worst 10 Drawdowns'] as item}
-                      <tr class="text-white border-y border-gray-800 odd:bg-[#111111]">
+                      <tr class="text-white border-y border-gray-800 odd:bg-[#0d1117]">
                         <td class="text-start text-sm text-white w-36 sm:w-56">
                           {new Date(item['Started']).toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', daySuffix: '2-digit' })}
                         </td>
@@ -332,11 +332,11 @@
                 <div class="flex flex-col justify-center items-center w-full m-auto">
                   <table class="table table-sm table-pin-rows table-compact text-start w-full flex justify-start items-center w-full m-auto">
                     <thead>
-                      <tr class="bg-[#111111] text-white text-sm font-medium">
+                      <tr class="bg-[#0d1117] text-white text-sm font-medium">
                         <th class="text-start">
                           Metric
                         </th>
-                        <th class="text-end bg-[#111111]">
+                        <th class="text-end bg-[#0d1117]">
                           {$cryptoTicker}
                         </th>
                         <th class="text-end">
@@ -345,7 +345,7 @@
                       </tr>
                     </thead>
                     <tbody class="shadow-md">
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start text-white  w-36 sm:w-56">
                           Cumulative Return
                         </td>
@@ -365,7 +365,7 @@
                         </td>
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start">
                           Compound Annual Growth Rate (CAGR)
                         </td>
@@ -385,7 +385,7 @@
                         </td>
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start   w-36 sm:w-56">
                           Sharpe
                         </td>
@@ -397,7 +397,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] ">
+                      <tr class="text-white odd:bg-[#0d1117] ">
                         <td class="text-start  ">
                           Sortino
                         </td>
@@ -409,7 +409,7 @@
                         </td>  
                       </tr>
                       
-                        <tr class="text-white odd:bg-[#111111] font-semibold">
+                        <tr class="text-white odd:bg-[#0d1117] font-semibold">
                           <td class="text-start text-white  w-36 sm:w-56">
                             Max Drawdown
                           </td>
@@ -429,7 +429,7 @@
                           </td>  
                         </tr>
     
-                        <tr class="text-white odd:bg-[#111111] font-semibold">
+                        <tr class="text-white odd:bg-[#0d1117] font-semibold">
                           <td class="text-start   ">
                             Longest Drawdown Days
                           </td>
@@ -442,7 +442,7 @@
                         </tr>
                       
     
-                        <tr class="text-white odd:bg-[#111111] font-semibold">
+                        <tr class="text-white odd:bg-[#0d1117] font-semibold">
                           <td class="text-start   w-36 sm:w-56">
                             Volatility (ann.)
                           </td>
@@ -454,7 +454,7 @@
                           </td>  
                         </tr>
     
-                        <tr class="text-white odd:bg-[#111111] font-semibold">
+                        <tr class="text-white odd:bg-[#0d1117] font-semibold">
                           <td class="text-start   w-36 sm:w-56">
                             Correlation
                           </td>
@@ -466,7 +466,7 @@
                           </td>  
                         </tr>
     
-                        <tr class="text-white odd:bg-[#111111] font-semibold">
+                        <tr class="text-white odd:bg-[#0d1117] font-semibold">
                           <td class="text-start text-white ">
                             R^2
                           </td>
@@ -478,7 +478,7 @@
                           </td>  
                         </tr>
     
-                        <tr class="text-white odd:bg-[#111111] font-semibold">
+                        <tr class="text-white odd:bg-[#0d1117] font-semibold">
                           <td class="text-start text-white  ">
                             Calmar
                           </td>
@@ -491,7 +491,7 @@
                         </tr>
     
     
-                        <tr class="text-white odd:bg-[#111111] font-semibold">
+                        <tr class="text-white odd:bg-[#0d1117] font-semibold">
                           <td class="text-start text-white  ">
                             Skew
                           </td>
@@ -503,7 +503,7 @@
                           </td>  
                         </tr>
     
-                        <tr class="text-white odd:bg-[#111111] font-semibold">
+                        <tr class="text-white odd:bg-[#0d1117] font-semibold">
                           <td class="text-start text-white  ">
                             Kurtosis
                           </td>
@@ -517,7 +517,7 @@
                           
   
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  w-36 sm:w-56">
                           Expected Daily
                         </td>
@@ -537,7 +537,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start text-white ">
                           Expected Monthly
                         </td>
@@ -557,7 +557,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start text-white ">
                           Expected Yearly
                         </td>
@@ -577,7 +577,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start text-white ">
                           Kelly Criterion
                         </td>
@@ -589,7 +589,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start text-white ">
                           Risk of Ruin
                         </td>
@@ -601,7 +601,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           Daily Value-at-Risk
                         </td>
@@ -621,7 +621,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start text-white ">
                           Expected Shortfall (cVaR)
                         </td>
@@ -642,7 +642,7 @@
                       </tr>
                         
   
-                        <tr class="text-white odd:bg-[#111111] font-semibold">
+                        <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start text-white  w-36 sm:w-56">
                           Max Consecutive Wins
                         </td>
@@ -654,7 +654,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start text-white  w-36 sm:w-56">
                           Max Consecutive Losses
                         </td>
@@ -666,7 +666,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  w-36 sm:w-56">
                           Gain/Pain Ratio
                         </td>
@@ -679,7 +679,7 @@
                       </tr>
                       
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           Gain/Pain (1M)
                         </td>
@@ -691,7 +691,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           Payoff Ratio
                         </td>
@@ -703,7 +703,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           Profit Factor
                         </td>
@@ -715,7 +715,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           Outlier Win Ratio
                         </td>
@@ -727,7 +727,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           Outlier Loss Ratio
                         </td>
@@ -739,7 +739,7 @@
                         </td>  
                       </tr>
                         
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  w-36 sm:w-56">
                           MTD
                         </td>
@@ -759,7 +759,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           3M
                         </td>
@@ -779,7 +779,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           6M
                         </td>
@@ -799,7 +799,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           YTD
                         </td>
@@ -819,7 +819,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           1Y
                         </td>
@@ -839,7 +839,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           3Y (ann.)
                         </td>
@@ -859,7 +859,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  w-36 sm:w-56">
                           Best Day
                         </td>
@@ -879,7 +879,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           Worst Day
                         </td>
@@ -899,7 +899,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           Best Month
                         </td>
@@ -919,7 +919,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           Worst Month
                         </td>
@@ -939,7 +939,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           Best Year
                         </td>
@@ -959,7 +959,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           Worst Year
                         </td>
@@ -979,7 +979,7 @@
                         </td>  
                       </tr>
                         
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  w-36 sm:w-56">
                           Avg. Drawdown
                         </td>
@@ -999,7 +999,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           Avg. Drawdown Days
                         </td>
@@ -1011,7 +1011,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           Recovery Factor
                         </td>
@@ -1023,7 +1023,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           Ulcer Index
                         </td>
@@ -1036,7 +1036,7 @@
                       </tr>
                         
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  w-36 sm:w-56">
                           Avg. Up Month
                         </td>
@@ -1056,7 +1056,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           Avg. Down Month
                         </td>
@@ -1077,7 +1077,7 @@
                       </tr>
   
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           Win Days
                         </td>
@@ -1089,7 +1089,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           Win Month
                         </td>
@@ -1101,7 +1101,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           Win Quarter
                         </td>
@@ -1113,7 +1113,7 @@
                         </td>  
                       </tr>
   
-                      <tr class="text-white odd:bg-[#111111] font-semibold">
+                      <tr class="text-white odd:bg-[#0d1117] font-semibold">
                         <td class="text-start  ">
                           Win Year
                         </td>

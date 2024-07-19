@@ -15,12 +15,12 @@
 <dialog {id} class="modal modal-bottom sm:modal-middle">
   <label
     for={id}
-    class="cursor-pointer modal-backdrop bg-[#111111] bg-opacity-[0.5]"
+    class="cursor-pointer modal-backdrop bg-[#0d1117] bg-opacity-[0.5]"
   ></label>
 
   <!-- Desktop modal content -->
   <div
-    class="modal-box w-full bg-[#111111] border border-[#2a2e39] flex flex-col items-center"
+    class="modal-box w-full bg-[#0d1117] border border-[#2a2e39] flex flex-col items-center"
   >
     <div
       class="mx-auto mb-8 h-1.5 w-30 flex-shrink-0 rounded-full bg-[#2a2e39]"

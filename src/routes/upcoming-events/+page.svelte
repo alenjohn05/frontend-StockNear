@@ -90,7 +90,7 @@
 </svelte:head>
 
 <section
-  class="w-full max-w-7xl m-auto sm:bg-[#111111] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8"
+  class="w-full max-w-7xl m-auto sm:bg-[#0d1117] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8"
 >
   <div class="flex flex-row items-start">
     <h1 class="text-3xl sm:text-4xl text-white text-start font-bold mb-5">
@@ -104,7 +104,7 @@
       Today's Events
     </h1>
     <table
-      class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#111111] m-auto mt-4"
+      class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
     >
       <thead>
         <tr>
@@ -119,19 +119,19 @@
         {#each dailyEvents as item, index}
           <!-- row -->
           <tr
-            class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#111111] border-b border-[#1a1a1a] shake-ticker cursor-pointer"
+            class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
           >
             <td
               class="{index % 2
-                ? 'bg-[#111111]'
-                : 'bg-[#1A1A1A]'} border-b-[#111111]"
+                ? 'bg-[#0d1117]'
+                : 'bg-[#161b22]'} border-b-[#0d1117]"
             >
               {format(new Date(item.Date), "dd-MM-yyyy")}
             </td>
             <td
               class="{index % 2
-                ? 'bg-[#111111]'
-                : 'bg-[#1A1A1A]'} text-white border-b-[#111111]"
+                ? 'bg-[#0d1117]'
+                : 'bg-[#161b22]'} text-white border-b-[#0d1117]"
             >
               {item?.Description}
             </td>
@@ -144,7 +144,7 @@
     <h1 class="text-xl sm:text-xl text-white text-start font-bold mt-10 mb-5">
       Exchange Announcements
     </h1>
-    <div class="bg-[#1A1A1A]">
+    <div class="bg-[#161b22]">
       <label class="flex flex-row items-center">
         <input
           id="modal-search"
@@ -168,15 +168,15 @@
     </div>
   </div>
   <ul
-    class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-[#1A1A1A] dark:border-[#1A1A1A] dark:text-[#1A1A1A]"
+    class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-[#161b22] dark:border-[#161b22] dark:text-[#161b22]"
   >
     {#each tabs as tab}
       <li class="me-2">
         <a
           href="#"
           class="inline-block p-2 {activeTab === tab.id
-            ? 'border-b border-blue-300 text-white bg-[#1A1A1A] active dark:bg-[#1a1a1a] dark:text-white'
-            : ' text-gray-500 bg-[#111111] active dark:bg-[#111111] dark:text-white'}"
+            ? 'border-b border-blue-300 text-white bg-[#161b22] active dark:bg-[#161b22] dark:text-white'
+            : ' text-gray-500 bg-[#0d1117] active dark:bg-[#0d1117] dark:text-white'}"
           on:click|preventDefault={() => setActiveTab(tab.id)}
         >
           {tab.label}
@@ -189,7 +189,7 @@
     class=" w-full justify-center m-auto items-center pl-2 pr-2 sm:pl-0 sm:pr-0 mb-10"
   >
     <table
-      class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#111111] m-auto mt-4"
+      class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
     >
       <thead>
         <tr>
@@ -214,33 +214,33 @@
         {#each rawData as item, index}
           <!-- row -->
           <tr
-            class="sm:hover:bg-[#245073]  sm:hover:bg-opacity-[0.2] bg-[#111111] border-b border-[#1a1a1a] shake-ticker cursor-pointer"
+            class="sm:hover:bg-[#245073]  sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
           >
             <td
               class="{index % 2
-                ? 'bg-[#111111]'
-                : 'bg-[#1A1A1A]'} border-b-[#111111] text-xs font-bold"
+                ? 'bg-[#0d1117]'
+                : 'bg-[#161b22]'} border-b-[#0d1117] text-xs font-bold"
             >
               {item.date}
             </td>
             <td
               class="{index % 2
-                ? 'bg-[#111111]'
-                : 'bg-[#1A1A1A]'} text-[#FFBE00] text-xs border-b-[#111111]"
+                ? 'bg-[#0d1117]'
+                : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
             >
               {item?.symbol}
             </td>
             <td
               class="{index % 2
-                ? 'bg-[#111111]'
-                : 'bg-[#1A1A1A]'} text-white text-xs border-b-[#111111]"
+                ? 'bg-[#0d1117]'
+                : 'bg-[#161b22]'} text-white text-xs border-b-[#0d1117]"
             >
               {item?.comp_name}
             </td>
             <td
               class="{index % 2
-                ? 'bg-[#111111]'
-                : 'bg-[#1A1A1A]'} flex items-center text-xs justify-start text-white border-b-[#111111] hover:text-blue-500 font-bold"
+                ? 'bg-[#0d1117]'
+                : 'bg-[#161b22]'} flex items-center text-xs justify-start text-white border-b-[#0d1117] hover:text-blue-500 font-bold"
             >
               <label class="cursor-pointer" for={item?.symbol}> {item?.description}</label>
               <InfoModal
