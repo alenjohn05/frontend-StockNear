@@ -1,8 +1,6 @@
 <script lang="ts">
   import { numberOfUnreadNotification } from "$lib/store";
-  import { compareTwoStrings } from "string-similarity";
   import { format } from "date-fns";
-  import InfoModal from "$lib/components/InfoModal.svelte";
   export let data;
   let dailyEvents = data?.GetDailyEvents;
   let NseEvents = data?.GetDailyNSEAnnouncements;
@@ -199,7 +197,7 @@
           >
           <th
             class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
-            >File Refference</th
+            >File Reference</th
           >
         </tr>
       </thead>

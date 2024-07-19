@@ -1139,17 +1139,34 @@ syncWorker.onmessage = handleTwitchMessage;
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
                   class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page.url.pathname?.includes(
-                    '/ipos'
+                    '/ipo-calender'
                   )
                     ? 'text-white bg-purple-700 rounded-md '
                     : ''}"
                 >
                   <a
-                    href={"/ipos/2024"}
+                    href={"/ipo-calender"}
                     class="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                   >
                     <span class="text-sm font-medium text-white">
                       IPO Calendar
+                    </span>
+                  </a>
+                </li>
+                <li
+                  on:click={() => (showSidebar = !showSidebar)}
+                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page.url.pathname?.includes(
+                    '/stock-results'
+                  )
+                    ? 'text-white bg-purple-700 rounded-md '
+                    : ''}"
+                >
+                  <a
+                    href={"/stock-results"}
+                    class="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
+                  >
+                    <span class="text-sm font-medium text-white">
+                      Latest Results
                     </span>
                   </a>
                 </li>
@@ -1458,7 +1475,7 @@ syncWorker.onmessage = handleTwitchMessage;
                 '/market-news/mutual-fund',
                 '/market-news/economy',
                 '/market-news/mutual-fund',
-                '/market-news/derivatives-news',
+                '/market-news/derivatives-news'
               ]?.includes($page.url.pathname)
                 ? 'text-white bg-purple-700 rounded-md '
                 : ''}"

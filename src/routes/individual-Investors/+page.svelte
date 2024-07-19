@@ -1,4 +1,6 @@
 <script lang="ts">
+  import InfiniteLoading from "$lib/components/InfiniteLoading.svelte";
+  import UpgradeToPro from "$lib/components/UpgradeToPro.svelte";
   import democraticBackground from "$lib/images/bg-republican.png";
   import { numberOfUnreadNotification, screenWidth } from "$lib/store";
   import { compareTwoStrings } from "string-similarity";
@@ -34,21 +36,6 @@
       //window.removeEventListener('keydown', handleKeyDown);
     };
   });
-
-  function applySorting() {
-    if (sortBy) {
-      rawData.sort((a: any, b: any) => {
-        let comparison = 0;
-        if (sortBy === "HoldingValue") {
-          comparison = a.HoldingValue - b.HoldingValue;
-        } else if (sortBy === "TopPeformingC3MZG") {
-          comparison = a.TopPeformingC3MZG - b.TopPeformingC3MZG;
-        }
-        return sortOrder === "asc" ? comparison : -comparison;
-      });
-    }
-    displayList = rawData?.slice(0, 20);
-  }
 
   function generateNetWorth(seed) {
     const a = 166452590;
@@ -93,6 +80,17 @@
       charNumber = 20;
     } else {
       charNumber = 40;
+    }
+  }
+
+  async function infiniteHandler({ detail: { loaded, complete } }) {
+    if (displayList?.length === rawData?.length) {
+      complete();
+    } else {
+      const nextIndex = displayList?.length;
+      const newArticles = rawData?.slice(nextIndex, nextIndex + 5);
+      displayList = [...displayList, ...newArticles];
+      loaded();
     }
   }
 </script>
@@ -140,14 +138,14 @@
 <section
   class="w-full max-w-6xl overflow-hidden m-auto min-h-screen pt-5 pb-60"
 >
-  <div class="text-sm breadcrumbs ml-4">
-    <ul>
-      <li><a href="/" class="text-gray-300">Home</a></li>
-      <li class="text-gray-300">Individual Investors</li>
-    </ul>
-  </div>
   <body class="w-full max-w-6xl overflow-hidden m-auto">
     {#if isLoaded}
+      <div class="text-sm breadcrumbs ml-4">
+        <ul>
+          <li><a href="/" class="text-gray-300">Home</a></li>
+          <li class="text-gray-300">Individual Investors</li>
+        </ul>
+      </div>
       <section
         class="w-full max-w-6xl overflow-hidden m-auto sm:mt-10 px-0 sm:px-3 mt-10"
       >
@@ -278,7 +276,11 @@
                     </a>
                   {/each}
 
-                  <!--<InfiniteLoading on:infinite={infiniteHandler} />-->
+                  <InfiniteLoading on:infinite={infiniteHandler} />
+                  <UpgradeToPro
+                    {data}
+                    title="Get the latest dark pool trades in realtime from Hedge Funds & Major Institutional Traders"
+                  />
                 </div>
               </div>
             </main>

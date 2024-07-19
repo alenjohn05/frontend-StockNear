@@ -180,14 +180,14 @@
                         <input
                           id="modal-search"
                           type="search"
-                          class="text-white ml-2 text-[1rem] placeholder-gray-400 border-transparent focus:border-transparent focus:ring-0 flex items-center justify-center w-full px-0 py-1 bg-inherit"
+                          class="text-white ml-2 text-xs placeholder-gray-400 border-transparent focus:border-transparent focus:ring-0 flex items-center justify-center w-full px-0 py-1 bg-inherit"
                           placeholder="Find by name"
                           bind:value={filterQuery}
                           on:input={handleInput}
                           autocomplete="off"
                         />
                         <svg
-                          class="ml-auto mr-5 h-8 w-8 inline-block mr-2"
+                          class="ml-auto mr-5 h-6 w-6 inline-block mr-2"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           ><path
