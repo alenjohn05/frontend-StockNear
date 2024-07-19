@@ -1,10 +1,49 @@
 <script lang="ts">
+  import InfoModal from "$lib/components/InfoModal.svelte";
   import { numberOfUnreadNotification } from "$lib/store";
   import { compareTwoStrings } from "string-similarity";
-  import { format } from "date-fns";
-  import InfoModal from "$lib/components/InfoModal.svelte";
   export let data;
-  let dailyEvents = data?.GetBoardMeetings?.results;
+  let sortedData = sortAndFilterByDate(data?.GetBoardMeetings?.results);
+  let dailyEvents = [...sortedData];
+  let filterQuery = "";
+  function sortAndFilterByDate(data) {
+    const currentDate = new Date();
+
+    return data
+      ?.filter((item) => {
+        const [day, month, year] = item.date.split("-");
+        const itemDate = new Date(year, month - 1, day); // month is 0-indexed in JS Date
+        return itemDate >= currentDate;
+      })
+      ?.sort((a, b) => {
+        const dateA = new Date(a.date.split("-").reverse().join("-"));
+        const dateB = new Date(b.date.split("-").reverse().join("-"));
+        return dateA - dateB;
+      });
+  }
+
+  function handleInput(event) {
+    filterQuery = event.target.value?.toLowerCase();
+    let newData = [];
+    setTimeout(() => {
+      if (filterQuery?.length !== 0) {
+        newData = dailyEvents?.filter((item) => {
+          const representative = item?.comp_name?.toLowerCase();
+          if (representative?.includes(filterQuery)) return true;
+          const similarityThreshold = 0.1;
+          const similarity = compareTwoStrings(representative, filterQuery);
+          return similarity > similarityThreshold;
+        });
+        if (newData?.length !== 0) {
+          dailyEvents = newData;
+        } else {
+          dailyEvents = [...sortedData];
+        }
+      } else {
+        dailyEvents = [...sortedData];
+      }
+    }, 300);
+  }
 </script>
 
 <svelte:head>
@@ -68,6 +107,8 @@
           class="text-white ml-2 text-[1rem] placeholder-gray-400 border-transparent focus:border-transparent focus:ring-0 flex items-center justify-center w-full px-0 py-1 bg-inherit"
           placeholder="Find by company name"
           autocomplete="off"
+          bind:value={filterQuery}
+          on:input={handleInput}
         />
         <svg
           class="ml-auto mr-5 h-8 w-8 inline-block mr-2"
@@ -136,11 +177,11 @@
             <td
               class="{index % 2
                 ? 'bg-[#0d1117]'
-                : 'bg-[#161b22]'} flex items-center text-xs justify-start text-white border-b-[#0d1117] hover:text-blue-500 font-bold"
+                : 'bg-[#161b22]'} flex items-center text-xs justify-start text-white border-b-[#0d1117] hover:text-blue-500"
             >
               <label class="cursor-pointer" for={item?.symbol}
-                >{item?.description?.length > 100
-                  ? item?.description?.slice(0, 100) + "..."
+                >{item?.description?.length > 70
+                  ? item?.description?.slice(0, 70) + "..."
                   : item?.description}</label
               >
               <InfoModal

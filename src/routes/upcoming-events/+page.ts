@@ -41,13 +41,13 @@ export const load = async () => {
       
 
       // make the POST request to the endpoint
-      const response = await fetch(backendURL + '/latest/bse-Announcements', {
+      const response = await fetch(backendURL + '/latest/get_corporate_announcement_daily_info?lang=en&exchange=2', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
       });
-
+      console.log(output)
       output = await response.json();
 
       // Cache the data for this specific tickerID with a specific name 'GetDailyBSEAnnouncements'
@@ -68,13 +68,13 @@ export const load = async () => {
       
 
       // make the POST request to the endpoint
-      const response = await fetch(backendURL + '/latest/nse-Announcements', {
+      const response = await fetch(backendURL + '/latest/get_corporate_announcement_daily_info?lang=en&exchange=1', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
       });
-
+      console.log(output)
       output = await response.json();
 
       // Cache the data for this specific tickerID with a specific name 'GetDailyNSEAnnouncements'

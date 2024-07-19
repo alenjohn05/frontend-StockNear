@@ -26,7 +26,7 @@ export let id;
     <div class="mx-auto mb-8 h-1.5 w-20 flex-shrink-0 rounded-full bg-[#2a2e39]" />
     <div class="text-white mb-5 text-center">
       <h3 class="font-bold text-2xl mb-5">{title}</h3>
-      <span class="text-white text-[1rem] font-normal">{@html content}</span>
+      <span class="text-white text-lg font-normal">{@html content}</span>
     </div>
 
     <label for={id} class="sm:hidden cursor-pointer px-7 py-2 mb-5 rounded-full bg-[#0DDE00] text-center text-black text-[1rem] font-normal">OK</label>

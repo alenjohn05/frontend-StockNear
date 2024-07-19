@@ -9,33 +9,33 @@ module.exports = {
 	theme: {
 	  extend: {
 		fontFamily: {
-			sans: ['Manrope', 'sans-serif'],
+			sans: ['Inter', 'sans-serif'],
 		  },
 		  typography: {
 			DEFAULT: {
 			  css: {
 				h1: {
-				  fontFamily: '"Manrope", sans-serif',
+				  fontFamily: '"Inter", sans-serif',
 				  // Other h1 styles if needed
 				},
 				h2: {
-				  fontFamily: '"Manrope", sans-serif',
+				  fontFamily: '"Inter", sans-serif',
 				  // Other h2 styles if needed
 				},
 				h3: {
-				  fontFamily: '"Manrope", sans-serif',
+				  fontFamily: '"Inter", sans-serif',
 				  // Other h3 styles if needed
 				},
 				h4: {
-				  fontFamily: '"Manrope", sans-serif',
+				  fontFamily: '"Inter", sans-serif',
 				  // Other h4 styles if needed
 				},
 				h5: {
-				  fontFamily: '"Manrope", sans-serif',
+				  fontFamily: '"Inter", sans-serif',
 				  // Other h5 styles if needed
 				},
 				h6: {
-				  fontFamily: '"Manrope", sans-serif',
+				  fontFamily: '"Inter", sans-serif',
 				  // Other h6 styles if needed
 				},
 				'.custom-font-class': {

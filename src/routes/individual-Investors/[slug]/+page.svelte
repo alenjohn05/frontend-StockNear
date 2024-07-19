@@ -38,7 +38,7 @@
         textStyle: {
           color: "#ffffff",
           fontSize: 22,
-          fontFamily: '"Manrope", sans-serif',
+          fontFamily: '"Inter", sans-serif',
           fontWeight: "normal"
         }
       },
@@ -49,7 +49,7 @@
         borderWidth: 1,
         textStyle: {
           color: "#ffffff",
-          fontFamily: '"Manrope", sans-serif'
+          fontFamily: '"Inter", sans-serif'
         },
         formatter: (params: any) => {
           return `${params.name}: ${params.percent.toFixed(2)}%`;
@@ -90,20 +90,20 @@
             rotate: 0,
             align: "center",
             verticalAlign: "middle",
-            fontFamily: '"Manrope", sans-serif',
+            fontFamily: '"Inter", sans-serif',
             fontWeight: "normal",
             rich: {
               a: {
                 color: "#999",
                 lineHeight: 22,
                 align: "center",
-                fontFamily: '"Manrope", sans-serif',
+                fontFamily: '"Inter", sans-serif',
                 fontWeight: "normal"
               },
               b: {
                 fontSize: 16,
                 lineHeight: 33,
-                fontFamily: '"Manrope", sans-serif',
+                fontFamily: '"Inter", sans-serif',
                 fontWeight: "normal"
               }
             }
@@ -133,7 +133,7 @@
         textStyle: {
           color: "#ffffff",
           fontSize: 22,
-          fontFamily: '"Manrope", sans-serif',
+          fontFamily: '"Inter", sans-serif',
           fontWeight: "normal"
         }
       },
@@ -163,7 +163,7 @@
         },
         axisLabel: {
           color: "#ffffff",
-          fontFamily: '"Manrope", sans-serif'
+          fontFamily: '"Inter", sans-serif'
         },
         splitLine: {
           show: true,
@@ -179,7 +179,7 @@
         borderWidth: 1,
         textStyle: {
           color: "#ffffff",
-          fontFamily: '"Manrope", sans-serif'
+          fontFamily: '"Inter", sans-serif'
         },
         formatter: (params) => {
           return `${params[0].name}: ${params[0].value.toFixed(2)}%`;
@@ -204,7 +204,7 @@
               show: true,
               position: "top",
               color: "#ffffff",
-              fontFamily: '"Manrope", sans-serif',
+              fontFamily: '"Inter", sans-serif',
               formatter: "{c}%"
             }
           })),
