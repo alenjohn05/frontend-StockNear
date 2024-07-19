@@ -1,10 +1,13 @@
 <script lang="ts">
   import InfiniteLoading from "$lib/components/InfiniteLoading.svelte";
+  import ScrollToTop from "$lib/components/ScrollToTop.svelte";
   import UpgradeToPro from "$lib/components/UpgradeToPro.svelte";
   import { numberOfUnreadNotification } from "$lib/store";
   import { abbreviateNumber } from "$lib/utils.js";
   import { format } from "date-fns";
   import { onMount } from "svelte";
+  import debounce from "lodash.debounce"; // You need to install lodash or use a custom debounce function
+
   export let data;
 
   let listedIpos = data?.Get_Listed_IPOs;
@@ -12,104 +15,33 @@
   let upcoming_ipos = data?.Get_Upcoming_IPOs;
   let displayList: any[] = [];
   let rawData = onGoing_IPOs;
-  let activeData = onGoing_IPOs;
   let isLoaded = false;
 
   async function handleScroll() {
-    const scrollThreshold = document.body.offsetHeight * 0.8; // 80% of the website height
-    const isBottom = window.innerHeight + window.scrollY >= scrollThreshold;
-    if (isBottom && displayList?.length !== rawData?.length) {
-      const nextIndex = displayList?.length;
-      const filteredNewResults = rawData?.slice(nextIndex, nextIndex + 20);
-      displayList = [...displayList, ...filteredNewResults];
+    if (filterQuery.length === 0) {
+      const scrollThreshold = document.body.offsetHeight * 0.8; // 80% of the website height
+      const isBottom = window.innerHeight + window.scrollY >= scrollThreshold;
+      if (isBottom && displayList?.length !== rawData?.length) {
+        const nextIndex = displayList?.length;
+        const filteredNewResults = rawData?.slice(nextIndex, nextIndex + 20);
+        displayList = [...displayList, ...filteredNewResults];
+      }
     }
   }
-
+  let error = null;
   onMount(async () => {
-    displayList = rawData?.slice(0, 20) ?? [];
-    isLoaded = true;
-    window.addEventListener("scroll", handleScroll);
+    try {
+      displayList = rawData?.slice(0, 20) ?? [];
+      window.addEventListener("scroll", handleScroll);
+      isLoaded = true;
+    } catch (e) {
+      error = "Error loading board meetings data. Please try again later.";
+      console.error("Error loading data:", e);
+    }
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   });
-
-  const addSparkLine = (dataContent, index) => {
-    if (dataContent) {
-      const values = dataContent.split(",").map(Number);
-      const newValues: number[] = [];
-      for (let i = 0; i < values.length - 1; i++) {
-        newValues.push(values[i]);
-        const numRandom = 5;
-
-        for (let j = 0; j < numRandom; j++) {
-          const rand = Math.random() * (values[i + 1] - values[i]) + values[i];
-          newValues.push(rand);
-        }
-      }
-      newValues.push(values[values.length - 1]);
-      if (newValues.length > 0) {
-        const width = 100;
-        const height = 30;
-        const padding = 5;
-
-        const xScale = (width - 2 * padding) / (newValues.length - 1);
-        const yMin = Math.min(...newValues);
-        const yMax = Math.max(...newValues);
-        const yScale = (height - 2 * padding) / (yMax - yMin);
-
-        const points = newValues
-          .map(
-            (value, i) =>
-              `${padding + i * xScale},${height - padding - (value - yMin) * yScale}`,
-          )
-          .join(" ");
-
-        const isPositive = newValues[newValues.length - 1] >= newValues[0];
-        const gradientId = `gradient-${index}`;
-        const gradientColor = isPositive ? "#10DB06" : "#FF2F1F";
-
-        // Create area graph points
-        const areaPoints =
-          `${padding},${height - padding} ` +
-          points +
-          ` ${width - padding},${height - padding}`;
-
-        // Generate tickers
-        const tickers = [];
-        for (let i = 0; i < 5; i++) {
-          const x = padding + (i * (width - 2 * padding)) / 4;
-          const y = height - padding;
-          tickers.push(
-            `<line x1="${x}" y1="${y}" x2="${x}" y2="${y - 3}" stroke="#888" stroke-width="1" />`,
-          );
-        }
-
-        return `
-        <svg width="100" height="30" class="sparkline">
-          <defs>
-            <linearGradient id="${gradientId}" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" style="stop-color:${gradientColor};stop-opacity:0.3" />
-              <stop offset="100%" style="stop-color:${gradientColor};stop-opacity:0.1" />
-            </linearGradient>
-          </defs>
-          <polygon
-            fill="url(#${gradientId})"
-            points="${areaPoints}"
-          />
-          <polyline
-            fill="none"
-            stroke="${gradientColor}"
-            stroke-width="1.5"
-            points="${points}"
-          />
-          
-        </svg>
-      `;
-      }
-    }
-    return "";
-  };
 
   let filterQuery = "";
   let activeTab = "ONGOING";
@@ -119,6 +51,7 @@
     { id: "LISTED", label: "Listed IPOs" },
     { id: "UPCOMING", label: "Upcoming IPOs" },
   ];
+
   function setActiveTab(tabId: string) {
     activeTab = tabId;
     if (tabId === "ONGOING") {
@@ -132,29 +65,40 @@
       displayList = listedIpos?.slice(0, 20) ?? [];
     }
   }
-  function handleInput(event) {
+
+  // Debounce the search input
+  const debouncedHandleInput = debounce((event) => {
     filterQuery = event.target.value?.toLowerCase();
-    let newData = [];
-    setTimeout(() => {
-      if (filterQuery.length !== 0) {
-        rawData = activeData.filter((item) => {
-          const compName = item?.SecurityName?.toLowerCase();
-          return compName?.includes(filterQuery);
-        });
-      } else {
-        rawData = activeData;
-      }
-    }, 300);
+    filterData();
+  }, 300);
+
+  function filterData() {
+    if (filterQuery.length !== 0) {
+      displayList = rawData.filter((item) => {
+        const compName = item?.SecurityName?.toLowerCase();
+        return compName?.includes(filterQuery);
+      });
+    } else {
+      displayList = rawData;
+    }
+  }
+
+  function handleInput(event) {
+    debouncedHandleInput(event);
   }
 
   async function infiniteHandler({ detail: { loaded, complete } }) {
     if (displayList?.length === rawData?.length) {
       complete();
     } else {
-      const nextIndex = displayList?.length;
-      const newArticles = rawData?.slice(nextIndex, nextIndex + 5);
-      displayList = [...displayList, ...newArticles];
-      loaded();
+      if (filterQuery.length === 0) {
+        const nextIndex = displayList?.length;
+        const newArticles = rawData?.slice(nextIndex, nextIndex + 5);
+        displayList = [...displayList, ...newArticles];
+        loaded();
+      } else {
+        complete();
+      }
     }
   }
 </script>
@@ -197,420 +141,660 @@
   />
   <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
-
-<section
-  class="w-full max-w-7xl m-auto sm:bg-[#0d1117] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8"
->
-  <div class="flex flex-row items-start">
-    <h1 class="text-3xl sm:text-4xl text-white text-start font-bold mb-5">
-      IPO Details
-    </h1>
+{#if !isLoaded}
+  <div class="flex justify-center items-center h-64 min-h-screen">
+    <div
+      class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"
+    ></div>
   </div>
-  <div class="flex items-center justify-between">
-    <h1 class="text-sm sm:text-sm text-white text-start mt-5 mb-10">
-      Detailed Overview of Ongoing, Upcoming and Listed IPOs
-    </h1>
-    <div class="bg-[#161b22]">
-      <label class="flex flex-row items-center">
-        <input
-          id="modal-search"
-          type="search"
-          class="text-white ml-2 text-[1rem] placeholder-gray-400 border-transparent focus:border-transparent focus:ring-0 flex items-center justify-center w-full px-0 py-1 bg-inherit"
-          placeholder="Find by company name"
-          autocomplete="off"
-          bind:value={filterQuery}
-          on:input={handleInput}
-        />
-        <svg
-          class="ml-auto mr-5 h-8 w-8 inline-block mr-2"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          ><path
-            fill="#fff"
-            d="m19.485 20.154l-6.262-6.262q-.75.639-1.725.989t-1.96.35q-2.402 0-4.066-1.663T3.808 9.503T5.47 5.436t4.064-1.667t4.068 1.664T15.268 9.5q0 1.042-.369 2.017t-.97 1.668l6.262 6.261zM9.539 14.23q1.99 0 3.36-1.37t1.37-3.361t-1.37-3.36t-3.36-1.37t-3.361 1.37t-1.37 3.36t1.37 3.36t3.36 1.37"
-          /></svg
-        >
-      </label>
-    </div>
-  </div>
-  <ul
-    class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-[#161b22] dark:border-[#161b22] dark:text-[#161b22]"
-  >
-    {#each tabs as tab}
-      <li class="me-2">
-        <a
-          href="#"
-          class="inline-block p-2 {activeTab === tab.id
-            ? 'border-b border-blue-300 text-white bg-[#161b22] active dark:bg-[#161b22] dark:text-white'
-            : ' text-gray-500 bg-[#0d1117] active dark:bg-[#0d1117] dark:text-white'}"
-          on:click|preventDefault={() => setActiveTab(tab.id)}
-        >
-          {tab.label}
-        </a>
-      </li>
-    {/each}
-  </ul>
-
+{:else if error}
   <div
-    class=" w-full justify-center m-auto items-center pl-2 pr-2 sm:pl-0 sm:pr-0 mb-10 min-h-screen"
+    class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 min-h-screen"
+    role="alert"
   >
-    {#if activeTab === "ONGOING"}
-      <table
-        class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
-      >
-        <thead>
-          <tr>
-            <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
-              >Company Name</th
-            >
-            <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
-              >Offer Price</th
-            >
-            <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
-              >Subscription</th
-            >
-            <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
-              >No of Shares Offered</th
-            >
-            <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
-              >Total Bid</th
-            >
-            <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
-              >Open Date</th
-            >
-            <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
-              >Close Date</th
-            >
-          </tr>
-        </thead>
-        <tbody>
-          {#each displayList as item, index}
-            <!-- row -->
-            <tr
-              class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
-              ><td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
-              >
-                <a href={"/stocks/" + item?.ID}>{item?.SecurityName}</a>
-              </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} border-b-[#0d1117] text-xs font-bold text-end"
-              >
-                {item?.IssuePriceMin} - {item?.IssuePriceMax
-                  ? item?.IssuePriceMax
-                  : ""}
-              </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117] text-end"
-              >
-                {item?.GrandTotal?.toFixed(2)}
-              </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} text-xs text-white border-b-[#0d1117] hover:text-blue-500 text-end"
-              >
-                {(item?.Total_Nos / 100000).toFixed(2)}
-              </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
-              >
-                {(item?.Total_NosBidFor / 100000).toFixed(2)}
-              </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
-              >
-                {format(new Date(item?.OpenDate), "dd-MM-yyyy")}
-              </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
-              >
-                {format(new Date(item?.CloseDate), "dd-MM-yyyy")}
-              </td>
-            </tr>
-          {/each}
-          <InfiniteLoading on:infinite={infiniteHandler} />
-        </tbody>
-      </table>
-    {/if}
-    {#if activeTab === "UPCOMING"}
-      <table
-        class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
-      >
-        <thead>
-          <tr>
-            <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
-              >Company Name</th
-            >
-            <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
-              >Offer Price</th
-            >
-            <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
-              >Open Date</th
-            >
-            <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
-              >Close Date</th
-            >
-            <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
-              >Issue Size(Cr)
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {#each displayList as item, index}
-            <!-- row -->
-            <tr
-              class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
-            >
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
-              >
-                <a href={"/stocks/" + item?.SecurityID}>{item?.SecurityName}</a>
-              </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
-              >
-                {item?.IssuePriceMin} - {item?.IssuePriceMax
-                  ? item?.IssuePriceMax
-                  : ""}
-              </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} text-xs text-center text-white border-b-[#0d1117] hover:text-blue-500 text-end"
-              >
-                {format(new Date(item?.OpenDate), "dd-MM-yyyy")}
-              </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
-              >
-                {format(new Date(item?.CloseDate), "dd-MM-yyyy")}
-              </td>
-
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
-                >{item?.IssueSizeMin
-                  ? (item?.IssueSizeMin / 10000000).toFixed(2)
-                  : ""} - {item?.IssueSizeMax
-                  ? (item?.IssueSizeMax / 10000000).toFixed(2)
-                  : ""}
-              </td>
-            </tr>
-          {/each}
-          <InfiniteLoading on:infinite={infiniteHandler} />
-        </tbody>
-      </table>
-    {/if}
-    {#if activeTab === "LISTED"}
-      <table
-        class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
-      >
-        <thead>
-          <tr>
-            <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
-              >Company Name</th
-            >
-            <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
-              >Current Price</th
-            >
-            <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
-              >Listed Price</th
-            >
-            <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
-              >Change in Listed Price</th
-            >
-            <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
-              >Issue Price
-            </th>
-            <th
-              class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
-              >Change over Issue Price
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {#each displayList as item, index}
-            <!-- row -->
-            <tr
-              class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
-            >
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
-              >
-                <a href={"/stocks/" + item?.SecurityID}>{item?.SecurityName}</a>
-              </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
-              >
-                {item?.LTP}
-              </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
-              >
-                {item?.ListPrice?.toFixed(2)}
-                <div class="flex flex-row item-center justify-end text-[10px]">
-                  listed on {format(new Date(item?.ListingDate), "dd-MM-yyyy")}
-                </div>
-              </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
-              >
-                {item?.ListPriceZ?.toFixed(2)}
-                <div class="flex flex-row item-center justify-end">
-                  {#if item?.ListPriceZG >= 0}
-                    <svg
-                      class="w-5 h-5 -mr-0.5 -mt-0.5"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      ><g id="evaArrowUpFill0"
-                        ><g id="evaArrowUpFill1"
-                          ><path
-                            id="evaArrowUpFill2"
-                            fill="#10db06"
-                            d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
-                          /></g
-                        ></g
-                      ></svg
-                    >
-                    <span class="text-[#10DB06] text-xs font-medium"
-                      >+{item?.ListPriceZG
-                        ? item?.ListPriceZG?.toFixed(2)
-                        : 0.1}%</span
-                    >
-                  {:else}
-                    <svg
-                      class="w-5 h-5 -mr-0.5 -mt-0.5 rotate-180"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      ><g id="evaArrowUpFill0"
-                        ><g id="evaArrowUpFill1"
-                          ><path
-                            id="evaArrowUpFill2"
-                            fill="#FF2F1F"
-                            d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
-                          /></g
-                        ></g
-                      ></svg
-                    >
-                    <span class="text-[#FF2F1F] text-xs font-medium"
-                      >{item?.ListPriceZG?.toFixed(2)}%
-                    </span>
-                  {/if}
-                </div>
-              </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
-              >
-                {item?.IssuePrice}
-              </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
-              >
-                {item?.IssuePriceZ?.toFixed(2)}
-                <div class="flex flex-row item-center justify-end">
-                  {#if item?.IssuePriceZG >= 0}
-                    <svg
-                      class="w-5 h-5 -mr-0.5 -mt-0.5"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      ><g id="evaArrowUpFill0"
-                        ><g id="evaArrowUpFill1"
-                          ><path
-                            id="evaArrowUpFill2"
-                            fill="#10db06"
-                            d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
-                          /></g
-                        ></g
-                      ></svg
-                    >
-                    <span class="text-[#10DB06] text-xs font-medium"
-                      >+{item?.IssuePriceZG
-                        ? item?.IssuePriceZG?.toFixed(2)
-                        : 0.1}%</span
-                    >
-                  {:else}
-                    <svg
-                      class="w-5 h-5 -mr-0.5 -mt-0.5 rotate-180"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      ><g id="evaArrowUpFill0"
-                        ><g id="evaArrowUpFill1"
-                          ><path
-                            id="evaArrowUpFill2"
-                            fill="#FF2F1F"
-                            d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
-                          /></g
-                        ></g
-                      ></svg
-                    >
-                    <span class="text-[#FF2F1F] text-xs font-medium"
-                      >{item?.IssuePriceZG?.toFixed(2)}%
-                    </span>
-                  {/if}
-                </div>
-              </td>
-            </tr>
-          {/each}
-          <InfiniteLoading on:infinite={infiniteHandler} />
-        </tbody>
-      </table>
-    {/if}
-    <UpgradeToPro
-      {data}
-      title="Get the latest dark pool trades in realtime from Hedge Funds & Major Institutional Traders"
-    />
+    <strong class="font-bold">Error:</strong>
+    <span class="block sm:inline">{error}</span>
   </div>
-  <!-- Page wrapper -->
-</section>
+{:else}
+  <section
+    class="w-full max-w-7xl m-auto sm:bg-[#0d1117] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8"
+  >
+    <div class="flex flex-row items-start">
+      <h1 class="text-3xl sm:text-4xl text-white text-start font-bold mb-5">
+        IPO Details
+      </h1>
+    </div>
+    <div class="flex sm:flex-row flex-col items-center justify-between">
+      <h1 class="text-sm sm:text-sm text-white text-start mt-5 mb-10">
+        Comprehensive Guide to Ongoing, Upcoming, and Listed IPOs
+      </h1>
+      <div class="bg-[#161b22] mb-10">
+        <label class="flex flex-row items-center">
+          <input
+            id="modal-search"
+            type="search"
+            class="text-white ml-2 text-[1rem] placeholder-gray-400 border-transparent focus:border-transparent focus:ring-0 flex items-center justify-center w-full px-0 py-1 bg-inherit"
+            placeholder="Find by company name"
+            autocomplete="off"
+            bind:value={filterQuery}
+            on:input={handleInput}
+          />
+          <svg
+            class="ml-auto mr-5 h-8 w-8 inline-block mr-2"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            ><path
+              fill="#fff"
+              d="m19.485 20.154l-6.262-6.262q-.75.639-1.725.989t-1.96.35q-2.402 0-4.066-1.663T3.808 9.503T5.47 5.436t4.064-1.667t4.068 1.664T15.268 9.5q0 1.042-.369 2.017t-.97 1.668l6.262 6.261zM9.539 14.23q1.99 0 3.36-1.37t1.37-3.361t-1.37-3.36t-3.36-1.37t-3.361 1.37t-1.37 3.36t1.37 3.36t3.36 1.37"
+            /></svg
+          >
+        </label>
+      </div>
+    </div>
+    <ul
+      class="flex font-medium text-center text-gray-500 border-b border-[#161b22] dark:border-[#161b22] dark:text-[#161b22]"
+    >
+      {#each tabs as tab}
+        <li class="me-2">
+          <a
+            href="#"
+            class="inline-block p-2 text-xs sm:text-sm {activeTab === tab.id
+              ? 'border-b border-blue-300 text-white bg-[#161b22] active dark:bg-[#161b22] dark:text-white'
+              : ' text-gray-500 bg-[#0d1117] active dark:bg-[#0d1117] dark:text-white'}"
+            on:click|preventDefault={() => setActiveTab(tab.id)}
+          >
+            {tab.label}
+          </a>
+        </li>
+      {/each}
+    </ul>
+
+    <div
+      class=" w-full justify-center m-auto items-center pl-2 pr-2 sm:pl-0 sm:pr-0 mb-10 min-h-screen"
+    >
+      {#if activeTab === "ONGOING"}
+        <table
+          class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
+        >
+          <thead>
+            <tr>
+              <th
+                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
+                >Company Name</th
+              >
+              <th
+                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+                >Offer Price</th
+              >
+              <th
+                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+                >Subscription</th
+              >
+              <th
+                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+                >No of Shares Offered</th
+              >
+              <th
+                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+                >Total Bid</th
+              >
+              <th
+                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+                >Open Date</th
+              >
+              <th
+                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+                >Close Date</th
+              >
+            </tr>
+          </thead>
+          <tbody>
+            {#each displayList as item, index}
+              <!-- row -->
+              <tr
+                class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
+                ><td
+                  class="{index % 2
+                    ? 'bg-[#0d1117]'
+                    : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
+                >
+                  <a href={"/stocks/" + item?.ID}>{item?.SecurityName}</a>
+                </td>
+                <td
+                  class="{index % 2
+                    ? 'bg-[#0d1117]'
+                    : 'bg-[#161b22]'} border-b-[#0d1117] text-xs font-bold text-end"
+                >
+                  {item?.IssuePriceMin} - {item?.IssuePriceMax
+                    ? item?.IssuePriceMax
+                    : ""}
+                </td>
+                <td
+                  class="{index % 2
+                    ? 'bg-[#0d1117]'
+                    : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117] text-end"
+                >
+                  {item?.GrandTotal?.toFixed(2)}
+                </td>
+                <td
+                  class="{index % 2
+                    ? 'bg-[#0d1117]'
+                    : 'bg-[#161b22]'} text-xs text-white border-b-[#0d1117] hover:text-blue-500 text-end"
+                >
+                  {(item?.Total_Nos / 100000).toFixed(2)}
+                </td>
+                <td
+                  class="{index % 2
+                    ? 'bg-[#0d1117]'
+                    : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                >
+                  {(item?.Total_NosBidFor / 100000).toFixed(2)}
+                </td>
+                <td
+                  class="{index % 2
+                    ? 'bg-[#0d1117]'
+                    : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                >
+                  {format(new Date(item?.OpenDate), "dd-MM-yyyy")}
+                </td>
+                <td
+                  class="{index % 2
+                    ? 'bg-[#0d1117]'
+                    : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                >
+                  {format(new Date(item?.CloseDate), "dd-MM-yyyy")}
+                </td>
+              </tr>
+            {/each}
+            <InfiniteLoading on:infinite={infiniteHandler} />
+          </tbody>
+        </table>
+        <div class="sm:hidden w-full m-auto mt-4 space-y-4">
+          {#each displayList as item}
+            <div
+              class="bg-[#0d1117] p-4 rounded-md shadow-md border border-[#161b22]"
+            >
+              <a
+                href={"/stocks/" + item?.ID}
+                class="text-[#FFBE00] text-lg font-medium"
+                >{item?.SecurityName}</a
+              >
+              <div class="mt-2 text-xs">
+                <div class="text-slate-200 flex justify-between">
+                  <span>Offer Price:</span>
+                  <span
+                    >{item?.IssuePriceMin} - {item?.IssuePriceMax
+                      ? item?.IssuePriceMax
+                      : ""}</span
+                  >
+                </div>
+                <div class="text-slate-200 flex justify-between">
+                  <span>Subscription:</span>
+                  <span>{item?.GrandTotal?.toFixed(2)}</span>
+                </div>
+                <div class="text-slate-200 flex justify-between">
+                  <span>No of Shares Offered:</span>
+                  <span>{(item?.Total_Nos / 100000).toFixed(2)}</span>
+                </div>
+                <div class="text-slate-200 flex justify-between">
+                  <span>Total Bid:</span>
+                  <span>{(item?.Total_NosBidFor / 100000).toFixed(2)}</span>
+                </div>
+                <div class="text-slate-200 flex justify-between">
+                  <span>Open Date:</span>
+                  <span>{format(new Date(item?.OpenDate), "dd-MM-yyyy")}</span>
+                </div>
+                <div class="text-slate-200 flex justify-between">
+                  <span>Close Date:</span>
+                  <span>{format(new Date(item?.CloseDate), "dd-MM-yyyy")}</span>
+                </div>
+              </div>
+            </div>
+          {/each}
+          <InfiniteLoading on:infinite={infiniteHandler} />
+        </div>
+      {/if}
+      {#if activeTab === "UPCOMING"}
+        <table
+          class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
+        >
+          <thead>
+            <tr>
+              <th
+                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
+                >Company Name</th
+              >
+              <th
+                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+                >Offer Price</th
+              >
+              <th
+                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+                >Open Date</th
+              >
+              <th
+                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+                >Close Date</th
+              >
+              <th
+                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+                >Issue Size(Cr)
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {#each displayList as item, index}
+              <!-- row -->
+              <tr
+                class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
+              >
+                <td
+                  class="{index % 2
+                    ? 'bg-[#0d1117]'
+                    : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
+                >
+                  <a href={"/stocks/" + item?.SecurityID}
+                    >{item?.SecurityName}</a
+                  >
+                </td>
+                <td
+                  class="{index % 2
+                    ? 'bg-[#0d1117]'
+                    : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                >
+                  {item?.IssuePriceMin} - {item?.IssuePriceMax
+                    ? item?.IssuePriceMax
+                    : ""}
+                </td>
+                <td
+                  class="{index % 2
+                    ? 'bg-[#0d1117]'
+                    : 'bg-[#161b22]'} text-xs text-center text-white border-b-[#0d1117] hover:text-blue-500 text-end"
+                >
+                  {format(new Date(item?.OpenDate), "dd-MM-yyyy")}
+                </td>
+                <td
+                  class="{index % 2
+                    ? 'bg-[#0d1117]'
+                    : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                >
+                  {format(new Date(item?.CloseDate), "dd-MM-yyyy")}
+                </td>
+
+                <td
+                  class="{index % 2
+                    ? 'bg-[#0d1117]'
+                    : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  >{item?.IssueSizeMin
+                    ? (item?.IssueSizeMin / 10000000).toFixed(2)
+                    : ""} - {item?.IssueSizeMax
+                    ? (item?.IssueSizeMax / 10000000).toFixed(2)
+                    : ""}
+                </td>
+              </tr>
+            {/each}
+            <InfiniteLoading on:infinite={infiniteHandler} />
+          </tbody>
+        </table>
+        <div class="sm:hidden w-full m-auto mt-4 space-y-4">
+          {#each displayList as item}
+            <div
+              class="bg-[#0d1117] p-4 rounded-md shadow-md border border-[#161b22]"
+            >
+              <a
+                href={"/stocks/" + item?.SecurityID}
+                class="text-[#FFBE00] text-lg font-medium"
+                >{item?.SecurityName}</a
+              >
+              <div class="mt-2 text-xs">
+                <div class="text-slate-200 flex justify-between">
+                  <span>Offer Price:</span>
+                  <span
+                    >{item?.IssuePriceMin} - {item?.IssuePriceMax
+                      ? item?.IssuePriceMax
+                      : ""}</span
+                  >
+                </div>
+                <div class="text-slate-200 flex justify-between">
+                  <span>Open Date:</span>
+                  <span>{format(new Date(item?.OpenDate), "dd-MM-yyyy")}</span>
+                </div>
+                <div class="text-slate-200 flex justify-between">
+                  <span>Close Date:</span>
+                  <span>{format(new Date(item?.CloseDate), "dd-MM-yyyy")}</span>
+                </div>
+                <div class="text-slate-200 flex justify-between">
+                  <span>Issue Size (Cr):</span>
+                  <span>
+                    {item?.IssueSizeMin
+                      ? (item?.IssueSizeMin / 10000000).toFixed(2)
+                      : ""} -
+                    {item?.IssueSizeMax
+                      ? (item?.IssueSizeMax / 10000000).toFixed(2)
+                      : ""}
+                  </span>
+                </div>
+              </div>
+            </div>
+          {/each}
+          <InfiniteLoading on:infinite={infiniteHandler} />
+        </div>
+      {/if}
+      {#if activeTab === "LISTED"}
+        <table
+          class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
+        >
+          <thead>
+            <tr>
+              <th
+                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
+                >Company Name</th
+              >
+              <th
+                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+                >Current Price</th
+              >
+              <th
+                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+                >Listed Price</th
+              >
+              <th
+                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+                >Change in Listed Price</th
+              >
+              <th
+                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+                >Issue Price
+              </th>
+              <th
+                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-end"
+                >Change over Issue Price
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {#each displayList as item, index}
+              <!-- row -->
+              <tr
+                class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
+              >
+                <td
+                  class="{index % 2
+                    ? 'bg-[#0d1117]'
+                    : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
+                >
+                  <a href={"/stocks/" + item?.SecurityID}
+                    >{item?.SecurityName}</a
+                  >
+                </td>
+                <td
+                  class="{index % 2
+                    ? 'bg-[#0d1117]'
+                    : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                >
+                  {item?.LTP}
+                </td>
+                <td
+                  class="{index % 2
+                    ? 'bg-[#0d1117]'
+                    : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                >
+                  {item?.ListPrice?.toFixed(2)}
+                  <div
+                    class="flex flex-row item-center justify-end text-[10px]"
+                  >
+                    listed on {format(
+                      new Date(item?.ListingDate),
+                      "dd-MM-yyyy",
+                    )}
+                  </div>
+                </td>
+                <td
+                  class="{index % 2
+                    ? 'bg-[#0d1117]'
+                    : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                >
+                  {item?.ListPriceZ?.toFixed(2)}
+                  <div class="flex flex-row item-center justify-end">
+                    {#if item?.ListPriceZG >= 0}
+                      <svg
+                        class="w-5 h-5 -mr-0.5 -mt-0.5"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        ><g id="evaArrowUpFill0"
+                          ><g id="evaArrowUpFill1"
+                            ><path
+                              id="evaArrowUpFill2"
+                              fill="#10db06"
+                              d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                            /></g
+                          ></g
+                        ></svg
+                      >
+                      <span class="text-[#10DB06] text-xs font-medium"
+                        >+{item?.ListPriceZG
+                          ? item?.ListPriceZG?.toFixed(2)
+                          : 0.1}%</span
+                      >
+                    {:else}
+                      <svg
+                        class="w-5 h-5 -mr-0.5 -mt-0.5 rotate-180"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        ><g id="evaArrowUpFill0"
+                          ><g id="evaArrowUpFill1"
+                            ><path
+                              id="evaArrowUpFill2"
+                              fill="#FF2F1F"
+                              d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                            /></g
+                          ></g
+                        ></svg
+                      >
+                      <span class="text-[#FF2F1F] text-xs font-medium"
+                        >{item?.ListPriceZG?.toFixed(2)}%
+                      </span>
+                    {/if}
+                  </div>
+                </td>
+                <td
+                  class="{index % 2
+                    ? 'bg-[#0d1117]'
+                    : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                >
+                  {item?.IssuePrice}
+                </td>
+                <td
+                  class="{index % 2
+                    ? 'bg-[#0d1117]'
+                    : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                >
+                  {item?.IssuePriceZ?.toFixed(2)}
+                  <div class="flex flex-row item-center justify-end">
+                    {#if item?.IssuePriceZG >= 0}
+                      <svg
+                        class="w-5 h-5 -mr-0.5 -mt-0.5"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        ><g id="evaArrowUpFill0"
+                          ><g id="evaArrowUpFill1"
+                            ><path
+                              id="evaArrowUpFill2"
+                              fill="#10db06"
+                              d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                            /></g
+                          ></g
+                        ></svg
+                      >
+                      <span class="text-[#10DB06] text-xs font-medium"
+                        >+{item?.IssuePriceZG
+                          ? item?.IssuePriceZG?.toFixed(2)
+                          : 0.1}%</span
+                      >
+                    {:else}
+                      <svg
+                        class="w-5 h-5 -mr-0.5 -mt-0.5 rotate-180"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        ><g id="evaArrowUpFill0"
+                          ><g id="evaArrowUpFill1"
+                            ><path
+                              id="evaArrowUpFill2"
+                              fill="#FF2F1F"
+                              d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                            /></g
+                          ></g
+                        ></svg
+                      >
+                      <span class="text-[#FF2F1F] text-xs font-medium"
+                        >{item?.IssuePriceZG?.toFixed(2)}%
+                      </span>
+                    {/if}
+                  </div>
+                </td>
+              </tr>
+            {/each}
+            <InfiniteLoading on:infinite={infiniteHandler} />
+          </tbody>
+        </table>
+        <div class="sm:hidden w-full m-auto mt-4 space-y-4">
+          {#each displayList as item}
+            <div
+              class="bg-[#0d1117] p-4 rounded-md shadow-md border border-[#161b22]"
+            >
+              <a
+                href={"/stocks/" + item?.SecurityID}
+                class="text-[#FFBE00] text-lg font-medium"
+                >{item?.SecurityName}</a
+              >
+              <div class="mt-2 text-xs">
+                <div class="text-slate-200 flex justify-between">
+                  <span>Current Price:</span>
+                  <span>{item?.LTP}</span>
+                </div>
+                <div class="text-slate-200 flex justify-between">
+                  <span>Listed Price:</span>
+                  <span>{item?.ListPrice?.toFixed(2)}</span>
+                </div>
+                <div class="text-slate-200 flex justify-between">
+                  <span>Listed on:</span>
+                  <span
+                    >{format(new Date(item?.ListingDate), "dd-MM-yyyy")}</span
+                  >
+                </div>
+                <div class="text-slate-200 flex justify-between mt-2">
+                  <span>Change in Listed Price:</span>
+                  <span class="text-end">
+                    {item?.ListPriceZ?.toFixed(2)}
+                    <span class="flex items-center">
+                      {#if item?.ListPriceZG >= 0}
+                        <svg
+                          class="w-5 h-5 -mr-0.5 -mt-0.5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                        >
+                          <g id="evaArrowUpFill0">
+                            <g id="evaArrowUpFill1">
+                              <path
+                                id="evaArrowUpFill2"
+                                fill="#10db06"
+                                d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                              />
+                            </g>
+                          </g>
+                        </svg>
+                        <span class="text-[#10DB06] text-xs font-medium"
+                          >+{item?.ListPriceZG
+                            ? item?.ListPriceZG?.toFixed(2)
+                            : 0.1}%</span
+                        >
+                      {:else}
+                        <svg
+                          class="w-5 h-5 -mr-0.5 -mt-0.5 rotate-180"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                        >
+                          <g id="evaArrowUpFill0">
+                            <g id="evaArrowUpFill1">
+                              <path
+                                id="evaArrowUpFill2"
+                                fill="#FF2F1F"
+                                d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                              />
+                            </g>
+                          </g>
+                        </svg>
+                        <span class="text-[#FF2F1F] text-xs font-medium"
+                          >{item?.ListPriceZG?.toFixed(2)}%</span
+                        >
+                      {/if}
+                    </span>
+                  </span>
+                </div>
+                <div class="text-slate-200 flex justify-between mt-2">
+                  <span>Issue Price:</span>
+                  <span>{item?.IssuePrice}</span>
+                </div>
+                <div class="text-slate-200 flex justify-between mt-2">
+                  <span>Change over Issue Price:</span>
+                  <span class="text-end">
+                    {item?.IssuePriceZ?.toFixed(2)}
+                    <span class="flex items-center">
+                      {#if item?.IssuePriceZG >= 0}
+                        <svg
+                          class="w-5 h-5 -mr-0.5 -mt-0.5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                        >
+                          <g id="evaArrowUpFill0">
+                            <g id="evaArrowUpFill1">
+                              <path
+                                id="evaArrowUpFill2"
+                                fill="#10db06"
+                                d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                              />
+                            </g>
+                          </g>
+                        </svg>
+                        <span class="text-[#10DB06] text-xs font-medium"
+                          >+{item?.IssuePriceZG
+                            ? item?.IssuePriceZG?.toFixed(2)
+                            : 0.1}%</span
+                        >
+                      {:else}
+                        <svg
+                          class="w-5 h-5 -mr-0.5 -mt-0.5 rotate-180"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                        >
+                          <g id="evaArrowUpFill0">
+                            <g id="evaArrowUpFill1">
+                              <path
+                                id="evaArrowUpFill2"
+                                fill="#FF2F1F"
+                                d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                              />
+                            </g>
+                          </g>
+                        </svg>
+                        <span class="text-[#FF2F1F] text-xs font-medium"
+                          >{item?.IssuePriceZG?.toFixed(2)}%</span
+                        >
+                      {/if}
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          {/each}
+          <InfiniteLoading on:infinite={infiniteHandler} />
+        </div>
+      {/if}
+      <ScrollToTop />
+    </div>
+    <!-- Page wrapper -->
+  </section>
+{/if}
 
 <style>
 </style>

@@ -201,11 +201,11 @@
       Major Results
     </h1>
   </div>
-  <div class="flex items-center justify-between">
-    <h1 class="text-xl sm:text-xl text-white text-start font-bold mt-10 mb-5">
-      Exchange Announcements
+  <div class="flex  sm:flex-row flex-col items-center justify-between">
+    <h1 class="text-sm sm:text-sm text-white text-start mt-5 mb-10">
+      Explore Major Results, Upcoming and Released Results.
     </h1>
-    <div class="bg-[#161b22]">
+    <div class="bg-[#161b22] mb-10">
       <label class="flex flex-row items-center">
         <input
           id="modal-search"

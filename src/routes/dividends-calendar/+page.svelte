@@ -1,17 +1,16 @@
 <script lang="ts">
-  import {
-    format,
-    startOfWeek,
-    addDays,
-    addWeeks,
-    subWeeks,
-    differenceInWeeks,
-  } from "date-fns";
-  import { screenWidth, numberOfUnreadNotification } from "$lib/store";
-  import dividendsLogo from "$lib/images/dividends_calendar_logo.png";
-  import ScrollToTop from "$lib/components/ScrollToTop.svelte";
   import { goto } from "$app/navigation";
-  import { abbreviateNumber } from "$lib/utils";
+  import ScrollToTop from "$lib/components/ScrollToTop.svelte";
+  import dividendsLogo from "$lib/images/dividends_calendar_logo.png";
+  import { numberOfUnreadNotification, screenWidth } from "$lib/store";
+  import {
+      addDays,
+      addWeeks,
+      differenceInWeeks,
+      format,
+      startOfWeek,
+      subWeeks,
+  } from "date-fns";
 
   export let data;
   let currentWeek = startOfWeek(new Date(), { weekStartsOn: 1 });

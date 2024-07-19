@@ -439,7 +439,7 @@
                       class="mt-10 rounded-full w-24 h-24 relative democratic-striped bg-[#295AC7] flex items-center justify-center"
                     >
                       <img
-                        style="clip-path: circle(50%);"
+                        style="clip-path: circle(50%);filter: grayscale(100%);"
                         class="rounded-full w-20"
                         src={bioDataContent?.image
                           ? bioDataContent?.image
