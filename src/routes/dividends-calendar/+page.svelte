@@ -473,7 +473,7 @@
                     <td
                       class="{index % 2
                         ? 'bg-[#111111]'
-                        : 'bg-[#1A1A1A]'} text-[#FFBE00] border-b border-[#1A1A1A]"
+                        : 'bg-[#1A1A1A]'} text-[#FFBE00] border-b border-[#1A1A1A] font-bold"
                     >
                       {item?.SecurityName}
                     </td>

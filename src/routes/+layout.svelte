@@ -1156,35 +1156,35 @@ syncWorker.onmessage = handleTwitchMessage;
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
                   class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page.url.pathname?.includes(
-                    '/fda-calendar'
+                    '/upcoming-events'
                   )
                     ? 'text-white bg-purple-700 rounded-md '
                     : ''}"
                 >
                   <a
-                    href={"/fda-calendar"}
+                    href={"/upcoming-events"}
                     for="sidebar"
                     class="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                   >
                     <span class="text-sm font-medium text-white">
-                      FDA Calendar
+                      Upcoming Events
                     </span>
                   </a>
                 </li>
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
                   class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
-                    .url.pathname === '/economic-calendar'
+                    .url.pathname === '/bonus-rights'
                     ? 'text-white bg-purple-700 rounded-md '
                     : ''}"
                 >
                   <a
-                    href={"/economic-calendar"}
+                    href={"/bonus-rights"}
                     for="sidebar"
                     class="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                   >
                     <span class="text-sm font-medium text-white">
-                      Economic Calendar
+                      Bonus & Rights Issues
                     </span>
                   </a>
                 </li>
