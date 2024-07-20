@@ -555,6 +555,74 @@ $: {
           </Accordion.Root>
                   
         </div>
+        <div class="flex flex-row items-center ml-9 w-full mt-3">
+
+          <Accordion.Root class="w-full">
+
+            <Accordion.Item value="item-1">
+
+              <Accordion.Trigger class="">
+                <Option class="h-5.5 w-5.5 mr-3 text-white ml-1"/>  
+                <span class="text-white ml-1 mr-auto">MarketView</span>
+              </Accordion.Trigger>
+              <Accordion.Content class="border-l border-gray-500 ml-2 mt-5">
+                <div class="flex flex-col items-start">
+                  <a href="/marketview/indices" class="text-[1rem] text-white ml-4 mt-4">Indices</a>
+                </div>
+                
+              </Accordion.Content
+              >
+            </Accordion.Item>
+          </Accordion.Root>
+                  
+        </div>
+        <div class="flex flex-row items-center ml-9 w-full mt-3">
+
+          <Accordion.Root class="w-full">
+
+            <Accordion.Item value="item-1">
+
+              <Accordion.Trigger class="">
+                <Option class="h-5.5 w-5.5 mr-3 text-white ml-1"/>  
+                <span class="text-white ml-1 mr-auto">Investors</span>
+              </Accordion.Trigger>
+              <Accordion.Content class="border-l border-gray-500 ml-2 mt-5">
+                <div class="flex flex-col items-start">
+                  <a href="/individual-Investors" class="text-[1rem] text-white ml-4 mt-4">individual-Investors</a>
+                  <a href="/institutionalInvestors" class="text-[1rem] text-white ml-4 mt-4">institutionalInvestors</a>
+                </div>
+                
+              </Accordion.Content
+              >
+            </Accordion.Item>
+          </Accordion.Root>
+                  
+        </div>
+        <div class="flex flex-row items-center ml-9 w-full mt-3">
+
+          <Accordion.Root class="w-full">
+
+            <Accordion.Item value="item-1">
+
+              <Accordion.Trigger class="">
+                <Option class="h-5.5 w-5.5 mr-3 text-white ml-1"/>  
+                <span class="text-white ml-1 mr-auto">News And Updates</span>
+              </Accordion.Trigger>
+              <Accordion.Content class="border-l border-gray-500 ml-2 mt-5">
+                <div class="flex flex-col items-start">
+                  <a href="/dividends" class="text-[1rem] text-white ml-4 mt-4">Dividends</a>
+                  <a href="/board-meetings" class="text-[1rem] text-white ml-4 mt-4">Board-meetings</a>
+                  <a href="/bonus-rights" class="text-[1rem] text-white ml-4 mt-4">Bonus Rights</a>
+                  <a href="/ipo-calender" class="text-[1rem] text-white ml-4 mt-4">IPO Calender</a>
+                  <a href="/upcoming-events" class="text-[1rem] text-white ml-4 mt-4">Event Results</a>
+                </div>
+                
+              </Accordion.Content
+              >
+            </Accordion.Item>
+          </Accordion.Root>
+                  
+        </div>
 
 
         <div class="flex flex-row items-center ml-9 w-full mt-3">
@@ -611,6 +679,24 @@ $: {
             
           </div>
           <span class="ml-3 text-white">News</span>
+        </a>
+        <a href="/market-news-updates" class="flex flex-row items-center ml-9 w-full mt-3">
+          <div
+            class="flex h-9 w-9 items-center justify-center rounded-lg text-white transition-colors hover:text-white md:h-8 md:w-8"
+          >
+            <Newspaper class="h-5.5 w-5.5" />
+            
+          </div>
+          <span class="ml-3 text-white">Indian News</span>
+        </a>
+        <a href="/major-deals" class="flex flex-row items-center ml-9 w-full mt-3">
+          <div
+            class="flex h-9 w-9 items-center justify-center rounded-lg text-white transition-colors hover:text-white md:h-8 md:w-8"
+          >
+            <Newspaper class="h-5.5 w-5.5" />
+            
+          </div>
+          <span class="ml-3 text-white">Deals</span>
         </a>
 
         <a href="/community" class="flex flex-row items-center ml-9 w-full mt-3">
@@ -907,6 +993,18 @@ $: {
                       <Newspaper class="h-5.5 w-5.5" />  
                     </div>
                     <span class="ml-3 text-white text-[1rem]">News</span>
+                  </div>
+            </a>
+          </Button>
+        </Sheet.Close>  
+        <Sheet.Close asChild let:builder>
+          <Button builders={[builder]} type="submit" class="bg-[#141417] hover:bg-[#141417] -ml-4 w-full">
+            <a href="/market-news-updates" class="flex flex-row items-center w-full -mt-2"> 
+                  <div class="flex flex-row items-center mr-auto">
+                    <div class="flex h-9 w-9 items-center justify-center rounded-lg text-white transition-colors hover:text-white md:h-8 md:w-8">
+                      <Newspaper class="h-5.5 w-5.5" />  
+                    </div>
+                    <span class="ml-3 text-white text-[1rem]">Indian News</span>
                   </div>
             </a>
           </Button>
