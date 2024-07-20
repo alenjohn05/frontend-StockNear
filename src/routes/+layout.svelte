@@ -1386,9 +1386,9 @@ syncWorker.onmessage = handleTwitchMessage;
             class="px-1 rounded-sm mb-2 last:mb-0"
           >
             <a
-              href="/dark-pool-flow"
+              href="/major-deals"
               class="block text-slate-200 hover:text-white sm:hover:bg-purple-700 truncate transition duration-150 {$page?.url?.pathname?.startsWith(
-                '/dark-pool-flow'
+                '/major-deals'
               )
                 ? 'text-white bg-purple-700 rounded-md '
                 : ''}"
@@ -1412,7 +1412,7 @@ syncWorker.onmessage = handleTwitchMessage;
                       ? 'hidden'
                       : ''} text-md font-medium ml-3 duration-200"
                   >
-                    Dark Pool
+                    Deals
                   </span>
                 </div>
               </div>

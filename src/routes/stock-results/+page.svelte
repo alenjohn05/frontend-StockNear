@@ -1,7 +1,7 @@
 <script lang="ts">
   import InfiniteLoading from "$lib/components/InfiniteLoading.svelte";
-    import ScrollToTop from "$lib/components/ScrollToTop.svelte";
-  import UpgradeToPro from "$lib/components/UpgradeToPro.svelte";
+  import ScrollToTop from "$lib/components/ScrollToTop.svelte";
+  import debounce from "lodash.debounce";
   import { numberOfUnreadNotification } from "$lib/store";
   import { abbreviateNumber } from "$lib/utils.js";
   import { format } from "date-fns";
@@ -12,7 +12,6 @@
   let recentReleasedResult = data?.GetRecentReleasedResults;
   let displayList: any[] = [];
   let rawData = forthComingResult;
-  let activeData = forthComingResult;
   let isLoaded = false;
 
   async function handleScroll() {
@@ -33,7 +32,7 @@
       window.addEventListener("scroll", handleScroll);
       isLoaded = true;
     } catch (e) {
-      error = "Error loading Stock Results data. Please try again later.";
+      error = "Error loading data. Please try again later.";
       console.error("Error loading data:", e);
     }
     return () => {
@@ -147,20 +146,24 @@
       rawData = recentReleasedResult;
       displayList = recentReleasedResult?.slice(0, 20) ?? [];
     }
+    filterQuery = ""; // Reset filter query
+    handleInput({ target: { value: "" } }); // Apply filter
   }
-  function handleInput(event) {
+  const debouncedHandleInput = debounce((event) => {
     filterQuery = event.target.value?.toLowerCase();
-    let newData = [];
-    setTimeout(() => {
-      if (filterQuery.length !== 0) {
-        rawData = activeData.filter((item) => {
-          const compName = item?.SecurityName?.toLowerCase();
-          return compName?.includes(filterQuery);
-        });
-      } else {
-        rawData = activeData;
-      }
-    }, 300);
+    if (filterQuery.length !== 0) {
+      const newData = rawData.filter((item) => {
+        const compName = item?.SecurityName?.toLowerCase();
+        return compName?.includes(filterQuery);
+      });
+      displayList = newData?.slice(0, 20) ?? [];
+    } else {
+      displayList = rawData?.slice(0, 20) ?? [];
+    }
+  }, 300);
+
+  function handleInput(event) {
+    debouncedHandleInput(event);
   }
 
   async function infiniteHandler({ detail: { loaded, complete } }) {
@@ -289,7 +292,7 @@
           class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
         >
           <thead>
-            <tr>
+            <tr class="border-b border-gray-800">
               <th class="text-slate-200 font-medium text-sm text-start w-40"
                 >Date</th
               >
@@ -316,103 +319,116 @@
             </tr>
           </thead>
           <tbody>
-            {#each displayList as item, index}
-              <!-- row -->
-              <tr
-                class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
-              >
+            {#if displayList.length === 0}
+              <tr>
                 <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} border-b-[#0d1117] text-xs font-bold"
+                  colspan="4"
+                  class="text-center text-white bg-[#0d1117] border-b-[#0d1117] py-4"
                 >
-                  {format(new Date(item?.Date), "dd-MM-yyyy")}
-                </td>
-                <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
-                >
-                  <a href={"/stocks/" + item?.SecurityID}
-                    >{item?.SecurityName}</a
-                  >
-                </td>
-                <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-xs text-center text-white border-b-[#0d1117] hover:text-blue-500"
-                >
-                  {@html addSparkLine(item?.C1WJson, index)}
-                </td>
-                <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
-                >
-                  {abbreviateNumber(item?.MCap)}
-                </td>
-                <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
-                >
-                  {item?.LTP}
-                </td>
-                <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
-                >
-                  <div class="flex item-center justify-center">
-                    {#if item?.ChangePercent >= 0}
-                      <svg
-                        class="w-5 h-5 -mr-0.5 -mt-0.5"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        ><g id="evaArrowUpFill0"
-                          ><g id="evaArrowUpFill1"
-                            ><path
-                              id="evaArrowUpFill2"
-                              fill="#10db06"
-                              d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
-                            /></g
-                          ></g
-                        ></svg
-                      >
-                      <span class="text-[#10DB06] text-xs font-medium"
-                        >+{item?.ChangePercent
-                          ? item?.ChangePercent
-                          : 0.1}%</span
-                      >
-                    {:else}
-                      <svg
-                        class="w-5 h-5 -mr-0.5 -mt-0.5 rotate-180"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        ><g id="evaArrowUpFill0"
-                          ><g id="evaArrowUpFill1"
-                            ><path
-                              id="evaArrowUpFill2"
-                              fill="#FF2F1F"
-                              d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
-                            /></g
-                          ></g
-                        ></svg
-                      >
-                      <span class="text-[#FF2F1F] text-xs font-medium"
-                        >{item?.ChangePercent}%
-                      </span>
-                    {/if}
-                  </div>
+                  No data available
                 </td>
               </tr>
-            {/each}
-            <InfiniteLoading on:infinite={infiniteHandler} />
+            {:else}
+              {#each displayList as item, index}
+                <!-- row -->
+                <tr
+                  class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
+                >
+                  <td
+                    class="{index % 2
+                      ? 'bg-[#0d1117]'
+                      : 'bg-[#161b22]'} border-b-[#0d1117] text-xs font-bold"
+                  >
+                    {format(new Date(item?.Date), "dd-MM-yyyy")}
+                  </td>
+                  <td
+                    class="{index % 2
+                      ? 'bg-[#0d1117]'
+                      : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
+                  >
+                    <a href={"/stocks/" + item?.SecurityID}
+                      >{item?.SecurityName}</a
+                    >
+                  </td>
+                  <td
+                    class="{index % 2
+                      ? 'bg-[#0d1117]'
+                      : 'bg-[#161b22]'} text-xs text-center text-white border-b-[#0d1117] hover:text-blue-500"
+                  >
+                    {@html addSparkLine(item?.C1WJson, index)}
+                  </td>
+                  <td
+                    class="{index % 2
+                      ? 'bg-[#0d1117]'
+                      : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  >
+                    {abbreviateNumber(item?.MCap)}
+                  </td>
+                  <td
+                    class="{index % 2
+                      ? 'bg-[#0d1117]'
+                      : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  >
+                    {item?.LTP}
+                  </td>
+                  <td
+                    class="{index % 2
+                      ? 'bg-[#0d1117]'
+                      : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  >
+                    <div class="flex item-center justify-center">
+                      {#if item?.ChangePercent >= 0}
+                        <svg
+                          class="w-5 h-5 -mr-0.5 -mt-0.5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          ><g id="evaArrowUpFill0"
+                            ><g id="evaArrowUpFill1"
+                              ><path
+                                id="evaArrowUpFill2"
+                                fill="#10db06"
+                                d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                              /></g
+                            ></g
+                          ></svg
+                        >
+                        <span class="text-[#10DB06] text-xs font-medium"
+                          >+{item?.ChangePercent
+                            ? item?.ChangePercent
+                            : 0.1}%</span
+                        >
+                      {:else}
+                        <svg
+                          class="w-5 h-5 -mr-0.5 -mt-0.5 rotate-180"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          ><g id="evaArrowUpFill0"
+                            ><g id="evaArrowUpFill1"
+                              ><path
+                                id="evaArrowUpFill2"
+                                fill="#FF2F1F"
+                                d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                              /></g
+                            ></g
+                          ></svg
+                        >
+                        <span class="text-[#FF2F1F] text-xs font-medium"
+                          >{item?.ChangePercent}%
+                        </span>
+                      {/if}
+                    </div>
+                  </td>
+                </tr>
+              {/each}
+              <InfiniteLoading on:infinite={infiniteHandler} />
+            {/if}
           </tbody>
         </table>
         <div class="sm:hidden w-full m-auto mt-4 space-y-4">
           {#each displayList as item, index}
-            <div class="bg-[#0d1117] p-4 rounded-md shadow-md border border-[#161b22]">
+            <div
+              class="bg-[#0d1117] p-4 rounded-md shadow-md border border-[#161b22]"
+            >
               <div class="text-[#FFBE00] text-lg font-medium">
                 <a href={"/stocks/" + item?.SecurityID}>{item?.SecurityName}</a>
               </div>
@@ -437,13 +453,31 @@
                   <span>Change %:</span>
                   <span class="flex items-center">
                     {#if item?.ChangePercent >= 0}
-                      <svg class="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path fill="#10db06" d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"/>
+                      <svg
+                        class="w-4 h-4 mr-1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="#10db06"
+                          d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                        />
                       </svg>
-                      <span class="text-[#10DB06]">+{item?.ChangePercent ? item?.ChangePercent : 0.1}%</span>
+                      <span class="text-[#10DB06]"
+                        >+{item?.ChangePercent
+                          ? item?.ChangePercent
+                          : 0.1}%</span
+                      >
                     {:else}
-                      <svg class="w-4 h-4 mr-1 rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path fill="#FF2F1F" d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"/>
+                      <svg
+                        class="w-4 h-4 mr-1 rotate-180"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="#FF2F1F"
+                          d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                        />
                       </svg>
                       <span class="text-[#FF2F1F]">{item?.ChangePercent}%</span>
                     {/if}
@@ -453,7 +487,6 @@
             </div>
           {/each}
           <InfiniteLoading on:infinite={infiniteHandler} />
-
         </div>
       {/if}
       {#if activeTab === "RELEASHED"}
@@ -461,7 +494,7 @@
           class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
         >
           <thead>
-            <tr>
+            <tr class="border-b border-gray-800">
               <th class="text-slate-200 font-medium text-sm text-start w-40"
                 >Quater</th
               >
@@ -488,186 +521,199 @@
             </tr>
           </thead>
           <tbody>
-            {#each displayList as item, index}
-              <!-- row -->
-              <tr
-                class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
-              >
+            {#if displayList.length === 0}
+              <tr>
                 <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} border-b-[#0d1117] text-xs font-bold"
+                  colspan="4"
+                  class="text-center text-white bg-[#0d1117] border-b-[#0d1117] py-4"
                 >
-                  {item?.DateEnd}
-                </td>
-                <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
-                >
-                  <a href={"/stocks/" + item?.SecurityID}
-                    >{item?.SecurityName}</a
-                  >
-                </td>
-                <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-xs text-center text-white border-b-[#0d1117] hover:text-blue-500"
-                >
-                  {abbreviateNumber(item?.MCap)}
-                </td>
-                <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
-                >
-                  {item?.SALES?.toFixed(2)}
-                  <div class="flex flex-row item-center justify-end">
-                    {#if item?.SALESARZG >= 0}
-                      <svg
-                        class="w-5 h-5 -mr-0.5 -mt-0.5"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        ><g id="evaArrowUpFill0"
-                          ><g id="evaArrowUpFill1"
-                            ><path
-                              id="evaArrowUpFill2"
-                              fill="#10db06"
-                              d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
-                            /></g
-                          ></g
-                        ></svg
-                      >
-                      <span class="text-[#10DB06] text-xs font-medium"
-                        >+{item?.SALESARZG
-                          ? item?.SALESARZG?.toFixed(2)
-                          : 0.1}%</span
-                      >
-                    {:else}
-                      <svg
-                        class="w-5 h-5 -mr-0.5 -mt-0.5 rotate-180"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        ><g id="evaArrowUpFill0"
-                          ><g id="evaArrowUpFill1"
-                            ><path
-                              id="evaArrowUpFill2"
-                              fill="#FF2F1F"
-                              d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
-                            /></g
-                          ></g
-                        ></svg
-                      >
-                      <span class="text-[#FF2F1F] text-xs font-medium"
-                        >{item?.SALESARZG?.toFixed(2)}%
-                      </span>
-                    {/if}
-                  </div>
-                </td>
-                <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
-                >
-                  {item?.EBITDA?.toFixed(2)}
-                  <div class="flex flex-row item-center justify-end">
-                    {#if item?.EBITDAARZG >= 0}
-                      <svg
-                        class="w-5 h-5 -mr-0.5 -mt-0.5"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        ><g id="evaArrowUpFill0"
-                          ><g id="evaArrowUpFill1"
-                            ><path
-                              id="evaArrowUpFill2"
-                              fill="#10db06"
-                              d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
-                            /></g
-                          ></g
-                        ></svg
-                      >
-                      <span class="text-[#10DB06] text-xs font-medium"
-                        >+{item?.EBITDAARZG
-                          ? item?.EBITDAARZG?.toFixed(2)
-                          : 0.1}%</span
-                      >
-                    {:else}
-                      <svg
-                        class="w-5 h-5 -mr-0.5 -mt-0.5 rotate-180"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        ><g id="evaArrowUpFill0"
-                          ><g id="evaArrowUpFill1"
-                            ><path
-                              id="evaArrowUpFill2"
-                              fill="#FF2F1F"
-                              d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
-                            /></g
-                          ></g
-                        ></svg
-                      >
-                      <span class="text-[#FF2F1F] text-xs font-medium"
-                        >{item?.EBITDAARZG?.toFixed(2)}%
-                      </span>
-                    {/if}
-                  </div>
-                </td>
-                <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
-                >
-                  {item?.Profit?.toFixed(2)}
-                  <div class="flex flex-row item-center justify-end">
-                    {#if item?.ProfitARZG >= 0}
-                      <svg
-                        class="w-5 h-5 -mr-0.5 -mt-0.5"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        ><g id="evaArrowUpFill0"
-                          ><g id="evaArrowUpFill1"
-                            ><path
-                              id="evaArrowUpFill2"
-                              fill="#10db06"
-                              d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
-                            /></g
-                          ></g
-                        ></svg
-                      >
-                      <span class="text-[#10DB06] text-xs font-medium"
-                        >+{item?.ProfitARZG
-                          ? item?.ProfitARZG?.toFixed(2)
-                          : 0.1}%</span
-                      >
-                    {:else}
-                      <svg
-                        class="w-5 h-5 -mr-0.5 -mt-0.5 rotate-180"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        ><g id="evaArrowUpFill0"
-                          ><g id="evaArrowUpFill1"
-                            ><path
-                              id="evaArrowUpFill2"
-                              fill="#FF2F1F"
-                              d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
-                            /></g
-                          ></g
-                        ></svg
-                      >
-                      <span class="text-[#FF2F1F] text-xs font-medium"
-                        >{item?.ProfitARZG?.toFixed(2)}%
-                      </span>
-                    {/if}
-                  </div>
+                  No data available
                 </td>
               </tr>
-            {/each}
-            <InfiniteLoading on:infinite={infiniteHandler} />
+            {:else}
+              {#each displayList as item, index}
+                <!-- row -->
+                <tr
+                  class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
+                >
+                  <td
+                    class="{index % 2
+                      ? 'bg-[#0d1117]'
+                      : 'bg-[#161b22]'} border-b-[#0d1117] text-xs font-bold"
+                  >
+                    {item?.DateEnd}
+                  </td>
+                  <td
+                    class="{index % 2
+                      ? 'bg-[#0d1117]'
+                      : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
+                  >
+                    <a href={"/stocks/" + item?.SecurityID}
+                      >{item?.SecurityName}</a
+                    >
+                  </td>
+                  <td
+                    class="{index % 2
+                      ? 'bg-[#0d1117]'
+                      : 'bg-[#161b22]'} text-xs text-center text-white border-b-[#0d1117] hover:text-blue-500"
+                  >
+                    {abbreviateNumber(item?.MCap)}
+                  </td>
+                  <td
+                    class="{index % 2
+                      ? 'bg-[#0d1117]'
+                      : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  >
+                    {item?.SALES?.toFixed(2)}
+                    <div class="flex flex-row item-center justify-end">
+                      {#if item?.SALESARZG >= 0}
+                        <svg
+                          class="w-5 h-5 -mr-0.5 -mt-0.5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          ><g id="evaArrowUpFill0"
+                            ><g id="evaArrowUpFill1"
+                              ><path
+                                id="evaArrowUpFill2"
+                                fill="#10db06"
+                                d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                              /></g
+                            ></g
+                          ></svg
+                        >
+                        <span class="text-[#10DB06] text-xs font-medium"
+                          >+{item?.SALESARZG
+                            ? item?.SALESARZG?.toFixed(2)
+                            : 0.1}%</span
+                        >
+                      {:else}
+                        <svg
+                          class="w-5 h-5 -mr-0.5 -mt-0.5 rotate-180"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          ><g id="evaArrowUpFill0"
+                            ><g id="evaArrowUpFill1"
+                              ><path
+                                id="evaArrowUpFill2"
+                                fill="#FF2F1F"
+                                d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                              /></g
+                            ></g
+                          ></svg
+                        >
+                        <span class="text-[#FF2F1F] text-xs font-medium"
+                          >{item?.SALESARZG?.toFixed(2)}%
+                        </span>
+                      {/if}
+                    </div>
+                  </td>
+                  <td
+                    class="{index % 2
+                      ? 'bg-[#0d1117]'
+                      : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  >
+                    {item?.EBITDA?.toFixed(2)}
+                    <div class="flex flex-row item-center justify-end">
+                      {#if item?.EBITDAARZG >= 0}
+                        <svg
+                          class="w-5 h-5 -mr-0.5 -mt-0.5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          ><g id="evaArrowUpFill0"
+                            ><g id="evaArrowUpFill1"
+                              ><path
+                                id="evaArrowUpFill2"
+                                fill="#10db06"
+                                d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                              /></g
+                            ></g
+                          ></svg
+                        >
+                        <span class="text-[#10DB06] text-xs font-medium"
+                          >+{item?.EBITDAARZG
+                            ? item?.EBITDAARZG?.toFixed(2)
+                            : 0.1}%</span
+                        >
+                      {:else}
+                        <svg
+                          class="w-5 h-5 -mr-0.5 -mt-0.5 rotate-180"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          ><g id="evaArrowUpFill0"
+                            ><g id="evaArrowUpFill1"
+                              ><path
+                                id="evaArrowUpFill2"
+                                fill="#FF2F1F"
+                                d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                              /></g
+                            ></g
+                          ></svg
+                        >
+                        <span class="text-[#FF2F1F] text-xs font-medium"
+                          >{item?.EBITDAARZG?.toFixed(2)}%
+                        </span>
+                      {/if}
+                    </div>
+                  </td>
+                  <td
+                    class="{index % 2
+                      ? 'bg-[#0d1117]'
+                      : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  >
+                    {item?.Profit?.toFixed(2)}
+                    <div class="flex flex-row item-center justify-end">
+                      {#if item?.ProfitARZG >= 0}
+                        <svg
+                          class="w-5 h-5 -mr-0.5 -mt-0.5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          ><g id="evaArrowUpFill0"
+                            ><g id="evaArrowUpFill1"
+                              ><path
+                                id="evaArrowUpFill2"
+                                fill="#10db06"
+                                d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                              /></g
+                            ></g
+                          ></svg
+                        >
+                        <span class="text-[#10DB06] text-xs font-medium"
+                          >+{item?.ProfitARZG
+                            ? item?.ProfitARZG?.toFixed(2)
+                            : 0.1}%</span
+                        >
+                      {:else}
+                        <svg
+                          class="w-5 h-5 -mr-0.5 -mt-0.5 rotate-180"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          ><g id="evaArrowUpFill0"
+                            ><g id="evaArrowUpFill1"
+                              ><path
+                                id="evaArrowUpFill2"
+                                fill="#FF2F1F"
+                                d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                              /></g
+                            ></g
+                          ></svg
+                        >
+                        <span class="text-[#FF2F1F] text-xs font-medium"
+                          >{item?.ProfitARZG?.toFixed(2)}%
+                        </span>
+                      {/if}
+                    </div>
+                  </td>
+                </tr>
+              {/each}
+              <InfiniteLoading on:infinite={infiniteHandler} />
+            {/if}
           </tbody>
         </table>
         <div class="sm:hidden w-full m-auto mt-4 space-y-4">
           {#each displayList as item}
-            <div class="bg-[#0d1117] p-4 rounded-md shadow-md border border-[#161b22]">
+            <div
+              class="bg-[#0d1117] p-4 rounded-md shadow-md border border-[#161b22]"
+            >
               <div class="text-[#FFBE00] text-lg font-medium">
                 <a href={"/stocks/" + item?.SecurityID}>{item?.SecurityName}</a>
               </div>
@@ -685,15 +731,35 @@
                   <span class="flex items-center">
                     {item?.SALES?.toFixed(2)}
                     {#if item?.SALESARZG >= 0}
-                      <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path fill="#10db06" d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"/>
+                      <svg
+                        class="w-4 h-4 ml-1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="#10db06"
+                          d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                        />
                       </svg>
-                      <span class="text-[#10DB06] ml-1">+{item?.SALESARZG ? item?.SALESARZG?.toFixed(2) : 0.1}%</span>
+                      <span class="text-[#10DB06] ml-1"
+                        >+{item?.SALESARZG
+                          ? item?.SALESARZG?.toFixed(2)
+                          : 0.1}%</span
+                      >
                     {:else}
-                      <svg class="w-4 h-4 ml-1 rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path fill="#FF2F1F" d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"/>
+                      <svg
+                        class="w-4 h-4 ml-1 rotate-180"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="#FF2F1F"
+                          d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                        />
                       </svg>
-                      <span class="text-[#FF2F1F] ml-1">{item?.SALESARZG?.toFixed(2)}%</span>
+                      <span class="text-[#FF2F1F] ml-1"
+                        >{item?.SALESARZG?.toFixed(2)}%</span
+                      >
                     {/if}
                   </span>
                 </div>
@@ -702,15 +768,35 @@
                   <span class="flex items-center">
                     {item?.EBITDA?.toFixed(2)}
                     {#if item?.EBITDAARZG >= 0}
-                      <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path fill="#10db06" d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"/>
+                      <svg
+                        class="w-4 h-4 ml-1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="#10db06"
+                          d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                        />
                       </svg>
-                      <span class="text-[#10DB06] ml-1">+{item?.EBITDAARZG ? item?.EBITDAARZG?.toFixed(2) : 0.1}%</span>
+                      <span class="text-[#10DB06] ml-1"
+                        >+{item?.EBITDAARZG
+                          ? item?.EBITDAARZG?.toFixed(2)
+                          : 0.1}%</span
+                      >
                     {:else}
-                      <svg class="w-4 h-4 ml-1 rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path fill="#FF2F1F" d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"/>
+                      <svg
+                        class="w-4 h-4 ml-1 rotate-180"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="#FF2F1F"
+                          d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                        />
                       </svg>
-                      <span class="text-[#FF2F1F] ml-1">{item?.EBITDAARZG?.toFixed(2)}%</span>
+                      <span class="text-[#FF2F1F] ml-1"
+                        >{item?.EBITDAARZG?.toFixed(2)}%</span
+                      >
                     {/if}
                   </span>
                 </div>
@@ -719,15 +805,35 @@
                   <span class="flex items-center">
                     {item?.Profit?.toFixed(2)}
                     {#if item?.ProfitARZG >= 0}
-                      <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path fill="#10db06" d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"/>
+                      <svg
+                        class="w-4 h-4 ml-1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="#10db06"
+                          d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                        />
                       </svg>
-                      <span class="text-[#10DB06] ml-1">+{item?.ProfitARZG ? item?.ProfitARZG?.toFixed(2) : 0.1}%</span>
+                      <span class="text-[#10DB06] ml-1"
+                        >+{item?.ProfitARZG
+                          ? item?.ProfitARZG?.toFixed(2)
+                          : 0.1}%</span
+                      >
                     {:else}
-                      <svg class="w-4 h-4 ml-1 rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path fill="#FF2F1F" d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"/>
+                      <svg
+                        class="w-4 h-4 ml-1 rotate-180"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="#FF2F1F"
+                          d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                        />
                       </svg>
-                      <span class="text-[#FF2F1F] ml-1">{item?.ProfitARZG?.toFixed(2)}%</span>
+                      <span class="text-[#FF2F1F] ml-1"
+                        >{item?.ProfitARZG?.toFixed(2)}%</span
+                      >
                     {/if}
                   </span>
                 </div>

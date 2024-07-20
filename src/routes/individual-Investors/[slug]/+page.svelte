@@ -39,8 +39,8 @@
           color: "#ffffff",
           fontSize: 22,
           fontFamily: '"Inter", sans-serif',
-          fontWeight: "normal"
-        }
+          fontWeight: "normal",
+        },
       },
       tooltip: {
         trigger: "item",
@@ -49,11 +49,11 @@
         borderWidth: 1,
         textStyle: {
           color: "#ffffff",
-          fontFamily: '"Inter", sans-serif'
+          fontFamily: '"Inter", sans-serif',
         },
         formatter: (params: any) => {
           return `${params.name}: ${params.percent.toFixed(2)}%`;
-        }
+        },
       },
       legend: false,
       series: [
@@ -73,7 +73,7 @@
             "#da9b0a",
             "#c75e70",
             "#0057ff",
-            "#00bcd4"
+            "#00bcd4",
           ],
           data: [...sortedData],
           label: {
@@ -98,28 +98,28 @@
                 lineHeight: 22,
                 align: "center",
                 fontFamily: '"Inter", sans-serif',
-                fontWeight: "normal"
+                fontWeight: "normal",
               },
               b: {
                 fontSize: 16,
                 lineHeight: 33,
                 fontFamily: '"Inter", sans-serif',
-                fontWeight: "normal"
-              }
-            }
+                fontWeight: "normal",
+              },
+            },
           },
           labelLine: {
             lineStyle: {
-              color: "rgba(255, 255, 255, 0.5)"
+              color: "rgba(255, 255, 255, 0.5)",
             },
             smooth: 0.1,
             length: 20,
-            length2: 20
+            length2: 20,
           },
           animationType: "scale",
-          animationEasing: "elasticOut"
-        }
-      ]
+          animationEasing: "elasticOut",
+        },
+      ],
     };
     return option;
   }
@@ -134,43 +134,43 @@
           color: "#ffffff",
           fontSize: 22,
           fontFamily: '"Inter", sans-serif',
-          fontWeight: "normal"
-        }
+          fontWeight: "normal",
+        },
       },
       silent: true,
       yAxis: {
         type: "value",
         axisLine: {
-          show: false
+          show: false,
         },
         axisTick: {
-          show: false
+          show: false,
         },
         axisLabel: {
-          show: false
+          show: false,
         },
         splitLine: {
-          show: false
-        }
+          show: false,
+        },
       },
       xAxis: {
         type: "category",
         data: [...sortedDataSize?.map((each) => each.name)],
         axisLine: {
           lineStyle: {
-            color: "#333333"
-          }
+            color: "#333333",
+          },
         },
         axisLabel: {
           color: "#ffffff",
-          fontFamily: '"Inter", sans-serif'
+          fontFamily: '"Inter", sans-serif',
         },
         splitLine: {
           show: true,
           lineStyle: {
-            color: "#161b22"
-          }
-        }
+            color: "#161b22",
+          },
+        },
       },
       tooltip: {
         trigger: "axis",
@@ -179,11 +179,11 @@
         borderWidth: 1,
         textStyle: {
           color: "#ffffff",
-          fontFamily: '"Inter", sans-serif'
+          fontFamily: '"Inter", sans-serif',
         },
         formatter: (params) => {
           return `${params[0].name}: ${params[0].value.toFixed(2)}%`;
-        }
+        },
       },
       legend: false,
       series: [
@@ -196,20 +196,18 @@
             value: parseFloat(each.value.toFixed(2)),
             name: each.name,
             itemStyle: {
-              color: ["#c75e70", "#00bcd4", "#ebff00", "#da9b0a"][
-                index % 5
-              ]
+              color: ["#c75e70", "#00bcd4", "#ebff00", "#da9b0a"][index % 5],
             },
             label: {
               show: true,
               position: "top",
               color: "#ffffff",
               fontFamily: '"Inter", sans-serif',
-              formatter: "{c}%"
-            }
+              formatter: "{c}%",
+            },
           })),
-          animation: false
-        }
+          animation: false,
+        },
       ],
       grid: {
         left: "3%",
@@ -223,10 +221,10 @@
         backgroundColor: "#0d1117",
         tooltip: {
           trigger: "item",
-          formatter: "{b}: {c}"
+          formatter: "{b}: {c}",
         },
-        zlevel: 0
-      }
+        zlevel: 0,
+      },
     };
     option.height = 200;
     return option;
@@ -276,7 +274,7 @@
     const otherSectors = sectors.slice(5);
     const otherAllocation = otherSectors.reduce(
       (sum, [_, value]) => sum + value,
-      0
+      0,
     );
 
     const insights = [
@@ -284,12 +282,12 @@
       `The top 5 sectors account for <strong>${topSectors.reduce((sum, [_, value]) => sum + value, 0).toFixed(2)}%</strong> of the portfolio.`,
       `<strong>${topSectors[0][0]}</strong> is the largest sector, representing <strong>${topSectors[0][1].toFixed(2)}%</strong> of the portfolio.`,
       `The smallest allocation is to <strong>${sectors[sectors.length - 1][0]}</strong> at ${sectors[sectors.length - 1][1].toFixed(2)}%.`,
-      `The remaining ${otherSectors.length} sectors collectively make up ${otherAllocation.toFixed(2)}% of the portfolio.`
+      `The remaining ${otherSectors.length} sectors collectively make up ${otherAllocation.toFixed(2)}% of the portfolio.`,
     ];
 
     if (totalAllocation < 99.5 || totalAllocation > 100.5) {
       insights.push(
-        `Note: Total allocation (${totalAllocation.toFixed(2)}%) is not exactly 100%. This may be due to rounding or incomplete data.`
+        `Note: Total allocation (${totalAllocation.toFixed(2)}%) is not exactly 100%. This may be due to rounding or incomplete data.`,
       );
     }
 
@@ -303,37 +301,42 @@
           </svg>
           <span>${insight}</span>
         </li>
-      `
+      `,
         )
         .join("")}
     </ul>`;
   }
 
   function industryAndSizeInsights(data) {
-  const industryData = data.ind_analysis;
-  const sizeData = data.size_analysis;
+    const industryData = data.ind_analysis;
+    const sizeData = data.size_analysis;
 
-  // Sort industries by allocation
-  const sortedIndustries = Object.entries(industryData).sort((a, b) => b[1] - a[1]);
+    // Sort industries by allocation
+    const sortedIndustries = Object.entries(industryData).sort(
+      (a, b) => b[1] - a[1],
+    );
 
-  // Calculate total allocation
-  const totalIndustryAllocation = sortedIndustries.reduce((sum, [_, value]) => sum + value, 0);
+    // Calculate total allocation
+    const totalIndustryAllocation = sortedIndustries.reduce(
+      (sum, [_, value]) => sum + value,
+      0,
+    );
 
-  // Get top 3 industries
-  const top3Industries = sortedIndustries.slice(0, 3);
+    // Get top 3 industries
+    const top3Industries = sortedIndustries.slice(0, 3);
 
-  // Sort size categories
-  const sortedSizes = Object.entries(sizeData).sort((a, b) => b[1] - a[1]);
+    // Sort size categories
+    const sortedSizes = Object.entries(sizeData).sort((a, b) => b[1] - a[1]);
 
-  const insights = [
-    `<strong class="text-green-400">Industry Concentration:</strong> The top 3 industries (${top3Industries.map(([name, _]) => name).join(", ")}) account for <strong>${top3Industries.reduce((sum, [_, value]) => sum + value, 0).toFixed(2)}%</strong> of the portfolio, with ${top3Industries[0][0]} leading at ${top3Industries[0][1].toFixed(2)}%.`,
+    const insights = [
+      `<strong class="text-green-400">Industry Concentration:</strong> The top 3 industries (${top3Industries.map(([name, _]) => name).join(", ")}) account for <strong>${top3Industries.reduce((sum, [_, value]) => sum + value, 0).toFixed(2)}%</strong> of the portfolio, with ${top3Industries[0][0]} leading at ${top3Industries[0][1].toFixed(2)}%.`,
 
-    `<strong class="text-green-400">Industry Diversity:</strong> The portfolio is spread across <strong>${sortedIndustries.length}</strong> different industries, with allocations ranging from ${sortedIndustries[0][1].toFixed(2)}% to ${sortedIndustries[sortedIndustries.length - 1][1].toFixed(2)}%.`,
+      `<strong class="text-green-400">Industry Diversity:</strong> The portfolio is spread across <strong>${sortedIndustries.length}</strong> different industries, with allocations ranging from ${sortedIndustries[0][1].toFixed(2)}% to ${sortedIndustries[sortedIndustries.length - 1][1].toFixed(2)}%.`,
 
-    `<strong class="text-green-400">Market Cap Distribution:</strong> The portfolio is primarily focused on <strong>${sortedSizes[0][0]}</strong> cap stocks, which make up ${sortedSizes[0][1].toFixed(2)}% of the allocation, followed by ${sortedSizes[1][0]} cap at ${sortedSizes[1][1].toFixed(2)}%.`
-  ];
+      `<strong class="text-green-400">Market Cap Distribution:</strong> The portfolio is primarily focused on <strong>${sortedSizes[0][0]}</strong> cap stocks, which make up ${sortedSizes[0][1].toFixed(2)}% of the allocation, followed by ${sortedSizes[1][0]} cap at ${sortedSizes[1][1].toFixed(2)}%.`,
+    ];
 
-  return `<ul class="space-y-4">
+    return `<ul class="space-y-4">
     ${insights
       .map(
         (insight) => `
@@ -343,11 +346,11 @@
         </svg>
         <span>${insight}</span>
       </li>
-    `
+    `,
       )
       .join("")}
   </ul>`;
-}
+  }
 </script>
 
 <svelte:head>
@@ -405,17 +408,45 @@
     <section
       class="container mx-auto max-w-7xl overflow-hidden pt-5 pb-60 sm:px-10 xl:px-0"
     >
-      <div class="text-sm breadcrumbs ml-4 pb-10">
-        <ul>
-          <li><a href="/" class="text-gray-300">Home</a></li>
+      <nav class="text-xs sm:text-sm mx-4 pb-6 sm:pb-10">
+        <ol class="flex flex-wrap items-center space-x-1 sm:space-x-2">
           <li>
-            <a href="/individual-Investors" class="text-gray-300"
+            <a href="/" class="text-gray-300 hover:text-white">Home</a>
+          </li>
+          <li class="flex items-center">
+            <svg
+              class="w-3 h-3 sm:w-4 sm:h-4 text-gray-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <a
+              href="/individual-Investors"
+              class="ml-1 sm:ml-2 text-gray-300 hover:text-white"
               >Individual Investors</a
             >
           </li>
-          <li class="text-gray-300">{investor_name}</li>
-        </ul>
-      </div>
+          <li class="flex items-center">
+            <svg
+              class="w-3 h-3 sm:w-4 sm:h-4 text-gray-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="ml-1 sm:ml-2 text-gray-300">{investor_name}</span>
+          </li>
+        </ol>
+      </nav>
 
       <div class="w-full overflow-hidden m-auto px-3 sm:px-0">
         <div class="flex justify-center w-full m-auto overflow-hidden">
@@ -498,7 +529,7 @@
                         >
                         <span class="text-[#10DB06] text-xs"
                           >+{generateNetWorth(
-                            bioDataContent?.networth
+                            bioDataContent?.networth,
                           )?.toFixed(2)}%</span
                         >
                       </span>
@@ -579,13 +610,11 @@
                     </div>
                   </Lazy>
                   <p class="text-white text-md px-5">
-                    How <strong>{investor_name}</strong> managed to deploy the money in
-                    different <strong>Market sized stocks</strong>?
+                    How <strong>{investor_name}</strong> managed to deploy the
+                    money in different <strong>Market sized stocks</strong>?
                   </p>
                   <p class="text-white text-sm mt-3 px-5">
-                    {@html industryAndSizeInsights(
-                      investorGraphData
-                    )}
+                    {@html industryAndSizeInsights(investorGraphData)}
                   </p>
                 </div>
               {/if}
@@ -611,12 +640,11 @@
                   </p>
                   <p class="text-white text-sm mt-3 px-5">
                     {@html sectoralAllocationOverview(
-                      investorGraphData?.sec_analysis
+                      investorGraphData?.sec_analysis,
                     )}
                   </p>
                 </div>
               {/if}
-
 
               <!-- {#if investor_quaterlist?.length > 3}
               <div
@@ -665,7 +693,7 @@
                 </div>
                 <div class="bg-[#161b22] p-2 sm:p-5 rounded-lg overflow-x-auto">
                   <table
-                    class="table-auto w-full bg-[#0d1117] border-bg-[#0d1117] text-white text-sm"
+                    class=" hidden sm:inline-table table-auto w-full bg-[#0d1117] border-bg-[#0d1117] text-white text-sm"
                   >
                     <thead>
                       <tr class="bg-[#0d1117] border-b border-blue-400">
@@ -704,6 +732,38 @@
                       {/each}
                     </tbody>
                   </table>
+                </div>
+                <div class="sm:hidden w-full mt-4 space-y-4">
+                  {#each investorStockList as item, index}
+                    <div
+                      class="bg-[#0d1117] p-4 rounded-md shadow-md border border-[#161b22]"
+                    >
+                      <div class="text-white font-medium mb-2">
+                        {item?.comp_name?.replace("_", " ")}
+                      </div>
+                      <div class="grid grid-cols-2 gap-2 text-xs">
+                        <div class="text-slate-300">Company Holdings:</div>
+                        <div class="text-white text-right">
+                          {item?.company_per_stake}%
+                        </div>
+
+                        <div class="text-slate-300">Holdings:</div>
+                        <div class="text-white text-right">
+                          {item?.holding_percentage?.toFixed(2)}%
+                        </div>
+
+                        <div class="text-slate-300">Current Value:</div>
+                        <div class="text-white text-right">
+                          {item?.total_quantity}
+                        </div>
+
+                        <div class="text-slate-300">Current Price:</div>
+                        <div class="text-[#FFBE00] text-right">
+                          {item?.cmp}
+                        </div>
+                      </div>
+                    </div>
+                  {/each}
                 </div>
               {/if}
             </main>

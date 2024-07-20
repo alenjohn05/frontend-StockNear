@@ -51,15 +51,6 @@
 <section
   class="w-full max-w-4xl overflow-hidden m-auto min-h-screen pt-4 pb-40"
 >
-  <!--
-      <div class="text-sm breadcrumbs ml-4">
-        <ul>
-          <li><a href="/" class="text-gray-300">Home</a></li> 
-          <li class="text-gray-300">Bonus and Rights Calendar</li>
-        </ul>
-      </div>
-    -->
-
   <div
     class="w-full max-w-4xl m-auto sm:bg-[#0d1117] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8"
   >
@@ -134,77 +125,92 @@
         <table
           class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
         >
-          <thead>
-            <tr>
-              <th class="text-slate-200 font-medium text-sm text-start"></th>
-              <th class="text-slate-200 font-medium text-sm text-start"
-                >Company Name</th
-              >
-              <th
-                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
-                >Split Details</th
-              >
-              <th
-                class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
-                >Ex Date</th
-              >
-            </tr>
-          </thead>
-          <tbody>
-            {#each rightsIssues as item, index}
-              <!-- row -->
-              <tr
-                on:click={() => goto("/stocks/" + item?.symbol)}
-                class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
-              >
+          <table
+            class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
+          >
+            <thead>
+              <tr class="border-b border-gray-800">
+                <th class="text-slate-200 font-medium text-sm text-start"></th>
+                <th class="text-slate-200 font-medium text-sm text-start"
+                  >Company Name</th
+                >
                 <th
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-gray-200"
+                  class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
+                  >Split Details</th
                 >
-                  <div class="flex flex-row items-center">
-                    <div
-                      class="flex-shrink-0 rounded-full w-9 h-9 relative bg-[#0d1117] flex items-center justify-center"
-                    >
-                      <img
-                        style="clip-path: circle(50%);"
-                        class="rounded-full w-7"
-                        src={item?.SecurityLogoUrl}
-                        loading="lazy"
-                      />
-                    </div>
-                  </div>
-                  <!--{item?.firstName} {item?.lastName}-->
-                </th>
-                <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} border-b-[#0d1117]"
+                <th
+                  class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
+                  >Ex Date</th
                 >
-                  <label
-                    on:click={() => goto("/stocks/" + item?.SecurityID)}
-                    class="cursor-pointer text-[#FFBE00] font-bold"
-                  >
-                    {item?.SecurityName}
-                  </label>
-                </td>
-                <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-white border-b-[#0d1117]"
-                >
-                  {item?.Purpose}
-                </td>
-                <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-white border-b-[#0d1117]"
-                >
-                  {format(new Date(item.Date), "dd-MM-yyyy")}
-                </td>
               </tr>
-            {/each}
-          </tbody>
+            </thead>
+            <tbody>
+              {#if rightsIssues.length === 0}
+                <tr>
+                  <td
+                    colspan="4"
+                    class="text-center text-white bg-[#0d1117] border-b-[#0d1117] py-4"
+                  >
+                    No data available
+                  </td>
+                </tr>
+              {:else}
+                {#each rightsIssues as item, index}
+                  <!-- row -->
+                  <tr
+                    on:click={() => goto("/stocks/" + item?.symbol)}
+                    class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
+                  >
+                    <th
+                      class="{index % 2
+                        ? 'bg-[#0d1117]'
+                        : 'bg-[#161b22]'} text-gray-200"
+                    >
+                      <div class="flex flex-row items-center">
+                        <div
+                          class="flex-shrink-0 rounded-full w-9 h-9 relative bg-[#0d1117] flex items-center justify-center"
+                        >
+                          <img
+                            style="clip-path: circle(50%);"
+                            class="rounded-full w-7"
+                            src={item?.SecurityLogoUrl}
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                      <!--{item?.firstName} {item?.lastName}-->
+                    </th>
+                    <td
+                      class="{index % 2
+                        ? 'bg-[#0d1117]'
+                        : 'bg-[#161b22]'} border-b-[#0d1117]"
+                    >
+                      <label
+                        on:click={() => goto("/stocks/" + item?.SecurityID)}
+                        class="cursor-pointer text-[#FFBE00] font-bold"
+                      >
+                        {item?.SecurityName}
+                      </label>
+                    </td>
+                    <td
+                      class="{index % 2
+                        ? 'bg-[#0d1117]'
+                        : 'bg-[#161b22]'} text-white border-b-[#0d1117]"
+                    >
+                      {item?.Purpose}
+                    </td>
+                    <td
+                      class="{index % 2
+                        ? 'bg-[#0d1117]'
+                        : 'bg-[#161b22]'} text-white border-b-[#0d1117]"
+                    >
+                      {format(new Date(item.Date), "dd-MM-yyyy")}
+                    </td>
+                  </tr>
+                {/each}
+              {/if}
+            </tbody>
+          </table>
         </table>
       </div>
       <div class=" w-full m-auto items-center pl-2 pr-2 sm:pl-0 sm:pr-0 mt-10">
@@ -220,7 +226,7 @@
           class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
         >
           <thead>
-            <tr>
+            <tr class="border-b border-gray-800">
               <th class="text-slate-200 font-medium text-sm text-start"></th>
               <th class="text-slate-200 font-medium text-sm text-start"
                 >Company Name</th
@@ -236,59 +242,70 @@
             </tr>
           </thead>
           <tbody>
-            {#each bonusIssues as item, index}
-              <!-- row -->
-              <tr
-                on:click={() => goto("/stocks/" + item?.symbol)}
-                class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
-              >
-                <th
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-gray-200"
-                >
-                  <div class="flex flex-row items-center">
-                    <div
-                      class="flex-shrink-0 rounded-full w-9 h-9 relative bg-[#0d1117] flex items-center justify-center"
-                    >
-                      <img
-                        style="clip-path: circle(50%);"
-                        class="rounded-full w-7"
-                        src={item?.SecurityLogoUrl}
-                        loading="lazy"
-                      />
-                    </div>
-                  </div>
-                  <!--{item?.firstName} {item?.lastName}-->
-                </th>
+            {#if bonusIssues.length === 0}
+              <tr>
                 <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} border-b-[#0d1117]"
+                  colspan="4"
+                  class="text-center text-white bg-[#0d1117] border-b-[#0d1117] py-4"
                 >
-                  <label
-                    on:click={() => goto("/stocks/" + item?.SecurityID)}
-                    class="cursor-pointer text-[#FFBE00] font-bold"
-                  >
-                    {item?.SecurityName}
-                  </label>
-                </td>
-                <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-white border-b-[#0d1117]"
-                >
-                  {item?.Purpose}
-                </td>
-                <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-white border-b-[#0d1117]"
-                >
-                  {format(new Date(item.Date), "dd-MM-yyyy")}
+                  No data available
                 </td>
               </tr>
-            {/each}
+            {:else}
+              {#each bonusIssues as item, index}
+                <!-- row -->
+                <tr
+                  on:click={() => goto("/stocks/" + item?.symbol)}
+                  class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
+                >
+                  <th
+                    class="{index % 2
+                      ? 'bg-[#0d1117]'
+                      : 'bg-[#161b22]'} text-gray-200"
+                  >
+                    <div class="flex flex-row items-center">
+                      <div
+                        class="flex-shrink-0 rounded-full w-9 h-9 relative bg-[#0d1117] flex items-center justify-center"
+                      >
+                        <img
+                          style="clip-path: circle(50%);"
+                          class="rounded-full w-7"
+                          src={item?.SecurityLogoUrl}
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                    <!--{item?.firstName} {item?.lastName}-->
+                  </th>
+                  <td
+                    class="{index % 2
+                      ? 'bg-[#0d1117]'
+                      : 'bg-[#161b22]'} border-b-[#0d1117]"
+                  >
+                    <label
+                      on:click={() => goto("/stocks/" + item?.SecurityID)}
+                      class="cursor-pointer text-[#FFBE00] font-bold"
+                    >
+                      {item?.SecurityName}
+                    </label>
+                  </td>
+                  <td
+                    class="{index % 2
+                      ? 'bg-[#0d1117]'
+                      : 'bg-[#161b22]'} text-white border-b-[#0d1117]"
+                  >
+                    {item?.Purpose}
+                  </td>
+                  <td
+                    class="{index % 2
+                      ? 'bg-[#0d1117]'
+                      : 'bg-[#161b22]'} text-white border-b-[#0d1117]"
+                  >
+                    {format(new Date(item.Date), "dd-MM-yyyy")}
+                  </td>
+                </tr>
+              {/each}
+            {/if}
           </tbody>
         </table>
       </div>

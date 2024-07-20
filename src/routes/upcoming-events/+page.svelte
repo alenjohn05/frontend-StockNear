@@ -201,7 +201,7 @@
       class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
     >
       <thead>
-        <tr>
+        <tr class="border-b border-gray-800">
           <th class="text-slate-200 font-medium text-sm text-start w-40"
             >Date</th
           >
@@ -220,58 +220,69 @@
         </tr>
       </thead>
       <tbody>
-        {#each rawData as item, index}
-          <!-- row -->
-          <tr
-            class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
-          >
+        {#if rawData.length === 0}
+          <tr>
             <td
-              class="{index % 2
-                ? 'bg-[#0d1117]'
-                : 'bg-[#161b22]'} border-b-[#0d1117] text-xs font-bold"
+              colspan="4"
+              class="text-center text-white bg-[#0d1117] border-b-[#0d1117] py-4"
             >
-              {format(new Date(item?.Date), "dd-MM-yyyy")}
-            </td>
-            <td
-              class="{index % 2
-                ? 'bg-[#0d1117]'
-                : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
-            >
-              <a href={"/stocks/" + item?.SecurityID}>{item?.SecurityName}</a>
-            </td>
-
-            <td
-              class="{index % 2
-                ? 'bg-[#0d1117]'
-                : 'bg-[#161b22]'} items-center text-xs text-white border-b-[#0d1117] hover:text-blue-500"
-            >
-              {item?.Subject}
-            </td>
-            <td
-              class="{index % 2
-                ? 'bg-[#0d1117]'
-                : 'bg-[#161b22]'} flex items-center text-xs justify-center text-white border-b-[#0d1117] hover:text-blue-500"
-            >
-              {#if item?.FileURL}
-                <a href={item?.FileURL} target="_blank"
-                  ><svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    id="Layer_1"
-                    data-name="Layer 1"
-                    viewBox="0 0 24 24"
-                    width="16"
-                    height="16"
-                    class="text-white hover:text-blue-600"
-                    ><path
-                      fill="currentcolor"
-                      d="m15.904,16.143c.197.193.201.51.008.707l-2.515,2.57c-.381.381-.88.574-1.378.579-.499-.004-1.034-.196-1.413-.575l-2.519-2.574c-.193-.197-.189-.514.008-.707.199-.193.516-.188.707.008l2.515,2.57c.056.056.117.103.183.143v-7.363c0-.276.224-.5.5-.5s.5.224.5.5v7.363c.066-.04.129-.088.187-.146l2.511-2.566c.193-.196.51-.201.707-.008Zm6.096-6.157v9.515c0,2.481-2.019,4.5-4.5,4.5H6.5c-2.481,0-4.5-2.019-4.5-4.5V4.5C2,2.019,4.019,0,6.5,0h5.515c1.735,0,3.368.676,4.597,1.904l3.484,3.485c1.228,1.227,1.904,2.859,1.904,4.596Zm-8-3.485c0,.827.673,1.5,1.5,1.5h5.132c-.273-.706-.693-1.353-1.244-1.904l-3.484-3.485c-.552-.551-1.199-.97-1.904-1.243v5.132Zm7,3.485c0-.334-.03-.663-.088-.985h-5.412c-1.379,0-2.5-1.122-2.5-2.5V1.088c-.322-.058-.651-.088-.985-.088h-5.515c-1.93,0-3.5,1.57-3.5,3.5v15c0,1.93,1.57,3.5,3.5,3.5h11c1.93,0,3.5-1.57,3.5-3.5v-9.515Zm-8.981,10.014c-.007,0,.006,0,0,0h0Z"
-                    /></svg
-                  >
-                </a>
-              {/if}
+              No data available
             </td>
           </tr>
-        {/each}
+        {:else}
+          {#each rawData as item, index}
+            <!-- row -->
+            <tr
+              class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
+            >
+              <td
+                class="{index % 2
+                  ? 'bg-[#0d1117]'
+                  : 'bg-[#161b22]'} border-b-[#0d1117] text-xs font-bold"
+              >
+                {format(new Date(item?.Date), "dd-MM-yyyy")}
+              </td>
+              <td
+                class="{index % 2
+                  ? 'bg-[#0d1117]'
+                  : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
+              >
+                <a href={"/stocks/" + item?.SecurityID}>{item?.SecurityName}</a>
+              </td>
+
+              <td
+                class="{index % 2
+                  ? 'bg-[#0d1117]'
+                  : 'bg-[#161b22]'} items-center text-xs text-white border-b-[#0d1117] hover:text-blue-500"
+              >
+                {item?.Subject}
+              </td>
+              <td
+                class="{index % 2
+                  ? 'bg-[#0d1117]'
+                  : 'bg-[#161b22]'} flex items-center text-xs justify-center text-white border-b-[#0d1117] hover:text-blue-500"
+              >
+                {#if item?.FileURL}
+                  <a href={item?.FileURL} target="_blank"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      id="Layer_1"
+                      data-name="Layer 1"
+                      viewBox="0 0 24 24"
+                      width="16"
+                      height="16"
+                      class="text-white hover:text-blue-600"
+                      ><path
+                        fill="currentcolor"
+                        d="m15.904,16.143c.197.193.201.51.008.707l-2.515,2.57c-.381.381-.88.574-1.378.579-.499-.004-1.034-.196-1.413-.575l-2.519-2.574c-.193-.197-.189-.514.008-.707.199-.193.516-.188.707.008l2.515,2.57c.056.056.117.103.183.143v-7.363c0-.276.224-.5.5-.5s.5.224.5.5v7.363c.066-.04.129-.088.187-.146l2.511-2.566c.193-.196.51-.201.707-.008Zm6.096-6.157v9.515c0,2.481-2.019,4.5-4.5,4.5H6.5c-2.481,0-4.5-2.019-4.5-4.5V4.5C2,2.019,4.019,0,6.5,0h5.515c1.735,0,3.368.676,4.597,1.904l3.484,3.485c1.228,1.227,1.904,2.859,1.904,4.596Zm-8-3.485c0,.827.673,1.5,1.5,1.5h5.132c-.273-.706-.693-1.353-1.244-1.904l-3.484-3.485c-.552-.551-1.199-.97-1.904-1.243v5.132Zm7,3.485c0-.334-.03-.663-.088-.985h-5.412c-1.379,0-2.5-1.122-2.5-2.5V1.088c-.322-.058-.651-.088-.985-.088h-5.515c-1.93,0-3.5,1.57-3.5,3.5v15c0,1.93,1.57,3.5,3.5,3.5h11c1.93,0,3.5-1.57,3.5-3.5v-9.515Zm-8.981,10.014c-.007,0,.006,0,0,0h0Z"
+                      /></svg
+                    >
+                  </a>
+                {/if}
+              </td>
+            </tr>
+          {/each}
+        {/if}
       </tbody>
     </table>
     <div class="sm:hidden w-full m-auto mt-4 space-y-4">

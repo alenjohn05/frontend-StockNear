@@ -24,11 +24,11 @@
         borderWidth: 1,
         textStyle: {
           color: "#ffffff",
-          fontFamily: '"Inter", sans-serif'
+          fontFamily: '"Inter", sans-serif',
         },
         formatter: (params: any) => {
           return `${params.name}: ${params.percent.toFixed(2)}%`;
-        }
+        },
       },
 
       legend: false,
@@ -49,16 +49,16 @@
             "#da9b0a",
             "#c75e70",
             "#0057ff",
-            "#00bcd4"
+            "#00bcd4",
           ],
           data: [
             ...rawData.SectorMix.map((each: any) => {
               return {
                 value: parseFloat(each.HoldingPercentage.toFixed(2)),
                 name: each.SectorName,
-                Holding: each.HoldingValue
+                Holding: each.HoldingValue,
               };
-            })
+            }),
           ],
           label: {
             show: $screenWidth < 840 ? false : true,
@@ -82,28 +82,28 @@
                 lineHeight: 22,
                 align: "center",
                 fontFamily: '"Inter", sans-serif',
-                fontWeight: "normal"
+                fontWeight: "normal",
               },
               b: {
                 fontSize: 16,
                 lineHeight: 33,
                 fontFamily: '"Inter", sans-serif',
-                fontWeight: "normal"
-              }
-            }
+                fontWeight: "normal",
+              },
+            },
           },
           labelLine: {
             lineStyle: {
-              color: "rgba(255, 255, 255, 0.3)"
+              color: "rgba(255, 255, 255, 0.3)",
             },
             smooth: 0.2,
             length: 10,
-            length2: 20
+            length2: 20,
           },
           animationType: "scale",
-          animationEasing: "elasticOut"
-        }
-      ]
+          animationEasing: "elasticOut",
+        },
+      ],
     };
     return option;
   }
@@ -116,37 +116,37 @@
         data: [...rawData?.McapMix.map((each) => each.McapCategoryName)],
         axisLine: {
           lineStyle: {
-            color: "#333333"
-          }
+            color: "#333333",
+          },
         },
         axisLabel: {
           color: "#ffffff",
-          fontFamily: '"Inter", sans-serif'
+          fontFamily: '"Inter", sans-serif',
         },
         splitLine: {
           show: true,
           lineStyle: {
-            color: "#0d1117"
-          }
-        }
+            color: "#0d1117",
+          },
+        },
       },
       xAxis: {
         type: "value",
         axisLine: {
           lineStyle: {
-            color: "#333333"
-          }
+            color: "#333333",
+          },
         },
         axisLabel: {
           color: "#ffffff",
-          fontFamily: '"Inter", sans-serif'
+          fontFamily: '"Inter", sans-serif',
         },
         splitLine: {
           show: true,
           lineStyle: {
-            color: "#161b22"
-          }
-        }
+            color: "#161b22",
+          },
+        },
       },
       tooltip: {
         trigger: "axis",
@@ -155,11 +155,11 @@
         borderWidth: 1,
         textStyle: {
           color: "#ffffff",
-          fontFamily: '"Inter", sans-serif'
+          fontFamily: '"Inter", sans-serif',
         },
         formatter: (params) => {
           return `${params[0].name}: ${params[0].value.toFixed(2)}%`;
-        }
+        },
       },
       legend: false,
       series: [
@@ -172,8 +172,8 @@
             itemStyle: {
               color: ["#00bcd4", "#ebff00", "#da9b0a", "#c75e70", "#0057ff"][
                 index % 5
-              ]
-            }
+              ],
+            },
           })),
           label: {
             show: true,
@@ -183,11 +183,11 @@
             color: "#0d1117",
             fontStyle: "bold",
             fontSize: 12,
-            distance: 15
+            distance: 15,
           },
           animationType: "scale",
-          animationEasing: "elasticOut"
-        }
+          animationEasing: "elasticOut",
+        },
       ],
       grid: {
         left: "3%",
@@ -201,20 +201,20 @@
         backgroundColor: "#0d1117",
         tooltip: {
           trigger: "item",
-          formatter: "{b}: {c}"
+          formatter: "{b}: {c}",
         },
-        zlevel: 0
-      }
+        zlevel: 0,
+      },
     };
     return option;
   }
   function describeSectorHoldings(holdings: any) {
     const totalValue = holdings.reduce(
       (sum: any, sector: any) => sum + sector.HoldingValue,
-      0
+      0,
     );
     const topSector = holdings.reduce((max: any, sector: any) =>
-      sector.HoldingPercentage > max.HoldingPercentage ? sector : max
+      sector.HoldingPercentage > max.HoldingPercentage ? sector : max,
     );
     const sectorCount = holdings.length;
 
@@ -223,7 +223,7 @@
 
     // Find sectors above average
     const sectorsAboveAverage = holdings.filter(
-      (sector: any) => sector.HoldingValue > averageHoldingValue
+      (sector: any) => sector.HoldingValue > averageHoldingValue,
     );
 
     const starIcon = ` <svg viewBox="0 0 24 24" class="w-4 h-4 mr-3 mt-1 flex-shrink-0 text-green-400">
@@ -259,7 +259,7 @@
   function marketCapOverview(allocations) {
     const totalValue = allocations.reduce(
       (sum, cap) => sum + cap.HoldingValue,
-      0
+      0,
     );
     const activeAllocations = allocations.filter((cap) => cap.HoldingValue > 0);
 
@@ -270,7 +270,7 @@
     const overview = activeAllocations
       .map(
         (cap) =>
-          `${cap.McapCategoryName} (${cap.HoldingPercentage.toFixed(2)}%)`
+          `${cap.McapCategoryName} (${cap.HoldingPercentage.toFixed(2)}%)`,
       )
       .join(", ");
 
@@ -511,22 +511,15 @@
                     class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#0d1117] rounded-2xl h-20"
                   >
                     <div class="flex flex-col items-start">
-                      <span class="font-medium text-gray-200 text-xs"
-                        >Highest ShareHolding Stock</span
-                      >
-                      <span
-                        class="text-start text-xl font-medium text-white mt-0.5"
-                      >
-                        {rawData?.HighestShareHoldingSecurity}<span
-                          class="text-start text-xs"
-                          >&nbsp; with holding of
-                        </span>
+                      <span class="font-medium text-gray-200 text-sm"
+                        >Highest ShareHolding Stock <strong>{rawData?.HighestShareHoldingSecurity}</strong>&nbsp;
+                        with holding of
                         <span class="text-yellow-400"
                           >&nbsp;{rawData?.HighestShareHoldingSecurityG.toFixed(
-                            2
+                            2,
                           )}%</span
-                        >
-                      </span>
+                        ></span
+                      >
                     </div>
                   </div>
                   <!--End Total Amount Traded-->
