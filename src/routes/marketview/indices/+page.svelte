@@ -55,8 +55,6 @@
         "BSE Index Analysis",
       );
     }
-    console.log(rawDataNSEGainLoss);
-    console.log(rawDataBSEGainLoss);
     isLoaded = true;
   });
 
@@ -393,7 +391,9 @@
                   <tr class="border-b border-[#2a2e39]">
                     <td
                       class="px-2 py-1 whitespace-no-wrap text-white text-xs hover:text-[#FFBE00] cursor-pointer"
-                      >{item?.SecurityName}</td
+                      ><a href={"/marketview/indices/" + item?.SecurityID}
+                        >{item?.SecurityName}</a
+                      ></td
                     >
                     <td class="px-2 py-1 whitespace-no-wrap text-white text-xs"
                       >{item?.Close}</td
@@ -465,7 +465,9 @@
                   <tr class="border-b border-[#2a2e39]">
                     <td
                       class="px-2 py-1 whitespace-no-wrap text-white text-xs hover:text-[#FFBE00] cursor-pointer"
-                      >{item?.SecurityName}</td
+                      ><a href={"/marketview/indices/" + item?.SecurityID}
+                        >{item?.SecurityName}</a
+                      ></td
                     >
                     <td class="px-2 py-1 whitespace-no-wrap text-white text-xs"
                       >{item?.Close}</td
@@ -562,7 +564,9 @@
                   <tr class="border-b border-[#2a2e39]">
                     <td
                       class="px-2 py-1 whitespace-no-wrap text-white text-xs hover:text-[#FFBE00] cursor-pointer"
-                      >{item?.SecurityName}</td
+                      ><a href={"/marketview/indices/" + item?.SecurityID}
+                        >{item?.SecurityName}</a
+                      ></td
                     >
                     <td class="px-2 py-1 whitespace-no-wrap text-white text-xs"
                       >{item?.Close}</td
@@ -634,7 +638,9 @@
                   <tr class="border-b border-[#2a2e39]">
                     <td
                       class="px-2 py-1 whitespace-no-wrap text-white text-xs hover:text-[#FFBE00] cursor-pointer"
-                      >{item?.SecurityName}</td
+                      ><a href={"/marketview/indices/" + item?.SecurityID}
+                        >{item?.SecurityName}</a
+                      ></td
                     >
                     <td class="px-2 py-1 whitespace-no-wrap text-white text-xs"
                       >{item?.Close}</td
@@ -708,7 +714,9 @@
                   <tr class="border-b border-[#2a2e39]">
                     <td
                       class="px-2 py-1 whitespace-no-wrap text-white text-xs hover:text-[#FFBE00] cursor-pointer"
-                      >{item?.SecurityName}</td
+                      ><a href={"/marketview/indices/" + item?.SecurityID}
+                        >{item?.SecurityName}</a
+                      ></td
                     >
                     <td class="px-2 py-1 whitespace-no-wrap text-white text-xs"
                       >{item?.Close}</td
@@ -780,7 +788,9 @@
                   <tr class="border-b border-[#2a2e39]">
                     <td
                       class="px-2 py-1 whitespace-no-wrap text-white text-xs hover:text-[#FFBE00] cursor-pointer"
-                      >{item?.SecurityName}</td
+                      ><a href={"/marketview/indices/" + item?.SecurityID}
+                        >{item?.SecurityName}</a
+                      ></td
                     >
                     <td class="px-2 py-1 whitespace-no-wrap text-white text-xs"
                       >{item?.Close}</td
@@ -809,3 +819,41 @@
     </div>
   </div>
 </section>
+
+<style>
+  .scrollbar {
+    display: grid;
+    grid-gap: 13px;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    grid-auto-flow: column;
+    overflow-x: auto;
+    scrollbar-width: thin; /* Hide the default scrollbar in Firefox */
+    scrollbar-color: transparent transparent; /* Hide the default scrollbar in Firefox */
+  }
+
+  /* Custom scrollbar for Webkit (Chrome, Safari) */
+  .scrollbar::-webkit-scrollbar {
+    width: 0; /* Hide the width of the scrollbar */
+    height: 0; /* Hide the height of the scrollbar */
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: transparent; /* Make the thumb transparent */
+  }
+
+  ::-webkit-scrollbar {
+    height: 7px;
+    width: 8px;
+    background: #0d1117;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #3b3b3b;
+    -webkit-border-radius: 1ex;
+    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: #0d1117;
+  }
+</style>
