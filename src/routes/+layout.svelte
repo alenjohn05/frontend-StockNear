@@ -999,7 +999,7 @@ syncWorker.onmessage = handleTwitchMessage;
                     ? 'hidden'
                     : ''} text-md text-white font-medium ml-3 duration-200"
                 >
-                  ETFs
+                  Marketview
                 </span>
                 <div
                   class="2xl:{collapse
@@ -1024,17 +1024,17 @@ syncWorker.onmessage = handleTwitchMessage;
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
                   class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
-                    .url.pathname === '/stock-screener'
+                    .url.pathname === '/marketview/indices'
                     ? 'text-white bg-purple-700 rounded-md '
                     : ''}"
                 >
                   <a
-                    href={"/etf/new-launches"}
+                    href={"/marketview/indices"}
                     for="sidebar"
                     class="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                   >
                     <span class="text-sm font-medium text-white">
-                      New Launches
+                      Indices
                     </span>
                   </a>
                 </li>

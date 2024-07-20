@@ -1,12 +1,10 @@
-import { userRegion, getCache, setCache } from '$lib/store';
+import { userRegion, getCache, setCache } from "$lib/store";
 
-
-const usRegion = ['cle1','iad1','pdx1','sfo1'];
+const usRegion = ["cle1", "iad1", "pdx1", "sfo1"];
 
 let apiURL;
-
-userRegion.subscribe(value => {
-
+let apiKey = import.meta.env.VITE_STOCKNEAR_API_KEY;
+userRegion.subscribe((value) => {
   if (usRegion.includes(value)) {
     apiURL = import.meta.env.VITE_USEAST_API_URL;
   } else {
@@ -14,31 +12,28 @@ userRegion.subscribe(value => {
   }
 });
 
-
-
 export const load = async () => {
   const getETFList = async () => {
     let output;
 
     // Get cached data for the specific tickerID
-    const cachedData = getCache('', 'getETFList');
+    const cachedData = getCache("", "getETFList");
     if (cachedData) {
       output = cachedData;
     } else {
-      
-
       // make the POST request to the endpoint
-      const response = await fetch(apiURL + '/all-etf-tickers', {
-        method: 'GET',
+      const response = await fetch(apiURL + "/all-etf-tickers", {
+        method: "GET",
         headers: {
-          'Content-Type': 'application/json',
-        },
+          "Content-Type": "application/json",
+          "X-API-KEY": apiKey
+        }
       });
 
       output = await response.json();
 
       // Cache the data for this specific tickerID with a specific name 'getETFList'
-      setCache('', output, 'getETFList');
+      setCache("", output, "getETFList");
     }
 
     return output;

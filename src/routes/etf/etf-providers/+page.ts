@@ -14,7 +14,7 @@ userRegion.subscribe(value => {
   }
 });
 
-
+let apiKey = import.meta.env.VITE_STOCKNEAR_API_KEY;
 
 export const load = async () => {
   const getAllETFProviders = async () => {
@@ -29,8 +29,9 @@ export const load = async () => {
       const response = await fetch(apiURL + '/all-etf-providers', {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
-        },
+          "Content-Type": "application/json",
+          "X-API-KEY": apiKey
+        }
       });
 
       output = await response.json();

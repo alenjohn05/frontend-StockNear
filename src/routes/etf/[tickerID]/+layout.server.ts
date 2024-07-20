@@ -2,7 +2,7 @@
 const usRegion = ['cle1','iad1','pdx1','sfo1'];
 
 let companyName;
-
+let apiKey = import.meta.env.VITE_STOCKNEAR_API_KEY;
 function cleanString(input) {
     // Define a list of substrings to remove (case insensitive)
     const substringsToRemove = [
@@ -37,7 +37,8 @@ const fetchData = async (apiURL, endpoint, ticker) => {
   const response = await fetch(apiURL + endpoint, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
+      "X-API-KEY": apiKey
     },
     body: JSON.stringify(postData)
   });

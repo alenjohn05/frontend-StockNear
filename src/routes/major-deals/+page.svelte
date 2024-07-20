@@ -1,7 +1,9 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import InfiniteLoading from "$lib/components/InfiniteLoading.svelte";
+  import ScrollToTop from "$lib/components/ScrollToTop.svelte";
   import { numberOfUnreadNotification, screenWidth } from "$lib/store";
+  import { format } from "date-fns";
   import { onMount } from "svelte";
 
   interface Deal {
@@ -29,8 +31,8 @@
   let activeTab: string = "BULK";
 
   const tabs: Tab[] = [
-    { id: "BLOCK", label: "Block Deals" },
     { id: "BULK", label: "Bulk Deals" },
+    { id: "BLOCK", label: "Block Deals" },
     { id: "INSIDER", label: "Insider Deals" }
   ];
 
@@ -39,7 +41,7 @@
     blockDealData = data?.GetBlockDeals ?? [];
     insiderDealsData = data?.GetInsiderDeals ?? [];
     rawData = bulkDealData;
-    console.log(rawData);
+    console.log(insiderDealsData);
     displayList = rawData.slice(0, 20);
     isLoaded = true;
   });
@@ -72,10 +74,13 @@
     activeTab = tabId;
     if (tabId === "BULK") {
       rawData = bulkDealData;
+      displayList = rawData.slice(0, 20);
     } else if (tabId === "BLOCK") {
       rawData = blockDealData;
+      displayList = rawData.slice(0, 20);
     } else {
       rawData = insiderDealsData;
+      displayList = rawData.slice(0, 20);
     }
   }
 </script>
@@ -111,7 +116,7 @@
 </svelte:head>
 
 <section
-  class="w-full max-w-7xl m-auto sm:bg-[#0d1117] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8"
+  class="w-full max-w-7xl m-auto sm:bg-[#0d1117] sm:rounded-xl h-auto pl-1 pr-1 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8"
 >
   <div class="text-sm breadcrumbs ml-4">
     <ul>
@@ -126,7 +131,7 @@
       >
         <main class="w-full">
           <div
-            class=" sm:bg-[#0d1117] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8"
+            class=" sm:bg-[#0d1117] sm:rounded-xl h-auto pl-1 pr-1 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8"
           >
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
               <!-- Start Column -->
@@ -187,94 +192,6 @@
           </div>
 
           {#if isLoaded}
-            <div
-              class="w-full mt-5 mb-10 m-auto flex justify-center items-center p-3 sm:p-0"
-            >
-              <div
-                class="w-full grid grid-cols-2 lg:grid-cols-4 gap-y-3 gap-x-3"
-              >
-                <!--Start Most Traded-->
-                <div
-                  class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#0d1117] border border-[#2a2e39] shadow-lg rounded-lg h-20"
-                >
-                  <div class="flex flex-col items-start">
-                    <span class="font-medium text-gray-200 text-sm"
-                      >Most Traded Option</span
-                    >
-                    <span
-                      class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5"
-                    >
-                      <a href={"/stocks/" + 45644} class="text-[#FFBE00]">
-                        ESD
-                      </a>
-                      34
-                    </span>
-                  </div>
-                </div>
-                <!--End Most Traded-->
-
-                <!--Start Highest Volume-->
-                <div
-                  class="flex flex-row items-center flex-wrap w-full px-3 sm:px-5 bg-[#0d1117] border border-[#2a2e39] shadow-lg rounded-lg h-20"
-                >
-                  <div class="flex flex-col items-start">
-                    <span class="font-medium text-gray-200 text-sm"
-                      >Highest Volume</span
-                    >
-                    <span
-                      class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5"
-                    >
-                      <a href={"/stocks/" + 456} class="text-[#FFBE00]">
-                        EDS
-                      </a>
-                      3o
-                    </span>
-                  </div>
-                </div>
-                <!--End Highest Volume-->
-
-                <!--Start Highest Size-->
-                <div
-                  class="flex flex-row items-center flex-wrap w-full px-5 bg-[#0d1117] border border-[#2a2e39] shadow-lg rounded-lg h-20"
-                >
-                  <div class="flex flex-col items-start">
-                    <span class="font-medium text-gray-200 text-sm"
-                      >Highest Size</span
-                    >
-                    <span
-                      class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5"
-                    >
-                      <a href={"/stocks/" + 456} class="text-[#FFBE00]">
-                        EDR
-                      </a>
-                      45
-                    </span>
-                  </div>
-                </div>
-                <!--End Highest Size-->
-
-                <!--Start Amount-->
-                <div
-                  class="flex flex-row items-center flex-wrap w-full px-5 bg-[#0d1117] border border-[#2a2e39]
-                     shadow-lg rounded-lg h-20"
-                >
-                  <div class="flex flex-col items-start">
-                    <span class="font-medium text-gray-200 text-sm"
-                      >Highest Amount</span
-                    >
-                    <span
-                      class="text-start text-sm sm:text-[1rem] font-medium text-white mt-0.5"
-                    >
-                      <a href={"/stocks/" + 456} class="text-[#FFBE00]">
-                        RTE
-                      </a>
-                      345
-                    </span>
-                  </div>
-                </div>
-                <!--End Amount-->
-              </div>
-            </div>
             <ul
               class="flex text-sm font-medium text-center text-gray-500 border-b border-[#161b22] dark:border-[#161b22] dark:text-[#161b22]"
             >
@@ -291,86 +208,306 @@
                 </li>
               {/each}
             </ul>
-            <div class="w-screen sm:w-full m-auto mt-20 sm:mt-10">
+            <div class="w-screen sm:w-full m-auto mt-5 sm:mt-10">
               <div
-                class="w-screen sm:w-full m-auto rounded-none sm:rounded-lg mb-4 overflow-x-scroll sm:overflow-hidden"
+                class="w-screen sm:w-full m-auto rounded-none sm:rounded-lg overflow-x-scroll sm:overflow-hidden"
               >
-                <table
-                  class="table table-sm table-compact no-scrollbar rounded-none sm:rounded-md w-full bg-[#0d1117] border-bg-[#0d1117] m-auto"
-                >
-                  <thead>
-                    <tr class="bg-[#0d1117] border-b border-blue-400">
-                      <th
-                        class="text-start bg-[#0d1117] text-white text-sm font-semibold"
-                      >
-                        Time
-                      </th>
-                      <th
-                        class="text-start bg-[#0d1117] text-white text-sm font-semibold"
-                      >
-                        Company
-                      </th>
-                      <th
-                        class="text-start bg-[#0d1117] text-white text-sm font-semibold"
-                      >
-                        Size
-                      </th>
-                      <th
-                        class="text-end bg-[#0d1117] text-white text-sm font-semibold"
-                      >
-                        Volume
-                      </th>
-                      <th
-                        class="text-end bg-[#0d1117] text-white text-sm font-semibold"
-                      >
-                        Price
-                      </th>
-                      <th
-                        class="text-end bg-[#0d1117] text-white text-sm font-semibold"
-                      >
-                        Amount
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {#each displayList as item, index}
-                      <tr
-                        on:click={() => goto(`/stocks/${item?.symbol}`)}
-                        class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] odd:bg-[#0d1117] cursor-pointer"
-                      >
-                        <td class="text-start text-sm font-medium text-white">
-                        </td>
-
-                        <td class="text-sm text-start">
-                          <div class="flex flex-col items-start w-32 sm:w-fit">
-                            <span class="text-[#FFBE00]">{item?.symbol}</span>
-                            <span class="text-white">
-                              {item?.name}
-                            </span>
-                          </div>
-                        </td>
-
-                        <td class="text-start text-sm font-medium text-white">
-                          item?.size
-                        </td>
-
-                        <td class="text-end text-sm font-medium text-white">
-                          volume
-                        </td>
-
-                        <td class="text-end text-sm font-medium text-white">
-                          price
-                        </td>
-
-                        <td class="text-end text-sm font-medium text-white">
-                          price
-                        </td>
+                {#if activeTab === "INSIDER"}
+                  <table
+                    class="hidden sm:inline-table table-sm table-compact no-scrollbar rounded-none sm:rounded-md w-full bg-[#0d1117] border-bg-[#0d1117] m-auto"
+                  >
+                    <thead>
+                      <tr class="bg-[#0d1117] border-b border-blue-400">
+                        <th
+                          class="text-start bg-[#0d1117] text-white text-sm font-semibold"
+                        >
+                          Date
+                        </th>
+                        <th
+                          class="text-start bg-[#0d1117] text-white text-sm font-semibold"
+                        >
+                          Company/Deal Type
+                        </th>
+                        <th
+                          class="text-start bg-[#0d1117] text-white text-sm font-semibold"
+                        >
+                          Investor
+                        </th>
+                        <th
+                          class="text-start bg-[#0d1117] text-white text-sm font-semibold"
+                        >
+                          Buy/Sell
+                        </th>
+                        <th
+                          class="text-end bg-[#0d1117] text-white text-sm font-semibold"
+                        >
+                          Quantity(Shares)
+                        </th>
+                        <th
+                          class="text-end bg-[#0d1117] text-white text-sm font-semibold"
+                        >
+                          Deal Made on
+                        </th>
                       </tr>
+                    </thead>
+                    <tbody>
+                      {#each displayList as item, index}
+                        <tr
+                          on:click={() => goto(`/stocks/${item?.SecurityID}`)}
+                          class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] odd:bg-[#0d1117] cursor-pointer"
+                        >
+                          <td
+                            class="text-start text-sm font-medium text-white w-70"
+                          >
+                            {item?.Date
+                              ? format(item?.Date, "dd-MM-yyyy")
+                              : format(new Date(), "dd-MM-yyyy")}
+                          </td>
+
+                          <td class="text-sm text-start">
+                            <div class="flex flex-col items-start sm:w-fit">
+                              <span class="text-[#FFBE00]"
+                                >{item?.SecurityName}</span
+                              >
+                              <span class="text-white">
+                                {item?.TransactionType}
+                              </span>
+                            </div>
+                          </td>
+                          <td class="text-start text-sm font-medium text-white">
+                            {item?.ClientName}
+                          </td>
+                          <td
+                            class="text-start text-sm font-medium {item?.QuantityType ===
+                            'Buy'
+                              ? 'text-[#10DB06]'
+                              : 'text-[#FF2F1F]'}"
+                          >
+                            {item?.QuantityType}
+                          </td>
+                          <td class="text-end text-sm font-medium text-white">
+                            {item?.QuantityBuy
+                              ? item?.QuantityBuy
+                              : item?.QuantitySell}
+                          </td>
+                          <td class="text-end text-sm font-medium text-white">
+                            {item?.TransactionFromDate
+                              ? format(item?.TransactionFromDate, "dd-MM")
+                              : ""}<span class="text-gray-500">&nbsp;to&nbsp;</span>  {item?.TransactionToDate
+                              ? format(item?.TransactionToDate, "dd-MM-yyyy")
+                              : ""}
+                          </td>
+                        </tr>
+                      {/each}
+                    </tbody>
+                  </table>
+                  <div class="sm:hidden bg-[#0d1117] border-bg-[#0d1117] px-4">
+                    {#each displayList as item, index}
+                      <!-- svelte-ignore a11y-click-events-have-key-events -->
+                      <div
+                        role="button"
+                        tabindex="0"
+                        on:click={() => goto(`/stocks/${item?.SecurityID}`)}
+                        class="p-3 bg-[#0d1117] border border-gray-700 rounded-lg mb-4 cursor-pointer hover:bg-[#245073] hover:bg-opacity-[0.2] sm:p-6"
+                      >
+                        <div
+                          class="text-xs font-medium text-white mb-2 sm:text-base"
+                        >
+                          <span class="font-bold">Date:</span>
+                          {item?.Date
+                            ? format(item?.Date, "dd-MM-yyyy")
+                            : format(new Date(), "dd-MM-yyyy")}
+                        </div>
+
+                        <div class="text-xs mb-2 sm:text-base">
+                          <span class="font-bold">Company:</span>
+                          <div class="flex flex-col items-start">
+                            <span class="text-[#FFBE00]"
+                              >{item?.SecurityName}</span
+                            >
+                            <span class="text-white">{item?.ExchangeName}</span>
+                          </div>
+                        </div>
+
+                        <div
+                          class="text-xs font-medium text-white mb-2 sm:text-base"
+                        >
+                          <span class="font-bold">Investor:</span>
+                          {item?.ClientName}
+                        </div>
+
+                        <div class="text-xs font-medium mb-2 sm:text-base">
+                          <span class="font-bold">Buy/Sell:</span>
+                          <span
+                            class={item?.BuySellName === "Buy"
+                              ? "text-[#10DB06]"
+                              : "text-[#FF2F1F]"}>{item?.BuySellName}</span
+                          >
+                        </div>
+
+                        <div
+                          class="text-xs font-medium text-white mb-2 sm:text-base"
+                        >
+                          <span class="font-bold">Quantity:</span>
+                          {item?.Quantity}
+                        </div>
+
+                        <div
+                          class="text-xs font-medium text-white sm:text-base"
+                        >
+                          <span class="font-bold">Price:</span>
+                          {item?.Price}
+                        </div>
+                      </div>
                     {/each}
-                  </tbody>
-                </table>
+                  </div>
+                {:else}
+                  <table
+                    class="hidden sm:inline-table table-sm table-compact no-scrollbar rounded-none sm:rounded-md w-full bg-[#0d1117] border-bg-[#0d1117] m-auto"
+                  >
+                    <thead>
+                      <tr class="bg-[#0d1117] border-b border-blue-400">
+                        <th
+                          class="text-start bg-[#0d1117] text-white text-sm font-semibold"
+                        >
+                          Date
+                        </th>
+                        <th
+                          class="text-start bg-[#0d1117] text-white text-sm font-semibold"
+                        >
+                          Company
+                        </th>
+                        <th
+                          class="text-start bg-[#0d1117] text-white text-sm font-semibold"
+                        >
+                          Investor
+                        </th>
+                        <th
+                          class="text-start bg-[#0d1117] text-white text-sm font-semibold"
+                        >
+                          Buy/Sell
+                        </th>
+                        <th
+                          class="text-end bg-[#0d1117] text-white text-sm font-semibold"
+                        >
+                          Quantity
+                        </th>
+                        <th
+                          class="text-end bg-[#0d1117] text-white text-sm font-semibold"
+                        >
+                          Price
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {#each displayList as item, index}
+                        <tr
+                          on:click={() => goto(`/stocks/${item?.SecurityID}`)}
+                          class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] odd:bg-[#0d1117] cursor-pointer"
+                        >
+                          <td
+                            class="text-start text-sm font-medium text-white w-70"
+                          >
+                            {item?.Date
+                              ? format(item?.Date, "dd-MM-yyyy")
+                              : format(new Date(), "dd-MM-yyyy")}
+                          </td>
+
+                          <td class="text-sm text-start">
+                            <div class="flex flex-col items-start sm:w-fit">
+                              <span class="text-[#FFBE00]"
+                                >{item?.SecurityName}</span
+                              >
+                              <span class="text-white">
+                                {item?.ExchangeName}
+                              </span>
+                            </div>
+                          </td>
+                          <td class="text-start text-sm font-medium text-white">
+                            {item?.ClientName}
+                          </td>
+                          <td
+                            class="text-start text-sm font-medium {item?.BuySellName ===
+                            'Buy'
+                              ? 'text-[#10DB06]'
+                              : 'text-[#FF2F1F]'}"
+                          >
+                            {item?.BuySellName}
+                          </td>
+                          <td class="text-end text-sm font-medium text-white">
+                            {item?.Quantity}
+                          </td>
+                          <td class="text-end text-sm font-medium text-white">
+                            {item?.Price}
+                          </td>
+                        </tr>
+                      {/each}
+                    </tbody>
+                  </table>
+                  <div class="sm:hidden bg-[#0d1117] border-bg-[#0d1117] px-4">
+                    {#each displayList as item, index}
+                      <!-- svelte-ignore a11y-click-events-have-key-events -->
+                      <div
+                        role="button"
+                        tabindex="0"
+                        on:click={() => goto(`/stocks/${item?.SecurityID}`)}
+                        class="p-3 bg-[#0d1117] border border-gray-700 rounded-lg mb-4 cursor-pointer hover:bg-[#245073] hover:bg-opacity-[0.2] sm:p-6"
+                      >
+                        <div
+                          class="text-xs font-medium text-white mb-2 sm:text-base"
+                        >
+                          <span class="font-bold">Date:</span>
+                          {item?.Date
+                            ? format(item?.Date, "dd-MM-yyyy")
+                            : format(new Date(), "dd-MM-yyyy")}
+                        </div>
+
+                        <div class="text-xs mb-2 sm:text-base">
+                          <span class="font-bold">Company:</span>
+                          <div class="flex flex-col items-start">
+                            <span class="text-[#FFBE00]"
+                              >{item?.SecurityName}</span
+                            >
+                            <span class="text-white">{item?.ExchangeName}</span>
+                          </div>
+                        </div>
+
+                        <div
+                          class="text-xs font-medium text-white mb-2 sm:text-base"
+                        >
+                          <span class="font-bold">Investor:</span>
+                          {item?.ClientName}
+                        </div>
+
+                        <div class="text-xs font-medium mb-2 sm:text-base">
+                          <span class="font-bold">Buy/Sell:</span>
+                          <span
+                            class={item?.BuySellName === "Buy"
+                              ? "text-[#10DB06]"
+                              : "text-[#FF2F1F]"}>{item?.BuySellName}</span
+                          >
+                        </div>
+
+                        <div
+                          class="text-xs font-medium text-white mb-2 sm:text-base"
+                        >
+                          <span class="font-bold">Quantity:</span>
+                          {item?.Quantity}
+                        </div>
+
+                        <div
+                          class="text-xs font-medium text-white sm:text-base"
+                        >
+                          <span class="font-bold">Price:</span>
+                          {item?.Price}
+                        </div>
+                      </div>
+                    {/each}
+                  </div>
+                {/if}
               </div>
               <InfiniteLoading on:infinite={infiniteHandler} />
+              <ScrollToTop />
             </div>
           {:else}
             <div class="flex justify-center items-center h-80">
