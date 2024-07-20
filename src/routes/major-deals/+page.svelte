@@ -4,30 +4,43 @@
   import { numberOfUnreadNotification, screenWidth } from "$lib/store";
   import { onMount } from "svelte";
 
-  export let data;
+  interface Deal {
+    [key: string]: any;
+  }
+
+  interface Tab {
+    id: string;
+    label: string;
+  }
+
+  export let data: {
+    GetBulkDeals?: Deal[];
+    GetBlockDeals?: Deal[];
+    GetInsiderDeals?: Deal[];
+  };
 
   let isLoaded = false;
-  let rawData = [];
-  let displayList = [];
-  let bulkDealData = [];
-  let blockDealData = [];
-  let insiderDealsData = [];
-  let cloudFrontUrl = import.meta.env.VITE_IMAGE_URL;
-  let activeTab = "BULK";
+  let rawData: Deal[] = [];
+  let displayList: Deal[] = [];
+  let bulkDealData: Deal[] = [];
+  let blockDealData: Deal[] = [];
+  let insiderDealsData: Deal[] = [];
+  let cloudFrontUrl: string = import.meta.env.VITE_IMAGE_URL;
+  let activeTab: string = "BULK";
 
-  const tabs = [
+  const tabs: Tab[] = [
     { id: "BLOCK", label: "Block Deals" },
     { id: "BULK", label: "Bulk Deals" },
-    { id: "INSIDER", label: "Insider Deals" },
+    { id: "INSIDER", label: "Insider Deals" }
   ];
 
   onMount(() => {
-    bulkDealData = data?.GetBulkDeals;
-    blockDealData = data?.GetBlockDeals;
-    insiderDealsData = data?.GetInsiderDeals;
-    rawData = bulkDealData ?? [];
+    bulkDealData = data?.GetBulkDeals ?? [];
+    blockDealData = data?.GetBlockDeals ?? [];
+    insiderDealsData = data?.GetInsiderDeals ?? [];
+    rawData = bulkDealData;
     console.log(rawData);
-    displayList = rawData?.slice(0, 20) ?? [];
+    displayList = rawData.slice(0, 20);
     isLoaded = true;
   });
 
@@ -39,16 +52,22 @@
       charNumber = 40;
     }
   }
-  async function infiniteHandler({ detail: { loaded, complete } }) {
-    if (displayList?.length === rawData?.length) {
+
+  async function infiniteHandler({
+    detail: { loaded, complete }
+  }: {
+    detail: { loaded: () => void; complete: () => void };
+  }) {
+    if (displayList.length === rawData.length) {
       complete();
     } else {
-      const nextIndex = displayList?.length;
-      const newArticles = rawData?.slice(nextIndex, nextIndex + 5);
+      const nextIndex = displayList.length;
+      const newArticles = rawData.slice(nextIndex, nextIndex + 5);
       displayList = [...displayList, ...newArticles];
       loaded();
     }
   }
+
   function setActiveTab(tabId: string) {
     activeTab = tabId;
     if (tabId === "BULK") {
@@ -89,11 +108,10 @@
     name="twitter:description"
     content={`Realtime Major Deals Trades from Traders.`}
   />
-  <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
 
 <section
-  class="w-full max-w-4xl overflow-hidden m-auto min-h-screen pt-5 pb-40"
+  class="w-full max-w-7xl m-auto sm:bg-[#0d1117] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8"
 >
   <div class="text-sm breadcrumbs ml-4">
     <ul>
@@ -101,17 +119,14 @@
       <li class="text-gray-300">Major Deals Flow</li>
     </ul>
   </div>
-
-  <div class="w-full max-w-4xl overflow-hidden m-auto mt-5">
-    <div
-      class="sm:p-0 flex justify-center w-full m-auto overflow-hidden max-w-4xl"
-    >
+  <div class=" mt-5">
+    <div class="sm:p-0 flex justify-center w-full m-auto overflow-hidden">
       <div
         class="relative flex justify-center items-center overflow-hidden w-full"
       >
         <main class="w-full">
           <div
-            class="w-full max-w-4xl m-auto sm:bg-[#0d1117] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8"
+            class=" sm:bg-[#0d1117] sm:rounded-xl h-auto pl-10 pr-10 pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8"
           >
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
               <!-- Start Column -->
@@ -265,15 +280,14 @@
             >
               {#each tabs as tab}
                 <li class="me-2">
-                  <a
-                    href="#"
+                  <button
                     class="inline-block p-2 {activeTab === tab.id
                       ? 'border-b border-blue-300 text-white bg-[#161b22] active dark:bg-[#161b22] dark:text-white'
                       : ' text-gray-500 bg-[#0d1117] active dark:bg-[#0d1117] dark:text-white'}"
                     on:click|preventDefault={() => setActiveTab(tab.id)}
                   >
                     {tab.label}
-                  </a>
+                  </button>
                 </li>
               {/each}
             </ul>
@@ -361,11 +375,11 @@
           {:else}
             <div class="flex justify-center items-center h-80">
               <div class="relative">
-                <label
+                <div
                   class="bg-[#0d1117] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                 >
                   <span class="loading loading-spinner loading-md"></span>
-                </label>
+                </div>
               </div>
             </div>
           {/if}

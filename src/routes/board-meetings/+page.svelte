@@ -6,52 +6,67 @@
   import InfiniteLoading from "$lib/components/InfiniteLoading.svelte";
   import { onMount } from "svelte";
 
-  export let data;
+  interface BoardMeeting {
+    date: string;
+    comp_name?: string;
+    [key: string]: any;
+  }
 
-  let sortedData = sortAndFilterByDate(data?.GetBoardMeetings?.results);
-  let dailyEvents = [...sortedData];
+  export let data: {
+    GetBoardMeetings?: {
+      results: BoardMeeting[];
+    };
+  };
+
+  let sortedData: BoardMeeting[] = [];
+  let dailyEvents: BoardMeeting[] = [];
   let filterQuery = "";
-  let displayList: any[] = [];
+  let displayList: BoardMeeting[] = [];
   let isLoaded = false;
 
-  function sortAndFilterByDate(data) {
+  function sortAndFilterByDate(
+    data: BoardMeeting[] | undefined
+  ): BoardMeeting[] {
     const currentDate = new Date();
 
-    return data
-      ?.filter((item) => {
-        const [day, month, year] = item.date.split("-");
-        const itemDate = new Date(year, month - 1, day); // month is 0-indexed in JS Date
-        return itemDate >= currentDate;
-      })
-      ?.sort((a, b) => {
-        const dateA = new Date(a.date.split("-").reverse().join("-"));
-        const dateB = new Date(b.date.split("-").reverse().join("-"));
-        return dateA - dateB;
-      });
+    return (
+      data
+        ?.filter((item) => {
+          const [day, month, year] = item.date.split("-");
+          const itemDate = new Date(
+            parseInt(year),
+            parseInt(month) - 1,
+            parseInt(day)
+          );
+          return itemDate >= currentDate;
+        })
+        ?.sort((a, b) => {
+          const dateA = new Date(a.date.split("-").reverse().join("-"));
+          const dateB = new Date(b.date.split("-").reverse().join("-"));
+          return dateA.getTime() - dateB.getTime();
+        }) ?? []
+    );
   }
 
   async function handleScroll() {
     if (filterQuery.length === 0) {
-      const scrollThreshold = document.body.offsetHeight * 0.8; // 80% of the website height
+      const scrollThreshold = document.body.offsetHeight * 0.8;
       const isBottom = window.innerHeight + window.scrollY >= scrollThreshold;
-      if (isBottom && displayList?.length !== dailyEvents?.length) {
-        const nextIndex = displayList?.length;
-        const filteredNewResults = dailyEvents?.slice(
-          nextIndex,
-          nextIndex + 20,
-        );
+      if (isBottom && displayList.length !== dailyEvents.length) {
+        const nextIndex = displayList.length;
+        const filteredNewResults = dailyEvents.slice(nextIndex, nextIndex + 20);
         displayList = [...displayList, ...filteredNewResults];
       }
     }
   }
 
-  let error = null;
+  let error: string | null = null;
 
-  onMount(async () => {
+  onMount(() => {
     try {
       sortedData = sortAndFilterByDate(data?.GetBoardMeetings?.results);
       dailyEvents = [...sortedData];
-      displayList = dailyEvents?.slice(0, 20) ?? [];
+      displayList = dailyEvents.slice(0, 20);
       isLoaded = true;
     } catch (e) {
       error = "Error loading board meetings data. Please try again later.";
@@ -64,35 +79,38 @@
     };
   });
 
-  // Debounce the search input
-  const debouncedHandleInput = debounce((event) => {
-    filterQuery = event.target.value?.toLowerCase();
+  const debouncedHandleInput = debounce((event: Event) => {
+    filterQuery = (event.target as HTMLInputElement).value?.toLowerCase() ?? "";
     filterData();
   }, 300);
 
   function filterData() {
     if (filterQuery.length !== 0) {
       displayList = dailyEvents.filter((item) => {
-        const compName = item?.comp_name?.toLowerCase();
+        const compName = item.comp_name?.toLowerCase();
         return compName?.includes(filterQuery);
       });
     } else {
-      displayList = dailyEvents?.slice(0, 20) ?? [];
+      displayList = dailyEvents.slice(0, 20);
     }
   }
 
-  function handleInput(event) {
+  function handleInput(event: Event) {
     debouncedHandleInput(event);
   }
 
-  async function infiniteHandler({ detail: { loaded, complete } }) {
+  async function infiniteHandler({
+    detail: { loaded, complete }
+  }: {
+    detail: { loaded: () => void; complete: () => void };
+  }) {
     try {
-      if (displayList?.length === dailyEvents?.length) {
+      if (displayList.length === dailyEvents.length) {
         complete();
       } else {
         if (filterQuery.length === 0) {
-          const nextIndex = displayList?.length;
-          const newArticles = dailyEvents?.slice(nextIndex, nextIndex + 5);
+          const nextIndex = displayList.length;
+          const newArticles = dailyEvents.slice(nextIndex, nextIndex + 5);
           displayList = [...displayList, ...newArticles];
           loaded();
         } else {
@@ -289,9 +307,9 @@
               <div class="text-slate-200 flex flex-col justify-between mt-3">
                 <span>Description:</span>
                 <span class="text-white">
-                  <label class="cursor-pointer">
+                  <div class="cursor-pointer">
                     {item?.description}
-                  </label>
+                  </div>
                   <!-- Modal Trigger -->
                 </span>
               </div>

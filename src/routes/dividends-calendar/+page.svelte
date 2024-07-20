@@ -4,76 +4,80 @@
   import dividendsLogo from "$lib/images/dividends_calendar_logo.png";
   import { numberOfUnreadNotification, screenWidth } from "$lib/store";
   import {
-      addDays,
-      addWeeks,
-      differenceInWeeks,
-      format,
-      startOfWeek,
-      subWeeks,
+    addDays,
+    addWeeks,
+    differenceInWeeks,
+    format,
+    startOfWeek,
+    subWeeks
   } from "date-fns";
 
-  export let data;
+  interface DividendCalendarItem {
+    Date: string;
+    [key: string]: any;
+  }
+
+  interface DayData {
+    name: string;
+    date: string;
+  }
+
+  interface DividendCalendarDay {
+    name: string;
+    data: DividendCalendarItem[];
+    [key: string]: any;
+  }
+
+  export let data: {
+    getDividendCalenderDetails?: DividendCalendarItem[];
+  };
+
   let currentWeek = startOfWeek(new Date(), { weekStartsOn: 1 });
-  let dividendCalendar = data?.getDividendCalenderDetails;
-  const maxWeeksChange = 4; // Maximum allowed week change
+  let dividendCalendar: DividendCalendarDay[] = [];
+  const maxWeeksChange = 4;
   let previousMax = false;
   let nextMax = false;
   const today = new Date();
 
-  let formattedMonday = startOfWeek(currentWeek, { weekStartsOn: 1 });
-  let formattedTuesday = format(addDays(formattedMonday, 1), "EEE, MMM d");
-  let formattedWednesday = format(addDays(formattedMonday, 2), "EEE, MMM d");
-  let formattedThursday = format(addDays(formattedMonday, 3), "EEE, MMM d");
-  let formattedFriday = format(addDays(formattedMonday, 4), "EEE, MMM d");
-  formattedMonday = format(formattedMonday, "EEE, MMM d");
+  let mondayDate = startOfWeek(currentWeek, { weekStartsOn: 1 });
+  let formattedMonday = format(mondayDate, "EEE, MMM d");
+  let formattedTuesday = format(addDays(mondayDate, 1), "EEE, MMM d");
+  let formattedWednesday = format(addDays(mondayDate, 2), "EEE, MMM d");
+  let formattedThursday = format(addDays(mondayDate, 3), "EEE, MMM d");
+  let formattedFriday = format(addDays(mondayDate, 4), "EEE, MMM d");
 
   let formattedWeekday = [
     formattedMonday,
     formattedTuesday,
     formattedWednesday,
     formattedThursday,
-    formattedFriday,
+    formattedFriday
   ];
-  let weekday = [];
+  let weekday: DividendCalendarItem[][] = [];
 
   let startDate = startOfWeek(currentWeek, { weekStartsOn: 1 });
   let endDate = addDays(startDate, 4);
   let formattedStartDate = format(startDate, "yyyy-MM-dd");
   let formattedEndDate = format(endDate, "yyyy-MM-dd");
-  let daysOfWeek = [
-    {
-      name: "Monday",
-      date: formattedStartDate,
-    },
-    {
-      name: "Tuesday",
-      date: format(addDays(startDate, 1), "yyyy-MM-dd"),
-    },
-    {
-      name: "Wednesday",
-      date: format(addDays(startDate, 2), "yyyy-MM-dd"),
-    },
-    {
-      name: "Thursday",
-      date: format(addDays(startDate, 3), "yyyy-MM-dd"),
-    },
-    {
-      name: "Friday",
-      date: formattedEndDate,
-    },
+  let daysOfWeek: DayData[] = [
+    { name: "Monday", date: formattedStartDate },
+    { name: "Tuesday", date: format(addDays(startDate, 1), "yyyy-MM-dd") },
+    { name: "Wednesday", date: format(addDays(startDate, 2), "yyyy-MM-dd") },
+    { name: "Thursday", date: format(addDays(startDate, 3), "yyyy-MM-dd") },
+    { name: "Friday", date: formattedEndDate }
   ];
 
   let currentDate = new Date();
   let currentWeekday = Math.min((currentDate.getDay() + 6) % 7, 4);
   let selectedWeekday = currentWeekday;
 
-  function toggleDate(index) {
+  function toggleDate(index: number) {
     if ($screenWidth > 640) {
       selectedWeekday = index;
     }
   }
 
-  function clickWeekday(state, index) {
+  function clickWeekday(state: "next" | "previous", index: number) {
     if (state === "next" && selectedWeekday + 1 <= 4) {
       selectedWeekday = selectedWeekday + 1;
     } else if (state === "previous" && selectedWeekday - 1 >= 0) {
@@ -95,8 +99,7 @@
     }
   }
 
-  async function changeWeek(state) {
-    //Limit the user to go back max 4 weeks and look forward 4 weeks
+  async function changeWeek(state: "next" | "previous") {
     if (
       state === "previous" &&
       differenceInWeeks(currentWeek, today) > -maxWeeksChange
@@ -109,19 +112,19 @@
       currentWeek = addWeeks(currentWeek, 1);
     }
 
-    formattedMonday = startOfWeek(currentWeek, { weekStartsOn: 1 });
-    formattedTuesday = format(addDays(formattedMonday, 1), "EEE, MMM d");
-    formattedWednesday = format(addDays(formattedMonday, 2), "EEE, MMM d");
-    formattedThursday = format(addDays(formattedMonday, 3), "EEE, MMM d");
-    formattedFriday = format(addDays(formattedMonday, 4), "EEE, MMM d");
-    formattedMonday = format(formattedMonday, "EEE, MMM d");
+    mondayDate = startOfWeek(currentWeek, { weekStartsOn: 1 });
+    formattedMonday = format(mondayDate, "EEE, MMM d");
+    formattedTuesday = format(addDays(mondayDate, 1), "EEE, MMM d");
+    formattedWednesday = format(addDays(mondayDate, 2), "EEE, MMM d");
+    formattedThursday = format(addDays(mondayDate, 3), "EEE, MMM d");
+    formattedFriday = format(addDays(mondayDate, 4), "EEE, MMM d");
 
     formattedWeekday = [
       formattedMonday,
       formattedTuesday,
       formattedWednesday,
       formattedThursday,
-      formattedFriday,
+      formattedFriday
     ];
     weekday = [];
 
@@ -130,92 +133,54 @@
     formattedStartDate = format(startDate, "yyyy-MM-dd");
     formattedEndDate = format(endDate, "yyyy-MM-dd");
     daysOfWeek = [
-      {
-        name: "Monday",
-        date: formattedStartDate,
-      },
-      {
-        name: "Tuesday",
-        date: format(addDays(startDate, 1), "yyyy-MM-dd"),
-      },
-      {
-        name: "Wednesday",
-        date: format(addDays(startDate, 2), "yyyy-MM-dd"),
-      },
-      {
-        name: "Thursday",
-        date: format(addDays(startDate, 3), "yyyy-MM-dd"),
-      },
-      {
-        name: "Friday",
-        date: formattedEndDate,
-      },
+      { name: "Monday", date: formattedStartDate },
+      { name: "Tuesday", date: format(addDays(startDate, 1), "yyyy-MM-dd") },
+      { name: "Wednesday", date: format(addDays(startDate, 2), "yyyy-MM-dd") },
+      { name: "Thursday", date: format(addDays(startDate, 3), "yyyy-MM-dd") },
+      { name: "Friday", date: formattedEndDate }
     ];
 
-    dividendCalendar = daysOfWeek.map((day) => {
-      return {
-        name: day.name,
-        data: data?.getDividendCalenderDetails?.filter(
-          (item) => format(new Date(item.Date), "yyyy-MM-dd") === day.date,
-        ),
-      };
-    });
+    dividendCalendar = daysOfWeek.map((day) => ({
+      name: day.name,
+      data:
+        data?.getDividendCalenderDetails?.filter(
+          (item) => format(new Date(item.Date), "yyyy-MM-dd") === day.date
+        ) ?? []
+    }));
 
     if (dividendCalendar?.length) {
-      // Loop through each day of the week
       for (let i = 0; i < dividendCalendar.length; i++) {
-        const dayData = dividendCalendar[i].data;
-
-        // Filter out entries with company name "---"
-
-        // Sort and map the filtered data
-        weekday[i] = dayData;
+        weekday[i] = dividendCalendar[i].data;
       }
     }
   }
 
   $: {
-    if (dividendCalendar) {
-      dividendCalendar = daysOfWeek.map((day) => {
-        return {
-          name: day.name,
-          data: data?.getDividendCalenderDetails?.filter(
-            (item) => format(new Date(item.Date), "yyyy-MM-dd") === day.date,
-          ),
-        };
-      });
-
-      if (dividendCalendar?.length) {
-        // Loop through each day of the week
+    if (data?.getDividendCalenderDetails) {
+      dividendCalendar = daysOfWeek.map((day) => ({
+        name: day.name,
+        data:
+          data.getDividendCalenderDetails?.filter(
+            (item) => format(new Date(item.Date), "yyyy-MM-dd") === day.date
+          ) || []
+      }));
+      if (dividendCalendar.length) {
         for (let i = 0; i < dividendCalendar.length; i++) {
           const dayData = dividendCalendar[i].data;
-
-          // Filter out entries with company name "---"
-
-          // Sort and map the filtered data
-          weekday[i] = dayData.sort((a, b) => b.marketCap - a.marketCap);
+          weekday[i] = dayData.sort(
+            (a, b) => (b.marketCap ?? 0) - (a.marketCap ?? 0)
+          );
         }
       }
+    } else {
+      dividendCalendar = [];
     }
   }
 
   $: {
     if (currentWeek) {
-      if (differenceInWeeks(currentWeek, today) > -maxWeeksChange) {
-        previousMax = false;
-      } else {
-        previousMax = true;
-      }
-    }
-  }
-
-  $: {
-    if (currentWeek) {
-      if (differenceInWeeks(currentWeek, today) < maxWeeksChange) {
-        nextMax = false;
-      } else {
-        nextMax = true;
-      }
+      previousMax = differenceInWeeks(currentWeek, today) <= -maxWeeksChange;
+      nextMax = differenceInWeeks(currentWeek, today) >= maxWeeksChange;
     }
   }
 </script>
@@ -336,8 +301,11 @@
         class=" w-full flex flex-row justify-center m-auto items-center pl-2 pr-2 sm:pl-0 sm:pr-0"
       >
         <!-- Start Columns -->
-        <label
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div
+          role="button"
           on:click={() => changeWeek("previous")}
+          tabindex="0"
           class="{previousMax
             ? 'opacity-80'
             : ''} hidden sm:flex h-16 w-48 cursor-pointer border m-auto flex bg-[#3C40F0] hover:bg-purple-600 border border-blue-600 mb-3"
@@ -351,12 +319,15 @@
               d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z"
             /></svg
           >
-        </label>
+        </div>
         {#each weekday as day, index}
           <div
             class="w-full {index === selectedWeekday ? '' : 'hidden sm:block'}"
           >
-            <label
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <div
+              role="button"
+              tabindex="0"
               on:click={() => toggleDate(index)}
               class="w-11/12 m-auto sm:w-full cursor-pointer h-16 {index ===
               selectedWeekday
@@ -364,7 +335,9 @@
                 : ''} flex rounded-lg sm:rounded-none bg-[#3C40F0] border border-blue-600 mb-3"
             >
               <div class=" flex flex-row justify-center items-center w-full">
-                <label
+                <div
+                  tabindex="0"
+                  role="button"
                   on:click={() => clickWeekday("previous", index)}
                   class="sm:hidden ml-auto"
                 >
@@ -377,7 +350,7 @@
                       d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z"
                     /></svg
                   >
-                </label>
+                </div>
                 <div class="flex flex-col text-white truncate m-auto p-1">
                   <span class="font-medium text-md"
                     >{formattedWeekday[index]}</span
@@ -386,7 +359,9 @@
                     {day.length} Dividends</span
                   >
                 </div>
-                <label
+                <div
+                  role="button"
+                  tabindex="0"
                   on:click={() => clickWeekday("next", index)}
                   class="sm:hidden mr-auto"
                 >
@@ -399,12 +374,15 @@
                       d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z"
                     /></svg
                   >
-                </label>
+                </div>
               </div>
-            </label>
+            </div>
           </div>
         {/each}
-        <label
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div
+          role="button"
+          tabindex="0"
           on:click={() => changeWeek("next")}
           class="{nextMax
             ? 'opacity-80'
@@ -419,7 +397,7 @@
               d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z"
             /></svg
           >
-        </label>
+        </div>
       </div>
 
       {#each weekday as day, index}
@@ -458,6 +436,7 @@
                         <div
                           class="flex-shrink-0 rounded-full w-9 h-9 relative bg-[#0d1117] flex items-center justify-center"
                         >
+                          <!-- svelte-ignore a11y-missing-attribute -->
                           <img
                             style="clip-path: circle(50%);"
                             class="rounded-full w-7"
@@ -504,6 +483,7 @@
                     <div
                       class="rounded-full w-10 h-10 relative bg-[#101112] flex items-center justify-center"
                     >
+                      <!-- svelte-ignore a11y-missing-attribute -->
                       <img
                         style="clip-path: circle(50%);"
                         class="w-6 h-6"
@@ -512,14 +492,17 @@
                       />
                     </div>
 
-                    <label
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                    <div
+                      role="button"
+                      tabindex="0"
                       on:click={() => goto("/stocks/" + item?.SecurityID)}
                       class="cursor-pointer flex flex-col ml-3 w-40"
                     >
                       <span class="text-slate-300 text-sm font-bold"
                         >{item?.SecurityName}</span
                       >
-                    </label>
+                    </div>
 
                     <div class="flex flex-col justify-end items-end ml-auto">
                       <span class="font-medium text-slate-400 text-ends text-sm"
@@ -564,10 +547,4 @@
 </section>
 
 <style>
-  .gradient-effect {
-    background: linear-gradient(100deg, #b46266, #a24d51);
-    color: #fff;
-    position: relative;
-    overflow: hidden;
-  }
 </style>

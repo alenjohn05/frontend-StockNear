@@ -6,50 +6,68 @@
   import { abbreviateNumber } from "$lib/utils.js";
   import { format } from "date-fns";
   import { onMount } from "svelte";
-  import debounce from "lodash.debounce"; // You need to install lodash or use a custom debounce function
+  import debounce from "lodash.debounce";
 
-  export let data;
+  interface IPO {
+    SecurityName?: string;
+    [key: string]: any;
+    // Add other properties as needed
+  }
 
-  let listedIpos = data?.Get_Listed_IPOs;
-  let onGoing_IPOs = data?.Get_Ongoing_IPOs;
-  let upcoming_ipos = data?.Get_Upcoming_IPOs;
-  let displayList: any[] = [];
-  let rawData = onGoing_IPOs;
+  interface TabItem {
+    id: string;
+    label: string;
+  }
+
+  export let data: {
+    Get_Listed_IPOs?: IPO[];
+    Get_Ongoing_IPOs?: IPO[];
+    Get_Upcoming_IPOs?: IPO[];
+  };
+
+  let listedIpos: IPO[] = data?.Get_Listed_IPOs ?? [];
+  let onGoing_IPOs: IPO[] = data?.Get_Ongoing_IPOs ?? [];
+  let upcoming_ipos: IPO[] = data?.Get_Upcoming_IPOs ?? [];
+  let displayList: IPO[] = [];
+  let rawData: IPO[] = onGoing_IPOs;
   let isLoaded = false;
 
   async function handleScroll() {
     if (filterQuery.length === 0) {
-      const scrollThreshold = document.body.offsetHeight * 0.8; // 80% of the website height
+      const scrollThreshold = document.body.offsetHeight * 0.8;
       const isBottom = window.innerHeight + window.scrollY >= scrollThreshold;
-      if (isBottom && displayList?.length !== rawData?.length) {
-        const nextIndex = displayList?.length;
-        const filteredNewResults = rawData?.slice(nextIndex, nextIndex + 20);
+      if (isBottom && displayList.length !== rawData.length) {
+        const nextIndex = displayList.length;
+        const filteredNewResults = rawData.slice(nextIndex, nextIndex + 20);
         displayList = [...displayList, ...filteredNewResults];
       }
     }
   }
-  let error = null;
-  onMount(async () => {
-    try {
-      displayList = rawData?.slice(0, 20) ?? [];
-      window.addEventListener("scroll", handleScroll);
-      isLoaded = true;
-    } catch (e) {
-      error = "Error loading board meetings data. Please try again later.";
-      console.error("Error loading data:", e);
-    }
+
+  let error: string | null = null;
+  onMount(() => {
+    const loadData = async () => {
+      try {
+        displayList = rawData?.slice(0, 20) ?? [];
+        isLoaded = true;
+      } catch (e) {
+        error = "Error loading board meetings data. Please try again later.";
+        console.error("Error loading data:", e);
+      }
+    };
+    loadData();
+    window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   });
-
   let filterQuery = "";
-  let activeTab = "ONGOING";
+  let activeTab: string = "ONGOING";
 
-  const tabs = [
+  const tabs: TabItem[] = [
     { id: "ONGOING", label: "Ongoing IPOs" },
     { id: "LISTED", label: "Listed IPOs" },
-    { id: "UPCOMING", label: "Upcoming IPOs" },
+    { id: "UPCOMING", label: "Upcoming IPOs" }
   ];
 
   function setActiveTab(tabId: string) {
@@ -66,9 +84,8 @@
     }
   }
 
-  // Debounce the search input
-  const debouncedHandleInput = debounce((event) => {
-    filterQuery = event.target.value?.toLowerCase();
+  const debouncedHandleInput = debounce((event: Event) => {
+    filterQuery = (event.target as HTMLInputElement).value?.toLowerCase();
     filterData();
   }, 300);
 
@@ -83,17 +100,21 @@
     }
   }
 
-  function handleInput(event) {
+  function handleInput(event: Event) {
     debouncedHandleInput(event);
   }
 
-  async function infiniteHandler({ detail: { loaded, complete } }) {
-    if (displayList?.length === rawData?.length) {
+  async function infiniteHandler({
+    detail: { loaded, complete }
+  }: {
+    detail: { loaded: () => void; complete: () => void };
+  }) {
+    if (displayList.length === rawData.length) {
       complete();
     } else {
       if (filterQuery.length === 0) {
-        const nextIndex = displayList?.length;
-        const newArticles = rawData?.slice(nextIndex, nextIndex + 5);
+        const nextIndex = displayList.length;
+        const newArticles = rawData.slice(nextIndex, nextIndex + 5);
         displayList = [...displayList, ...newArticles];
         loaded();
       } else {
@@ -196,15 +217,15 @@
     >
       {#each tabs as tab}
         <li class="me-2">
-          <a
-            href="#"
+          <button
+            
             class="inline-block p-2 text-xs sm:text-sm {activeTab === tab.id
               ? 'border-b border-blue-300 text-white bg-[#161b22] active dark:bg-[#161b22] dark:text-white'
               : ' text-gray-500 bg-[#0d1117] active dark:bg-[#0d1117] dark:text-white'}"
             on:click|preventDefault={() => setActiveTab(tab.id)}
           >
             {tab.label}
-          </a>
+          </button>
         </li>
       {/each}
     </ul>
@@ -545,7 +566,7 @@
                   >
                     listed on {format(
                       new Date(item?.ListingDate),
-                      "dd-MM-yyyy",
+                      "dd-MM-yyyy"
                     )}
                   </div>
                 </td>

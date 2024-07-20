@@ -6,27 +6,43 @@
   import { abbreviateNumber } from "$lib/utils.js";
   import { format } from "date-fns";
   import { onMount } from "svelte";
-  export let data;
 
-  let forthComingResult = data?.GetForthcomingCorporateActionResults;
-  let recentReleasedResult = data?.GetRecentReleasedResults;
-  let displayList: any[] = [];
-  let rawData = forthComingResult;
+  interface CorporateAction {
+    SecurityName?: string;
+    [key: string]: any;
+  }
+
+  interface TabItem {
+    id: string;
+    label: string;
+  }
+
+  export let data: {
+    GetForthcomingCorporateActionResults?: CorporateAction[];
+    GetRecentReleasedResults?: CorporateAction[];
+  };
+
+  let forthComingResult: CorporateAction[] =
+    data?.GetForthcomingCorporateActionResults ?? [];
+  let recentReleasedResult: CorporateAction[] =
+    data?.GetRecentReleasedResults ?? [];
+  let displayList: CorporateAction[] = [];
+  let rawData: CorporateAction[] = forthComingResult;
   let isLoaded = false;
 
   async function handleScroll() {
-    const scrollThreshold = document.body.offsetHeight * 0.8; // 80% of the website height
+    const scrollThreshold = document.body.offsetHeight * 0.8;
     const isBottom = window.innerHeight + window.scrollY >= scrollThreshold;
-    if (isBottom && displayList?.length !== rawData?.length) {
-      const nextIndex = displayList?.length;
-      const filteredNewResults = rawData?.slice(nextIndex, nextIndex + 20);
+    if (isBottom && displayList.length !== rawData.length) {
+      const nextIndex = displayList.length;
+      const filteredNewResults = rawData.slice(nextIndex, nextIndex + 20);
       displayList = [...displayList, ...filteredNewResults];
     }
   }
 
-  let error = null;
+  let error: string | null = null;
 
-  onMount(async () => {
+  onMount(() => {
     try {
       displayList = rawData?.slice(0, 20) ?? [];
       window.addEventListener("scroll", handleScroll);
@@ -40,15 +56,12 @@
     };
   });
 
-  const addSparkLine = (dataContent, index) => {
+  const addSparkLine = (dataContent: string, index: number) => {
     if (dataContent) {
       const values = dataContent.split(",").map(Number);
       const newValues: number[] = [];
-
-      // Parameters for the random walk
-      const volatility = 0.02; // Adjust this value to control the randomness
+      const volatility = 0.02;
       const numInterpolatedPoints = 5;
-
       for (let i = 0; i < values.length - 1; i++) {
         newValues.push(values[i]);
         const startPrice = values[i];
@@ -80,7 +93,7 @@
         const points = newValues
           .map(
             (value, i) =>
-              `${padding + i * xScale},${height - padding - (value - yMin) * yScale}`,
+              `${padding + i * xScale},${height - padding - (value - yMin) * yScale}`
           )
           .join(" ");
 
@@ -100,7 +113,7 @@
           const x = padding + (i * (width - 2 * padding)) / 4;
           const y = height - padding;
           tickers.push(
-            `<line x1="${x}" y1="${y}" x2="${x}" y2="${y - 3}" stroke="#888" stroke-width="1" />`,
+            `<line x1="${x}" y1="${y}" x2="${x}" y2="${y - 3}" stroke="#888" stroke-width="1" />`
           );
         }
 
@@ -131,12 +144,13 @@
   };
 
   let filterQuery = "";
-  let activeTab = "UPCOMING";
+  let activeTab: string = "UPCOMING";
 
-  const tabs = [
+  const tabs: TabItem[] = [
     { id: "UPCOMING", label: "Upcoming Results" },
-    { id: "RELEASHED", label: "Released Results" },
+    { id: "RELEASHED", label: "Released Results" }
   ];
+
   function setActiveTab(tabId: string) {
     activeTab = tabId;
     if (tabId === "UPCOMING") {
@@ -146,11 +160,12 @@
       rawData = recentReleasedResult;
       displayList = recentReleasedResult?.slice(0, 20) ?? [];
     }
-    filterQuery = ""; // Reset filter query
-    handleInput({ target: { value: "" } }); // Apply filter
+    filterQuery = "";
+    handleInput({ target: { value: "" } } as unknown as Event);
   }
-  const debouncedHandleInput = debounce((event) => {
-    filterQuery = event.target.value?.toLowerCase();
+
+  const debouncedHandleInput = debounce((event: Event) => {
+    filterQuery = (event.target as HTMLInputElement).value?.toLowerCase();
     if (filterQuery.length !== 0) {
       const newData = rawData.filter((item) => {
         const compName = item?.SecurityName?.toLowerCase();
@@ -162,16 +177,20 @@
     }
   }, 300);
 
-  function handleInput(event) {
+  function handleInput(event: Event) {
     debouncedHandleInput(event);
   }
 
-  async function infiniteHandler({ detail: { loaded, complete } }) {
-    if (displayList?.length === rawData?.length) {
+  async function infiniteHandler({
+    detail: { loaded, complete }
+  }: {
+    detail: { loaded: () => void; complete: () => void };
+  }) {
+    if (displayList.length === rawData.length) {
       complete();
     } else {
-      const nextIndex = displayList?.length;
-      const newArticles = rawData?.slice(nextIndex, nextIndex + 5);
+      const nextIndex = displayList.length;
+      const newArticles = rawData.slice(nextIndex, nextIndex + 5);
       displayList = [...displayList, ...newArticles];
       loaded();
     }
@@ -271,15 +290,14 @@
     >
       {#each tabs as tab}
         <li class="me-2">
-          <a
-            href="#"
+          <button
             class="inline-block p-2 {activeTab === tab.id
               ? 'border-b border-blue-300 text-white bg-[#161b22] active dark:bg-[#161b22] dark:text-white'
               : ' text-gray-500 bg-[#0d1117] active dark:bg-[#0d1117] dark:text-white'}"
             on:click|preventDefault={() => setActiveTab(tab.id)}
           >
             {tab.label}
-          </a>
+          </button>
         </li>
       {/each}
     </ul>
