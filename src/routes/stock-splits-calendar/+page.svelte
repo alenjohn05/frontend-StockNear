@@ -347,7 +347,7 @@
           on:click={() => changeWeek("previous")}
           class="{previousMax
             ? 'opacity-80'
-            : ''} hidden sm:flex h-16 w-48 cursor-pointer border m-auto flex bg-[#3C40F0] hover:bg-purple-600 border border-blue-600 mb-3"
+            : ''} hidden sm:flex h-16 w-48 cursor-pointer border m-auto flex bg-[#3C40F0] hover:bg-[#161b22] border border-blue-600 mb-3"
         >
           <svg
             class="w-6 h-6 m-auto rotate-180"
@@ -367,7 +367,7 @@
               on:click={() => toggleDate(index)}
               class="w-11/12 sm:w-full m-auto cursor-pointer h-16 {index ===
               selectedWeekday
-                ? 'bg-purple-600 bg-opacity-[0.6] sm:bg-[#A24D51] sm:gradient-effect'
+                ? 'bg-[#161b22] bg-opacity-[0.6] sm:bg-[#A24D51] sm:gradient-effect'
                 : ''} rounded-lg sm:rounded-none flex bg-[#3C40F0] border border-blue-600 mb-3"
             >
               <div class=" flex flex-row justify-center items-center w-full">
@@ -415,7 +415,7 @@
           on:click={() => changeWeek("next")}
           class="{nextMax
             ? 'opacity-80'
-            : ''} hidden sm:flex h-16 w-48 cursor-pointer border m-auto flex bg-[#3C40F0] hover:bg-purple-600 border border-blue-600 mb-3"
+            : ''} hidden sm:flex h-16 w-48 cursor-pointer border m-auto flex bg-[#3C40F0] hover:bg-[#161b22] border border-blue-600 mb-3"
         >
           <svg
             class="w-6 h-6 m-auto"

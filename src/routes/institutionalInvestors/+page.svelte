@@ -174,7 +174,7 @@
                     class="relative grid grid-cols-1 sm:grid-cols-4 gap-y-3 gap-x-3 flex flex-wrap p-1 list-none rounded-[3px]"
                   >
                     <li
-                      class="pl-3 py-1.5 flex-auto text-center bg-[#161b22] rounded-[3px]"
+                      class="bg-[#161b22] mb-4 rounded border border-[#21262d]"
                     >
                       <label class="flex flex-row items-center">
                         <input
@@ -198,7 +198,7 @@
                       </label>
                     </li>
                     <li
-                      class="text-center bg-[#161b22] rounded-[3px] cursor-pointer flex items-center justify-center h-30"
+                      class="bg-[#161b22] mb-4 rounded border border-[#21262d] text-center rounded-[3px] cursor-pointer flex items-center justify-center"
                       on:click={() => handleSort("HoldingValue")}
                     >
                       <span
@@ -212,7 +212,7 @@
                       </span>
                     </li>
                     <li
-                      class="text-center bg-[#161b22] rounded-[3px] cursor-pointer flex items-center justify-center"
+                      class="bg-[#161b22] mb-4 rounded border border-[#21262d] text-center rounded-[3px] cursor-pointer flex items-center justify-center"
                       on:click={() => handleSort("TopPeformingC3MZG")}
                     >
                       <span

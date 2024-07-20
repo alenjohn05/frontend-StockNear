@@ -455,13 +455,13 @@ const exportData = (format = 'csv') => {
 
                         <ul class="text-[0.8rem] font-medium text-center w-56 pt-3 sm:w-56 mb-5 flex justify-center sm:justify-end items-center ml-auto">
                             <li class="w-full">
-                                <label on:click={() => filterRule = 'annual'} class="cursor-pointer rounded-l-lg inline-block w-full py-2.5 text-white {filterRule === 'annual' ? 'bg-purple-600' : 'bg-[#2A303C]'} font-semibold border-r border-gray-600" aria-current="page">
+                                <label on:click={() => filterRule = 'annual'} class="cursor-pointer rounded-l-lg inline-block w-full py-2.5 text-white {filterRule === 'annual' ? 'bg-[#161b22]' : 'bg-[#2A303C]'} font-semibold border-r border-gray-600" aria-current="page">
                                   Annual
                                 </label>
                             </li>
                             <li class="w-full">
                               {#if data?.user?.tier === 'Pro'}
-                                <label on:click={() => filterRule = 'quartely'} class="cursor-pointer inline-block w-full py-2.5 {filterRule === 'quartely' ? 'bg-purple-600' : 'bg-[#2A303C]'} font-semibold text-white rounded-r-lg">
+                                <label on:click={() => filterRule = 'quartely'} class="cursor-pointer inline-block w-full py-2.5 {filterRule === 'quartely' ? 'bg-[#161b22]' : 'bg-[#2A303C]'} font-semibold text-white rounded-r-lg">
                                   Quartely
                                 </label>
                               {:else}

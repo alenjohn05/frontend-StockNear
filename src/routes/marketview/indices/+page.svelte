@@ -6,7 +6,7 @@
     getCache,
     numberOfUnreadNotification,
     screenWidth,
-    setCache
+    setCache,
   } from "$lib/store";
   import { onMount } from "svelte";
   import type { EChartsOption } from "echarts";
@@ -16,6 +16,12 @@
   let isLoading = false;
   let rawDataNSE: any[] = [];
   let rawDataBSE: any[] = [];
+
+  let rawDataNSELoss: any[] = [];
+  let rawDataNSEGain: any[] = [];
+  let rawDataBSELoss: any[] = [];
+  let rawDataBSEGain: any[] = [];
+
   let periodTypes: any[] = [];
   let selectedPeriod = "1D";
   let ChartOptionDataNSE: EChartsOption = {};
@@ -25,14 +31,32 @@
 
   onMount(async () => {
     if (data?.GetMajorIndicesBSE && data?.GetMajorIndicesNSE) {
-      rawDataBSE = data.GetMajorIndicesBSE;
-      rawDataNSE = data.GetMajorIndicesNSE;
+      rawDataBSE = data?.GetMajorIndicesBSE;
+      rawDataNSE = data?.GetMajorIndicesNSE;
+      rawDataNSELoss =
+        data?.GetMajorIndicesNSEGainersLossersData
+          ?.GetLatestIndexQuotesForLosers;
+      rawDataNSEGain =
+        data?.GetMajorIndicesNSEGainersLossersData
+          ?.GetLatestIndexQuotesForGainers;
+      rawDataBSELoss =
+        data?.GetMajorIndicesBSEGainersLossersData
+          ?.GetLatestIndexQuotesForLosers;
+      rawDataBSEGain =
+        data?.GetMajorIndicesBSEGainersLossersData
+          ?.GetLatestIndexQuotesForGainers;
       periodTypes = data.periodTypes;
-      ChartOptionDataNSE = await getMarketPlotOptions(rawDataNSE, "NSE Index Analysis");
-      ChartOptionDataBSE = await getMarketPlotOptions(rawDataBSE, "BSE Index Analysis");
+      ChartOptionDataNSE = await getMarketPlotOptions(
+        rawDataNSE,
+        "NSE Index Analysis",
+      );
+      ChartOptionDataBSE = await getMarketPlotOptions(
+        rawDataBSE,
+        "BSE Index Analysis",
+      );
     }
-    console.log(rawDataBSE);
-    console.log(rawDataNSE);
+    console.log(rawDataNSEGainLoss);
+    console.log(rawDataBSEGainLoss);
     isLoaded = true;
   });
 
@@ -81,26 +105,63 @@
     }
 
     const response = await fetch(
-      `${backendURL}/index/latest_index_quotes?price_change_period=${periodCode}&exchange=${exchange}`
+      `${backendURL}/index/latest_index_quotes?price_change_period=${periodCode}&exchange=${exchange}`,
     );
     const data = await response.json();
     const processedData = Array.isArray(data) ? [...data] : [];
     setCache("", processedData, cacheKey);
     return processedData;
   }
+  async function fetchIndicesGainersLossersData(
+    exchange: string,
+    period: string,
+  ) {
+    const cacheKey = `GetMajorIndicesGainerLosser${exchange}${period}`;
+    const cachedData = getCache("", cacheKey);
+
+    if (cachedData) {
+      return cachedData;
+    }
+
+    const response = await fetch(
+      `${backendURL}/index/Get-Latest-IndexQuotes_gainers_lossers?priceChangePeriodType=${period}&exchange=${exchange}`,
+      {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      },
+    );
+
+    const data = await response.json();
+    setCache("", data, cacheKey);
+    return data;
+  }
 
   async function fetchData(periodCode: string) {
     isLoading = true;
     try {
-      const [nseData, bseData] = await Promise.all([
-        fetchExchangeData("NSE", periodCode),
-        fetchExchangeData("BSE", periodCode)
-      ]);
+      const [nseData, bseData, nseGainerLosserData, bseGainerLosserData] =
+        await Promise.all([
+          fetchExchangeData("NSE", periodCode),
+          fetchExchangeData("BSE", periodCode),
+          fetchIndicesGainersLossersData("NSE", periodCode),
+          fetchIndicesGainersLossersData("BSE", periodCode),
+        ]);
 
       rawDataNSE = nseData;
       rawDataBSE = bseData;
-      ChartOptionDataNSE = await getMarketPlotOptions(rawDataNSE,"NSE Index Analysis");
-      ChartOptionDataBSE = await getMarketPlotOptions(rawDataBSE,"BSE Index Analysis");
+      rawDataNSELoss = nseGainerLosserData?.GetLatestIndexQuotesForLosers;
+      rawDataNSEGain = nseGainerLosserData?.GetLatestIndexQuotesForGainers;
+      rawDataBSELoss = bseGainerLosserData?.GetLatestIndexQuotesForLosers;
+      rawDataBSEGain = bseGainerLosserData?.GetLatestIndexQuotesForGainers;
+
+      ChartOptionDataNSE = await getMarketPlotOptions(
+        rawDataNSE,
+        "NSE Index Analysis",
+      );
+      ChartOptionDataBSE = await getMarketPlotOptions(
+        rawDataBSE,
+        "BSE Index Analysis",
+      );
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -112,7 +173,7 @@
     await fetchData(selectedPeriod);
   };
 
-  async function getMarketPlotOptions(data:any, title:string) {
+  async function getMarketPlotOptions(data: any, title: string) {
     const option = {
       title: {
         text: title,
@@ -122,8 +183,8 @@
           color: "#ffffff",
           fontSize: 22,
           fontFamily: '"Inter", sans-serif',
-          fontWeight: "normal"
-        }
+          fontWeight: "normal",
+        },
       },
       silent: false,
       legend: false,
@@ -132,39 +193,39 @@
         {
           type: "value",
           axisLine: {
-            show: false
+            show: false,
           },
           axisTick: {
-            show: false
+            show: false,
           },
           axisLabel: {
-            show: false
+            show: false,
           },
           splitLine: {
-            show: false
-          }
-        }
+            show: false,
+          },
+        },
       ],
       yAxis: [
         {
           type: "category",
           axisLine: {
             lineStyle: {
-              color: "#333333"
-            }
+              color: "#333333",
+            },
           },
           axisLabel: {
             color: "#ffffff",
-            fontFamily: '"Inter", sans-serif'
+            fontFamily: '"Inter", sans-serif',
           },
           splitLine: {
             show: true,
             lineStyle: {
-              color: "#161b22"
-            }
+              color: "#161b22",
+            },
           },
-          data: [...data?.map((each: any) => each.SecurityName)]
-        }
+          data: [...data?.map((each: any) => each.SecurityName)],
+        },
       ],
       tooltip: {
         trigger: "axis",
@@ -173,11 +234,11 @@
         borderWidth: 1,
         textStyle: {
           color: "#ffffff",
-          fontFamily: '"Inter", sans-serif'
+          fontFamily: '"Inter", sans-serif',
         },
         formatter: (params) => {
           return `${params[0].name}: ${params[0].value.toFixed(2)}%`;
-        }
+        },
       },
       series: [
         {
@@ -189,18 +250,18 @@
             position: "top",
             color: "#ffffff",
             fontFamily: '"Inter", sans-serif',
-            formatter: "{c}%"
+            formatter: "{c}%",
           },
           itemStyle: {
             color: function (params) {
               return params.value >= 0 ? "#10db06" : "#FF2F1F";
-            }
+            },
           },
           emphasis: {
-            focus: "series"
+            focus: "series",
           },
-          data: [...data?.map((each: any) => each.ChangePercentage)]
-        }
+          data: [...data?.map((each: any) => each.ChangePercentage)],
+        },
       ],
       grid: {
         left: "3%",
@@ -214,10 +275,10 @@
         backgroundColor: "#0d1117",
         tooltip: {
           trigger: "item",
-          formatter: "{b}: {c}"
+          formatter: "{b}: {c}",
         },
-        zlevel: 0
-      }
+        zlevel: 0,
+      },
     };
     return option;
   }
@@ -254,7 +315,7 @@
 </svelte:head>
 
 <section
-  class="container w-full max-w1xl m-auto sm:bg-[#0d1117] sm:rounded-xl h-auto pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8 min-h-screen"
+  class="container w-full max-w-7xl m-auto sm:bg-[#0d1117] sm:rounded-xl h-auto pt-5 sm:pb-10 sm:pt-10 mt-3 mb-8 min-h-screen"
 >
   <div class="text-sm breadcrumbs">
     <ul>
@@ -267,9 +328,13 @@
       <h1 class="text-xl sm:text-xl text-white text-start font-bold mb-5">
         Major Indices
       </h1>
-      <div class="flex items-center justify-center  bg-[#21262d] rounded border border-[#30363d]">
-        <h1 class="text-xs sm:text-xs text-slate-300 text-start px-2 border-r border-[#30363d]">
-          The Changes made in 
+      <div
+        class="flex items-center justify-center bg-[#21262d] rounded border border-[#30363d]"
+      >
+        <h1
+          class="text-xs sm:text-xs text-slate-300 text-start px-2 border-r border-[#30363d]"
+        >
+          The Changes made in
         </h1>
         <select
           class="text-white bg-[#21262d] p-1 text-xs rounded border border-[#21262d]"
@@ -282,7 +347,153 @@
       </div>
     </div>
   </div>
-  <div class="grid sm:grid-cols-3 xs:sm:grid-cols-2 sm:gap-4">
+  <div class="grid sm:grid-cols-2 xs:sm:grid-cols-2 sm:gap-4">
+    <div class="overflow-x-auto border border-[#2a2e39] rounded-lg">
+      <h1 class="text-xl sm:text-xl text-white text-center mt-3 mb-5">
+        National Stock Exchange
+      </h1>
+      {#if isLoading}
+        <div class="flex justify-center items-center h-80">
+          <div class="relative">
+            <label
+              class="bg-[#0d1117] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            >
+              <span class="loading loading-spinner loading-md"></span>
+            </label>
+          </div>
+        </div>
+      {:else}
+        <div class="h-[300px] flex flex-col">
+          <table class="border border-[#2f343d] table-compact w-full m-auto">
+            <thead class="bg-[#161b22] border-b border-[#2f343d]">
+              <tr>
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-left leading-4 font-normal text-xs"
+                  >Index</th
+                >
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-left leading-4 font-normal text-xs"
+                  >LTP</th
+                >
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-left leading-4 font-normal text-xs"
+                  >Chg</th
+                >
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-left leading-4 font-normal text-xs"
+                  >Chg%</th
+                >
+              </tr>
+            </thead>
+          </table>
+          <div class="overflow-y-auto flex-grow">
+            <table class="border border-[#2f343d] table-compact w-full m-auto">
+              <tbody>
+                {#each rawDataNSE as item, index}
+                  <tr class="border-b border-[#2a2e39]">
+                    <td
+                      class="px-2 py-1 whitespace-no-wrap text-white text-xs hover:text-[#FFBE00] cursor-pointer"
+                      >{item?.SecurityName}</td
+                    >
+                    <td class="px-2 py-1 whitespace-no-wrap text-white text-xs"
+                      >{item?.Close}</td
+                    >
+                    <td class="px-2 py-1 whitespace-no-wrap text-white text-xs">
+                      <div
+                        class="flex {item?.Change >= 0
+                          ? 'text-[#10DB06]'
+                          : 'text-[#FF2F1F]'}"
+                      >
+                        {item?.Change}
+                      </div></td
+                    >
+                    <td class="px-2 py-1 whitespace-no-wrap text-white text-xs"
+                      ><div class="flex">
+                        {@html GetSvgElement(item?.ChangePercentage)}
+                      </div></td
+                    >
+                  </tr>
+                {/each}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      {/if}
+    </div>
+    <div class="overflow-x-auto border border-[#2a2e39] rounded-lg">
+      <h1 class="text-xl sm:text-xl text-white text-center mt-3 mb-5">
+        Bombay Stock Exchange
+      </h1>
+      {#if isLoading}
+        <div class="flex justify-center items-center h-80">
+          <div class="relative">
+            <label
+              class="bg-[#0d1117] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            >
+              <span class="loading loading-spinner loading-md"></span>
+            </label>
+          </div>
+        </div>
+      {:else}
+        <div class="h-[300px] flex flex-col">
+          <table class="border border-[#2f343d] table-compact w-full m-auto">
+            <thead class="bg-[#161b22] border-b border-[#2f343d]">
+              <tr>
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-left leading-4 font-normal text-xs"
+                  >Index</th
+                >
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-end leading-4 font-normal text-xs"
+                  >LTP</th
+                >
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-end leading-4 font-normal text-xs"
+                  >Chg</th
+                >
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-end leading-4 font-normal text-xs"
+                  >Chg%</th
+                >
+              </tr>
+            </thead>
+          </table>
+          <div class="overflow-y-auto flex-grow">
+            <table class="border border-[#2f343d] table-compact w-full m-auto">
+              <tbody>
+                {#each rawDataBSE as item, index}
+                  <tr class="border-b border-[#2a2e39]">
+                    <td
+                      class="px-2 py-1 whitespace-no-wrap text-white text-xs hover:text-[#FFBE00] cursor-pointer"
+                      >{item?.SecurityName}</td
+                    >
+                    <td class="px-2 py-1 whitespace-no-wrap text-white text-xs"
+                      >{item?.Close}</td
+                    >
+                    <td class="px-2 py-1 whitespace-no-wrap text-white text-xs">
+                      <div
+                        class="flex {item?.Change >= 0
+                          ? 'text-[#10DB06]'
+                          : 'text-[#FF2F1F]'}"
+                      >
+                        {item?.Change ? item?.Change : ""}
+                      </div></td
+                    >
+                    <td class="px-2 py-1 whitespace-no-wrap text-white text-xs"
+                      ><div class="flex">
+                        {@html GetSvgElement(item?.ChangePercentage)}
+                      </div></td
+                    >
+                  </tr>
+                {/each}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      {/if}
+    </div>
+  </div>
+  <div class="grid sm:grid-cols-2 xs:sm:grid-cols-2 sm:gap-4 mt-3">
     <div class="overflow-x-auto border border-[#2a2e39] rounded-lg p-3">
       <Lazy height={800} fadeOption={{ delay: 100, duration: 500 }} keep={true}>
         <div class="w-full h-[560px] mt-6">
@@ -298,127 +509,302 @@
       </Lazy>
     </div>
   </div>
-  <div class="grid sm:grid-cols-3 xs:sm:grid-cols-2 sm:gap-4 mt-3">
-    <div class="overflow-x-auto border border-[#2a2e39] rounded-lg p-3">
+  <div class=" mt-10">
+    <div class="flex flex-row items-start justify-between mt-5">
+      <h1 class="text-xl sm:text-xl text-white text-start font-bold mb-5">
+        Top Gainer & Lossers from All Indices
+      </h1>
+    </div>
+  </div>
+  <div class="grid sm:grid-cols-2 xs:sm:grid-cols-2 sm:gap-4 mt-3">
+    <div class="overflow-x-auto border border-[#2a2e39] rounded-lg">
       <h1 class="text-xl sm:text-xl text-white text-center mt-3 mb-5">
-        National Stock Exchange
+        Top Gainers Indices NSE
       </h1>
       {#if isLoading}
-        <div class="flex justify-center items-center h-40">
-          <div
-            class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"
-          ></div>
+        <div class="flex justify-center items-center h-80">
+          <div class="relative">
+            <label
+              class="bg-[#0d1117] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            >
+              <span class="loading loading-spinner loading-md"></span>
+            </label>
+          </div>
         </div>
       {:else}
-        <table class="min-w-full">
-          <thead>
-            <tr>
-              <th
-                class="px-2 py-2 border-b border-[#2a2e39] text-left leading-4 font-normal text-sm"
-                >Index</th
-              >
-              <th
-                class="px-2 py-2 border-b border-[#2a2e39] text-left leading-4 font-normal text-sm"
-                >LTP</th
-              >
-              <th
-                class="px-2 py-2 border-b border-[#2a2e39] text-left leading-4 font-normal text-sm"
-                >Chg</th
-              >
-              <th
-                class="px-2 py-2 border-b border-[#2a2e39] text-left leading-4 font-normal text-sm"
-                >Chg%</th
-              >
-            </tr>
-          </thead>
-          <tbody>
-            {#each rawDataNSE as item, index}
-              <tr class=" border-b border-[#2a2e39]">
-                <td class="px-2 py-2 whitespace-no-wrap text-white text-xs hover:text-[#FFBE00] cursor-pointer"
-                  >{item?.SecurityName}</td
+        <div class="h-[300px] flex flex-col">
+          <table class="border border-[#2f343d] table-compact w-full m-auto">
+            <thead class="bg-[#161b22] border-b border-[#2f343d]">
+              <tr>
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-left leading-4 font-normal text-xs"
+                  >Index</th
                 >
-                <td class="px-2 py-2 whitespace-no-wrap text-white text-xs"
-                  >{item?.Close}</td
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-left leading-4 font-normal text-xs"
+                  >LTP</th
                 >
-                <td class="px-2 py-2 whitespace-no-wrap text-white text-xs">
-                  <div
-                    class="flex {item?.Change >= 0
-                      ? 'text-[#10DB06]'
-                      : 'text-[#FF2F1F]'}"
-                  >
-                    {item?.Change}
-                  </div></td
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-left leading-4 font-normal text-xs"
+                  >Chg</th
                 >
-                <td class="px-2 py-2 whitespace-no-wrap text-white text-xs"
-                  ><div class="flex">
-                    {@html GetSvgElement(item?.ChangePercentage)}
-                  </div></td
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-left leading-4 font-normal text-xs"
+                  >Chg%</th
                 >
               </tr>
-            {/each}
-          </tbody>
-        </table>
+            </thead>
+          </table>
+          <div class="overflow-y-auto flex-grow">
+            <table class="border border-[#2f343d] table-compact w-full m-auto">
+              <tbody>
+                {#each rawDataNSEGain as item, index}
+                  <tr class="border-b border-[#2a2e39]">
+                    <td
+                      class="px-2 py-1 whitespace-no-wrap text-white text-xs hover:text-[#FFBE00] cursor-pointer"
+                      >{item?.SecurityName}</td
+                    >
+                    <td class="px-2 py-1 whitespace-no-wrap text-white text-xs"
+                      >{item?.Close}</td
+                    >
+                    <td class="px-2 py-1 whitespace-no-wrap text-white text-xs">
+                      <div
+                        class="flex {item?.Change >= 0
+                          ? 'text-[#10DB06]'
+                          : 'text-[#FF2F1F]'}"
+                      >
+                        {item?.Change}
+                      </div></td
+                    >
+                    <td class="px-2 py-1 whitespace-no-wrap text-white text-xs"
+                      ><div class="flex">
+                        {@html GetSvgElement(item?.ChangePercentage)}
+                      </div></td
+                    >
+                  </tr>
+                {/each}
+              </tbody>
+            </table>
+          </div>
+        </div>
       {/if}
     </div>
-    <div class="overflow-x-auto border border-[#2a2e39] rounded-lg p-3">
+    <div class="overflow-x-auto border border-[#2a2e39] rounded-lg">
       <h1 class="text-xl sm:text-xl text-white text-center mt-3 mb-5">
-        Bombay Stock Exchange
+        Top Gainers Indices BSE
       </h1>
       {#if isLoading}
-        <div class="flex justify-center items-center h-40">
-          <div
-            class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"
-          ></div>
+        <div class="flex justify-center items-center h-80">
+          <div class="relative">
+            <label
+              class="bg-[#0d1117] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            >
+              <span class="loading loading-spinner loading-md"></span>
+            </label>
+          </div>
         </div>
       {:else}
-        <table class="min-w-full">
-          <thead>
-            <tr>
-              <th
-                class="px-2 py-2 border-b border-[#2a2e39] text-left leading-4 font-normal text-sm"
-                >Index</th
-              >
-              <th
-                class="px-2 py-2 border-b border-[#2a2e39] text-left leading-4 font-normal text-sm"
-                >LTP</th
-              >
-              <th
-                class="px-2 py-2 border-b border-[#2a2e39] text-left leading-4 font-normal text-sm"
-                >Chg</th
-              >
-              <th
-                class="px-2 py-2 border-b border-[#2a2e39] text-left leading-4 font-normal text-sm"
-                >Chg%</th
-              >
-            </tr>
-          </thead>
-          <tbody>
-            {#each rawDataBSE as item, index}
-              <tr class=" border-b border-[#2a2e39]">
-                <td class="px-2 py-2 whitespace-no-wrap text-white text-xs hover:text-[#FFBE00] cursor-pointer"
-                  >{item?.SecurityName}</td
+        <div class="h-[300px] flex flex-col">
+          <table class="border border-[#2f343d] table-compact w-full m-auto">
+            <thead class="bg-[#161b22] border-b border-[#2f343d]">
+              <tr>
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-left leading-4 font-normal text-xs"
+                  >Index</th
                 >
-                <td class="px-2 py-2 whitespace-no-wrap text-white text-xs"
-                  >{item?.Close}</td
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-end leading-4 font-normal text-xs"
+                  >LTP</th
                 >
-                <td class="px-2 py-2 whitespace-no-wrap text-white text-xs">
-                  <div
-                    class="flex {item?.Change >= 0
-                      ? 'text-[#10DB06]'
-                      : 'text-[#FF2F1F]'}"
-                  >
-                    {item?.Change ? item?.Change : ""}
-                  </div></td
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-end leading-4 font-normal text-xs"
+                  >Chg</th
                 >
-                <td class="px-2 py-2 whitespace-no-wrap text-white text-xs"
-                  ><div class="flex">
-                    {@html GetSvgElement(item?.ChangePercentage)}
-                  </div></td
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-end leading-4 font-normal text-xs"
+                  >Chg%</th
                 >
               </tr>
-            {/each}
-          </tbody>
-        </table>
+            </thead>
+          </table>
+          <div class="overflow-y-auto flex-grow">
+            <table class="border border-[#2f343d] table-compact w-full m-auto">
+              <tbody>
+                {#each rawDataBSEGain as item, index}
+                  <tr class="border-b border-[#2a2e39]">
+                    <td
+                      class="px-2 py-1 whitespace-no-wrap text-white text-xs hover:text-[#FFBE00] cursor-pointer"
+                      >{item?.SecurityName}</td
+                    >
+                    <td class="px-2 py-1 whitespace-no-wrap text-white text-xs"
+                      >{item?.Close}</td
+                    >
+                    <td class="px-2 py-1 whitespace-no-wrap text-white text-xs">
+                      <div
+                        class="flex {item?.Change >= 0
+                          ? 'text-[#10DB06]'
+                          : 'text-[#FF2F1F]'}"
+                      >
+                        {item?.Change ? item?.Change : ""}
+                      </div></td
+                    >
+                    <td class="px-2 py-1 whitespace-no-wrap text-white text-xs"
+                      ><div class="flex">
+                        {@html GetSvgElement(item?.ChangePercentage)}
+                      </div></td
+                    >
+                  </tr>
+                {/each}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      {/if}
+    </div>
+  </div>
+  <div class="grid sm:grid-cols-2 xs:sm:grid-cols-2 sm:gap-4 mt-3">
+    <div class="overflow-x-auto border border-[#2a2e39] rounded-lg">
+      <h1 class="text-xl sm:text-xl text-white text-center mt-3 mb-5">
+        Top Lossers Indices NSE
+      </h1>
+      {#if isLoading}
+        <div class="flex justify-center items-center h-80">
+          <div class="relative">
+            <label
+              class="bg-[#0d1117] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            >
+              <span class="loading loading-spinner loading-md"></span>
+            </label>
+          </div>
+        </div>
+      {:else}
+        <div class="h-[300px] flex flex-col">
+          <table class="border border-[#2f343d] table-compact w-full m-auto">
+            <thead class="bg-[#161b22] border-b border-[#2f343d]">
+              <tr>
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-left leading-4 font-normal text-xs"
+                  >Index</th
+                >
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-left leading-4 font-normal text-xs"
+                  >LTP</th
+                >
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-left leading-4 font-normal text-xs"
+                  >Chg</th
+                >
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-left leading-4 font-normal text-xs"
+                  >Chg%</th
+                >
+              </tr>
+            </thead>
+          </table>
+          <div class="overflow-y-auto flex-grow">
+            <table class="border border-[#2f343d] table-compact w-full m-auto">
+              <tbody>
+                {#each rawDataNSELoss as item, index}
+                  <tr class="border-b border-[#2a2e39]">
+                    <td
+                      class="px-2 py-1 whitespace-no-wrap text-white text-xs hover:text-[#FFBE00] cursor-pointer"
+                      >{item?.SecurityName}</td
+                    >
+                    <td class="px-2 py-1 whitespace-no-wrap text-white text-xs"
+                      >{item?.Close}</td
+                    >
+                    <td class="px-2 py-1 whitespace-no-wrap text-white text-xs">
+                      <div
+                        class="flex {item?.Change >= 0
+                          ? 'text-[#10DB06]'
+                          : 'text-[#FF2F1F]'}"
+                      >
+                        {item?.Change}
+                      </div></td
+                    >
+                    <td class="px-2 py-1 whitespace-no-wrap text-white text-xs"
+                      ><div class="flex">
+                        {@html GetSvgElement(item?.ChangePercentage)}
+                      </div></td
+                    >
+                  </tr>
+                {/each}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      {/if}
+    </div>
+    <div class="overflow-x-auto border border-[#2a2e39] rounded-lg">
+      <h1 class="text-xl sm:text-xl text-white text-center mt-3 mb-5">
+        Top Lossers Indices BSE
+      </h1>
+      {#if isLoading}
+        <div class="flex justify-center items-center h-80">
+          <div class="relative">
+            <label
+              class="bg-[#0d1117] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            >
+              <span class="loading loading-spinner loading-md"></span>
+            </label>
+          </div>
+        </div>
+      {:else}
+        <div class="h-[300px] flex flex-col">
+          <table class="border border-[#2f343d] table-compact w-full m-auto">
+            <thead class="bg-[#161b22] border-b border-[#2f343d]">
+              <tr>
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-left leading-4 font-normal text-xs"
+                  >Index</th
+                >
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-end leading-4 font-normal text-xs"
+                  >LTP</th
+                >
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-end leading-4 font-normal text-xs"
+                  >Chg</th
+                >
+                <th
+                  class="px-2 py-1 border-b border-[#2a2e39] text-end leading-4 font-normal text-xs"
+                  >Chg%</th
+                >
+              </tr>
+            </thead>
+          </table>
+          <div class="overflow-y-auto flex-grow">
+            <table class="border border-[#2f343d] table-compact w-full m-auto">
+              <tbody>
+                {#each rawDataBSELoss as item, index}
+                  <tr class="border-b border-[#2a2e39]">
+                    <td
+                      class="px-2 py-1 whitespace-no-wrap text-white text-xs hover:text-[#FFBE00] cursor-pointer"
+                      >{item?.SecurityName}</td
+                    >
+                    <td class="px-2 py-1 whitespace-no-wrap text-white text-xs"
+                      >{item?.Close}</td
+                    >
+                    <td class="px-2 py-1 whitespace-no-wrap text-white text-xs">
+                      <div
+                        class="flex {item?.Change >= 0
+                          ? 'text-[#10DB06]'
+                          : 'text-[#FF2F1F]'}"
+                      >
+                        {item?.Change ? item?.Change : ""}
+                      </div></td
+                    >
+                    <td class="px-2 py-1 whitespace-no-wrap text-white text-xs"
+                      ><div class="flex">
+                        {@html GetSvgElement(item?.ChangePercentage)}
+                      </div></td
+                    >
+                  </tr>
+                {/each}
+              </tbody>
+            </table>
+          </div>
+        </div>
       {/if}
     </div>
   </div>

@@ -103,7 +103,7 @@
                     <div class="text-white-500 text-xs code-font">Sentiment :</div>
 
                     <div
-                      class={`relative z-10 rounded-full code-font ${item?.sentiment_category === "negative" ? "bg-red-600" : item?.sentiment_category === "positive" ? "bg-green-600" : "bg-purple-600"} px-3 py-1.5 font-medium text-white hover:bg-purple-400`}
+                      class={`relative z-10 rounded-full code-font ${item?.sentiment_category === "negative" ? "bg-red-600" : item?.sentiment_category === "positive" ? "bg-green-600" : "bg-[#161b22]"} px-3 py-1.5 font-medium text-white hover:bg-purple-400`}
                     >
                       {item?.sentiment_category}
                     </div>

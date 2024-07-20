@@ -154,7 +154,7 @@ if ($stockTicker && typeof window !== 'undefined' && typeof analystRating !== 'u
             </div>
           </div>
         
-          <a href={`/stocks/${$stockTicker}/analyst`} class="rounded-lg cursor-pointer w-11/12 py-2 h-full mt-6 text-lg text-center font-bold text-white m-auto hover:bg-purple-700 bg-purple-600 transition duration-100">
+          <a href={`/stocks/${$stockTicker}/analyst`} class="rounded-lg cursor-pointer w-11/12 py-2 h-full mt-6 text-lg text-center font-bold text-white m-auto hover:bg-[#161b22] bg-[#161b22] transition duration-100">
             Analyst Ratings
           </a>
 

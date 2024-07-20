@@ -93,7 +93,7 @@
         const points = newValues
           .map(
             (value, i) =>
-              `${padding + i * xScale},${height - padding - (value - yMin) * yScale}`
+              `${padding + i * xScale},${height - padding - (value - yMin) * yScale}`,
           )
           .join(" ");
 
@@ -113,7 +113,7 @@
           const x = padding + (i * (width - 2 * padding)) / 4;
           const y = height - padding;
           tickers.push(
-            `<line x1="${x}" y1="${y}" x2="${x}" y2="${y - 3}" stroke="#888" stroke-width="1" />`
+            `<line x1="${x}" y1="${y}" x2="${x}" y2="${y - 3}" stroke="#888" stroke-width="1" />`,
           );
         }
 
@@ -148,7 +148,7 @@
 
   const tabs: TabItem[] = [
     { id: "UPCOMING", label: "Upcoming Results" },
-    { id: "RELEASHED", label: "Released Results" }
+    { id: "RELEASHED", label: "Released Results" },
   ];
 
   function setActiveTab(tabId: string) {
@@ -182,7 +182,7 @@
   }
 
   async function infiniteHandler({
-    detail: { loaded, complete }
+    detail: { loaded, complete },
   }: {
     detail: { loaded: () => void; complete: () => void };
   }) {
@@ -291,7 +291,7 @@
       {#each tabs as tab}
         <li class="me-2">
           <button
-            class="inline-block p-2 {activeTab === tab.id
+            class="rounded-t-lg inline-block p-2 {activeTab === tab.id
               ? 'border-b border-blue-300 text-white bg-[#161b22] active dark:bg-[#161b22] dark:text-white'
               : ' text-gray-500 bg-[#0d1117] active dark:bg-[#0d1117] dark:text-white'}"
             on:click|preventDefault={() => setActiveTab(tab.id)}
@@ -307,9 +307,9 @@
     >
       {#if activeTab === "UPCOMING"}
         <table
-          class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
+          class="border border-[#2f343d] hidden sm:inline-table table-sm table-compact w-full m-auto"
         >
-          <thead>
+          <thead class="bg-[#161b22] border-b border-[#2f343d]">
             <tr class="border-b border-gray-800">
               <th class="text-slate-200 font-medium text-sm text-start w-40"
                 >Date</th
@@ -352,47 +352,31 @@
                 <tr
                   class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
                 >
-                  <td
-                    class="{index % 2
-                      ? 'bg-[#0d1117]'
-                      : 'bg-[#161b22]'} border-b-[#0d1117] text-xs font-bold"
-                  >
+                  <td class=" border-b-[#0d1117] text-xs font-bold">
                     {format(new Date(item?.Date), "dd-MM-yyyy")}
                   </td>
-                  <td
-                    class="{index % 2
-                      ? 'bg-[#0d1117]'
-                      : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
-                  >
+                  <td class=" text-[#FFBE00] text-xs border-b-[#0d1117]">
                     <a href={"/stocks/" + item?.SecurityID}
                       >{item?.SecurityName}</a
                     >
                   </td>
                   <td
-                    class="{index % 2
-                      ? 'bg-[#0d1117]'
-                      : 'bg-[#161b22]'} text-xs text-center text-white border-b-[#0d1117] hover:text-blue-500"
+                    class=" text-xs text-center text-white border-b-[#0d1117] hover:text-blue-500"
                   >
                     {@html addSparkLine(item?.C1WJson, index)}
                   </td>
                   <td
-                    class="{index % 2
-                      ? 'bg-[#0d1117]'
-                      : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                    class=" text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
                   >
                     {abbreviateNumber(item?.MCap)}
                   </td>
                   <td
-                    class="{index % 2
-                      ? 'bg-[#0d1117]'
-                      : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                    class=" text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
                   >
                     {item?.LTP}
                   </td>
                   <td
-                    class="{index % 2
-                      ? 'bg-[#0d1117]'
-                      : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                    class=" text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
                   >
                     <div class="flex item-center justify-center">
                       {#if item?.ChangePercent >= 0}
@@ -509,9 +493,9 @@
       {/if}
       {#if activeTab === "RELEASHED"}
         <table
-          class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
+          class="border border-[#2f343d] hidden sm:inline-table table-sm table-compact w-full m-auto"
         >
-          <thead>
+          <thead class="bg-[#161b22] border-b border-[#2f343d]">
             <tr class="border-b border-gray-800">
               <th class="text-slate-200 font-medium text-sm text-start w-40"
                 >Quater</th
@@ -554,33 +538,21 @@
                 <tr
                   class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
                 >
-                  <td
-                    class="{index % 2
-                      ? 'bg-[#0d1117]'
-                      : 'bg-[#161b22]'} border-b-[#0d1117] text-xs font-bold"
-                  >
+                  <td class=" border-b-[#0d1117] text-xs font-bold">
                     {item?.DateEnd}
                   </td>
-                  <td
-                    class="{index % 2
-                      ? 'bg-[#0d1117]'
-                      : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
-                  >
+                  <td class=" text-[#FFBE00] text-xs border-b-[#0d1117]">
                     <a href={"/stocks/" + item?.SecurityID}
                       >{item?.SecurityName}</a
                     >
                   </td>
                   <td
-                    class="{index % 2
-                      ? 'bg-[#0d1117]'
-                      : 'bg-[#161b22]'} text-xs text-center text-white border-b-[#0d1117] hover:text-blue-500"
+                    class=" text-xs text-center text-white border-b-[#0d1117] hover:text-blue-500"
                   >
                     {abbreviateNumber(item?.MCap)}
                   </td>
                   <td
-                    class="{index % 2
-                      ? 'bg-[#0d1117]'
-                      : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                    class=" item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
                   >
                     {item?.SALES?.toFixed(2)}
                     <div class="flex flex-row item-center justify-end">
@@ -626,9 +598,7 @@
                     </div>
                   </td>
                   <td
-                    class="{index % 2
-                      ? 'bg-[#0d1117]'
-                      : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                    class="  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
                   >
                     {item?.EBITDA?.toFixed(2)}
                     <div class="flex flex-row item-center justify-end">
@@ -674,9 +644,7 @@
                     </div>
                   </td>
                   <td
-                    class="{index % 2
-                      ? 'bg-[#0d1117]'
-                      : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                    class="  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
                   >
                     {item?.Profit?.toFixed(2)}
                     <div class="flex flex-row item-center justify-end">

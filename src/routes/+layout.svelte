@@ -404,16 +404,16 @@ syncWorker.onmessage = handleTwitchMessage;
           >
             <a
               aria-current="page"
-              class="inline-block rounded-lg px-2 py-1 text-[0.90rem] font-semibold text-white hover:text-yellow-200 transition-all duration-200 hover:bg-purple-600"
+              class="inline-block rounded-lg px-2 py-1 text-[0.90rem] font-semibold text-white hover:text-yellow-200 transition-all duration-200 hover:bg-[#161b22]"
               href="/">Home</a
             >
             <a
               aria-current="page"
-              class="inline-block rounded-lg px-2 py-1 text-[0.90rem] font-semibold text-white hover:text-yellow-200 transition-all duration-200 hover:bg-purple-600"
+              class="inline-block rounded-lg px-2 py-1 text-[0.90rem] font-semibold text-white hover:text-yellow-200 transition-all duration-200 hover:bg-[#161b22]"
               href="/about">About Us</a
             >
             <a
-              class="inline-block rounded-lg px-2 py-1 text-[0.90rem] font-semibold text-white hover:text-yellow-200 transition-all duration-200 hover:bg-purple-600"
+              class="inline-block rounded-lg px-2 py-1 text-[0.90rem] font-semibold text-white hover:text-yellow-200 transition-all duration-200 hover:bg-[#161b22]"
               href="/pricing">Pricing</a
             >
           </div>
@@ -423,7 +423,7 @@ syncWorker.onmessage = handleTwitchMessage;
               href="/register">Start Trial</a
             >
             <a
-              class="inline-flex items-center justify-center rounded-xl bg-purple-600 px-3 py-2 text-sm font-semibold text-yellow-200 shadow-sm transition-all duration-150 hover:bg-purple-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
+              class="inline-flex items-center justify-center rounded-xl bg-[#161b22] px-3 py-2 text-sm font-semibold text-yellow-200 shadow-sm transition-all duration-150 hover:bg-purple-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
               href="/login">Login</a
             >
           </div>
@@ -721,7 +721,7 @@ syncWorker.onmessage = handleTwitchMessage;
             <div class="m-auto ml-2 mr-4 hidden">
               <button
                 on:click={() => goto("/community/create-post")}
-                class="shadow-lg inline-flex items-center justify-center w-full sm:h-10 font-medium bg-purple-600 duration-150 ml-1 mr-0 sm:mr-2 rounded-full cursor-pointer"
+                class="shadow-lg inline-flex items-center justify-center w-full sm:h-10 font-medium bg-[#161b22] duration-150 ml-1 mr-0 sm:mr-2 rounded-full cursor-pointer"
               >
                 <svg
                   class="ml-4 w-4 h-4 text-white inline-block"
@@ -758,7 +758,7 @@ syncWorker.onmessage = handleTwitchMessage;
             <a
               href="/"
               for="sidebar"
-              class="block text-slate-200 hover:text-white sm:hover:bg-purple-700 truncate transition duration-150 {$page
+              class="block text-slate-200 hover:text-white sm:hover:bg-[#161b22] truncate transition duration-150 {$page
                 .url.pathname === '/'
                 ? 'text-white bg-[#0d1117]  border border-slate-800rounded-md '
                 : ''}"
@@ -835,9 +835,9 @@ syncWorker.onmessage = handleTwitchMessage;
               <ul class="mt-2">
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page
                     .url.pathname === '/analysts'
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -852,9 +852,9 @@ syncWorker.onmessage = handleTwitchMessage;
                 </li>
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page
                     .url.pathname === '/analysts/top-stocks'
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -870,9 +870,9 @@ syncWorker.onmessage = handleTwitchMessage;
 
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page
                     .url.pathname === '/most-shorted-stocks'
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -887,9 +887,9 @@ syncWorker.onmessage = handleTwitchMessage;
 
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page
                     .url.pathname === '/most-retail-volume'
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -904,9 +904,9 @@ syncWorker.onmessage = handleTwitchMessage;
 
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page
                     .url.pathname === '/stock-screener'
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -922,9 +922,9 @@ syncWorker.onmessage = handleTwitchMessage;
 
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page
                     .url.pathname === '/market-mover'
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -940,9 +940,9 @@ syncWorker.onmessage = handleTwitchMessage;
 
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page
                     .url.pathname === '/heatmaps'
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <label
@@ -958,9 +958,9 @@ syncWorker.onmessage = handleTwitchMessage;
 
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page
                     .url.pathname === '/list'
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -1023,9 +1023,9 @@ syncWorker.onmessage = handleTwitchMessage;
               <ul class="mt-2">
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page
                     .url.pathname === '/marketview/indices'
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -1041,9 +1041,9 @@ syncWorker.onmessage = handleTwitchMessage;
 
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page
                     .url.pathname === '/dividends-calendar'
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -1106,9 +1106,9 @@ syncWorker.onmessage = handleTwitchMessage;
               <ul class="mt-2">
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page
                     .url.pathname === '/dividends-calendar'
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -1122,9 +1122,9 @@ syncWorker.onmessage = handleTwitchMessage;
                 </li>
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page
                     .url.pathname === '/board-meetings'
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -1138,10 +1138,10 @@ syncWorker.onmessage = handleTwitchMessage;
                 </li>
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page.url.pathname?.includes(
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page.url.pathname?.includes(
                     '/ipo-calender'
                   )
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -1155,10 +1155,10 @@ syncWorker.onmessage = handleTwitchMessage;
                 </li>
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page.url.pathname?.includes(
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page.url.pathname?.includes(
                     '/stock-results'
                   )
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -1172,10 +1172,10 @@ syncWorker.onmessage = handleTwitchMessage;
                 </li>
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page.url.pathname?.includes(
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page.url.pathname?.includes(
                     '/upcoming-events'
                   )
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -1190,9 +1190,9 @@ syncWorker.onmessage = handleTwitchMessage;
                 </li>
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page
                     .url.pathname === '/bonus-rights'
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -1208,9 +1208,9 @@ syncWorker.onmessage = handleTwitchMessage;
 
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page
                     .url.pathname === '/stock-splits-calendar'
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -1268,9 +1268,9 @@ syncWorker.onmessage = handleTwitchMessage;
               <ul class="mt-2">
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page
                     .url.pathname === '/options-flow'
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -1285,9 +1285,9 @@ syncWorker.onmessage = handleTwitchMessage;
                 </li>
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page
                     .url.pathname === '/options-zero-dte'
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -1347,9 +1347,9 @@ syncWorker.onmessage = handleTwitchMessage;
               <ul class="mt-2">
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page
                     .url.pathname === '/individual-Investors'
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -1363,9 +1363,9 @@ syncWorker.onmessage = handleTwitchMessage;
                 </li>
                 <li
                   on:click={() => (showSidebar = !showSidebar)}
-                  class="mb-1 last:mb-0 sm:hover:bg-purple-700 rounded-md {$page
+                  class="mb-1 last:mb-0 sm:hover:bg-[#161b22] rounded-md {$page
                     .url.pathname === '/institutionalInvestors'
-                    ? 'text-white bg-purple-700 rounded-md '
+                    ? 'text-white bg-[#161b22] rounded-md '
                     : ''}"
                 >
                   <a
@@ -1387,10 +1387,10 @@ syncWorker.onmessage = handleTwitchMessage;
           >
             <a
               href="/major-deals"
-              class="block text-slate-200 hover:text-white sm:hover:bg-purple-700 truncate transition duration-150 {$page?.url?.pathname?.startsWith(
+              class="block text-slate-200 hover:text-white sm:hover:bg-[#161b22] truncate transition duration-150 {$page?.url?.pathname?.startsWith(
                 '/major-deals'
               )
-                ? 'text-white bg-purple-700 rounded-md '
+                ? 'text-white bg-[#161b22] rounded-md '
                 : ''}"
             >
               <div class="flex items-center justify-between">
@@ -1425,10 +1425,10 @@ syncWorker.onmessage = handleTwitchMessage;
           >
             <a
               href={"/hedge-funds"}
-              class="block text-slate-200 hover:text-white sm:hover:bg-purple-700 truncate transition duration-150 {$page?.url?.pathname?.startsWith(
+              class="block text-slate-200 hover:text-white sm:hover:bg-[#161b22] truncate transition duration-150 {$page?.url?.pathname?.startsWith(
                 '/hedge-funds'
               )
-                ? 'text-white bg-purple-700 rounded-md '
+                ? 'text-white bg-[#161b22] rounded-md '
                 : ''}"
             >
               <div class="flex items-center justify-between">
@@ -1462,7 +1462,7 @@ syncWorker.onmessage = handleTwitchMessage;
           >
             <a
               href={"/market-news"}
-              class="block text-slate-200 hover:text-white sm:hover:bg-purple-700 truncate transition duration-150 {[
+              class="block text-slate-200 hover:text-white sm:hover:bg-[#161b22] truncate transition duration-150 {[
                 '/market-news',
                 '/market-news/crypto',
                 '/market-news/general',
@@ -1477,7 +1477,7 @@ syncWorker.onmessage = handleTwitchMessage;
                 '/market-news/mutual-fund',
                 '/market-news/derivatives-news'
               ]?.includes($page.url.pathname)
-                ? 'text-white bg-purple-700 rounded-md '
+                ? 'text-white bg-[#161b22] rounded-md '
                 : ''}"
             >
               <div class="flex items-center justify-between">
@@ -1513,9 +1513,9 @@ syncWorker.onmessage = handleTwitchMessage;
             <a
               href={"/community"}
               for="sidebar"
-              class="block text-slate-200 hover:text-white sm:hover:bg-purple-700 truncate transition duration-150 {$page
+              class="block text-slate-200 hover:text-white sm:hover:bg-[#161b22] truncate transition duration-150 {$page
                 .url.pathname === '/community'
-                ? 'text-white bg-purple-700 rounded-md '
+                ? 'text-white bg-[#161b22] rounded-md '
                 : ''}"
             >
               <div class="flex items-center justify-between">
@@ -1549,9 +1549,9 @@ syncWorker.onmessage = handleTwitchMessage;
             <a
               href={"/leaderboard"}
               for="sidebar"
-              class="block text-slate-200 hover:text-white sm:hover:bg-purple-700 truncate transition duration-150 {$page
+              class="block text-slate-200 hover:text-white sm:hover:bg-[#161b22] truncate transition duration-150 {$page
                 .url.pathname === '/leaderboard'
-                ? 'text-white bg-purple-700 rounded-md '
+                ? 'text-white bg-[#161b22] rounded-md '
                 : ''}"
             >
               <div class="flex items-center justify-between">
@@ -1586,9 +1586,9 @@ syncWorker.onmessage = handleTwitchMessage;
             <a
               href={"/pricing"}
               for="sidebar"
-              class="block text-slate-200 hover:text-white sm:hover:bg-purple-700 truncate transition duration-150 {$page
+              class="block text-slate-200 hover:text-white sm:hover:bg-[#161b22] truncate transition duration-150 {$page
                 .url.pathname === '/pricing'
-                ? 'text-white bg-purple-700 rounded-md '
+                ? 'text-white bg-[#161b22] rounded-md '
                 : ''}"
             >
               <div class="flex items-center justify-between">
@@ -1617,7 +1617,7 @@ syncWorker.onmessage = handleTwitchMessage;
 
           <!--
       <li on:click={handleCollapse} class="hidden 2xl:block px-1 pb-20 rounded-sm" >
-        <label for="sidebar" class="block text-slate-200 hover:text-white sm:hover:bg-purple-700 truncate transition duration-150">
+        <label for="sidebar" class="block text-slate-200 hover:text-white sm:hover:bg-[#161b22] truncate transition duration-150">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                   <svg class="w-7 h-7 {collapse ? 'rotate-180' : ''}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="m4.836 12l6.207 6.207l1.414-1.414L7.664 12l4.793-4.793l-1.414-1.414zm5.65 0l6.207 6.207l1.414-1.414L13.314 12l4.793-4.793l-1.414-1.414z"/></svg>

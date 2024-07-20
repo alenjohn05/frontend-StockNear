@@ -162,13 +162,13 @@
                     class="relative grid grid-cols-1 sm:grid-cols-4 gap-y-3 gap-x-3 flex flex-wrap p-1 list-none rounded-[3px]"
                   >
                     <li
-                      class="pl-3 py-1.5 flex-auto text-center bg-[#161b22] rounded-[3px]"
+                      class="bg-[#161b22] mb-10 rounded border border-[#21262d]"
                     >
                       <label class="flex flex-row items-center">
                         <input
                           id="modal-search"
                           type="search"
-                          class="text-white ml-2 text-[1rem] placeholder-gray-400 border-transparent focus:border-transparent focus:ring-0 flex items-center justify-center w-full px-0 py-1 bg-inherit"
+                          class="text-white ml-2 text-sm placeholder-gray-400 border-transparent focus:border-transparent focus:ring-0 flex items-center justify-center w-full px-0 bg-inherit"
                           placeholder="Find by name"
                           bind:value={filterQuery}
                           on:input={handleInput}
@@ -262,7 +262,7 @@
                               >
                               <span class="text-[#10DB06] text-xs"
                                 >+{generateNetWorth(item?.net_worth).toFixed(
-                                  2
+                                  2,
                                 )}%</span
                               >
                             </span>

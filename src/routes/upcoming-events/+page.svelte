@@ -102,10 +102,10 @@
       Today's Events
     </h1>
     <table
-      class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
+      class="border border-[#2f343d] hidden sm:inline-table table-sm table-compact w-full m-auto mt-3"
     >
-      <thead>
-        <tr class="border-b border-gray-800">
+      <thead class="bg-[#161b22] border-b border-[#2f343d]">
+        <tr class="border-b border-[#2f343d]">
           <th class="text-slate-200 font-medium text-sm text-start">Date</th>
           <th
             class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
@@ -129,18 +129,10 @@
             <tr
               class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
             >
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} border-b-[#0d1117]"
-              >
+              <td class=" border-b-[#0d1117]">
                 {format(new Date(item.Date), "dd-MM-yyyy")}
               </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} text-white border-b-[#0d1117]"
-              >
+              <td class=" text-white border-b-[#0d1117]">
                 {item?.Description}
               </td>
             </tr>
@@ -153,19 +145,19 @@
     <h1 class="text-xl sm:text-xl text-white text-start mt-5 mb-10">
       Exchange Announcements
     </h1>
-    <div class="bg-[#161b22] mb-10">
+    <div class="bg-[#161b22] mb-10 rounded border border-[#21262d]">
       <label class="flex flex-row items-center">
         <input
           id="modal-search"
           type="search"
-          class="text-white ml-2 text-[1rem] placeholder-gray-400 border-transparent focus:border-transparent focus:ring-0 flex items-center justify-center w-full px-0 py-1 bg-inherit"
+          class="text-slate-700 ml-2 text-sm placeholder-gray-400 border-transparent focus:border-transparent focus:ring-0 flex items-center justify-center w-full px-0 py-1 bg-inherit"
           placeholder="Find by company name"
           autocomplete="off"
           bind:value={filterQuery}
           on:input={handleInput}
         />
         <svg
-          class="ml-auto mr-5 h-8 w-8 inline-block mr-2"
+          class="ml-auto mr-5 h-6 w-6 inline-block mr-2"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           ><path
@@ -183,7 +175,8 @@
       <li class="me-2">
         <a
           href="#"
-          class="inline-block p-2 {activeTab === tab.id
+          class="rounded-t-lg inline-block p-2 text-xs sm:text-sm {activeTab ===
+          tab.id
             ? 'border-b border-blue-300 text-white bg-[#161b22] active dark:bg-[#161b22] dark:text-white'
             : ' text-gray-500 bg-[#0d1117] active dark:bg-[#0d1117] dark:text-white'}"
           on:click|preventDefault={() => setActiveTab(tab.id)}
@@ -198,9 +191,9 @@
     class=" w-full justify-center m-auto items-center pl-2 pr-2 sm:pl-0 sm:pr-0 mb-10"
   >
     <table
-      class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
+      class="border border-[#2f343d] hidden sm:inline-table table-sm table-compact w-full m-auto"
     >
-      <thead>
+      <thead class="bg-[#161b22] border-b border-[#2f343d]">
         <tr class="border-b border-gray-800">
           <th class="text-slate-200 font-medium text-sm text-start w-40"
             >Date</th
@@ -235,32 +228,20 @@
             <tr
               class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
             >
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} border-b-[#0d1117] text-xs font-bold"
-              >
+              <td class=" border-b-[#0d1117] text-xs font-bold">
                 {format(new Date(item?.Date), "dd-MM-yyyy")}
               </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
-              >
+              <td class=" text-[#FFBE00] text-xs border-b-[#0d1117]">
                 <a href={"/stocks/" + item?.SecurityID}>{item?.SecurityName}</a>
               </td>
 
               <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} items-center text-xs text-white border-b-[#0d1117] hover:text-blue-500"
+                class=" items-center text-xs text-white border-b-[#0d1117] hover:text-blue-500"
               >
                 {item?.Subject}
               </td>
               <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} flex items-center text-xs justify-center text-white border-b-[#0d1117] hover:text-blue-500"
+                class=" flex items-center text-xs justify-center text-white border-b-[#0d1117] hover:text-blue-500"
               >
                 {#if item?.FileURL}
                   <a href={item?.FileURL} target="_blank"

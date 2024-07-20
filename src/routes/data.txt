@@ -409,16 +409,16 @@ syncWorker.onmessage = handleTwitchMessage;
           >
             <a
               aria-current="page"
-              class="inline-block rounded-lg px-2 py-1 text-[0.90rem] font-semibold text-white hover:text-yellow-200 transition-all duration-200 hover:bg-purple-600"
+              class="inline-block rounded-lg px-2 py-1 text-[0.90rem] font-semibold text-white hover:text-yellow-200 transition-all duration-200 hover:bg-[#161b22]"
               href="/">Home</a
             >
             <a
               aria-current="page"
-              class="inline-block rounded-lg px-2 py-1 text-[0.90rem] font-semibold text-white hover:text-yellow-200 transition-all duration-200 hover:bg-purple-600"
+              class="inline-block rounded-lg px-2 py-1 text-[0.90rem] font-semibold text-white hover:text-yellow-200 transition-all duration-200 hover:bg-[#161b22]"
               href="/about">About Us</a
             >
             <a
-              class="inline-block rounded-lg px-2 py-1 text-[0.90rem] font-semibold text-white hover:text-yellow-200 transition-all duration-200 hover:bg-purple-600"
+              class="inline-block rounded-lg px-2 py-1 text-[0.90rem] font-semibold text-white hover:text-yellow-200 transition-all duration-200 hover:bg-[#161b22]"
               href="/pricing">Pricing</a
             >
           </div>
@@ -428,7 +428,7 @@ syncWorker.onmessage = handleTwitchMessage;
               href="/register">Start Trial</a
             >
             <a
-              class="inline-flex items-center justify-center rounded-xl bg-purple-600 px-3 py-2 text-sm font-semibold text-yellow-200 shadow-sm transition-all duration-150 hover:bg-purple-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
+              class="inline-flex items-center justify-center rounded-xl bg-[#161b22] px-3 py-2 text-sm font-semibold text-yellow-200 shadow-sm transition-all duration-150 hover:bg-purple-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
               href="/login">Login</a
             >
           </div>
@@ -724,7 +724,7 @@ syncWorker.onmessage = handleTwitchMessage;
             <div class="m-auto ml-2 mr-4 hidden">
               <button
                 on:click={() => goto("/community/create-post")}
-                class="shadow-lg inline-flex items-center justify-center w-full sm:h-10 font-medium bg-purple-600 duration-150 ml-1 mr-0 sm:mr-2 rounded-full cursor-pointer"
+                class="shadow-lg inline-flex items-center justify-center w-full sm:h-10 font-medium bg-[#161b22] duration-150 ml-1 mr-0 sm:mr-2 rounded-full cursor-pointer"
               >
                 <svg
                   class="ml-4 w-4 h-4 text-white inline-block"
@@ -768,7 +768,7 @@ syncWorker.onmessage = handleTwitchMessage;
             <a
               href="/"
               for="sidebar"
-              class="block text-slate-200 hover:text-white sm:hover:bg-purple-700 truncate transition duration-150 {$page
+              class="block text-slate-200 hover:text-white sm:hover:bg-[#161b22] truncate transition duration-150 {$page
                 .url.pathname === '/'
                 ? 'text-white bg-[#0d1117]  border border-slate-800rounded-md '
                 : ''}"
@@ -803,7 +803,7 @@ syncWorker.onmessage = handleTwitchMessage;
 
           <!--
       <li on:click={handleCollapse} class="hidden 2xl:block px-1 pb-20 rounded-sm" >
-        <label for="sidebar" class="block text-slate-200 hover:text-white sm:hover:bg-purple-700 truncate transition duration-150">
+        <label for="sidebar" class="block text-slate-200 hover:text-white sm:hover:bg-[#161b22] truncate transition duration-150">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                   <svg class="w-7 h-7 {collapse ? 'rotate-180' : ''}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="m4.836 12l6.207 6.207l1.414-1.414L7.664 12l4.793-4.793l-1.414-1.414zm5.65 0l6.207 6.207l1.414-1.414L13.314 12l4.793-4.793l-1.414-1.414z"/></svg>

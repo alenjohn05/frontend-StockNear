@@ -67,7 +67,7 @@
   const tabs: TabItem[] = [
     { id: "ONGOING", label: "Ongoing IPOs" },
     { id: "LISTED", label: "Listed IPOs" },
-    { id: "UPCOMING", label: "Upcoming IPOs" }
+    { id: "UPCOMING", label: "Upcoming IPOs" },
   ];
 
   function setActiveTab(tabId: string) {
@@ -105,7 +105,7 @@
   }
 
   async function infiniteHandler({
-    detail: { loaded, complete }
+    detail: { loaded, complete },
   }: {
     detail: { loaded: () => void; complete: () => void };
   }) {
@@ -189,19 +189,19 @@
       <h1 class="text-sm sm:text-sm text-white text-start mt-5 mb-10">
         Comprehensive Guide to Ongoing, Upcoming, and Listed IPOs
       </h1>
-      <div class="bg-[#161b22] mb-10">
+      <div class="bg-[#161b22] mb-10 rounded border border-[#21262d]">
         <label class="flex flex-row items-center">
           <input
             id="modal-search"
             type="search"
-            class="text-white ml-2 text-[1rem] placeholder-gray-400 border-transparent focus:border-transparent focus:ring-0 flex items-center justify-center w-full px-0 py-1 bg-inherit"
+            class="text-slate-700 ml-2 text-sm placeholder-gray-400 border-transparent focus:border-transparent focus:ring-0 flex items-center justify-center w-full px-0 py-1 bg-inherit"
             placeholder="Find by company name"
             autocomplete="off"
             bind:value={filterQuery}
             on:input={handleInput}
           />
           <svg
-            class="ml-auto mr-5 h-8 w-8 inline-block mr-2"
+            class="ml-auto mr-5 h-6 w-6 inline-block mr-2"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             ><path
@@ -218,10 +218,10 @@
       {#each tabs as tab}
         <li class="me-2">
           <button
-            
-            class="inline-block p-2 text-xs sm:text-sm {activeTab === tab.id
+            class="rounded-t-lg inline-block p-2 text-xs sm:text-sm {activeTab ===
+            tab.id
               ? 'border-b border-blue-300 text-white bg-[#161b22] active dark:bg-[#161b22] dark:text-white'
-              : ' text-gray-500 bg-[#0d1117] active dark:bg-[#0d1117] dark:text-white'}"
+              : 'text-gray-500 bg-[#0d1117] active dark:bg-[#0d1117] dark:text-white'}"
             on:click|preventDefault={() => setActiveTab(tab.id)}
           >
             {tab.label}
@@ -235,9 +235,9 @@
     >
       {#if activeTab === "ONGOING"}
         <table
-          class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
+          class="border border-[#2f343d] hidden sm:inline-table table-sm table-compact w-full m-auto"
         >
-          <thead>
+          <thead class="bg-[#161b22] border-b border-[#2f343d]">
             <tr>
               <th
                 class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
@@ -274,54 +274,34 @@
               <!-- row -->
               <tr
                 class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
-                ><td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
-                >
+                ><td class=" text-[#FFBE00] text-xs border-b-[#0d1117]">
                   <a href={"/stocks/" + item?.ID}>{item?.SecurityName}</a>
                 </td>
-                <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} border-b-[#0d1117] text-xs font-bold text-end"
-                >
+                <td class=" border-b-[#0d1117] text-xs font-bold text-end">
                   {item?.IssuePriceMin} - {item?.IssuePriceMax
                     ? item?.IssuePriceMax
                     : ""}
                 </td>
-                <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117] text-end"
-                >
+                <td class=" text-[#FFBE00] text-xs border-b-[#0d1117] text-end">
                   {item?.GrandTotal?.toFixed(2)}
                 </td>
                 <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-xs text-white border-b-[#0d1117] hover:text-blue-500 text-end"
+                  class="text-xs text-white border-b-[#0d1117] hover:text-blue-500 text-end"
                 >
                   {(item?.Total_Nos / 100000).toFixed(2)}
                 </td>
                 <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  class=" text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
                 >
                   {(item?.Total_NosBidFor / 100000).toFixed(2)}
                 </td>
                 <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  class=" text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
                 >
                   {format(new Date(item?.OpenDate), "dd-MM-yyyy")}
                 </td>
                 <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  class=" text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
                 >
                   {format(new Date(item?.CloseDate), "dd-MM-yyyy")}
                 </td>
@@ -377,9 +357,9 @@
       {/if}
       {#if activeTab === "UPCOMING"}
         <table
-          class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
+          class="border border-[#2f343d] hidden sm:inline-table table-sm table-compact w-full m-auto"
         >
-          <thead>
+          <thead class="bg-[#161b22] border-b border-[#2f343d]">
             <tr>
               <th
                 class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
@@ -410,42 +390,32 @@
                 class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
               >
                 <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
+                  class=" text-[#FFBE00] text-xs border-b-[#0d1117]"
                 >
                   <a href={"/stocks/" + item?.SecurityID}
                     >{item?.SecurityName}</a
                   >
                 </td>
                 <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  class="  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
                 >
                   {item?.IssuePriceMin} - {item?.IssuePriceMax
                     ? item?.IssuePriceMax
                     : ""}
                 </td>
                 <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-xs text-center text-white border-b-[#0d1117] hover:text-blue-500 text-end"
+                  class=" text-xs text-center text-white border-b-[#0d1117] hover:text-blue-500 text-end"
                 >
                   {format(new Date(item?.OpenDate), "dd-MM-yyyy")}
                 </td>
                 <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  class=" item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
                 >
                   {format(new Date(item?.CloseDate), "dd-MM-yyyy")}
                 </td>
 
                 <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  class="  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
                   >{item?.IssueSizeMin
                     ? (item?.IssueSizeMin / 10000000).toFixed(2)
                     : ""} - {item?.IssueSizeMax
@@ -503,9 +473,9 @@
       {/if}
       {#if activeTab === "LISTED"}
         <table
-          class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
+          class="border border-[#2f343d] hidden sm:inline-table table-sm table-compact w-full m-auto"
         >
-          <thead>
+          <thead class="bg-[#161b22] border-b border-[#2f343d]">
             <tr>
               <th
                 class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
@@ -540,25 +510,19 @@
                 class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
               >
                 <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
+                  class=" text-[#FFBE00] text-xs border-b-[#0d1117]"
                 >
                   <a href={"/stocks/" + item?.SecurityID}
                     >{item?.SecurityName}</a
                   >
                 </td>
                 <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'}  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  class="  item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
                 >
                   {item?.LTP}
                 </td>
                 <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  class=" item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
                 >
                   {item?.ListPrice?.toFixed(2)}
                   <div
@@ -566,14 +530,12 @@
                   >
                     listed on {format(
                       new Date(item?.ListingDate),
-                      "dd-MM-yyyy"
+                      "dd-MM-yyyy",
                     )}
                   </div>
                 </td>
                 <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  class=" item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
                 >
                   {item?.ListPriceZ?.toFixed(2)}
                   <div class="flex flex-row item-center justify-end">
@@ -619,16 +581,12 @@
                   </div>
                 </td>
                 <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  class=" item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
                 >
                   {item?.IssuePrice}
                 </td>
                 <td
-                  class="{index % 2
-                    ? 'bg-[#0d1117]'
-                    : 'bg-[#161b22]'} item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
+                  class=" item-center justify-end text-xs text-end text-white border-b-[#0d1117] hover:text-blue-500"
                 >
                   {item?.IssuePriceZ?.toFixed(2)}
                   <div class="flex flex-row item-center justify-end">

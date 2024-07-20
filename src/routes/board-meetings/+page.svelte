@@ -25,7 +25,7 @@
   let isLoaded = false;
 
   function sortAndFilterByDate(
-    data: BoardMeeting[] | undefined
+    data: BoardMeeting[] | undefined,
   ): BoardMeeting[] {
     const currentDate = new Date();
 
@@ -36,7 +36,7 @@
           const itemDate = new Date(
             parseInt(year),
             parseInt(month) - 1,
-            parseInt(day)
+            parseInt(day),
           );
           return itemDate >= currentDate;
         })
@@ -100,7 +100,7 @@
   }
 
   async function infiniteHandler({
-    detail: { loaded, complete }
+    detail: { loaded, complete },
   }: {
     detail: { loaded: () => void; complete: () => void };
   }) {
@@ -193,19 +193,19 @@
         respective dates. Please identify the ex-dates and agendas for these
         meetings.
       </h1>
-      <div class="bg-[#161b22] mb-10">
+      <div class="bg-[#161b22] mb-10 rounded border border-[#21262d]">
         <label class="flex flex-row items-center">
           <input
             id="modal-search"
             type="search"
-            class="text-white ml-2 text-[1rem] placeholder-gray-400 border-transparent focus:border-transparent focus:ring-0 flex items-center justify-center w-full px-0 py-1 bg-inherit"
+            class="text-slate-700 ml-2 text-sm placeholder-gray-400 border-transparent focus:border-transparent focus:ring-0 flex items-center justify-center w-full px-0 py-1 bg-inherit"
             placeholder="Find by company name"
             autocomplete="off"
             bind:value={filterQuery}
             on:input={handleInput}
           />
           <svg
-            class="ml-auto mr-5 h-8 w-8 inline-block mr-2"
+            class="ml-auto mr-5 h-6 w-6 inline-block mr-2"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             ><path
@@ -220,9 +220,9 @@
       class=" w-full justify-center m-auto items-center pl-2 pr-2 sm:pl-0 sm:pr-0 mb-10 min-h-screen"
     >
       <table
-        class="hidden sm:inline-table table-sm table-compact rounded-none sm:rounded-md w-full border-bg-[#0d1117] m-auto mt-4"
+        class="border border-[#2f343d] hidden sm:inline-table table-sm table-compact w-full m-auto"
       >
-        <thead>
+        <thead class="bg-[#161b22] border-b border-[#2f343d] ">
           <tr>
             <th class="text-slate-200 font-medium text-sm text-start w-40"
               >Date</th
@@ -245,33 +245,19 @@
           {#each displayList as item, index}
             <!-- row -->
             <tr
-              class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#161b22] shake-ticker cursor-pointer"
+              class="sm:hover:bg-[#245073] sm:hover:bg-opacity-[0.2] bg-[#0d1117] border-b border-[#21262d] shake-ticker cursor-pointer"
             >
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} border-b-[#0d1117] text-xs font-bold"
-              >
+              <td class=" border-b-[#0d1117] text-xs font-bold">
                 {item.date}
               </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} text-[#FFBE00] text-xs border-b-[#0d1117]"
-              >
+              <td class=" text-[#FFBE00] text-xs border-b-[#0d1117]">
                 {item?.symbol}
               </td>
-              <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} text-white text-xs border-b-[#0d1117]"
-              >
+              <td class=" text-white text-xs border-b-[#0d1117]">
                 {item?.comp_name}
               </td>
               <td
-                class="{index % 2
-                  ? 'bg-[#0d1117]'
-                  : 'bg-[#161b22]'} flex items-center text-xs justify-start text-white border-b-[#0d1117] hover:text-blue-500"
+                class=" flex items-center text-xs justify-start text-white border-b-[#0d1117] hover:text-blue-500"
               >
                 <label class="cursor-pointer" for={item?.symbol}
                   >{item?.description?.length > 70

@@ -13,10 +13,31 @@ const periodTypes = [
   { ID: 1825, Label: "5Y", ChartPeriodCode: "5Y" }
 ];
 
+async function fetchIndicesGainersLossersData(exchange: string, period: number = 1) {
+  const cacheKey = `GetMajorIndicesGainerLosser${exchange}${period}`;
+  const cachedData = getCache("", cacheKey);
+
+  if (cachedData) {
+    return cachedData;
+  }
+
+  const response = await fetch(
+    `${backendURL}/index/Get-Latest-IndexQuotes_gainers_lossers?priceChangePeriodType=${period}&exchange=${exchange}`,
+    {
+      method: "GET",
+      headers: { "Content-Type": "application/json" }
+    }
+  );
+
+  const data = await response.json();
+  setCache("", data, cacheKey);
+  return data;
+}
+
 async function fetchIndicesData(exchange: string, period: number = 1) {
   const cacheKey = `GetMajorIndices${exchange}${period}`;
   const cachedData = getCache("", cacheKey);
-  
+
   if (cachedData) {
     return cachedData;
   }
@@ -35,14 +56,18 @@ async function fetchIndicesData(exchange: string, period: number = 1) {
 }
 
 export const load = async () => {
-  const [nseData, bseData] = await Promise.all([
+  const [nseData, bseData, nseGainerLosserData, bseGainerLosserData] = await Promise.all([
     fetchIndicesData("NSE"),
-    fetchIndicesData("BSE")
+    fetchIndicesData("BSE"),
+    fetchIndicesGainersLossersData("NSE"),
+    fetchIndicesGainersLossersData("BSE"),
   ]);
 
   return {
     GetMajorIndicesNSE: nseData,
     GetMajorIndicesBSE: bseData,
+    GetMajorIndicesNSEGainersLossersData: nseGainerLosserData,
+    GetMajorIndicesBSEGainersLossersData: bseGainerLosserData,
     periodTypes
   };
 };

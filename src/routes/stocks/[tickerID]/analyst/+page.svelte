@@ -229,13 +229,13 @@ function latestInfoDate(inputDate) {
                           />
                           <ul class="text-[0.8rem] font-medium text-center w-full pt-3 sm:w-56 mb-5 sm:ml-auto flex">
                             <li class="w-full">
-                                <label on:click={() => filterRule = 'all'} class="font-semibold cursor-pointer rounded-l-lg inline-block w-full py-2.5 text-white {filterRule === 'all' ? 'bg-purple-600' : 'bg-[#2A303C]'} border-r border-gray-600" aria-current="page">
+                                <label on:click={() => filterRule = 'all'} class="font-semibold cursor-pointer rounded-l-lg inline-block w-full py-2.5 text-white {filterRule === 'all' ? 'bg-[#161b22]' : 'bg-[#2A303C]'} border-r border-gray-600" aria-current="page">
                                   All Analysts
                                 </label>
                             </li>
                             <li class="w-full">
                               {#if data?.user?.tier === 'Pro'}
-                                <label on:click={() => filterRule = 'topAnalysts'} class="font-semibold cursor-pointer inline-block w-full py-2.5 {filterRule === 'topAnalysts' ? 'bg-purple-600' : 'bg-[#2A303C]'} text-white rounded-r-lg">
+                                <label on:click={() => filterRule = 'topAnalysts'} class="font-semibold cursor-pointer inline-block w-full py-2.5 {filterRule === 'topAnalysts' ? 'bg-[#161b22]' : 'bg-[#2A303C]'} text-white rounded-r-lg">
                                   Top Analysts
                                 </label>
                               {:else}

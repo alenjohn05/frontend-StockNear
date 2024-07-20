@@ -644,8 +644,8 @@ function tabFunction(state) {
                       </span>
   
                       <div role="tablist" class="bg-[#2A2E39] tabs tabs-boxed w-full sm:w-48 mt-4">
-                        <a on:click={() =>  tabFunction('Share')} role="tab" class="tab text-white {changeAssetType === 'Share' ? 'bg-purple-600' : ''}">Stocks</a>
-                        <a on:click={() => tabFunction('Option')} role="tab" class="tab text-white {changeAssetType !== 'Share' ? 'bg-purple-600' : ''}">Options</a>
+                        <a on:click={() =>  tabFunction('Share')} role="tab" class="tab text-white {changeAssetType === 'Share' ? 'bg-[#161b22]' : ''}">Stocks</a>
+                        <a on:click={() => tabFunction('Option')} role="tab" class="tab text-white {changeAssetType !== 'Share' ? 'bg-[#161b22]' : ''}">Options</a>
                       </div>
                     
                     {#if rawList?.length !== 0}

@@ -34,7 +34,7 @@
         <div class="text-white-500 text-xs">Sentiment :</div>
 
         <div
-          class={`relative z-10 rounded-full ${Sentiment === "negative" ? "bg-red-600" : Sentiment === "positive" ? "bg-green-600" : "bg-purple-600"} px-3 py-1.5 font-medium text-white hover:bg-purple-400`}
+          class={`relative z-10 rounded-full ${Sentiment === "negative" ? "bg-red-600" : Sentiment === "positive" ? "bg-green-600" : "bg-[#161b22]"} px-3 py-1.5 font-medium text-white hover:bg-purple-400`}
         >
           {Sentiment}
         </div>

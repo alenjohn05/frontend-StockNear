@@ -118,7 +118,7 @@ function loadMoreData() {
                             
                           </div>
                           {#if newsList?.length !== rawNews?.length}
-                          <label on:click={loadMoreData} class="shadow-lg rounded-lg cursor-pointer w-11/12 sm:w-full flex justify-center items-center py-3 h-full text-sm sm:text-lg text-center font-medium text-white m-auto hover:bg-purple-600 bg-purple-600 bg-opacity-[0.6]">
+                          <label on:click={loadMoreData} class="shadow-lg rounded-lg cursor-pointer w-11/12 sm:w-full flex justify-center items-center py-3 h-full text-sm sm:text-lg text-center font-medium text-white m-auto hover:bg-[#161b22] bg-[#161b22] bg-opacity-[0.6]">
                             Load More News
                           </label>
                           {/if}
