@@ -118,6 +118,7 @@ export const scrollToComment = writable(<string> (""));
 export const searchBarData = writable([]);
 
 export const stockTicker = writable(<string> (""));
+export const stockSecurity = writable(<string> (""));
 export const etfTicker = writable(<string> (""));
 export const cryptoTicker = writable(<string> (""));
 export const assetType = writable(<string> (""));
