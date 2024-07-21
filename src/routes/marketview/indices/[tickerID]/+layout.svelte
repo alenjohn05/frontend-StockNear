@@ -67,7 +67,7 @@
   onMount(async () => {
     basicIndexdetails = { ...data?.basicIndexDetails };
     priceDetails = { ...data?.Get_Latest_Listing_Price };
-    newsDisPlayDetails = data?.get_news_items_by_security?.slice(0, 6);
+    newsDisPlayDetails = data?.GetLatestNews?.slice(0, 6);
 
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -172,11 +172,12 @@
     scrollToItem(item);
 
     const sectionMap: any = {
-      insider: "/insider",
+      futures: "/futures",
       options: "/options",
-      dividends: "/dividends",
-      stats: "/stats",
-      analyst: "/analyst",
+      technicals: "/technicals",
+      deliveries: "/deliveries",
+      stocks: "/stocks",
+      overview: "/overview",
       news: "/news",
     };
 
@@ -601,7 +602,7 @@
                         </div>
                       </div>
                       <div
-                        class="flex flex-row items-start justify-between w-full sm:pl-6 mt-4"
+                        class="flex flex-row items-start justify-between w-full sm:pl-6 mt-4 mb-10"
                       >
                         <div
                           class="flex flex-col items-start justify-start w-full"
@@ -654,26 +655,21 @@
                             {/if}
 
                             <span class="ml-3 text-white text-xs sm:text-sm"
-                              >{new Date().toLocaleTimeString()}{new Date().toDateString()}</span
+                              >{new Date().toDateString()}, {new Date().toLocaleTimeString()}</span
                             >
                           </div>
                         </div>
                         <div
-                          class="flex items-end w-full"
+                          class="flex items-end text-lg md:text-lg font-bold text-white pr-10"
                         >
-                          <div
-                            class="text-lg md:text-lg font-bold text-white flex flex-row items-end w-full"
-                          >
-                            {data?.DefaultExchange === 1 ? "NSE" : "BSE"}
-                          </div>
-
+                          {data?.DefaultExchange === 1 ? "NSE" : "BSE"}
                         </div>
                       </div>
                       <!-----End-Header-CandleChart-Indicators------>
                       <!--Start Ticker Section-->
                       <!--<div class="w-full max-w-3xl sm:max-w-2xl m-auto pt-2 pb-5 sm:pl-3 sticky z-20 bg-[#09090B]"  style="top: {$screenWidth < 520 && $isScrollingUp ? '4rem' : '0rem'};">-->
                       <div
-                        class="-ml-2 sm:ml-4 w-screen sm:w-full {$screenWidth <
+                        class=" sm:ml-4 w-screen sm:w-full {$screenWidth <
                         640
                           ? 'overflow-auto scrollbar no-scrollbar'
                           : ''} mb-2"
@@ -702,96 +698,41 @@
                           </li>
                           <li class="cursor-pointer flex flex-col items-center">
                             <a
-                              href={`/marketview/indices/${$stockTicker}/stats`}
+                              href={`/marketview/indices/${$stockTicker}/Listed-stocks`}
                               id="item2"
-                              on:click={() => changeSection("stats", "item2")}
+                              on:click={() => changeSection("stocks", "item2")}
                               class="px-3 text-sm sm:text-[0.9rem] font-medium text-gray-400 sm:hover:text-white {displaySection ===
-                              'stats'
+                              'stocks'
                                 ? 'text-white '
-                                : 'bg-[#09090B]'}">Stats</a
+                                : 'bg-[#09090B]'}">Stocks</a
                             >
                             <div
-                              class="{displaySection === 'stats'
+                              class="{displaySection === 'stocks'
                                 ? 'bg-[#75D377]'
                                 : 'bg-[#09090B]'} mt-1 h-[3px] rounded-full w-[2.8rem]"
                             />
                           </li>
                           <li class="cursor-pointer flex flex-col items-center">
                             <a
-                              href={`/marketview/indices/${$stockTicker}/options`}
+                              href={`/marketview/indices/${$stockTicker}/deliveries`}
                               id="item3"
-                              on:click={() => changeSection("options", "item3")}
+                              on:click={() => changeSection("deliveries", "item3")}
                               class="px-3 text-sm sm:text-[0.9rem] font-medium text-gray-400 sm:hover:text-white {displaySection ===
-                              'options'
+                              'deliveries'
                                 ? 'text-white '
                                 : 'bg-[#09090B]'}"
                             >
-                              Options
+                              Deliveries
                             </a>
                             <div
-                              class="{displaySection === 'options'
+                              class="{displaySection === 'deliveries'
                                 ? 'bg-[#75D377]'
                                 : 'bg-[#09090B]'} mt-1 h-[3px] rounded-full w-[3.5rem]"
                             />
                           </li>
                           <li class="cursor-pointer flex flex-col items-center">
                             <a
-                              href={`/marketview/indices/${$stockTicker}/analyst`}
-                              id="item3"
-                              on:click={() => changeSection("analyst", "item3")}
-                              class="px-3 text-sm sm:text-[0.9rem] font-medium text-gray-400 sm:hover:text-white {displaySection ===
-                              'analyst'
-                                ? 'text-white '
-                                : 'bg-[#09090B]'}"
-                            >
-                              Analyst
-                            </a>
-                            <div
-                              class="{displaySection === 'analyst'
-                                ? 'bg-[#75D377]'
-                                : 'bg-[#09090B]'} mt-1 h-[3px] rounded-full w-[3.5rem]"
-                            />
-                          </li>
-                          <li class="cursor-pointer flex flex-col items-center">
-                            <a
-                              href={`/marketview/indices/${$stockTicker}/insider`}
-                              id="item4"
-                              on:click={() => changeSection("insider", "item4")}
-                              class="px-3 text-sm sm:text-[0.9rem] font-medium text-gray-400 sm:hover:text-white {displaySection ===
-                              'insider'
-                                ? 'text-white '
-                                : 'bg-[#09090B]'}"
-                            >
-                              Insider
-                            </a>
-                            <div
-                              class="{displaySection === 'insider'
-                                ? 'bg-[#75D377]'
-                                : 'bg-[#09090B]'} mt-1 h-[3px] rounded-full w-[3.5rem]"
-                            />
-                          </li>
-                          <li class="cursor-pointer flex flex-col items-center">
-                            <a
-                              href={`/marketview/indices/${$stockTicker}/dividends`}
-                              id="item5"
-                              on:click={() =>
-                                changeSection("dividends", "item5")}
-                              class="px-3 text-sm sm:text-[0.9rem] font-medium text-gray-400 sm:hover:text-white {displaySection ===
-                              'dividends'
-                                ? 'text-white '
-                                : 'bg-[#09090B]'}"
-                            >
-                              Dividends
-                            </a>
-                            <div
-                              class="{displaySection === 'dividends'
-                                ? 'bg-[#75D377]'
-                                : 'bg-[#09090B]'} mt-1 h-[3px] rounded-full w-[4rem]"
-                            />
-                          </li>
-                          <li class="cursor-pointer flex flex-col items-center">
-                            <a
-                              href={`/marketview/indices/${$stockTicker}/news`}
+                              href={`/marketview/indices/${$stockTicker}/updates`}
                               id="item7"
                               on:click={() => changeSection("news", "item7")}
                               class="px-3 text-sm sm:text-[0.9rem] font-medium text-gray-400 sm:hover:text-white {displaySection ===
@@ -807,6 +748,76 @@
                                 : 'bg-[#09090B]'} mt-1 h-[3px] rounded-full w-[2.8rem]"
                             />
                           </li>
+                          {#if basicIndexdetails?.IsFO}
+                            <li
+                              class="cursor-pointer flex flex-col items-center"
+                            >
+                              <a
+                                href={`/marketview/indices/${$stockTicker}/options`}
+                                id="item3"
+                                on:click={() =>
+                                  changeSection("options", "item3")}
+                                class="px-3 text-sm sm:text-[0.9rem] font-medium text-gray-400 sm:hover:text-white {displaySection ===
+                                'options'
+                                  ? 'text-white '
+                                  : 'bg-[#09090B]'}"
+                              >
+                                Options
+                              </a>
+                              <div
+                                class="{displaySection === 'options'
+                                  ? 'bg-[#75D377]'
+                                  : 'bg-[#09090B]'} mt-1 h-[3px] rounded-full w-[3.5rem]"
+                              />
+                            </li>
+                          {/if}
+                          {#if basicIndexdetails?.IsFO}
+                            <li
+                              class="cursor-pointer flex flex-col items-center"
+                            >
+                              <a
+                                href={`/marketview/indices/${$stockTicker}/futures`}
+                                id="item3"
+                                on:click={() =>
+                                  changeSection("futures", "item3")}
+                                class="px-3 text-sm sm:text-[0.9rem] font-medium text-gray-400 sm:hover:text-white {displaySection ===
+                                'futures'
+                                  ? 'text-white '
+                                  : 'bg-[#09090B]'}"
+                              >
+                                Futures OI
+                              </a>
+                              <div
+                                class="{displaySection === 'futures'
+                                  ? 'bg-[#75D377]'
+                                  : 'bg-[#09090B]'} mt-1 h-[3px] rounded-full w-[3.5rem]"
+                              />
+                            </li>
+                          {/if}
+
+                          {#if basicIndexdetails?.IsTechnicals}
+                            <li
+                              class="cursor-pointer flex flex-col items-center"
+                            >
+                              <a
+                                href={`/marketview/indices/${$stockTicker}/technicals`}
+                                id="item4"
+                                on:click={() =>
+                                  changeSection("technicals", "item4")}
+                                class="px-3 text-sm sm:text-[0.9rem] font-medium text-gray-400 sm:hover:text-white {displaySection ===
+                                'technicals'
+                                  ? 'text-white '
+                                  : 'bg-[#09090B]'}"
+                              >
+                                Technicals
+                              </a>
+                              <div
+                                class="{displaySection === 'technicals'
+                                  ? 'bg-[#75D377]'
+                                  : 'bg-[#09090B]'} mt-1 h-[3px] rounded-full w-[3.5rem]"
+                              />
+                            </li>
+                          {/if}
                         </ul>
                       </div>
                       <!--Start-Main Content-->

@@ -56,6 +56,24 @@ const fetchMainTickerMaindata = async (tickerID: string) => {
   }
   return output;
 };
+const fetchLatestNewsData = async () => {
+  let output;
+  const cachedData = getCache('', `GetfetchLatestNewsData`);
+  if (cachedData) {
+    output = cachedData;
+  } else {
+    const response = await fetch(backendURL + '/get-latest-news-tems', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    output = await response.json();
+    setCache('', output, `GetfetchLatestNewsData`);
+  }
+  return output;
+};
 const fetchSecurityDetails = async (url: string) => {
   let output;
   const response = await fetch(backendURL + url, {
@@ -185,10 +203,8 @@ export const load = async ({ params, locals, cookies, setHeaders }) => {
   basicIndexDetails = securityInfo
   const promises = [
     loadDailyDataContent(),
+    fetchLatestNewsData(),
     fetchSecurityDetails(`/index/Get_Latest_Listing_Price?SecurityListingID=${DefaultListingID}`),
-    fetchSecurityDetails(`/index/Get_Composed_IndexParts?SecurityID=${params.tickerID}`),
-    fetchSecurityDetails(`/index/Get_Composed_Index_Part_Gainers?SecurityID=${params.tickerID}&priceChangePeriodType=1`),
-    fetchSecurityDetails(`/index/Get_Composed_Index_Part_losers?SecurityID=${params.tickerID}&priceChangePeriodType=1`),
     fetchSecurityDetails(`/index/Get_Composed_Index_deliveries?SecurityID=${params.tickerID}&ExchangeID=${DefaultExchange}`),
     fetchSecurityDetails(`/index/get_news_items_by_security?SecurityID=${params.tickerID}`),
     fetchSecurityDetails(`/index/get_corporate_actions_security?SecurityID=${params.tickerID}`),
@@ -199,6 +215,7 @@ export const load = async ({ params, locals, cookies, setHeaders }) => {
     fetchSecurityDetails(`/index/get_CumulativeFuture_OpenInterest?SecurityListingID=${DefaultListingID}`),
     fetchSecurityDetails(`/index/GetCumulative_Future_OpenInterest_by_date?date=${format(new Date(), "yyyy-MM-dd")}&SecurityListingID=${DefaultListingID}`),
     fetchSecurityDetails(`/index/Get-OptionChain_combined?SecurityListingID=${DefaultListingID}`),
+    fetchSecurityDetails(`/index/get_Technical_level_info?SecurityListingID=${DefaultListingID}`),
     fetchWatchlist(fastifyURL, locals?.user?.id),
     fetchPortfolio(fastifyURL, locals?.user?.id),
     fetchCommunitySentiment(locals?.pb, params.tickerID, cookies)
@@ -206,10 +223,8 @@ export const load = async ({ params, locals, cookies, setHeaders }) => {
 
   const [
     Get_Price_details,
+    GetLatestNews,
     Get_Latest_Listing_Price,
-    Get_Composed_IndexParts,
-    Get_Composed_Index_Part_Gainers,
-    Get_Composed_Index_Part_losers,
     Get_Composed_Index_deliveries,
     get_news_items_by_security,
     get_corporate_actions_security,
@@ -220,6 +235,7 @@ export const load = async ({ params, locals, cookies, setHeaders }) => {
     get_CumulativeFuture_OpenInterest,
     GetCumulative_Future_OpenInterest_by_date,
     Get_OptionChain_combined,
+    get_Technical_level_info,
     getUserWatchlist,
     getUserPortfolio,
     getCommunitySentiment,
@@ -233,10 +249,8 @@ export const load = async ({ params, locals, cookies, setHeaders }) => {
 
   return {
     Get_Price_details,
+    GetLatestNews,
     Get_Latest_Listing_Price,
-    Get_Composed_IndexParts,
-    Get_Composed_Index_Part_Gainers,
-    Get_Composed_Index_Part_losers,
     get_news_items_by_security,
     get_corporate_actions_security,
     get_Technical_Performance_Benchmark,
@@ -245,6 +259,9 @@ export const load = async ({ params, locals, cookies, setHeaders }) => {
     get_CumulativeFuture_OpenInterest,
     GetCumulative_Future_OpenInterest_by_date,
     Get_OptionChain_combined,
+    Get_Composed_Index_deliveries,
+    get_Technical_indicators,
+    get_Technical_level_info,
     getUserWatchlist,
     getUserPortfolio,
     getCommunitySentiment,
