@@ -133,9 +133,9 @@
       class=" w-full justify-center m-auto items-center pl-2 pr-2 sm:pl-0 sm:pr-0 mb-10 min-h-screen"
     ><div class="text-white text-lg text-center font-medium mt-5 mb-5">Major Levels</div>
       <table
-        class="border-t border-[#2f343d] hidden sm:inline-table table-sm table-compact w-full m-auto"
+        class="border-t border-slate-800 hidden sm:inline-table table-sm table-compact w-full m-auto"
       >
-        <thead class=" border-b border-[#2f343d]">
+        <thead class=" border-b border-slate-800">
           <tr>
             <th class="text-slate-200 font-medium text-sm text-start w-40"
               >Type</th

@@ -227,9 +227,9 @@
     >
       {#if activeTab === "GAINERS"}
         <table
-          class="border border-[#2f343d] hidden sm:inline-table table-sm table-compact w-full m-auto"
+          class=" hidden sm:inline-table table-sm table-compact w-full m-auto"
         >
-          <thead class="bg-[#141417] border-b border-[#2f343d]">
+          <thead class=" border-b border-slate-800">
             <tr>
               <th
                 class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
@@ -397,9 +397,9 @@
       {/if}
       {#if activeTab === "LOSSERS"}
         <table
-          class="border border-[#2f343d] hidden sm:inline-table table-sm table-compact w-full m-auto"
+          class=" hidden sm:inline-table table-sm table-compact w-full m-auto"
         >
-          <thead class="bg-[#141417] border-b border-[#2f343d]">
+          <thead class=" border-b border-slate-800">
             <tr>
               <th
                 class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"
@@ -567,9 +567,9 @@
       {/if}
       {#if activeTab === "LISTED"}
         <table
-          class="border border-[#2f343d] hidden sm:inline-table table-sm table-compact w-full m-auto"
+          class=" hidden sm:inline-table table-sm table-compact w-full m-auto"
         >
-          <thead class="bg-[#141417] border-b border-[#2f343d]">
+          <thead class=" border-b border-slate-800">
             <tr>
               <th
                 class="text-slate-200 font-medium hidden sm:table-cell text-sm text-start"

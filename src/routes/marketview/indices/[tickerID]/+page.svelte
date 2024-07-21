@@ -1444,7 +1444,7 @@
       </div>
     </div>
   </div>
-  <div class="overflow-x-auto border-t border-[#2a2e39] p-3">
+  <div class="overflow-x-auto border-t border-slate-800 p-3">
     <Lazy height={800} fadeOption={{ delay: 100, duration: 500 }} keep={true}>
       <div class="w-full h-[360px] mt-6">
         <EChart options={OptionPerFormanceChart} />

@@ -14,7 +14,6 @@
 
   export let data;
 
-  console.log(data?.get_news_items_by_security);
   let sortedData: BoardMeeting[] = [];
   let dailyEvents: BoardMeeting[] = [];
   let displayList: BoardMeeting[] = [];

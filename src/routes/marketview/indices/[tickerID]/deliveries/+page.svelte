@@ -233,7 +233,7 @@
     class="w-full max-w-7xl m-auto sm:bg-[#09090b] sm:rounded-xl h-auto mt-3 mb-8"
   >
     <div>
-      <div class="overflow-x-auto border-t border-[#2a2e39] p-3">
+      <div class="overflow-x-auto border-t border-slate-800 p-3">
         <h1 class="text-white text-lg text-center mt-5 mb-5">Delivey Vs Traded Volume</h1>
         <Lazy
           height={800}

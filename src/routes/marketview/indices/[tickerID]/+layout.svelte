@@ -191,9 +191,9 @@
   }
 </script>
 
-<body class="bg-[#09090B] pb-40">
+<body class="bg-[#09090B] pb-10">
   <div
-    class="flex flex-col min-h-screen overflow-hidden m-auto w-full mt-5 supports-[overflow:clip]:overflow-clip pb-40"
+    class="flex flex-col overflow-hidden m-auto w-full mt-5 supports-[overflow:clip]:overflow-clip"
   >
     <main class="grow">
       <section>
@@ -415,7 +415,48 @@
               </div>
             </div>
             <!--End Mobile Navbar-->
-            <div class="w-full xl:w-fit max-w-3xl sm:max-w-6xl m-auto px-3">
+            <div class="w-full sm:max-w-6xl m-auto px-3">
+              <nav class="text-xs sm:text-sm mx-4 pb-6 sm:pb-10 pl-0 sm:pl-4">
+                <ol class="flex flex-wrap items-center space-x-1 sm:space-x-2">
+                  <li>
+                    <a href="/" class="text-gray-300 hover:text-white">Home</a>
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-3 h-3 sm:w-4 sm:h-4 text-gray-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    <a
+                      href="/marketview/indices"
+                      class="ml-1 sm:ml-2 text-gray-300 hover:text-white"
+                      >Indices</a
+                    >
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-3 h-3 sm:w-4 sm:h-4 text-gray-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    <span class="ml-1 sm:ml-2 text-gray-300"
+                      >{$displayCompanyName}</span
+                    >
+                  </li>
+                </ol>
+              </nav>
               <div
                 class="md:flex md:justify-between md:divide-x md:divide-slate-800"
               >
@@ -425,10 +466,10 @@
                     <!-----Start-Header-CandleChart-Indicators------>
 
                     <div
-                      class="m-auto pl-0 sm:pl-4 max-w-3xl overflow-hidden mb-5 md:mt-10"
+                      class="m-auto pl-0 sm:pl-4 overflow-hidden mb-5 md:mt-10"
                     >
                       <div
-                        class="hidden sm:flex flex-row w-full justify-between items-center pb-10"
+                        class="hidden sm:flex flex-row w-full justify-between items-center pb-10 sm:pl-6"
                       >
                         <Markethour />
 
@@ -566,7 +607,7 @@
                       <!-- svelte-ignore a11y-click-events-have-key-events -->
                       <!-- svelte-ignore a11y-label-has-associated-control -->
 
-                      <div class="flex items-center w-full">
+                      <div class="flex items-center w-full sm:pl-6">
                         <div
                           class="flex flex-row justify-start items-center mb-5 mt-2"
                         >
@@ -669,8 +710,7 @@
                       <!--Start Ticker Section-->
                       <!--<div class="w-full max-w-3xl sm:max-w-2xl m-auto pt-2 pb-5 sm:pl-3 sticky z-20 bg-[#09090B]"  style="top: {$screenWidth < 520 && $isScrollingUp ? '4rem' : '0rem'};">-->
                       <div
-                        class=" sm:ml-4 w-screen sm:w-full {$screenWidth <
-                        640
+                        class=" sm:ml-4 w-screen sm:w-full {$screenWidth < 640
                           ? 'overflow-auto scrollbar no-scrollbar'
                           : ''} mb-2"
                       >
@@ -716,7 +756,8 @@
                             <a
                               href={`/marketview/indices/${$stockTicker}/deliveries`}
                               id="item3"
-                              on:click={() => changeSection("deliveries", "item3")}
+                              on:click={() =>
+                                changeSection("deliveries", "item3")}
                               class="px-3 text-sm sm:text-[0.9rem] font-medium text-gray-400 sm:hover:text-white {displaySection ===
                               'deliveries'
                                 ? 'text-white '
@@ -748,7 +789,7 @@
                                 : 'bg-[#09090B]'} mt-1 h-[3px] rounded-full w-[2.8rem]"
                             />
                           </li>
-                          {#if basicIndexdetails?.IsFO}
+                          <!-- {#if basicIndexdetails?.IsFO}
                             <li
                               class="cursor-pointer flex flex-col items-center"
                             >
@@ -793,7 +834,7 @@
                                   : 'bg-[#09090B]'} mt-1 h-[3px] rounded-full w-[3.5rem]"
                               />
                             </li>
-                          {/if}
+                          {/if} -->
 
                           {#if basicIndexdetails?.IsTechnicals}
                             <li

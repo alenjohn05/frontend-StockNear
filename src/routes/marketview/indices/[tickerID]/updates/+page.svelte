@@ -13,8 +13,6 @@
   }
 
   export let data;
-
-  console.log(data?.get_news_items_by_security);
   let sortedData: BoardMeeting[] = [];
   let dailyEvents: BoardMeeting[] = [];
   let displayList: BoardMeeting[] = [];
@@ -130,9 +128,9 @@
       class=" w-full justify-center m-auto items-center pl-2 pr-2 sm:pl-0 sm:pr-0 mb-10 min-h-screen"
     >
       <table
-        class="border-t border-[#2f343d] hidden sm:inline-table table-sm table-compact w-full m-auto"
+        class="border-t border-slate-800 hidden sm:inline-table table-sm table-compact w-full m-auto"
       >
-        <thead class=" border-b border-[#2f343d]">
+        <thead class=" border-b border-slate-800">
           <tr>
             <th class="text-slate-200 font-medium text-sm text-start w-40"
               >Date</th
@@ -170,17 +168,16 @@
           <div
             class="bg-[#09090b] p-4 rounded-md shadow-md border border-[#141417]"
           >
-            <div class="text-[#FFBE00] text-lg font-medium">{item?.symbol}</div>
             <div class="mt-2 text-xs">
               <div class="text-slate-200 flex justify-between">
-                <span>Date:</span>
-                <span>{item.Date}</span>
+                <span class="text-[#FFBE00]"
+                  >{format(new Date(item.Date), "dd-MM-yyyy")}</span
+                >
               </div>
 
               <div class="text-slate-200 flex flex-col justify-between mt-3">
-                <span>Description:</span>
                 <span class="text-white">
-                  <div class="cursor-pointer">
+                  <div class="cursor-pointer text-sm">
                     {item?.Description}
                   </div>
                   <!-- Modal Trigger -->
