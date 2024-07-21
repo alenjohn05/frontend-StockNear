@@ -23,10 +23,10 @@ const checkMarketHour = async () => {
 
 
 export const load = async ({ params, data }) => {
-
   stockTicker.update(value => params.tickerID?.toUpperCase());
   stockSecurity.update(value => data.DefaultListingID);
   assetType.update(value => 'stock');
+  console.log(stockSecurity)
 
   displayCompanyName.update(value => data?.companyName)
   await checkMarketHour();

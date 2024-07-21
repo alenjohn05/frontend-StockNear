@@ -1,59 +1,36 @@
 <script lang="ts">
   import {
     AreaSeries,
+    CandlestickSeries,
     Chart,
     PriceLine,
-    CandlestickSeries,
   } from "svelte-lightweight-charts";
-
-  import { TrackingModeExitMode } from "lightweight-charts";
+  import { Chart as EChart } from "svelte-echarts";
+  import Lazy from "svelte-lazy";
   import {
-    getCache,
-    setCache,
-    analystInsightComponent,
-    governmentContractComponent,
-    optionsNetFlowComponent,
-    impliedVolatilityComponent,
-    borrowedShareComponent,
-    clinicalTrialComponent,
-    optionComponent,
-    failToDeliverComponent,
-    marketMakerComponent,
-    analystEstimateComponent,
-    sentimentComponent,
-    screenWidth,
-    displayCompanyName,
-    numberOfUnreadNotification,
-    globalForm,
-    varComponent,
-    shareStatisticsComponent,
-    enterpriseComponent,
-    darkPoolComponent,
-    retailVolumeComponent,
-    shareholderComponent,
-    trendAnalysisComponent,
-    revenueSegmentationComponent,
-    priceAnalysisComponent,
-    fundamentalAnalysisComponent,
-    userRegion,
-    isCrosshairMoveActive,
-    realtimePrice,
-    priceIncrease,
     currentPortfolioPrice,
-    currentPrice,
-    stockTicker,
+    displayCompanyName,
+    getCache,
+    globalForm,
+    isCrosshairMoveActive,
     isOpen,
-    isBeforeMarketOpen,
-    isWeekend,
+    numberOfUnreadNotification,
+    priceIncrease,
+    realtimePrice,
+    setCache,
+    stockTicker,
+    userRegion,
   } from "$lib/store";
+  import { TrackingModeExitMode } from "lightweight-charts";
   import { onDestroy, onMount } from "svelte";
-  import BullBearSay from "$lib/components/BullBearSay.svelte";
-  import CommunitySentiment from "$lib/components/CommunitySentiment.svelte";
-  import Lazy from "$lib/components/Lazy.svelte";
-
+  import type { EChartsOption } from "echarts";
+  interface BasicIndex {
+    [key: string]: any;
+  }
   const usRegion = ["cle1", "iad1", "pdx1", "sfo1"];
 
-  let apiURL;
+  let apiURL: string;
+  let priceDetails: BasicIndex = {};
   let apiKey = import.meta.env.VITE_STOCKNEAR_API_KEY;
 
   userRegion?.subscribe((value) => {
@@ -63,11 +40,14 @@
       apiURL = import.meta.env.VITE_EU_API_URL;
     }
   });
+  interface Data {
+    [key: string]: any;
+  }
 
-  export let data;
+  export let data: Data;
   export let form;
 
-  console.log(data)
+  console.log(data);
 
   let displayChartType = "line";
 
@@ -84,7 +64,7 @@
 
   //============================================//
 
-  let chart = null;
+  let chart: any = null;
   async function checkChart() {
     if (chart) {
       clearInterval(intervalId);
@@ -96,8 +76,14 @@
   let StockSplits;
   let Correlation;
   let WIIM;
+  let OptionPerFormanceChart: EChartsOption = {};
 
   onMount(async () => {
+    OptionPerFormanceChart = await getMarketPlotOptions(
+      data?.get_Technical_Performance_Benchmark,
+      `${data?.companyName} Past Performance`,
+    );
+    priceDetails = { ...data?.Get_Latest_Listing_Price };
     WIIM = (await import("$lib/components/WIIM.svelte")).default;
 
     TARating = (await import("$lib/components/TARating.svelte")).default;
@@ -163,7 +149,7 @@
       displayLegend = {
         close: currentDataRow?.close ?? currentDataRow?.value,
         date: formattedDate,
-        change: change,
+        change: isNaN(parseInt(change)) ? priceDetails.CZG : change,
       };
     }
   }
@@ -189,13 +175,13 @@
     }
   }
 
-  let displayData;
-  let colorChange;
-  let topColorChange;
-  let bottomColorChange;
+  let displayData: any;
+  let colorChange: any;
+  let topColorChange: any;
+  let bottomColorChange: any;
 
-  let lastValue;
-  async function changeData(state) {
+  let lastValue: any;
+  async function changeData(state: any) {
     switch (state) {
       case "1D":
         displayData = "1D";
@@ -291,18 +277,18 @@
     //trackButtonClick('Time Period: '+ state)
   }
 
-  let output = null;
+  let output: any = null;
 
   //====================================//
 
-  let intervalId = null;
-  let oneDayPrice = [];
-  let oneWeekPrice = [];
-  let oneMonthPrice = [];
-  let sixMonthPrice = [];
+  let intervalId: any = null;
+  let oneDayPrice: any = [];
+  let oneWeekPrice: any = [];
+  let oneMonthPrice: any = [];
+  let sixMonthPrice: any = [];
 
-  let oneYearPrice = [];
-  let threeYearPrice = [];
+  let oneYearPrice: any = [];
+  let threeYearPrice: any = [];
 
   async function historicalPrice(timePeriod: string) {
     const cachedData = getCache($stockTicker, "historicalPrice" + timePeriod);
@@ -328,33 +314,14 @@
       }
     } else {
       output = null;
-
-      const postData = {
-        ticker: $stockTicker,
-        timePeriod: timePeriod,
-      };
-
-      const response = await fetch(apiURL + "/historical-price", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-API-KEY": apiKey,
-        },
-        body: JSON.stringify(postData),
-      });
-
-      output = (await response?.json()) ?? [];
-
-      const mapData = (data) =>
-        data?.map(({ time, open, high, low, close }) => ({
-          time: Date.parse(time),
-          open,
-          high,
-          low,
-          close,
-        }));
-
-      const mappedData = mapData(output);
+      output = [...data?.Get_Price_details] ?? [];
+      const mappedData = output?.map((item: any) => ({
+        time: Date.parse(item?.Dt),
+        open: item?.open !== null ? item?.O : NaN,
+        high: item?.high !== null ? item?.H : NaN,
+        low: item?.low !== null ? item?.L : NaN,
+        close: item?.close !== null ? item?.C : NaN,
+      }));
       try {
         switch (timePeriod) {
           case "one-week":
@@ -389,14 +356,13 @@
     }
     intervalId = setInterval(checkChart, 0);
     try {
-      output = [...data?.getOneDayPrice] ?? [];
-
-      oneDayPrice = output?.map((item) => ({
-        time: Date.parse(item?.time),
-        open: item?.open !== null ? item?.open : NaN,
-        high: item?.high !== null ? item?.high : NaN,
-        low: item?.low !== null ? item?.low : NaN,
-        close: item?.close !== null ? item?.close : NaN,
+      output = [...data?.Get_Price_details] ?? [];
+      oneDayPrice = output?.map((item: any) => ({
+        time: Date.parse(item?.Dt),
+        open: item?.open !== null ? item?.O : NaN,
+        high: item?.high !== null ? item?.H : NaN,
+        low: item?.low !== null ? item?.L : NaN,
+        close: item?.close !== null ? item?.C : NaN,
       }));
 
       displayData =
@@ -452,12 +418,12 @@
     }
   }
 
-  let currentDataRow = { value: "-", date: "-" };
+  let currentDataRow: any = { value: "-", date: "-" };
 
-  let lineLegend = null;
-  let displayLegend = { close: "-", date: "-" };
+  let lineLegend: any = null;
+  let displayLegend: any = { close: "-", date: "-" };
 
-  function handleSeriesReference(ref) {
+  function handleSeriesReference(ref: any) {
     try {
       lineLegend = ref;
     } catch (error) {
@@ -482,7 +448,7 @@
         const dateObj = graphData?.time;
         const date = new Date(dateObj);
 
-        const options = {
+        const options: any = {
           day: "2-digit",
           month: "short",
           year: "numeric",
@@ -500,12 +466,10 @@
                 month: "short",
                 year: "numeric",
               });
-
-        const change = (
+        const change: any = (
           (price / displayLastLogicalRangeValue - 1) *
           100
         )?.toFixed(2);
-
         displayLegend = {
           close: price?.toFixed(2),
           date: formattedDate,
@@ -526,13 +490,12 @@
     }
   }
 
-  let displayLastLogicalRangeValue;
+  let displayLastLogicalRangeValue: any;
 
   const fitContentChart = async () => {
     if (displayData === "1Y" && oneYearPrice?.length === 0) {
     } else if (chart !== null && typeof window !== "undefined") {
       chart?.timeScale().fitContent();
-
       chart?.applyOptions({
         trackingMode: {
           exitMode: TrackingModeExitMode.OnTouchEnd,
@@ -545,10 +508,10 @@
   //Initial height of graph
   let height = 350;
 
-  let observer;
+  let observer: any;
   let ref;
 
-  ref = (element) => {
+  ref = (element: any) => {
     if (observer) {
       observer?.disconnect();
     }
@@ -677,6 +640,117 @@
       $globalForm = form;
     }
   }
+
+  async function getMarketPlotOptions(data: any, title: string) {
+    const option = {
+      title: {
+        text: title,
+        left: "center",
+        top: 0,
+        textStyle: {
+          color: "#ffffff",
+          fontSize: 12,
+          fontFamily: '"Inter", sans-serif',
+          fontWeight: "normal",
+        },
+      },
+      silent: false,
+      legend: false,
+
+      xAxis: [
+        {
+          type: "value",
+          axisLine: {
+            show: false,
+          },
+          axisTick: {
+            show: false,
+          },
+          axisLabel: {
+            show: false,
+          },
+          splitLine: {
+            show: false,
+          },
+        },
+      ],
+      yAxis: [
+        {
+          type: "category",
+          axisLine: {
+            lineStyle: {
+              color: "#333333",
+            },
+          },
+          axisLabel: {
+            color: "#ffffff",
+            fontFamily: '"Inter", sans-serif',
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: "#141417",
+            },
+          },
+          data: [...data?.map((each: any) => each?.Label)],
+        },
+      ],
+      tooltip: {
+        trigger: "axis",
+        backgroundColor: "#09090b",
+        borderColor: "#333333",
+        borderWidth: 1,
+        textStyle: {
+          color: "#ffffff",
+          fontFamily: '"Inter", sans-serif',
+        },
+        formatter: (params) => {
+          console.log(params);
+          return `${params[0].name}: ${params[0].value.toFixed(2)}%`;
+        },
+      },
+      series: [
+        {
+          name: "Income",
+          type: "bar",
+          stack: "Total",
+          label: {
+            show: false,
+            position: "top",
+            color: "#ffffff",
+            fontFamily: '"Inter", sans-serif',
+            formatter: "{c}%",
+          },
+          itemStyle: {
+            color: function (params) {
+              return params.value >= 0 ? "#10db06" : "#FF2F1F";
+            },
+          },
+          emphasis: {
+            focus: "series",
+          },
+          data: [...data?.map((each: any) => each?.ChangePercent)],
+        },
+      ],
+      grid: {
+        left: "3%",
+        right: "4%",
+        top: "15%",
+        bottom: "5%",
+        containLabel: true,
+        show: true,
+        borderColor: "#09090b",
+        borderWidth: 0,
+        backgroundColor: "#09090b",
+        tooltip: {
+          trigger: "item",
+          formatter: "{b}: {c}",
+        },
+        zlevel: 0,
+      },
+    };
+    return option;
+  }
 </script>
 
 <svelte:head>
@@ -718,7 +792,7 @@
   <!-- Add more Twitter meta tags as needed -->
 </svelte:head>
 
-<section class="bg-[#09090B] min-h-screen pb-40 overflow-hidden">
+<section class="bg-[#09090B] min-h-screen overflow-hidden">
   <div class="w-full max-w-4xl m-auto overflow-hidden">
     <div class="md:flex md:justify-between md:divide-x md:divide-slate-800">
       <!-- Main content -->
@@ -727,147 +801,6 @@
           <!-- svelte-ignore a11y-click-events-have-key-events -->
           <!-- svelte-ignore a11y-label-has-associated-control -->
 
-          <div class="flex flex-row items-start w-full sm:pl-6 mt-4">
-            <div class="flex flex-col items-start justify-start w-full">
-              <div
-                class="text-2xl md:text-3xl font-bold text-white flex flex-row items-center w-full"
-              >
-                {#if $isCrosshairMoveActive}
-                  {$stockTicker?.includes(".DE") ||
-                  $stockTicker?.includes(".PA") ||
-                  $stockTicker?.includes(".F")
-                    ? `${displayLegend?.close}€`
-                    : ` $${displayLegend?.close}`}
-                {:else if !$isCrosshairMoveActive && $realtimePrice !== null}
-                  {$stockTicker?.includes(".DE") ||
-                  $stockTicker?.includes(".PA") ||
-                  $stockTicker?.includes(".F")
-                    ? `${$currentPortfolioPrice}€`
-                    : ` $${$currentPortfolioPrice}`}
-                {:else}
-                  {$stockTicker?.includes(".DE") ||
-                  $stockTicker?.includes(".PA") ||
-                  $stockTicker?.includes(".F")
-                    ? `${displayLegend?.close}€`
-                    : ` $${displayLegend?.close}`}
-                {/if}
-
-                {#if $priceIncrease === true}
-                  <div
-                    style="background-color: green;"
-                    class="inline-block pulse rounded-full w-3 h-3 ml-2"
-                  ></div>
-                {:else if $priceIncrease === false}
-                  <div
-                    style="background-color: red;"
-                    class="inline-block pulse rounded-full w-3 h-3 ml-2"
-                  ></div>
-                {/if}
-              </div>
-
-              <div class="flex flex-row items-center w-full">
-                {#if displayLegend?.change >= 0}
-                  <svg
-                    class="inline-block w-5 h-5 mt-0.5 -mr-0.5"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    ><g id="evaArrowUpFill0"
-                      ><g id="evaArrowUpFill1"
-                        ><path
-                          id="evaArrowUpFill2"
-                          fill="#10db06"
-                          d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
-                        /></g
-                      ></g
-                    ></svg
-                  >
-                  <span
-                    class="items-center justify-start text-[#10DB06] font-medium text-xs sm:text-sm"
-                    >+{displayLegend?.change}%</span
-                  >
-                {:else if displayLegend?.change < 0}
-                  <svg
-                    class="inline-block w-5 h-5 mt-0.5 -mr-0.5 rotate-180"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    ><g id="evaArrowUpFill0"
-                      ><g id="evaArrowUpFill1"
-                        ><path
-                          id="evaArrowUpFill2"
-                          fill="#FF2F1F"
-                          d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
-                        /></g
-                      ></g
-                    ></svg
-                  >
-                  <span
-                    class="items-center justify-start text-[#FF2F1F] font-medium text-xs sm:text-sm"
-                    >{displayLegend?.change}%
-                  </span>
-                {/if}
-
-                <span class="ml-3 text-white text-xs sm:text-sm"
-                  >{displayLegend?.date}</span
-                >
-              </div>
-            </div>
-
-            <div class="ml-auto">
-              {#if Object?.keys(prePostData)?.length !== 0 && prePostData?.price !== 0}
-                <div class="flex flex-col justify-end items-end">
-                  <div class="flex flex-row items-center justify-end">
-                    <span class="text-white text-lg sm:text-2xl font-bold">
-                      ${prePostData?.price}
-                    </span>
-                    {#if prePostData?.changesPercentage >= 0}
-                      <span
-                        class="ml-1 items-center justify-start text-[#10DB06] font-medium text-xs sm:text-sm"
-                        >({prePostData?.changesPercentage}%)</span
-                      >
-                    {:else if prePostData?.changesPercentage < 0}
-                      <span
-                        class="ml-1 items-center justify-start text-[#FF2F1F] font-medium text-xs sm:text-sm"
-                        >({prePostData?.changesPercentage}%)</span
-                      >
-                    {/if}
-                  </div>
-                  {#if $isBeforeMarketOpen && !$isOpen && !$isWeekend}
-                    <div
-                      class="flex flex-row items-center justify-end text-white text-[0.65rem] sm:text-sm font-normal text-end w-24"
-                    >
-                      <span>Pre-market:</span>
-                      <svg
-                        class="ml-1 w-4 h-4 inline-block"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 256 256"
-                        ><path
-                          fill="#EA9703"
-                          d="M120 40V16a8 8 0 0 1 16 0v24a8 8 0 0 1-16 0m72 88a64 64 0 1 1-64-64a64.07 64.07 0 0 1 64 64m-16 0a48 48 0 1 0-48 48a48.05 48.05 0 0 0 48-48M58.34 69.66a8 8 0 0 0 11.32-11.32l-16-16a8 8 0 0 0-11.32 11.32Zm0 116.68l-16 16a8 8 0 0 0 11.32 11.32l16-16a8 8 0 0 0-11.32-11.32M192 72a8 8 0 0 0 5.66-2.34l16-16a8 8 0 0 0-11.32-11.32l-16 16A8 8 0 0 0 192 72m5.66 114.34a8 8 0 0 0-11.32 11.32l16 16a8 8 0 0 0 11.32-11.32ZM48 128a8 8 0 0 0-8-8H16a8 8 0 0 0 0 16h24a8 8 0 0 0 8-8m80 80a8 8 0 0 0-8 8v24a8 8 0 0 0 16 0v-24a8 8 0 0 0-8-8m112-88h-24a8 8 0 0 0 0 16h24a8 8 0 0 0 0-16"
-                        /></svg
-                      >
-                    </div>
-                  {:else}
-                    <div
-                      class="flex flex-row items-center justify-end text-white text-[0.65rem] sm:text-sm font-normal text-end w-28"
-                    >
-                      <span>Post-market:</span>
-                      <svg
-                        class="ml-1 w-4 h-4 inline-block"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 256 256"
-                        ><path
-                          fill="#70A1EF"
-                          d="M232.13 143.64a6 6 0 0 0-6-1.49a90.07 90.07 0 0 1-112.27-112.3a6 6 0 0 0-7.49-7.48a102.88 102.88 0 0 0-51.89 36.31a102 102 0 0 0 142.84 142.84a102.88 102.88 0 0 0 36.31-51.89a6 6 0 0 0-1.5-5.99m-42 48.29a90 90 0 0 1-126-126a90.9 90.9 0 0 1 35.52-28.27a102.06 102.06 0 0 0 118.69 118.69a90.9 90.9 0 0 1-28.24 35.58Z"
-                        /></svg
-                      >
-                    </div>
-                  {/if}
-                </div>
-              {/if}
-            </div>
-          </div>
-          <!-----End-Header-CandleChart-Indicators------>
-          <!--Start Time Interval-->
           <div
             class="hidden sm:flex flex-row items-center pl-1 sm:pl-6 w-full mt-4"
           >
@@ -964,6 +897,7 @@
               />
             </div>
 
+            <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
             <label
               on:click={changeChartType}
               class="ml-auto -mt-3 block cursor-pointer bg-[#09090B] sm:hover:bg-[#09090B] duratiion-100 transition ease-in-out px-3 py-1 rounded-lg shadow-sm"
@@ -1277,6 +1211,7 @@
               class="flex justify-center w-full sm:w-[650px] h-80 sm:w-[600px] items-center"
             >
               <div class="relative">
+                <!-- svelte-ignore a11y-label-has-associated-control -->
                 <label
                   class="bg-[#09090B] rounded-xl h-14 w-14 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                 >
@@ -1289,6 +1224,10 @@
           <!--End Graph-->
 
           <!--Start Time Interval-->
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
+          <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+          <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+          <!-- svelte-ignore a11y-label-has-associated-control -->
           <div class="pl-1 w-screen sm:hidden flex flex-row items-center">
             <div class="flex flex-col items-center mr-4">
               <button
@@ -1383,6 +1322,7 @@
               />
             </div>
 
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
             <label
               on:click={changeChartType}
               class="ml-auto mr-5 -mt-1 sm:hidden border border-slate-800 px-2.5 py-1 rounded-xl"
@@ -1415,365 +1355,101 @@
             </label>
           </div>
           <!--End Time Interval-->
-
-          <div class="w-full mt-14 sm:mt-0 m-auto sm:pl-6 sm:pb-6 sm:pt-6">
-            <CommunitySentiment {communitySentiment} />
-          </div>
-
-          {#if $screenWidth <= 1022}
-            <!--BUG: Dont remove since when changing ETF symbol display freezes-->
-            <div class="w-full mt-10 m-auto sm:p-6 lg:hidden">
-              <h3
-                class="cursor-pointer flex flex-row items-center text-white text-xl sm:text-3xl font-bold"
+          <div class="flex flex-row items-start w-full sm:pl-6 mt-4">
+            <div class="flex flex-col items-start justify-start w-full">
+              <div
+                class="text-lg md:text-lg font-bold text-white flex flex-row items-center w-full"
               >
-                Key Information
-              </h3>
-              {#await import("$lib/components/StockKeyInformation.svelte") then { default: Comp }}
-                <svelte:component
-                  this={Comp}
-                  {stockDeck}
-                  {similarstock}
-                  {topETFHolder}
-                  {data}
-                />
-              {/await}
-            </div>
-          {/if}
+                {#if $isCrosshairMoveActive}
+                  {$stockTicker?.includes(".DE") ||
+                  $stockTicker?.includes(".PA") ||
+                  $stockTicker?.includes(".F")
+                    ? `${displayLegend?.close}`
+                    : ` ${displayLegend?.close}`}
+                {:else if !$isCrosshairMoveActive && $realtimePrice !== null}
+                  {$stockTicker?.includes(".DE") ||
+                  $stockTicker?.includes(".PA") ||
+                  $stockTicker?.includes(".F")
+                    ? `${$currentPortfolioPrice}`
+                    : ` ${$currentPortfolioPrice}`}
+                {:else}
+                  {$stockTicker?.includes(".DE") ||
+                  $stockTicker?.includes(".PA") ||
+                  $stockTicker?.includes(".F")
+                    ? `${displayLegend?.close}`
+                    : ` ${displayLegend?.close}`}
+                {/if}
 
-          <div
-            class="w-full mt-10 sm:mt-0 m-auto sm:pl-6 sm:pb-6 sm:pt-6 {Object?.keys(
-              marketMoods,
-            )?.length !== 0
-              ? ''
-              : 'hidden'}"
-          >
-            <BullBearSay {data} {marketMoods} />
-          </div>
-
-          {#if WIIM}
-            <div
-              class="w-full mt-10 sm:mt-5 m-auto sm:pl-6 sm:pb-6 sm:pt-6 {data
-                ?.getWhyPriceMoved?.length !== 0
-                ? ''
-                : 'hidden'}"
-            >
-              <WIIM wiim={data?.getWhyPriceMoved} {data} />
-            </div>
-          {/if}
-
-          <Lazy>
-            <div
-              class="w-full mt-10 sm:mt-0 m-auto sm:pl-6 sm:pt-6 {!$analystInsightComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/AnalystInsight.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-
-          <Lazy>
-            <div
-              class="w-full mt-10 sm:mt-0 m-auto sm:pl-6 sm:pb-6 sm:pt-6 {!$clinicalTrialComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/ClinicalTrial.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-
-          <Lazy>
-            <div
-              class="w-full mt-10 sm:mt-5 m-auto sm:pl-6 sm:pb-6 sm:pt-6 {!$priceAnalysisComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/PriceAnalysis.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-
-          <Lazy>
-            <div
-              class="w-full mt-10 sm:mt-5 m-auto sm:pl-6 sm:pb-6 sm:pt-6 {!$trendAnalysisComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/TrendAnalysis.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-
-          <Lazy>
-            <div
-              class="w-full mt-10 sm:mt-5 m-auto sm:pl-6 sm:pb-6 sm:pt-6 {!$fundamentalAnalysisComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/FundamentalAnalysis.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-
-          <Lazy>
-            <div
-              class="w-full mt-10 sm:mt-5 m-auto sm:pl-6 sm:pb-6 sm:pt-6 {!$sentimentComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/SentimentAnalysis.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-
-          <Lazy>
-            <div
-              class="w-full sm:mt-5 m-auto sm:pl-6 sm:pb-6 sm:pt-6 {!$varComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/VaR.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-
-          <Lazy>
-            <div
-              class="w-full m-auto sm:pl-6 sm:pb-6 sm:pt-6 {!$analystEstimateComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/AnalystEstimate.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-
-          <Lazy>
-            <div
-              class="w-full mt-10 sm:mt-5 m-auto sm:pl-6 sm:pt-6 {!$governmentContractComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/GovernmentContract.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-
-          <Lazy>
-            <div
-              class="w-full mt-10 sm:mt-5 m-auto sm:pl-6 sm:pb-6 sm:pt-6 {!$enterpriseComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/Enterprise.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-
-          <Lazy>
-            <div
-              class="w-full mt-10 sm:mt-0 m-auto sm:pl-6 sm:pb-6 sm:pt-6 {!$optionComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/OptionsData.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-
-          <Lazy>
-            <div
-              class="w-full mt-10 sm:mt-5 m-auto sm:pl-6 sm:pb-6 sm:pt-6 {!$optionsNetFlowComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/OptionsNetFlow.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-
-          <Lazy>
-            <div
-              class="w-full mt-10 sm:mt-5 m-auto sm:pl-6 sm:pb-6 sm:pt-6 {!$impliedVolatilityComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/ImpliedVolatility.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-
-          <!--Start RevenueSegmentation-->
-          <Lazy>
-            <div
-              class="w-full pt-10 sm:pl-6 sm:pb-6 sm:pt-6 m-auto {!$revenueSegmentationComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/RevenueSegmentation.svelte") then { default: Comp }}
-                <svelte:component this={Comp} userTier={data?.user?.tier} />
-              {/await}
-            </div>
-          </Lazy>
-          <!--End RevenueSegmentation-->
-
-          <Lazy>
-            <div
-              class="w-full mt-10 sm:mt-5 m-auto sm:pl-6 sm:pb-6 sm:pt-6 {!$failToDeliverComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/FailToDeliver.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-
-          <Lazy>
-            <div
-              class="w-full mt-10 sm:mt-5 m-auto sm:pl-6 sm:pb-6 sm:pt-6 {!$borrowedShareComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/BorrowedShare.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-
-          <Lazy>
-            <div
-              class="w-full mt-10 sm:mt-5 m-auto sm:pl-6 sm:pb-6 sm:pt-6 {!$marketMakerComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/MarketMaker.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-
-          <Lazy>
-            <div
-              class="w-full mt-10 sm:mt-5 m-auto sm:pl-6 sm:pb-6 sm:pt-6 {!$darkPoolComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/DarkPool.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-
-          <Lazy>
-            <div
-              class="w-full mt-10 sm:mt-5 m-auto sm:pl-6 sm:pb-6 sm:pt-6 {!$retailVolumeComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/RetailVolume.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-
-          <Lazy>
-            <div
-              class="w-full mt-10 sm:mt-5 m-auto sm:pl-6 sm:pb-6 sm:pt-6 {!$shareStatisticsComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/ShareStatistics.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-
-          <!--Start Shareholders-->
-          <Lazy>
-            <div
-              class="w-full sm:pl-6 sm:pb-6 sm:pt-6 m-auto mb-5 {!$shareholderComponent
-                ? 'hidden'
-                : ''}"
-            >
-              {#await import("$lib/components/ShareHolders.svelte") then { default: Comp }}
-                <svelte:component this={Comp} {data} />
-              {/await}
-            </div>
-          </Lazy>
-          <!--End Shareholders-->
-
-          <div
-            class="w-full pt-10 m-auto sm:pl-6 sm:pb-6 sm:pt-6 rounded-2xl {Object?.keys(
-              taRating,
-            )?.length !== 0
-              ? ''
-              : 'hidden'} "
-          >
-            {#if TARating}
-              <TARating taRating={data?.getStockTARating} />
-            {/if}
-          </div>
-
-          <!--Start DCF -->
-          <div
-            class="w-full pt-10 sm:pl-6 sm:pb-6 sm:pt-6 m-auto {fairPrice !==
-              null && fairPrice > 0
-              ? ''
-              : 'hidden'}"
-          >
-            <Lazy>
-              <div class="w-full m-auto rounded-2xl mb-5">
-                {#await import("$lib/components/DCF.svelte") then { default: Comp }}
-                  <svelte:component
-                    this={Comp}
-                    {data}
-                    {fairPrice}
-                    {currentPrice}
-                  />
-                {/await}
+                {#if $priceIncrease === true}
+                  <div
+                    style="background-color: green;"
+                    class="inline-block pulse rounded-full w-3 h-3 ml-2"
+                  ></div>
+                {:else if $priceIncrease === false}
+                  <div
+                    style="background-color: red;"
+                    class="inline-block pulse rounded-full w-3 h-3 ml-2"
+                  ></div>
+                {/if}
               </div>
-            </Lazy>
-          </div>
-          <!--End DCF-->
 
-          <div
-            class="w-full m-auto pt-10 sm:pl-6 sm:pb-6 sm:pt-6 {correlationList?.length !==
-            0
-              ? ''
-              : 'hidden'}"
-          >
-            {#if Correlation}
-              <Correlation {correlationList} />
-            {/if}
-          </div>
+              <div class="flex flex-row items-center w-full">
+                {#if displayLegend?.change >= 0}
+                  <svg
+                    class="inline-block w-5 h-5 mt-0.5 -mr-0.5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    ><g id="evaArrowUpFill0"
+                      ><g id="evaArrowUpFill1"
+                        ><path
+                          id="evaArrowUpFill2"
+                          fill="#10db06"
+                          d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                        /></g
+                      ></g
+                    ></svg
+                  >
+                  <span
+                    class="items-center justify-start text-[#10DB06] font-medium text-xs sm:text-sm"
+                    >+{displayLegend?.change}%</span
+                  >
+                {:else if displayLegend?.change < 0}
+                  <svg
+                    class="inline-block w-5 h-5 mt-0.5 -mr-0.5 rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    ><g id="evaArrowUpFill0"
+                      ><g id="evaArrowUpFill1"
+                        ><path
+                          id="evaArrowUpFill2"
+                          fill="#FF2F1F"
+                          d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1a2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1Z"
+                        /></g
+                      ></g
+                    ></svg
+                  >
+                  <span
+                    class="items-center justify-start text-[#FF2F1F] font-medium text-xs sm:text-sm"
+                    >{displayLegend?.change}%
+                  </span>
+                {/if}
 
-          <!--Start Stock Splits-->
-          {#if StockSplits && stockDeck?.at(0)?.stockSplits?.length !== 0}
-            <div
-              class="w-full pt-10 sm:pl-6 sm:pb-6 sm:pt-6 m-auto rounded-2xl mb-10"
-            >
-              <StockSplits {stockDeck} />
+                <span class="ml-3 text-white text-xs sm:text-sm"
+                  >{displayLegend?.date}</span
+                >
+              </div>
             </div>
-          {/if}
-          <!--End Stock Splits-->
+          </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="overflow-x-auto border-t border-[#2a2e39] p-3">
+    <Lazy height={800} fadeOption={{ delay: 100, duration: 500 }} keep={true}>
+      <div class="w-full h-[360px] mt-6">
+        <EChart options={OptionPerFormanceChart} />
+      </div>
+    </Lazy>
   </div>
 </section>
 

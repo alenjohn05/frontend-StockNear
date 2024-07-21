@@ -1,4 +1,6 @@
 import { getCache, setCache } from '$lib/store.js';
+import fs from 'fs/promises';
+import path from 'path';
 import { format } from 'date-fns';
 
 const usRegion = ['cle1', 'iad1', 'pdx1', 'sfo1'];
@@ -66,7 +68,15 @@ const fetchSecurityDetails = async (url: string) => {
   return output;
 }
 
-
+const loadDailyDataContent = async () => {
+  try {
+    let output = (await import('$lib/sample/price.json'))?.default;
+    return output;
+  } catch (error) {
+    console.error(`Error loading data from :`, error);
+    throw error;
+  }
+}
 
 const fetchData = async (apiURL, endpoint, ticker) => {
 
@@ -174,6 +184,7 @@ export const load = async ({ params, locals, cookies, setHeaders }) => {
   companyName = securityInfo.Name
   basicIndexDetails = securityInfo
   const promises = [
+    loadDailyDataContent(),
     fetchSecurityDetails(`/index/Get_Latest_Listing_Price?SecurityListingID=${DefaultListingID}`),
     fetchSecurityDetails(`/index/Get_Composed_IndexParts?SecurityID=${params.tickerID}`),
     fetchSecurityDetails(`/index/Get_Composed_Index_Part_Gainers?SecurityID=${params.tickerID}&priceChangePeriodType=1`),
@@ -194,13 +205,16 @@ export const load = async ({ params, locals, cookies, setHeaders }) => {
   ];
 
   const [
+    Get_Price_details,
     Get_Latest_Listing_Price,
     Get_Composed_IndexParts,
     Get_Composed_Index_Part_Gainers,
     Get_Composed_Index_Part_losers,
+    Get_Composed_Index_deliveries,
     get_news_items_by_security,
     get_corporate_actions_security,
     get_Technical_Performance_Benchmark,
+    get_Technical_indicators,
     get_ExpiryDate_ForListing,
     get_Market_Lot_for_ForListing,
     get_CumulativeFuture_OpenInterest,
@@ -218,6 +232,7 @@ export const load = async ({ params, locals, cookies, setHeaders }) => {
 
 
   return {
+    Get_Price_details,
     Get_Latest_Listing_Price,
     Get_Composed_IndexParts,
     Get_Composed_Index_Part_Gainers,

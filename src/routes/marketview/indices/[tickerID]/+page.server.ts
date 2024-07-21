@@ -80,8 +80,6 @@ export const actions = {
 		redirect(303, "/");
 	},
 	
-
-	
     oauth2: async ( { url, locals, request, cookies, params }) => {
 		const authMethods = await locals?.pb?.collection('users')?.listAuthMethods();
 
@@ -139,6 +137,4 @@ export const actions = {
 		redirect(302,authProviderRedirect);
 
 	},
-
-	
 };
