@@ -1,10 +1,10 @@
 {
-    "name": "stocknear",
-    "short_name": "stocknear",
+    "name": "Octopi",
+    "short_name": "Octopi",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#27272A",
-    "theme_color": "#27272A",
+    "background_color": "#202020",
+    "theme_color": "#202020",
     "description": "Stock Analysis Platform to beat the Hedgies",
     "icons": [
         {
